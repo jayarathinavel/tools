@@ -1,9 +1,9 @@
 <!-- Footer -->
-<footer class="bg-secondary py-3">
+<!-- <footer class="bg-secondary py-3">
     <div class="container text-center">
         &copy; 2023 My Website. All rights reserved.
     </div>
-</footer>
+</footer> -->
 
 <!-- Bootstrap JS and jQuery -->
 <?php

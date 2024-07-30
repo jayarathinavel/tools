@@ -1,6 +1,6 @@
 <?php
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    $pageTitle = "Contact Us";
+    $pageTitle = "Appointment";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
 ?>
 <link rel="stylesheet" 

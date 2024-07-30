@@ -38,7 +38,7 @@
         }
     ?>
     <link rel="stylesheet" href="/resources/stylesheet.css">
-    <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "My Site" ?></title>
+    <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Tools Tap" ?></title>
 </head>
 <body>
 
@@ -47,13 +47,10 @@
     <div class="container">
         <div class="row d-flex align-items-center">
             <div class="col-md-6">
-                <h4>My Website</h4>
+                <h4 class="text-light">Tools</h4>
             </div>
             <div class="col-md-6 text-end">
                 <a href="/" class="btn btn-light">Home</a>
-                <a href="#" class="btn btn-light">Page 1</a>
-                <a href="#" class="btn btn-light">Page 2</a>
-                <a href="/pages/contact.php" class="btn btn-light">Contact</a>
             </div>
         </div>
     </div>
