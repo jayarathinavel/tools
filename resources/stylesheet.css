@@ -1,0 +1,24 @@
+.display-none {
+    display: none;
+}
+
+header {
+    margin-bottom: 5%;
+}
+
+footer {
+    margin-top: 5%;
+}
+
+/* Style for booked dates */
+.booked-day {
+    background-color: #f2f2f2; /* Gray background color */
+    color: #999; /* Gray text color */
+    cursor: not-allowed; /* Show the not-allowed cursor */
+    pointer-events: none; /* Disable pointer events on the grayed out dates */
+}
+
+.disabled-div {
+    opacity: 0.5; /* Reduce opacity to make it appear disabled */
+    pointer-events: none; /* Disable pointer events to prevent interactions */
+}
