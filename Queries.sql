@@ -58,9 +58,12 @@ ALTER TABLE appointments
 ADD COLUMN status VARCHAR(50),
 ADD COLUMN status_message TEXT;
 
-CREATE TABLE expenses (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  expense_name VARCHAR(255) NOT NULL,
-  amount DECIMAL(10, 2) NOT NULL,
-  person INT NOT NULL
-);
+CREATE TABLE `expenses` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `expense_name` varchar(255) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `person` int NOT NULL,
+  `date` date DEFAULT NULL,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

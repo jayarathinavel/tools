@@ -26,6 +26,7 @@
                 <th>Expense Name</th>
                 <th>Amount</th>
                 <th>Person</th>
+                <th>Date</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -38,6 +39,7 @@
                 <td><?php echo $expense['expense_name']; ?></td>
                 <td><?php echo $expense['amount']; ?></td>
                 <td><?php echo $expense['person']; ?></td>
+                <td><?php echo $expense['date']; ?></td>
                 <td>
                     <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-primary">Edit</a>
                     <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger">Delete</a>

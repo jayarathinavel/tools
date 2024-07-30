@@ -10,10 +10,11 @@
             $expense_name = $_POST['expense_name'];
             $amount = $_POST['amount'];
             $person = $_POST['person'];
-            $conn->query("UPDATE expenses SET expense_name='$expense_name', amount='$amount', person='$person' WHERE id=$id");
+            $date = $_POST['date'];
+            $conn->query("UPDATE expenses SET expense_name='$expense_name', amount='$amount', person='$person', date='$date' WHERE id=$id");
             successAndFailureMessage('success', 'Edited Successfully');
         } catch (Exception $e) {
-            successAndFailureMessage('failure', 'Failed to Edit!' . $e->getMessage());
+            successAndFailureMessage('failure', 'Failed to Edit!' . ' ' . $e->getMessage());
         }
     } else {
         // Add new expense
@@ -21,11 +22,11 @@
             $expense_name = $_POST['expense_name'];
             $amount = $_POST['amount'];
             $person = $_POST['person'];
-            $conn->query("INSERT INTO expenses (expense_name, amount, person) VALUES ('$expense_name', '$amount', '$person')");
+            $date = $_POST['date'];
+            $conn->query("INSERT INTO expenses (expense_name, amount, person, date) VALUES ('$expense_name', '$amount', '$person', '$date')");
             successAndFailureMessage('success', 'Added Successfully');
-        }
-        catch (Exception $e) {
-            successAndFailureMessage('failure', 'Failed to Add!' . $e->getMessage());
+        } catch (Exception $e) {
+            successAndFailureMessage('failure', 'Failed to Add!' . ' ' . $e->getMessage());
         }
     }
     header("Location: view.php");

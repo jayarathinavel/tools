@@ -9,7 +9,7 @@
 <div class="container">
     <h1>Edit Expense</h1>
     <?php
-        if (isset($_POST["expense_name"])) {
+        if (isset($_POST['expense_name'])) {
             require_once $rootPath . '/handlers/tools/expense-handler.php';
         }
     ?>
@@ -30,9 +30,14 @@
                 <option value="2" <?php if ($expense['person'] == 2) echo 'selected'; ?>>Person 2</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" class="form-control" value="<?php echo $expense['date']; ?>">
+        </div>
         <input type="submit" value="Update Expense" class="btn btn-primary">
     </form>
 </div>
+
 
 <?php
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
