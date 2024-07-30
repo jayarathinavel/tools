@@ -117,4 +117,11 @@
             die("Connection failed: " . $e->getMessage());
         }
     }
-   
+
+    function initSuccessAndFailureMessage(){
+        session_start();
+    }
+    function successAndFailureMessage($status, $message) {
+        $_SESSION['status'] = $status;
+        $_SESSION['message'] = $message;
+    }
