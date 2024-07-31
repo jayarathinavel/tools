@@ -5,6 +5,10 @@
     initSuccessAndFailureMessage();
 ?>
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
 <div class="container">
     <?php
         if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
@@ -20,7 +24,7 @@
         }
     ?>
     <h1>Expenses</h1>
-    <table class="table table-striped">
+    <table id="expenses-table" class="table table-striped">
         <thead>
             <tr>
                 <th>Expense Name</th>
@@ -50,6 +54,19 @@
     </table>
     <a href="add.php" class="btn btn-success">Add New Expense</a>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#expenses-table').DataTable({
+            paging: false,
+            "order": [[3, "desc"]],
+            "columnDefs": [
+                { "orderable": false, "targets": [2, 3] }
+            ],
+            "bInfo": false,
+        });
+    });
+</script>
 
 <?php
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
