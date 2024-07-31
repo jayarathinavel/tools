@@ -2,7 +2,7 @@
     $pageTitle = "Expense Balance";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
-    initSuccessAndFailureMessage();
+    sessionStart();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -37,9 +37,21 @@
         </thead>
         <tbody>
             <?php
-            $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = 0");
-            foreach ($expenses as $expense) {
-                ?>
+                $book = expenseBalanceFindBook(1);
+                $expenses = [];
+                $bookDetails = [];
+                if(isset($book)) {
+                    $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
+                    $bookDetails = $conn->query("SELECT * FROM expense_balance_book WHERE id = $book");
+                }
+                if(isset($bookDetails)) {
+                    echo ' | <span>Selected Book: </span>' . $bookDetails -> fetch_array()["name"];
+                }
+                
+            ?>
+            <?php
+                foreach ($expenses as $expense) {
+            ?>
             <tr>
                 <td><?php echo $expense['expense_name']; ?></td>
                 <td><?php echo $expense['amount']; ?></td>

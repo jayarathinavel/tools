@@ -118,7 +118,7 @@
         }
     }
 
-    function initSuccessAndFailureMessage(){
+    function sessionStart(){
         session_start();
     }
     function successAndFailureMessage($status, $message) {
@@ -135,4 +135,18 @@
                 };
             </script>
         ";
+    }
+
+    function expenseBalanceFindBook($userId){
+        $selectedBook = null;
+        if(isset($_SESSION['expenseBalanceSelectedBook'])){
+            $selectedBook = $_SESSION['expenseBalanceSelectedBook'];
+        } else{
+            $conn = initDb();
+            $books = $conn->query("SELECT * FROM expense_balance_book WHERE user_id = $userId");
+            $conn->close();
+            $selectedBook = $books->fetch_assoc()["id"];
+            $_SESSION['expenseBalanceSelectedBook'] = $selectedBook;
+        }
+        return $selectedBook;
     }

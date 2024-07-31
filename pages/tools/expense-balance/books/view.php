@@ -2,7 +2,7 @@
 $pageTitle = "Expense Balance Book";
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 require_once $rootPath . '/pages/includes/main-pages/header.php';
-initSuccessAndFailureMessage();
+sessionStart();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -34,9 +34,10 @@ initSuccessAndFailureMessage();
         </thead>
         <tbody>
             <?php
-            $expenseBooks = $conn->query("SELECT * FROM expense_balance_book");
-            foreach ($expenseBooks as $expenseBook) {
-                ?>
+                $user = 1;
+                $expenseBooks = $conn->query("SELECT * FROM expense_balance_book WHERE user_id=$user");
+                foreach ($expenseBooks as $expenseBook) {
+            ?>
             <tr>
                 <td><?php echo $expenseBook['name']; ?></td>
                 <td><?php echo $expenseBook['persons']; ?></td>
