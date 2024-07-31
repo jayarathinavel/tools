@@ -36,7 +36,7 @@
         </thead>
         <tbody>
             <?php
-            $expenses = $conn->query("SELECT * FROM expenses");
+            $expenses = $conn->query("SELECT * FROM expense_balance");
             foreach ($expenses as $expense) {
                 ?>
             <tr>

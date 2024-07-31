@@ -6,7 +6,7 @@
     try {
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
-            $conn->query("DELETE FROM expenses WHERE id=$id");
+            $conn->query("DELETE FROM expense_balance WHERE id=$id");
             successAndFailureMessage('success', 'Deleted Successfully');
         }
     } catch (Exception $e) {

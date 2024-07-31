@@ -58,7 +58,7 @@ ALTER TABLE appointments
 ADD COLUMN status VARCHAR(50),
 ADD COLUMN status_message TEXT;
 
-CREATE TABLE `expenses` (
+CREATE TABLE `expense_balance` (
   `id` int NOT NULL AUTO_INCREMENT,
   `expense_name` varchar(255) NOT NULL,
   `amount` decimal(10,2) NOT NULL,

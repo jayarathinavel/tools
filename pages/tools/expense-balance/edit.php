@@ -3,7 +3,7 @@
     $pageTitle = "Edit Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     $id = $_GET['id'];
-    $expense = $conn->query("SELECT * FROM expenses WHERE id=$id")->fetch_assoc();
+    $expense = $conn->query("SELECT * FROM expense_balance WHERE id=$id")->fetch_assoc();
 ?>
 
 <div class="container">
