@@ -1,8 +1,8 @@
 <?php
-    $pageTitle = "Expense Balance";
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    initSuccessAndFailureMessage();
+$pageTitle = "Expense Balance Book";
+$rootPath = $_SERVER['DOCUMENT_ROOT'];
+require_once $rootPath . '/pages/includes/main-pages/header.php';
+initSuccessAndFailureMessage();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -23,46 +23,43 @@
             unset($_SESSION['message']);
         }
     ?>
-    <h1>Expense Balance</h1>
-    <a href="books/view.php">View Books</a>
-    <table id="expenses-table" class="table table-striped">
+    <h1>Expense Balance Books</h1>
+    <table id="expense-books-table" class="table table-striped">
         <thead>
             <tr>
-                <th>Expense Name</th>
-                <th>Amount</th>
-                <th>Person</th>
-                <th>Date</th>
+                <th>Name</th>
+                <th>Persons</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = 0");
-            foreach ($expenses as $expense) {
+            $expenseBooks = $conn->query("SELECT * FROM expense_balance_book");
+            foreach ($expenseBooks as $expenseBook) {
                 ?>
             <tr>
-                <td><?php echo $expense['expense_name']; ?></td>
-                <td><?php echo $expense['amount']; ?></td>
-                <td><?php echo $expense['person']; ?></td>
-                <td><?php echo $expense['date']; ?></td>
+                <td><?php echo $expenseBook['name']; ?></td>
+                <td><?php echo $expenseBook['persons']; ?></td>
                 <td>
-                    <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-primary">Edit</a>
-                    <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger">Delete</a>
+                    <a href="edit.php?id=<?php echo $expenseBook['id']; ?>" class="btn btn-primary">Edit</a>
+                    <a href="delete.php?operation=delete&id=<?php echo $expenseBook['id']; ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
-            <?php } ?>
+            <?php
+            }
+            ?>
         </tbody>
     </table>
-    <a href="add.php" class="btn btn-success">Add New Expense</a>
+    <a href="add.php" class="btn btn-success">Add New Expense Book</a>
 </div>
 
 <script>
     $(document).ready(function() {
-        $('#expenses-table').DataTable({
+        $('#expense-books-table').DataTable({
             paging: false,
-            "order": [[3, "desc"]],
+            "order": [[0, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [2, 3] }
+                { "orderable": false, "targets": [2] }
             ],
             "bInfo": false,
         });
@@ -70,5 +67,5 @@
 </script>
 
 <?php
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+require_once $rootPath . '/pages/includes/main-pages/footer.php';
 ?>
