@@ -58,33 +58,35 @@
             <input type="submit" value="Change" class="btn btn-sm btn-primary">
         </form>
     <?php } ?>
-    <table id="expenses-table" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Expense Name</th>
-                <th>Amount</th>
-                <th>Person</th>
-                <th>Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                foreach ($expenses as $expense) {
-            ?>
-            <tr>
-                <td><?php echo $expense['expense_name']; ?></td>
-                <td><?php echo $expense['amount']; ?></td>
-                <td><?php echo $persons[$expense['person']]; ?></td>
-                <td><?php echo $expense['date']; ?></td>
-                <td>
-                    <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-primary">Edit</a>
-                    <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    <div style="overflow-x: auto;">
+        <table id="expenses-table" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Expense Name</th>
+                    <th>Amount</th>
+                    <th>Person</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($expenses as $expense) {
+                ?>
+                <tr>
+                    <td><?php echo $expense['expense_name']; ?></td>
+                    <td><?php echo $expense['amount']; ?></td>
+                    <td><?php echo $persons[$expense['person']]; ?></td>
+                    <td><?php echo $expense['date']; ?></td>
+                    <td>
+                        <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-primary">Edit</a>
+                        <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
     <div class="mt-2">
         <a href="add.php" class="btn btn-success" <?php echo isset($book) ? ' ' : 'disabled' ?>>Add New Expense</a>
         <?php echo isset($book) ? '' : '<span class="text-danger ms-2"> No books are available, create a book first!</span>' ?>
