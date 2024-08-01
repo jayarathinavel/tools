@@ -24,7 +24,7 @@ $expenseBook = $conn->query("SELECT * FROM expense_balance_book WHERE id=$id")->
             <label for="persons">Persons:</label>
             <input type="text" id="persons" name="persons" class="form-control" value="<?php echo $expenseBook['persons']; ?>">
         </div>
-        <input type="submit" value="Update Expense Book" class="btn btn-primary">
+        <input type="submit" value="Update Expense Book" class="btn btn-primary mt-2">
     </form>
 </div>
 

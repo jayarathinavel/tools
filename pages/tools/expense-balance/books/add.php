@@ -21,7 +21,7 @@ require_once $rootPath . '/pages/includes/main-pages/header.php';
             <label for="persons">Persons:</label>
             <input type="text" id="persons" name="persons" class="form-control" required>
         </div>
-        <input type="submit" value="Add Expense Book" class="btn btn-primary">
+        <input type="submit" value="Add Expense Book" class="btn btn-primary mt-2">
     </form>
 </div>
 

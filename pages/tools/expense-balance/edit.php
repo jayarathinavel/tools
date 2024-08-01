@@ -45,7 +45,7 @@
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" class="form-control" value="<?php echo $expense['date']; ?>">
         </div>
-        <input type="submit" value="Update Expense" class="btn btn-primary">
+        <input type="submit" value="Update Expense" class="btn btn-primary mt-2">
     </form>
 </div>
 

@@ -26,7 +26,6 @@
         }
     ?>
     <h1>Expense Balance</h1>
-    <a href="books/view.php">Manage Books</a>
     <?php
         $expenses = [];
         $expenseBooks = $conn->query("SELECT * FROM expense_balance_book WHERE user_id=$userId");
@@ -45,18 +44,19 @@
         }
     ?>
     <?php if(isset($book)) { ?>
-        <span> | </span>
-        <span>Change Book</span>
-        <form style="display:inline" action="" method="POST" >
-            <select name="expenseBookId" id="expenseBookId">
-                <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
-                    <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
-                        <?php echo $row['name']; ?>
-                    </option>
-                <?php endwhile; ?>
-            </select>
-            <input type="submit" value="Change" class="btn btn-sm btn-primary">
-        </form>
+        <div class="mt-2">
+            <span>Book: </span>
+            <form style="display:inline" action="" method="POST">
+                <select name="expenseBookId" id="expenseBookId">
+                    <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
+                        <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
+                            <?php echo $row['name']; ?>
+                        </option>
+                    <?php endwhile; ?>
+                </select>
+                <input type="submit" value="Change" class="btn btn-sm btn-primary">
+            </form>
+        </div>
     <?php } ?>
     <div style="overflow-x: auto;">
         <table id="expenses-table" class="table table-striped">
@@ -88,8 +88,9 @@
         </table>
     </div>
     <div class="mt-2">
+        <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, create a book first!</div>' ?>
         <a href="add.php" class="btn btn-success" <?php echo isset($book) ? ' ' : 'disabled' ?>>Add New Expense</a>
-        <?php echo isset($book) ? '' : '<span class="text-danger ms-2"> No books are available, create a book first!</span>' ?>
+        <a class="btn btn-secondary" href="books/view.php">Manage Books</a>
     </div>
 </div>
 <script>

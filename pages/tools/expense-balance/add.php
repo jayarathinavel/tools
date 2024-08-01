@@ -48,7 +48,7 @@
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" class="form-control" required>
         </div>
-        <input type="submit" value="Add Expense" class="btn btn-primary" <?php echo isset($book) ? ' ' : 'disabled' ?>>
+        <input type="submit" value="Add Expense" class="btn btn-primary mt-2" <?php echo isset($book) ? ' ' : 'disabled' ?>>
     </form>
 </div>
 
