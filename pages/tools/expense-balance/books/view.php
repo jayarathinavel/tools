@@ -51,7 +51,8 @@ $userId = 1;
             ?>
         </tbody>
     </table>
-    <a href="add.php" class="btn btn-success">Add New Expense Book</a>
+    <a href="add.php" class="btn btn-success mt-2">Add New Expense Book</a>
+    <a href="/pages/tools/expense-balance/view.php" class="btn btn-secondary mt-2">Back to Expenses</a>
 </div>
 
 <script>
@@ -67,7 +68,7 @@ $userId = 1;
     });
 
     function confirmDelete() {
-        return confirm("Are you sure you want to delete this book?");
+        return confirm("Deleteing a Expense balance book will also delete all its Entries. Are you sure you want to delete this book?");
     }
 </script>
 

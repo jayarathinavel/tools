@@ -145,8 +145,10 @@
             $conn = initDb();
             $books = $conn->query("SELECT * FROM expense_balance_book WHERE user_id = $userId");
             $conn->close();
-            $selectedBook = $books->fetch_assoc()["id"];
-            $_SESSION['expenseBalanceSelectedBook'] = $selectedBook;
+            if($books->num_rows > 0){
+                $selectedBook = $books->fetch_assoc()["id"];
+                $_SESSION['expenseBalanceSelectedBook'] = $selectedBook;
+            }
         }
         return $selectedBook;
     }

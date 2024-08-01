@@ -7,6 +7,7 @@
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
             $conn->query("DELETE FROM expense_balance_book WHERE id=$id");
+            $conn->query("DELETE FROM expense_balance WHERE expense_balance_book_id=$id");
             successAndFailureMessage('success', 'Deleted Successfully');
             if(isset($_SESSION['expenseBalanceSelectedBook'])){
                 unset($_SESSION['expenseBalanceSelectedBook']);

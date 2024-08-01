@@ -4,6 +4,7 @@
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     sessionStart();
     $userId = 1;
+    $book = expenseBalanceFindBook($userId)
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -27,7 +28,6 @@
     <h1>Expense Balance</h1>
     <a href="books/view.php">Manage Books</a>
     <?php
-        $book = expenseBalanceFindBook($userId);
         $expenses = [];
         $expenseBooks = $conn->query("SELECT * FROM expense_balance_book WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,21 +42,22 @@
         if(isset($book)) {
             $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
             $persons = fetchPersonsFromExpenseBalanceBook($book);
-
         }
     ?>
-    <span> | </span>
-    <span>Change Book</span>
-    <form style="display:inline" action="" method="POST" >
-        <select name="expenseBookId" id="expenseBookId">
-            <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
-                <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
-                    <?php echo $row['name']; ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
-        <input type="submit" value="Change" class="btn btn-sm btn-primary">
-    </form>
+    <?php if(isset($book)) { ?>
+        <span> | </span>
+        <span>Change Book</span>
+        <form style="display:inline" action="" method="POST" >
+            <select name="expenseBookId" id="expenseBookId">
+                <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
+                    <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
+                        <?php echo $row['name']; ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
+            <input type="submit" value="Change" class="btn btn-sm btn-primary">
+        </form>
+    <?php } ?>
     <table id="expenses-table" class="table table-striped">
         <thead>
             <tr>
@@ -84,9 +85,11 @@
             <?php } ?>
         </tbody>
     </table>
-    <a href="add.php" class="btn btn-success">Add New Expense</a>
+    <div class="mt-2">
+        <button href="add.php" class="btn btn-success" <?php echo isset($book) ? ' ' : 'disabled' ?>>Add New Expense</button>
+        <?php echo isset($book) ? '' : '<span class="text-danger ms-2"> No books are available, create a book first!</span>' ?>
+    </div>
 </div>
-
 <script>
     $(document).ready(function() {
         $('#expenses-table').DataTable({

@@ -5,6 +5,7 @@
     setTodaysDateForForm();
     sessionStart();
     $userId = 1;
+    $book = expenseBalanceFindBook($userId)
 ?>
 <div class="container">
     <h1>Add Expense</h1>
@@ -12,7 +13,14 @@
         if (isset($_POST['expense_name'])) {
             require_once $rootPath . '/handlers/tools/expense-handler.php';
         }
-        $persons = fetchPersonsFromExpenseBalanceBook(expenseBalanceFindBook($userId));
+        if(isset($book)) {
+            $persons = fetchPersonsFromExpenseBalanceBook($book);
+        }
+        else {
+            echo '<div class="alert alert-danger mb-3" role="alert">No Book is available, create a book first!</div>';
+
+        }
+        
     ?>
     <form action="" method="post">
         <div class="form-group">
@@ -40,7 +48,7 @@
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" class="form-control" required>
         </div>
-        <input type="submit" value="Add Expense" class="btn btn-primary">
+        <input type="submit" value="Add Expense" class="btn btn-primary" <?php echo isset($book) ? ' ' : 'disabled' ?>>
     </form>
 </div>
 
