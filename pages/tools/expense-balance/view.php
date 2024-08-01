@@ -86,7 +86,7 @@
         </tbody>
     </table>
     <div class="mt-2">
-        <button href="add.php" class="btn btn-success" <?php echo isset($book) ? ' ' : 'disabled' ?>>Add New Expense</button>
+        <a href="add.php" class="btn btn-success" <?php echo isset($book) ? ' ' : 'disabled' ?>>Add New Expense</a>
         <?php echo isset($book) ? '' : '<span class="text-danger ms-2"> No books are available, create a book first!</span>' ?>
     </div>
 </div>
@@ -96,7 +96,7 @@
             paging: false,
             "order": [[3, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [2, 3] }
+                { "orderable": false, "targets": [4] }
             ],
             "bInfo": false,
         });
