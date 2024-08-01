@@ -4,6 +4,9 @@
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     $id = $_GET['id'];
     $expense = $conn->query("SELECT * FROM expense_balance WHERE id=$id")->fetch_assoc();
+    sessionStart();
+    $userId = 1;
+    $persons = fetchPersonsFromExpenseBalanceBook(expenseBalanceFindBook($userId));
 ?>
 
 <div class="container">
@@ -25,9 +28,17 @@
         </div>
         <div class="form-group">
             <label for="person">Person:</label>
-            <select id="person" name="person" class="form-control">
-                <option value="1" <?php if ($expense['person'] == 1) echo 'selected'; ?>>Person 1</option>
-                <option value="2" <?php if ($expense['person'] == 2) echo 'selected'; ?>>Person 2</option>
+            <select id="person" name="person" class="form-control" required>
+                <?php
+                    $i = 0;
+                    foreach ($persons as $person): ?>
+                    <option value="<?php echo $i ?>" <?php echo ($i == $expense['person']) ? 'selected' : ''; ?>>
+                        <?php echo htmlspecialchars($person); ?>
+                    </option>
+                <?php
+                    $i++;
+                    endforeach;
+                ?>
             </select>
         </div>
         <div class="form-group">

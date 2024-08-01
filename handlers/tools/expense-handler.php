@@ -3,6 +3,7 @@
     require_once $rootPath . '/config/config.php';
     $conn = initDb();
     sessionStart();
+    $userId = 1;
     if (isset($_POST['id'])) {
         // Edit expense
         try {
@@ -23,7 +24,7 @@
             $amount = $_POST['amount'];
             $person = $_POST['person'];
             $date = $_POST['date'];
-            $book = expenseBalanceFindBook(1);
+            $book = expenseBalanceFindBook($userId);
             $conn->query("INSERT INTO expense_balance (expense_name, amount, person, date, expense_balance_book_id)
                 VALUES ('$expense_name', '$amount', '$person', '$date', '$book')");
             successAndFailureMessage('success', 'Added Successfully');

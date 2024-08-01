@@ -3,6 +3,8 @@
     $pageTitle = "Add Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     setTodaysDateForForm();
+    sessionStart();
+    $userId = 1;
 ?>
 <div class="container">
     <h1>Add Expense</h1>
@@ -10,6 +12,7 @@
         if (isset($_POST['expense_name'])) {
             require_once $rootPath . '/handlers/tools/expense-handler.php';
         }
+        $persons = fetchPersonsFromExpenseBalanceBook(expenseBalanceFindBook($userId));
     ?>
     <form action="" method="post">
         <div class="form-group">
@@ -22,9 +25,15 @@
         </div>
         <div class="form-group">
             <label for="person">Person:</label>
-            <select id="person" name="person" class="form-control" required>
-                <option value="1">Person 1</option>
-                <option value="2">Person 2</option>
+            <select id="person" name="person" class="form-control" required>  
+                <?php
+                    $i = 0;
+                    foreach ($persons as $person): ?>
+                    <option value="<?php echo $i ?>"><?php echo htmlspecialchars($person); ?></option>
+                <?php
+                    $i++;
+                    endforeach;
+                ?>
             </select>
         </div>
         <div class="form-group">

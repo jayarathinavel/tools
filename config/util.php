@@ -150,3 +150,10 @@
         }
         return $selectedBook;
     }
+
+    function fetchPersonsFromExpenseBalanceBook($book){
+        $conn = initDb();
+        $expenseBookDetails = $conn->query("SELECT * FROM expense_balance_book WHERE id=$book");
+        $persons = $expenseBookDetails->fetch_assoc()["persons"];
+        return array_map('trim', explode("," , $persons));
+    }
