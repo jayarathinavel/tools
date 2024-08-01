@@ -43,7 +43,7 @@ $userId = 1;
                 <td><?php echo $expenseBook['persons']; ?></td>
                 <td>
                     <a href="edit.php?id=<?php echo $expenseBook['id']; ?>" class="btn btn-primary">Edit</a>
-                    <a href="delete.php?operation=delete&id=<?php echo $expenseBook['id']; ?>" class="btn btn-danger">Delete</a>
+                    <a href="delete.php?operation=delete&id=<?php echo $expenseBook['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                 </td>
             </tr>
             <?php
@@ -65,6 +65,10 @@ $userId = 1;
             "bInfo": false,
         });
     });
+
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this book?");
+    }
 </script>
 
 <?php

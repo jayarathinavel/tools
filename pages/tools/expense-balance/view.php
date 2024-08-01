@@ -78,7 +78,7 @@
                 <td><?php echo $expense['date']; ?></td>
                 <td>
                     <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-primary">Edit</a>
-                    <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger">Delete</a>
+                    <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                 </td>
             </tr>
             <?php } ?>
@@ -98,6 +98,10 @@
             "bInfo": false,
         });
     });
+
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this expense?");
+    }
 </script>
 
 <?php
