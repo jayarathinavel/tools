@@ -24,7 +24,36 @@
         }
     ?>
     <h1>Expense Balance</h1>
-    <a href="books/view.php">View Books</a>
+    <a href="books/view.php">Manage Books</a>
+    <?php
+        $book = expenseBalanceFindBook(1);
+        $expenses = [];
+        $expenseBooks = $conn->query("SELECT * FROM expense_balance_book WHERE user_id=1");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['expenseBookId'])) {
+                $book = $_POST['expenseBookId'];
+                $_SESSION['expenseBalanceSelectedBook'] = $book;
+                successAndFailureMessage("success", "Book Changed");
+                header("Location: " . $_SERVER['PHP_SELF']);
+                exit();
+            }
+        }
+        if(isset($book)) {
+            $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
+        }
+    ?>
+    <span> | </span>
+    <span>Change Book</span>
+    <form style="display:inline" action="" method="POST" >
+        <select name="expenseBookId" id="expenseBookId">
+            <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
+                <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
+                    <?php echo $row['name']; ?>
+                </option>
+            <?php endwhile; ?>
+        </select>
+        <input type="submit" value="Change" class="btn btn-sm btn-primary">
+    </form>
     <table id="expenses-table" class="table table-striped">
         <thead>
             <tr>
@@ -36,19 +65,6 @@
             </tr>
         </thead>
         <tbody>
-            <?php
-                $book = expenseBalanceFindBook(1);
-                $expenses = [];
-                $bookDetails = [];
-                if(isset($book)) {
-                    $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
-                    $bookDetails = $conn->query("SELECT * FROM expense_balance_book WHERE id = $book");
-                }
-                if(isset($bookDetails)) {
-                    echo ' | <span>Selected Book: </span>' . $bookDetails -> fetch_array()["name"];
-                }
-                
-            ?>
             <?php
                 foreach ($expenses as $expense) {
             ?>
