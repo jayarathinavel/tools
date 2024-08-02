@@ -58,7 +58,55 @@
             </form>
         </div>
     <?php } ?>
-    <div style="overflow-x: auto;">
+    <?php
+        if(isset($expenses) && $expenses->num_rows > 0) {
+            $totals = [];
+            
+            // Initialize totals for all persons with 0
+            foreach ($persons as $person) {
+                $totals[$person] = 0;
+            }
+
+            // Calculate total amounts spent by each person
+            while ($row = $expenses->fetch_assoc()) {
+                $person = $persons[$row['person']];
+                $amount = $row['amount'];
+                $totals[$person] += $amount;
+            }
+
+            // Find the person who needs to spend next (person with the lowest amount spent)
+            $personToSpendNext = null;
+            $minAmount = PHP_INT_MAX;
+            $firstPersonAmount = reset($totals);
+            $allEqual = true;
+
+            foreach ($totals as $person => $totalAmount) {
+                if ($totalAmount < $minAmount) {
+                    $minAmount = $totalAmount;
+                    $personToSpendNext = $person;
+                }
+            }
+            if ($totalAmount !== $firstPersonAmount) {
+                $allEqual = false;
+            }
+            if (!$allEqual) {
+                echo "<h4 class='mt-2'><span class='badge text-bg-warning'> The next person to spend is: " . $personToSpendNext . "</span></h4>";
+            } else {
+                echo "<h4 class='mt-2'><span class='badge text-bg-success'>Everyone has spent equally, its Balanced!</span></p>";
+            }
+
+            echo "
+                <h5>Total Spends</h5>
+                <ol>
+            ";
+            foreach ($totals as $person => $totalAmount) {
+                echo "<li>". $person . " : " . $totalAmount . " ₹ </li>";
+            }
+            echo "</ol>";
+        }
+    ?>
+    <h4>Expenses List</h4>
+    <div class="p-2" style="overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px; ">
         <table id="expenses-table" class="table table-striped">
             <thead>
                 <tr>
