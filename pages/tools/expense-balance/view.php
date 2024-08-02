@@ -43,72 +43,74 @@
             $persons = fetchPersonsFromExpenseBalanceBook($book);
         }
     ?>
-    <?php if(isset($book)) { ?>
-        <div class="mt-2">
-            <span>Book: </span>
-            <form style="display:inline" action="" method="POST">
-                <select name="expenseBookId" id="expenseBookId">
-                    <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
-                        <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
-                            <?php echo $row['name']; ?>
-                        </option>
-                    <?php endwhile; ?>
-                </select>
-                <input type="submit" value="Change" class="btn btn-sm btn-primary">
-            </form>
-        </div>
-    <?php } ?>
-    <?php
-        if(isset($expenses) && $expenses->num_rows > 0) {
-            $totals = [];
-            
-            // Initialize totals for all persons with 0
-            foreach ($persons as $person) {
-                $totals[$person] = 0;
-            }
-
-            // Calculate total amounts spent by each person
-            while ($row = $expenses->fetch_assoc()) {
-                $person = $persons[$row['person']];
-                $amount = $row['amount'];
-                $totals[$person] += $amount;
-            }
-
-            // Find the person who needs to spend next (person with the lowest amount spent)
-            $personToSpendNext = null;
-            $minAmount = PHP_INT_MAX;
-            $firstPersonAmount = reset($totals);
-            $allEqual = true;
-
-            foreach ($totals as $person => $totalAmount) {
-                if ($totalAmount < $minAmount) {
-                    $minAmount = $totalAmount;
-                    $personToSpendNext = $person;
+    <div class="text-center">
+        <?php if(isset($book)) { ?>
+            <div class="mt-2">
+                <span>Book: </span>
+                <form style="display:inline" action="" method="POST">
+                    <select name="expenseBookId" id="expenseBookId">
+                        <?php while($row = mysqli_fetch_assoc($expenseBooks)): ?>
+                            <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $book) ? 'selected' : ''; ?>>
+                                <?php echo $row['name']; ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
+                    <input type="submit" value="Change" class="btn btn-sm btn-primary">
+                </form>
+                <a class="btn btn-sm btn-secondary" href="books/view.php">Manage Books</a>
+            </div>
+        <?php } ?>
+        <?php
+            if(isset($expenses) && $expenses->num_rows > 0) {
+                $totals = [];
+                
+                // Initialize totals for all persons with 0
+                foreach ($persons as $person) {
+                    $totals[$person] = 0;
                 }
-            }
-            if ($totalAmount !== $firstPersonAmount) {
-                $allEqual = false;
-            }
-            if (!$allEqual) {
-                echo "<h4 class='mt-2'><span class='badge text-bg-warning'> The next person to spend is: " . $personToSpendNext . "</span></h4>";
-            } else {
-                echo "<h4 class='mt-2'><span class='badge text-bg-success'>Everyone has spent equally, its Balanced!</span></p>";
-            }
 
-            echo "
-                <h5>Total Spends</h5>
-                <ol>
-            ";
-            foreach ($totals as $person => $totalAmount) {
-                echo "<li>". $person . " : " . $totalAmount . " ₹ </li>";
+                // Calculate total amounts spent by each person
+                while ($row = $expenses->fetch_assoc()) {
+                    $person = $persons[$row['person']];
+                    $amount = $row['amount'];
+                    $totals[$person] += $amount;
+                }
+
+                // Find the person who needs to spend next (person with the lowest amount spent)
+                $personToSpendNext = null;
+                $minAmount = PHP_INT_MAX;
+                $firstPersonAmount = reset($totals);
+                $allEqual = true;
+
+                foreach ($totals as $person => $totalAmount) {
+                    if ($totalAmount < $minAmount) {
+                        $minAmount = $totalAmount;
+                        $personToSpendNext = $person;
+                    }
+                }
+                if ($totalAmount !== $firstPersonAmount) {
+                    $allEqual = false;
+                }
+                if (!$allEqual) {
+                    echo "<h4 class='mt-2'><span class='badge text-bg-warning'> The next person to spend is: " . $personToSpendNext . "</span></h4>";
+                } else {
+                    echo "<h4 class='mt-2'><span class='badge text-bg-success'>Everyone has spent equally, its Balanced!</span></p>";
+                }
+
+                echo "
+                    <h5>Total Spends</h5>
+                    <ol style='list-style-type: none; padding-left: 0;'>
+                ";
+                foreach ($totals as $person => $totalAmount) {
+                    echo "<li>". $person . " : " . $totalAmount . " ₹ </li>";
+                }
+                echo "</ol>";
             }
-            echo "</ol>";
-        }
-    ?>
+        ?>
+    </div>
     <div class="mt-2 mb-2">
         <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, create a book first!</div>' ?>
         <a href="add.php" class="btn btn-success <?php echo isset($book) ? '' : 'disabled' ?>" >Add New Expense</a>
-        <a class="btn btn-secondary" href="books/view.php">Manage Books</a>
     </div>
     <h4>Expenses List</h4>
     <div class="p-2" style="overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px; ">
