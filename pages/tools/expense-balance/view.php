@@ -105,6 +105,11 @@
             echo "</ol>";
         }
     ?>
+    <div class="mt-2 mb-2">
+        <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, create a book first!</div>' ?>
+        <a href="add.php" class="btn btn-success <?php echo isset($book) ? '' : 'disabled' ?>" >Add New Expense</a>
+        <a class="btn btn-secondary" href="books/view.php">Manage Books</a>
+    </div>
     <h4>Expenses List</h4>
     <div class="p-2" style="overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px; ">
         <table id="expenses-table" class="table table-striped">
@@ -134,11 +139,6 @@
                 <?php } ?>
             </tbody>
         </table>
-    </div>
-    <div class="mt-2">
-        <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, create a book first!</div>' ?>
-        <a href="add.php" class="btn btn-success <?php echo isset($book) ? '' : 'disabled' ?>" >Add New Expense</a>
-        <a class="btn btn-secondary" href="books/view.php">Manage Books</a>
     </div>
 </div>
 <script>
