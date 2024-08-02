@@ -57,3 +57,23 @@ ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE appointments
 ADD COLUMN status VARCHAR(50),
 ADD COLUMN status_message TEXT;
+
+CREATE TABLE `expense_balance` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `expense_name` varchar(255) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `person` int NOT NULL,
+  `date` date DEFAULT NULL,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `expense_balance_book_id` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `expense_balance_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `persons` varchar(100) NOT NULL,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
