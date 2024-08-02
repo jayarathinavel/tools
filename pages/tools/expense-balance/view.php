@@ -61,52 +61,63 @@
             </div>
         <?php } ?>
         <?php
-            if(isset($expenses) && $expenses->num_rows > 0) {
-                $totals = [];
-                
-                // Initialize totals for all persons with 0
-                foreach ($persons as $person) {
-                    $totals[$person] = 0;
+        if (isset($expenses) && $expenses->num_rows > 0) {
+            $totals = [];
+            
+            // Initialize totals for all persons with 0
+            foreach ($persons as $person) {
+                $totals[$person] = 0;
+            }
+
+            // Calculate total amounts spent by each person
+            while ($row = $expenses->fetch_assoc()) {
+                $person = $persons[$row['person']];
+                $amount = $row['amount'];
+                $totals[$person] += $amount;
+            }
+
+            // Find the maximum amount spent
+            $maxAmount = max($totals);
+
+            // Find the person who needs to spend next (person with the lowest amount spent)
+            $personToSpendNext = null;
+            $minAmount = PHP_INT_MAX;
+            $firstPersonAmount = reset($totals);
+            $allEqual = true;
+
+            foreach ($totals as $person => $totalAmount) {
+                if ($totalAmount < $minAmount) {
+                    $minAmount = $totalAmount;
+                    $personToSpendNext = $person;
                 }
 
-                // Calculate total amounts spent by each person
-                while ($row = $expenses->fetch_assoc()) {
-                    $person = $persons[$row['person']];
-                    $amount = $row['amount'];
-                    $totals[$person] += $amount;
-                }
-
-                // Find the person who needs to spend next (person with the lowest amount spent)
-                $personToSpendNext = null;
-                $minAmount = PHP_INT_MAX;
-                $firstPersonAmount = reset($totals);
-                $allEqual = true;
-
-                foreach ($totals as $person => $totalAmount) {
-                    if ($totalAmount < $minAmount) {
-                        $minAmount = $totalAmount;
-                        $personToSpendNext = $person;
-                    }
-                }
+                // Check if all amounts are equal
                 if ($totalAmount !== $firstPersonAmount) {
                     $allEqual = false;
                 }
-                if (!$allEqual) {
-                    echo "<h4 class='mt-2'><span class='badge text-bg-warning'> The next person to spend is: " . $personToSpendNext . "</span></h4>";
-                } else {
-                    echo "<h4 class='mt-2'><span class='badge text-bg-success'>Everyone has spent equally, its Balanced!</span></p>";
-                }
-
-                echo "
-                    <h5>Total Spends</h5>
-                    <ol style='list-style-type: none; padding-left: 0;'>
-                ";
-                foreach ($totals as $person => $totalAmount) {
-                    echo "<li>". $person . " : " . $totalAmount . " ₹ </li>";
-                }
-                echo "</ol>";
             }
+
+            if (!$allEqual) {
+                echo "<h4 class='mt-2'><span class='badge text-bg-warning'> The next person to spend is: " . $personToSpendNext . "</span></h4>";
+            } else {
+                echo "<h4 class='mt-2'><span class='badge text-bg-success'>Everyone has spent equally, it's Balanced!</span></h4>";
+            }
+
+            echo "
+                <h5>Total Spends</h5>
+                <ol style='list-style-type: none; padding-left: 0;'>
+            ";
+            foreach ($totals as $person => $totalAmount) {
+                $difference = $maxAmount - $totalAmount;
+                echo "<li>" . $person . " : " . $totalAmount . " ₹ ";
+                echo "(To Balance: " . $difference . " ₹)</li>";
+            }
+            echo "</ol>";
+        } else {
+            echo "<h4>No expenses recorded.</h4>";
+        }
         ?>
+
     </div>
     <div class="mt-2 mb-2">
         <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, create a book first!</div>' ?>
