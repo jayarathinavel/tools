@@ -2,7 +2,6 @@
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/config/config.php';
     $conn = initDb();
-    sessionStart();
     $userId = 1;
     if (isset($_POST['id'])) {
         // Edit expense
@@ -13,9 +12,9 @@
             $person = $_POST['person'];
             $date = $_POST['date'];
             $conn->query("UPDATE expense_balance SET expense_name='$expense_name', amount='$amount', person='$person', date='$date' WHERE id=$id");
-            successAndFailureMessage('success', 'Edited Successfully');
+            setSuccessOrFailureMessage('success', 'Edited Successfully');
         } catch (Exception $e) {
-            successAndFailureMessage('failure', 'Failed to Edit!' . ' ' . $e->getMessage());
+            setSuccessOrFailureMessage('failure', 'Failed to Edit!' . ' ' . $e->getMessage());
         }
     } else {
         // Add new expense
@@ -27,9 +26,9 @@
             $book = expenseBalanceFindBook($userId);
             $conn->query("INSERT INTO expense_balance (expense_name, amount, person, date, expense_balance_book_id)
                 VALUES ('$expense_name', '$amount', '$person', '$date', '$book')");
-            successAndFailureMessage('success', 'Added Successfully');
+            setSuccessOrFailureMessage('success', 'Added Successfully');
         } catch (Exception $e) {
-            successAndFailureMessage('failure', 'Failed to Add!' . ' ' . $e->getMessage());
+            setSuccessOrFailureMessage('failure', 'Failed to Add!' . ' ' . $e->getMessage());
         }
     }
     header("Location: view.php");

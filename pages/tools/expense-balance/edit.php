@@ -4,7 +4,6 @@
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     $id = $_GET['id'];
     $expense = $conn->query("SELECT * FROM expense_balance WHERE id=$id")->fetch_assoc();
-    sessionStart();
     $userId = 1;
     $persons = fetchPersonsFromExpenseBalanceBook(expenseBalanceFindBook($userId));
 ?>

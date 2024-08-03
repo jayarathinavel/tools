@@ -2,7 +2,6 @@
     $pageTitle = "Expense Balance";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
-    sessionStart();
     $userId = 1;
     $book = expenseBalanceFindBook($userId)
 ?>
@@ -13,17 +12,7 @@
 
 <div class="container">
     <?php
-        if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
-            $status = $_SESSION['status'];
-            $message = $_SESSION['message'];
-            if($status == 'success') {
-                echo '<div class="alert alert-success mb-3" role="alert">' . $message . '</div>';
-            } elseif($status == 'failure') {
-                echo '<div class="alert alert-danger mb-3" role="alert">' . $message . '</div>';
-            }
-            unset($_SESSION['status']);
-            unset($_SESSION['message']);
-        }
+        getSuccessOrFailureMessage();
     ?>
     <h1>Expense Balance</h1>
     <?php
@@ -33,7 +22,7 @@
             if (isset($_POST['expenseBookId'])) {
                 $book = $_POST['expenseBookId'];
                 $_SESSION['expenseBalanceSelectedBook'] = $book;
-                successAndFailureMessage("success", "Book Changed");
+                setSuccessOrFailureMessage("success", "Book Changed");
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();
             }

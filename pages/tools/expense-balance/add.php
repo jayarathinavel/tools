@@ -3,7 +3,6 @@
     $pageTitle = "Add Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     setTodaysDateForForm();
-    sessionStart();
     $userId = 1;
     $book = expenseBalanceFindBook($userId)
 ?>

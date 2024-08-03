@@ -118,12 +118,25 @@
         }
     }
 
-    function sessionStart(){
+    function setSuccessOrFailureMessage($status, $message) {
         session_start();
-    }
-    function successAndFailureMessage($status, $message) {
         $_SESSION['status'] = $status;
         $_SESSION['message'] = $message;
+    }
+
+    function getSuccessOrFailureMessage(){
+        session_start();
+        if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
+            $status = $_SESSION['status'];
+            $message = $_SESSION['message'];
+            if($status == 'success') {
+                echo '<div class="alert alert-success mb-3" role="alert">' . $message . '</div>';
+            } elseif($status == 'failure') {
+                echo '<div class="alert alert-danger mb-3" role="alert">' . $message . '</div>';
+            }
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        }
     }
 
     function setTodaysDateForForm(){
