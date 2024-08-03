@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: /pages/admin");
+    header("location: /pages/admin/dashboard.php");
     exit;
 }
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                            header("location: /pages/admin");
+                            header("location: /pages/admin/dashboard.php");
                         } else{
                             $login_err = "Invalid username or password.";
                         }

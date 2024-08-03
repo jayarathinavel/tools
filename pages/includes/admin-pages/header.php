@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-lg bg-secondary navbar-dark p-2 mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/pages/admin">Admin Dashboard</a>
+    <a class="navbar-brand" href="/pages/admin/dashboard.php">Admin Dashboard</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,7 +25,7 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/pages/admin">Admin Home</a>
+            <a class="nav-link active" aria-current="page" href="/pages/admin/dashboard.php">Admin Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="/pages/admin/help.php">Help</a>

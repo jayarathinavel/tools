@@ -5,5 +5,5 @@ Public
 
 Admin
 
-    Admin Dashboard: /pages/admin
+    Admin Dashboard: /pages/admin/dashboard.php
 
