@@ -7,7 +7,10 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require_once 'constants.php';
+    function includePhpFileFromRoot($rootPath, $path) {
+        require_once $rootPath . $path;
+    }
+
     function initDb() {
         $servername = DB_SERVERNAME;
         $username = DB_USERNAME;
@@ -20,6 +23,20 @@
             die("Connection failed: " . mysqli_connect_error());
         }
         return $conn;
+    }
+
+    function initDbPdo() {
+        $servername = DB_SERVERNAME;
+        $username = DB_USERNAME;
+        $password = DB_PASSWORD;
+        $dbname = DB_NAME;
+        try {
+            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
+        } catch (PDOException $e) {
+            die("Connection failed: " . $e->getMessage());
+        }
     }
 
     function isLoggedIn() {
@@ -103,27 +120,26 @@
             echo "<br/>$key: $value";
         }
     }
-    
-    function initDbPdo() {
-        $servername = DB_SERVERNAME;
-        $username = DB_USERNAME;
-        $password = DB_PASSWORD;
-        $dbname = DB_NAME;
-        try {
-            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $pdo;
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
-        }
-    }
 
-    function sessionStart(){
+    function setSuccessOrFailureMessage($status, $message) {
         session_start();
-    }
-    function successAndFailureMessage($status, $message) {
         $_SESSION['status'] = $status;
         $_SESSION['message'] = $message;
+    }
+
+    function getSuccessOrFailureMessage(){
+        session_start();
+        if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
+            $status = $_SESSION['status'];
+            $message = $_SESSION['message'];
+            if($status == 'success') {
+                echo '<div class="alert alert-success mb-3" role="alert">' . $message . '</div>';
+            } elseif($status == 'failure') {
+                echo '<div class="alert alert-danger mb-3" role="alert">' . $message . '</div>';
+            }
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        }
     }
 
     function setTodaysDateForForm(){
@@ -135,27 +151,4 @@
                 };
             </script>
         ";
-    }
-
-    function expenseBalanceFindBook($userId){
-        $selectedBook = null;
-        if(isset($_SESSION['expenseBalanceSelectedBook'])){
-            $selectedBook = $_SESSION['expenseBalanceSelectedBook'];
-        } else{
-            $conn = initDb();
-            $books = $conn->query("SELECT * FROM expense_balance_book WHERE user_id = $userId");
-            $conn->close();
-            if($books->num_rows > 0){
-                $selectedBook = $books->fetch_assoc()["id"];
-                $_SESSION['expenseBalanceSelectedBook'] = $selectedBook;
-            }
-        }
-        return $selectedBook;
-    }
-
-    function fetchPersonsFromExpenseBalanceBook($book){
-        $conn = initDb();
-        $expenseBookDetails = $conn->query("SELECT * FROM expense_balance_book WHERE id=$book");
-        $persons = $expenseBookDetails->fetch_assoc()["persons"];
-        return array_map('trim', explode("," , $persons));
     }

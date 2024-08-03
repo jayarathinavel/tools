@@ -1,17 +1,17 @@
 <?php
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-$pageTitle = "Edit Expense Book";
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-$id = $_GET['id'];
-$expenseBook = $conn->query("SELECT * FROM expense_balance_book WHERE id=$id")->fetch_assoc();
-
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    $pageTitle = "Edit Expense Book";
+    require_once $rootPath . '/pages/includes/main-pages/header.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
+    $id = $_GET['id'];
+    $expenseBook = $conn->query("SELECT * FROM expense_balance_book WHERE id=$id")->fetch_assoc();
 ?>
 
 <div class="container">
     <h1>Edit Expense Book</h1>
     <?php
     if (isset($_POST['name'])) {
-        require_once $rootPath . '/handlers/tools/expense-balance-book-handler.php';
+        includePhpFileFromRoot($rootPath, '/handlers/tools/expense-balance-book-handler.php');
     }
     ?>
     <form action="" method="post">

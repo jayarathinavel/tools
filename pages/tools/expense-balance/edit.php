@@ -2,18 +2,18 @@
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     $pageTitle = "Edit Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
     $id = $_GET['id'];
     $expense = $conn->query("SELECT * FROM expense_balance WHERE id=$id")->fetch_assoc();
-    sessionStart();
-    $userId = 1;
-    $persons = fetchPersonsFromExpenseBalanceBook(expenseBalanceFindBook($userId));
+    $userId = expenseBalanceUser();
+    $persons = fetchPersonsFromExpenseBalanceBook(findBookExpenseBalance($userId));
 ?>
 
 <div class="container">
     <h1>Edit Expense</h1>
     <?php
         if (isset($_POST['expense_name'])) {
-            require_once $rootPath . '/handlers/tools/expense-handler.php';
+            includePhpFileFromRoot($rootPath, '/handlers/tools/expense-handler.php');
         }
     ?>
     <form action="" method="post">

@@ -1,15 +1,15 @@
 <?php
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-$pageTitle = "Add Expense Book";
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    $pageTitle = "Add Expense Book";
+    require_once $rootPath . '/pages/includes/main-pages/header.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
 ?>
 
 <div class="container">
     <h1>Add Expense Book</h1>
     <?php
     if (isset($_POST['name'])) {
-        require_once $rootPath . '/handlers/tools/expense-balance-book-handler.php';
+        includePhpFileFromRoot($rootPath, '/handlers/tools/expense-balance-book-handler.php');
     }
     ?>
     <form action="" method="post">

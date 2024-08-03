@@ -1,9 +1,9 @@
 <?php
-$pageTitle = "Expense Balance Book";
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-sessionStart();
-$userId = 1;
+    $pageTitle = "Expense Balance Book";
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    require_once $rootPath . '/pages/includes/main-pages/header.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
+    $userId = expenseBalanceUser();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -12,17 +12,7 @@ $userId = 1;
 
 <div class="container">
     <?php
-        if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
-            $status = $_SESSION['status'];
-            $message = $_SESSION['message'];
-            if($status == 'success') {
-                echo '<div class="alert alert-success mb-3" role="alert">' . $message . '</div>';
-            } elseif($status == 'failure') {
-                echo '<div class="alert alert-danger mb-3" role="alert">' . $message . '</div>';
-            }
-            unset($_SESSION['status']);
-            unset($_SESSION['message']);
-        }
+        getSuccessOrFailureMessage();
     ?>
     <h1>Expense Balance Books</h1>
     <div style="overflow-x: auto;">

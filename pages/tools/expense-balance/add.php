@@ -2,16 +2,15 @@
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     $pageTitle = "Add Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
-    setTodaysDateForForm();
-    sessionStart();
-    $userId = 1;
-    $book = expenseBalanceFindBook($userId)
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
+    $userId = expenseBalanceUser();
+    $book = findBookExpenseBalance($userId)
 ?>
 <div class="container">
     <h1>Add Expense</h1>
     <?php
         if (isset($_POST['expense_name'])) {
-            require_once $rootPath . '/handlers/tools/expense-handler.php';
+            includePhpFileFromRoot($rootPath, '/handlers/tools/expense-handler.php');
         }
         if(isset($book)) {
             $persons = fetchPersonsFromExpenseBalanceBook($book);
@@ -54,4 +53,5 @@
 
 <?php
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    setTodaysDateForForm();
 ?>
