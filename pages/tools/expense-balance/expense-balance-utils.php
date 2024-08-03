@@ -23,5 +23,5 @@
     }
 
     function expenseBalanceUser(){
-        return 1;
+        return $_SESSION['appUserId'];
     }
