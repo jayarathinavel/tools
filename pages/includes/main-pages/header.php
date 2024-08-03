@@ -38,7 +38,7 @@
         }
     ?>
     <link rel="stylesheet" href="/resources/stylesheet.css">
-    <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Tools Tap" ?></title>
+    <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Tools" ?></title>
 </head>
 <body>
 
