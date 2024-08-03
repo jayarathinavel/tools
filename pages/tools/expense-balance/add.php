@@ -2,9 +2,9 @@
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     $pageTitle = "Add Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
-    setTodaysDateForForm();
-    $userId = 1;
-    $book = expenseBalanceFindBook($userId)
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
+    $userId = expenseBalanceUser();
+    $book = findBookExpenseBalance($userId)
 ?>
 <div class="container">
     <h1>Add Expense</h1>
@@ -53,4 +53,5 @@
 
 <?php
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    setTodaysDateForForm();
 ?>

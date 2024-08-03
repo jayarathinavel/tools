@@ -2,7 +2,7 @@
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 require_once $rootPath . '/config/config.php';
 $conn = initDb();
-$userId = 1;
+$userId = expenseBalanceUser();
 
 if (isset($_POST['id'])) {
     // Edit expense book

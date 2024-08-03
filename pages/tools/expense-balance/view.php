@@ -2,8 +2,9 @@
     $pageTitle = "Expense Balance";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
-    $userId = 1;
-    $book = expenseBalanceFindBook($userId)
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
+    $userId = expenseBalanceUser();
+    $book = findBookExpenseBalance($userId)
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">

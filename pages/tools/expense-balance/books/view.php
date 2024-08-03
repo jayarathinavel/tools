@@ -1,8 +1,9 @@
 <?php
-$pageTitle = "Expense Balance Book";
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-$userId = 1;
+    $pageTitle = "Expense Balance Book";
+    $rootPath = $_SERVER['DOCUMENT_ROOT'];
+    require_once $rootPath . '/pages/includes/main-pages/header.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
+    $userId = expenseBalanceUser();
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">

@@ -1,6 +1,7 @@
 <?php
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/config/config.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
     $conn = initDb();
     try {
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
