@@ -8,8 +8,7 @@
 <!-- Bootstrap JS and jQuery -->
 <?php
     $currentURL = $_SERVER['REQUEST_URI'];
-    echo !(strpos($currentURL, 'appointment.php')
-            || strpos($currentURL, 'pages/tools/expense-balance/view.php')
+    echo !(strpos($currentURL, 'pages/tools/expense-balance/view.php')
             || strpos($currentURL, 'pages/tools/expense-balance/books/view.php')) ?
         '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>' : '';
 ?>
