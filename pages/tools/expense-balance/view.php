@@ -120,7 +120,7 @@
 
     </div>
     <div class="mt-2 mb-2">
-        <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, create a book first!</div>' ?>
+        <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, <a href="books/add.php">create a book </a> first!</div>' ?>
         <a href="add.php" class="btn btn-success <?php echo isset($book) ? '' : 'disabled' ?>" >Add New Expense</a>
     </div>
     <h4>Expenses List</h4>
