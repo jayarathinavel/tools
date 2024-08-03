@@ -2,6 +2,7 @@
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     $pageTitle = "Edit Expense";
     require_once $rootPath . '/pages/includes/main-pages/header.php';
+    appUserLoginRequired($_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
     $id = $_GET['id'];
     $expense = $conn->query("SELECT * FROM expense_balance WHERE id=$id")->fetch_assoc();
@@ -51,5 +52,6 @@
 
 
 <?php
+    appUserLoginRequiredClose();
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
 ?>

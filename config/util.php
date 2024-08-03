@@ -39,12 +39,39 @@
         }
     }
 
+    function startSession(){
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
     function isLoggedIn() {
-        session_start();
+        startSession();
         if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             header("location: /pages/auth");
             exit;
         }
+    }
+
+    function appUserLoginRequired($redirectTo) {
+        if (!isset($_SESSION["appUserLoggedIn"]) || $_SESSION["appUserLoggedIn"] !== true) {
+            $_SESSION['redirectTo'] = $redirectTo;
+            header("location: /pages/auth/app-users");
+            exit;
+        }
+    }
+
+    function isAppUserLoggedIn() {
+        startSession();
+        $flag = false;
+        if(isset($_SESSION["appUserLoggedIn"]) || $_SESSION["appUserLoggedIn"] === true){
+            $flag = true;
+        }
+        return $flag;
+    }
+
+    function appUserLoginRequiredClose(){
+        unset($_SESSION['redirectTo']);
     }
 
     function htmlDecode($data){
@@ -122,21 +149,32 @@
     }
 
     function setSuccessOrFailureMessage($status, $message) {
-        session_start();
+        startSession();
         $_SESSION['status'] = $status;
         $_SESSION['message'] = $message;
     }
 
     function getSuccessOrFailureMessage(){
-        session_start();
+        startSession();
         if (isset($_SESSION['status']) && isset($_SESSION['message'])) {
             $status = $_SESSION['status'];
             $message = $_SESSION['message'];
-            if($status == 'success') {
-                echo '<div class="alert alert-success mb-3" role="alert">' . $message . '</div>';
-            } elseif($status == 'failure') {
-                echo '<div class="alert alert-danger mb-3" role="alert">' . $message . '</div>';
+            
+            $alertClass = 'alert-secondary';
+            if ($status == 'success') {
+                $alertClass = 'alert-success';
+            } elseif ($status == 'failure') {
+                $alertClass = 'alert-danger';
+            } elseif ($status == 'warning') {
+                $alertClass = 'alert-warning';
             }
+
+            echo '
+            <div class="alert ' . $alertClass . ' alert-dismissible fade show mb-3" role="alert">
+                ' . $message . '
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+
             unset($_SESSION['status']);
             unset($_SESSION['message']);
         }

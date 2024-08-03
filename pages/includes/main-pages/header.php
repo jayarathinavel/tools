@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        error_reporting(E_ALL & ~E_WARNING);
+        error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
         try {
@@ -56,6 +56,15 @@
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <?php
+            if(isAppUserLoggedIn()){
+                echo'
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/pages/auth/app-users/logout.php">Logout</a>
+                    </li>
+                ';
+            }
+        ?>
         <!-- <li class="nav-item">
             <a class="nav-link" href="#">Page</a>
         </li>
