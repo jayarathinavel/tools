@@ -12,7 +12,7 @@
     <h1>Edit Expense</h1>
     <?php
         if (isset($_POST['expense_name'])) {
-            require_once $rootPath . '/handlers/tools/expense-handler.php';
+            includePhpFileFromRoot($rootPath, '/handlers/tools/expense-handler.php');
         }
     ?>
     <form action="" method="post">

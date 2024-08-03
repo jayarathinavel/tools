@@ -9,7 +9,7 @@ require_once $rootPath . '/pages/includes/main-pages/header.php';
     <h1>Add Expense Book</h1>
     <?php
     if (isset($_POST['name'])) {
-        require_once $rootPath . '/handlers/tools/expense-balance-book-handler.php';
+        includePhpFileFromRoot($rootPath, '/handlers/tools/expense-balance-book-handler.php');
     }
     ?>
     <form action="" method="post">

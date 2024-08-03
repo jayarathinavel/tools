@@ -7,7 +7,10 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require_once 'constants.php';
+    function includePhpFileFromRoot($rootPath, $path) {
+        require_once $rootPath . $path;
+    }
+
     function initDb() {
         $servername = DB_SERVERNAME;
         $username = DB_USERNAME;
@@ -20,6 +23,20 @@
             die("Connection failed: " . mysqli_connect_error());
         }
         return $conn;
+    }
+
+    function initDbPdo() {
+        $servername = DB_SERVERNAME;
+        $username = DB_USERNAME;
+        $password = DB_PASSWORD;
+        $dbname = DB_NAME;
+        try {
+            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
+        } catch (PDOException $e) {
+            die("Connection failed: " . $e->getMessage());
+        }
     }
 
     function isLoggedIn() {
@@ -101,20 +118,6 @@
     function printAssociativeArray($array) {
         foreach ($array as $key => $value) {
             echo "<br/>$key: $value";
-        }
-    }
-    
-    function initDbPdo() {
-        $servername = DB_SERVERNAME;
-        $username = DB_USERNAME;
-        $password = DB_PASSWORD;
-        $dbname = DB_NAME;
-        try {
-            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $pdo;
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
         }
     }
 

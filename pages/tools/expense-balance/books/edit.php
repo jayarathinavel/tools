@@ -11,7 +11,7 @@ $expenseBook = $conn->query("SELECT * FROM expense_balance_book WHERE id=$id")->
     <h1>Edit Expense Book</h1>
     <?php
     if (isset($_POST['name'])) {
-        require_once $rootPath . '/handlers/tools/expense-balance-book-handler.php';
+        includePhpFileFromRoot($rootPath, '/handlers/tools/expense-balance-book-handler.php');
     }
     ?>
     <form action="" method="post">

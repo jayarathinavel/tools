@@ -10,7 +10,7 @@
     <h1>Add Expense</h1>
     <?php
         if (isset($_POST['expense_name'])) {
-            require_once $rootPath . '/handlers/tools/expense-handler.php';
+            includePhpFileFromRoot($rootPath, '/handlers/tools/expense-handler.php');
         }
         if(isset($book)) {
             $persons = fetchPersonsFromExpenseBalanceBook($book);
