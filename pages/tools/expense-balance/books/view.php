@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Expense Balance Book";
+    $pageTitle = "Expense Balance Books";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     appUserLoginRequired($_SERVER['REQUEST_URI']);
