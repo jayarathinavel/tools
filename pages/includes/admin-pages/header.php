@@ -3,23 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/resources/stylesheet.css">
     <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Admin Dashboard" ?></title>
 </head>
 <body>
 
-<!-- Header -->
-<header class="bg-dark text-white py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h4>Admin</h4>
-            </div>
-            <div class="col-md-6 text-right">
-                <a href="/pages/admin" class="btn btn-light">Home</a>
-                <a href="/pages/admin/help.php" class="btn btn-light">Help</a>
-            </div>
-        </div>
+
+<nav class="navbar navbar-expand-lg bg-secondary navbar-dark p-2 mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/pages/admin">Admin Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <button class="nav-link back-button active" onclick="goBack()"> < Back</button>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/pages/admin">Admin Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/pages/admin/help.php">Help</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
     </div>
-</header>
+  </div>
+</nav>
