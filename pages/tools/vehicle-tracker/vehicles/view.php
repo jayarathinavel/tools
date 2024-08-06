@@ -11,34 +11,31 @@ $conn = initDb();
         getSuccessOrFailureMessage();
     ?>
     <h1>Vehicle Tracker - Vehicles</h1>
-    <a href="add.php" class="btn btn-primary mb-3">Add New Vehicle</a>
     <?php
-    $result = $conn->query("SELECT * FROM vehicles");
-    if ($result->num_rows > 0): ?>
-        <table class="table">
-            <thead>
+        $result = $conn->query("SELECT * FROM vehicles");
+    ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <td><?php echo htmlspecialchars($row['name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['description']); ?></td>
+                    <td>
+                        <a href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="delete.php?id=<?php echo htmlspecialchars($row['id']); ?>&operation=delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row['name']); ?></td>
-                        <td><?php echo htmlspecialchars($row['description']); ?></td>
-                        <td>
-                            <a href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="delete.php?id=<?php echo htmlspecialchars($row['id']); ?>&operation=delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <div class="alert alert-info">No vehicles found.</div>
-    <?php endif; ?>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+    <a href="add.php" class="btn btn-primary mb-3">Add New Vehicle</a>
 </div>
 
 <?php
