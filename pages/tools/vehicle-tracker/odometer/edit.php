@@ -14,7 +14,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 }
 
 $recordId = intval($_GET['id']);
-$record = findMileageRecord($recordId);
+$record = findOdometerRecord($recordId);
 
 if (!$record) {
     echo '<div class="alert alert-danger mb-3" role="alert">Record not found!</div>';

@@ -33,7 +33,7 @@
         return $vehicles;
     }
 
-    function findMileageRecord($recordId) {
+    function findOdometerRecord($recordId) {
         $conn = initDb();
         $recordId = $conn->real_escape_string($recordId);
         $query = "SELECT * FROM odometer WHERE id = '$recordId'";
