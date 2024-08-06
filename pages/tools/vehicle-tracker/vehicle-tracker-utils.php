@@ -19,6 +19,12 @@
         return $selectedVehicle;
     }
 
+    function fetchVehicleDetails($vehicleId){
+        $conn = initDb();
+        $query = "SELECT * FROM vehicles WHERE id=$vehicleId";
+        return $conn->query($query)->fetch_assoc();
+    }
+
     function fetchVehicles($userId) {
         $conn = initDb();
         $query = "SELECT id, name FROM vehicles WHERE user_id=$userId";
@@ -43,5 +49,25 @@
         } else {
             return null;
         }
+    }
+
+    function fetchMileageRecords($vehicleId) {
+        global $conn;
+        $vehicleId = $conn->real_escape_string($vehicleId);
+        $query = " SELECT * FROM mileage WHERE vehicle_id = $vehicleId";
+        $result = $conn->query($query);
+        $mileageRecords = [];
+        while ($row = $result->fetch_assoc()) {
+            $mileageRecords[] = $row;
+        }
+        return $mileageRecords;
+    }
+
+    function findMileageRecord($id) {
+        global $conn;
+        $id = $conn->real_escape_string($id);
+        $query = "SELECT * FROM mileage WHERE id=$id";
+        $result = $conn->query($query);
+        return $result->fetch_assoc();
     }
     

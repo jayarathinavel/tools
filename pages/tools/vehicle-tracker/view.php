@@ -13,6 +13,10 @@
     <a href="vehicles/view.php">
         Vehicles
     </a>
+    <br>
+    <a href="mileage/view.php">
+        Mileage
+    </a>
 </div>
 <?php
     appUserLoginRequiredClose();
