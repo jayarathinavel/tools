@@ -23,15 +23,14 @@ $vehicle = findVehicleForUser($userId);
     }
     ?>
     <form action="" method="post">
-        <div class="form-group">
-            <label for="vehicle">Vehicle:</label>
-            <select id="vehicle" name="vehicle" class="form-control" required>
-                <?php foreach ($vehicles as $id => $name): ?>
-                    <option value="<?php echo htmlspecialchars($id); ?>">
-                        <?php echo htmlspecialchars($name); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+        <div class="fw-bold">
+            <?php
+                foreach ($vehicles as $id => $name):
+                    if($id == intval($vehicle)) {
+                        echo 'Add New Odometer Record to ' . $name;
+                    }
+                endforeach;
+            ?>
         </div>
         <div class="form-group">
             <label for="date">Date:</label>

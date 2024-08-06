@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+        error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING &~E_DEPRECATED);
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
         try {
