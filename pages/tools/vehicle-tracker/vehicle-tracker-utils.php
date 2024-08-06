@@ -25,6 +25,17 @@
         return $conn->query($query)->fetch_assoc();
     }
 
+    function displayVehicleDetails($vehicleId) {
+        $vehicleDetails = fetchVehicleDetails($vehicleId);
+        if(isset($vehicleDetails)) {
+            echo "
+                <div>
+                    <h5>Vehicle :  " . $vehicleDetails['name'] . "</h5 >
+                </div>
+            ";
+        }
+    }
+
     function fetchVehicles($userId) {
         $conn = initDb();
         $query = "SELECT id, name FROM vehicles WHERE user_id=$userId";

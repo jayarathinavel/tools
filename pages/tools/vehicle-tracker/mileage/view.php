@@ -5,7 +5,6 @@
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
     $userId = vehicleTrackerUser();
     $vehicle = findVehicleForUser($userId);
-    $vehicleDetails = fetchVehicleDetails($vehicle);
     $mileageRecords = fetchMileageRecords($vehicle);
 ?>
 
@@ -15,13 +14,7 @@
     ?>
     <h1>Mileage Records</h1>
     <?php
-        if(isset($vehicleDetails)) {
-            echo "
-                <div>
-                    <h5>Vehicle :  " . $vehicleDetails['name'] . "</h5 >
-                </div>
-            ";
-        }
+       displayVehicleDetails($vehicle);
     ?>
     <a href="add.php" class="btn btn-primary mb-3">Add New Record</a>
     <table class="table">

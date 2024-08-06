@@ -6,6 +6,7 @@ appUserLoginRequired($_SERVER['REQUEST_URI']);
 includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
 $userId = vehicleTrackerUser();
 $vehicle = findVehicleForUser($userId);
+$vehicleDetails = fetchVehicleDetails($vehicle);
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -14,49 +15,23 @@ $vehicle = findVehicleForUser($userId);
 
 <div class="container">
     <?php
-    getSuccessOrFailureMessage();
+        getSuccessOrFailureMessage();
     ?>
     <h1>Vehicle Tracker - Odometer</h1>
     <?php
-    $odometerRecords = [];
-    $vehicles = $conn->query("SELECT * FROM vehicles WHERE user_id=$userId");
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['vehicleId'])) {
-            $vehicle = $_POST['vehicleId'];
-            $_SESSION['vehicleTrackerSelectedVehicle'] = $vehicle;
-            setSuccessOrFailureMessage("success", "Vehicle Changed");
-            header("Location: " . $_SERVER['PHP_SELF']);
-            exit();
+        $odometerRecords = [];
+        if (isset($vehicle)) {
+            $odometerRecords = $conn->query("SELECT * FROM odometer WHERE vehicle_id = $vehicle");
         }
-    }
-    if (isset($vehicle)) {
-        $odometerRecords = $conn->query("SELECT * FROM odometer WHERE vehicle_id = $vehicle");
-    }
     ?>
-    <div class="text-center">
-        <?php if (isset($vehicle)) { ?>
-            <div class="mt-2">
-                <span>Vehicle: </span>
-                <form style="display:inline" action="" method="POST">
-                    <select name="vehicleId" id="vehicleId">
-                        <?php while ($row = mysqli_fetch_assoc($vehicles)): ?>
-                            <option value="<?php echo $row['id']; ?>" <?php echo ($row['id'] == $vehicle) ? 'selected' : ''; ?>>
-                                <?php echo $row['name']; ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
-                    <input type="submit" value="Change" class="btn btn-sm btn-primary">
-                </form>
-                <a class="btn btn-sm btn-secondary" href="/pages/tools/vehicle-tracker/vehicles/view.php">Manage Vehicles</a>
-            </div>
-        <?php } ?>
-    </div>
+    <?php
+       displayVehicleDetails($vehicle);
+    ?>
     <div class="mt-2 mb-2">
         <?php echo isset($vehicle) ? '' : '<div class="text-danger mb-2"> No vehicles are available, <a href="/pages/tools/vehicle-tracker/vehicles/add.php">create a vehicle </a> first!</div>' ?>
         <a href="add.php" class="btn btn-success <?php echo isset($vehicle) ? '' : 'disabled' ?>">Add New Odometer Record</a>
     </div>
  
-    <h4>Odometer Records</h4>
     <div class='p-2' style='overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px;'>
         <table id='odometer-table' class='table table-striped'>
             <thead>
