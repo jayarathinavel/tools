@@ -65,7 +65,7 @@
     function fetchMileageRecords($vehicleId) {
         global $conn;
         $vehicleId = $conn->real_escape_string($vehicleId);
-        $query = " SELECT * FROM mileage WHERE vehicle_id = $vehicleId";
+        $query = "SELECT * FROM mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
         $result = $conn->query($query);
         $mileageRecords = [];
         while ($row = $result->fetch_assoc()) {

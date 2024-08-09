@@ -12,6 +12,37 @@
     <?php
         getSuccessOrFailureMessage();
     ?>
+    <?php
+        $mileage = [];
+        $nextFuelEmptyAt = [];
+        $firstFuelEmptyAt = [];
+        $fuelQuantity = null;
+        foreach ($mileageRecords as $mileageRecord){
+            $fuelState = $mileageRecord["fuel_state"];
+            if($fuelState == "Fuel Empty"){
+                if(!isset($nextFuelEmptyAt['odometer_reading'])){
+                    $nextFuelEmptyAt = ['date' => $mileageRecord["date"], 'odometer_reading' => $mileageRecord["odometer_reading"]];
+                    continue;
+                }
+                if(isset($nextFuelEmptyAt['odometer_reading'])){
+                    $date = $nextFuelEmptyAt['date'];
+                    $firstFuelEmptyAt = ['date' => $mileageRecord["date"], 'odometer_reading' => $mileageRecord["odometer_reading"]];
+                }
+            }
+            $fuelQuantityInt = doubleval($mileageRecord["fuel_state"]);
+            if($fuelQuantityInt > 0 && isset($nextFuelEmptyAt['odometer_reading'])) {
+                $fuelQuantity += $fuelQuantityInt;
+            }
+            if(isset($nextFuelEmptyAt['odometer_reading']) && isset($firstFuelEmptyAt['odometer_reading']) && $fuelQuantity > 0) {
+                $mileage = ($nextFuelEmptyAt['odometer_reading'] - $firstFuelEmptyAt['odometer_reading'])/$fuelQuantity;
+                $nextFuelEmptyAt = $firstFuelEmptyAt;
+                echo $date .'--->'. $mileage.'<br>';
+                $firstFuelEmptyAt = [];
+                $fuelQuantity = 0;
+                $date = null;
+            }
+        }
+    ?>
     <h1>Mileage Records</h1>
     <?php
        displayVehicleDetails($vehicle);
