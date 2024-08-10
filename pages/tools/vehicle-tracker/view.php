@@ -12,6 +12,9 @@
     <?php
         getSuccessOrFailureMessage();
     ?>
+    <div class="alert alert-primary <?php echo isset($vehicle) ? 'd-none' : ''?>" role="alert">
+        Add a vechicle to get started!
+    </div>
     <?php
         $vehicles = $conn->query("SELECT * FROM vehicles WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -26,7 +29,7 @@
     ?>
     <div class="row justify-content-center">
         <div class="col-md-4 mb-3">
-            <div class="text-center border rounded p-3">
+            <div class="text-center border rounded p-3 <?php echo !isset($vehicle) ? 'd-none' : ''?>">
                 <?php if (isset($vehicle)) { ?>
                     <div class="mt-2">
                         <form style="display:inline" action="" method="POST">
@@ -47,7 +50,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3 <?php echo !isset($vehicle) ? 'd-none' : ''?>">
             <div class="d-flex align-items-center p-3 border rounded">
                 <div class="me-3">
                     <i class="bi bi-speedometer2 fs-2"></i>
@@ -58,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb- <?php echo !isset($vehicle) ? 'd-none' : ''?>">
             <div class="d-flex align-items-center p-3 border rounded">
                 <div class="me-3">
                     <i class="bi bi-speedometer fs-2"></i>

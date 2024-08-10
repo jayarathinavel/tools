@@ -20,9 +20,11 @@
     }
 
     function fetchVehicleDetails($vehicleId){
-        $conn = initDb();
-        $query = "SELECT * FROM vehicles WHERE id=$vehicleId";
-        return $conn->query($query)->fetch_assoc();
+        if(isset($vehicleId)){
+            $conn = initDb();
+            $query = "SELECT * FROM vehicles WHERE id=$vehicleId";
+            return $conn->query($query)->fetch_assoc();
+        }
     }
 
     function displayVehicleDetails($vehicleId) {
@@ -63,15 +65,17 @@
     }
 
     function fetchMileageRecords($vehicleId) {
-        global $conn;
-        $vehicleId = $conn->real_escape_string($vehicleId);
-        $query = "SELECT * FROM mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
-        $result = $conn->query($query);
-        $mileageRecords = [];
-        while ($row = $result->fetch_assoc()) {
-            $mileageRecords[] = $row;
+        if(isset($vehicleId)){
+            global $conn;
+            $vehicleId = $conn->real_escape_string($vehicleId);
+            $query = "SELECT * FROM mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
+            $result = $conn->query($query);
+            $mileageRecords = [];
+            while ($row = $result->fetch_assoc()) {
+                $mileageRecords[] = $row;
+            }
+            return $mileageRecords;
         }
-        return $mileageRecords;
     }
 
     function findMileageRecord($id) {

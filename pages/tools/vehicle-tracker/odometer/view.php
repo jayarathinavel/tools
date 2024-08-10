@@ -32,7 +32,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
         <a href="add.php" class="btn btn-success <?php echo isset($vehicle) ? '' : 'disabled' ?>">Add New Odometer Record</a>
     </div>
  
-    <div class='p-2' style='overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px;'>
+    <div class='p-3 border' style='overflow-x: auto;'>
         <table id='odometer-table' class='table table-striped'>
             <thead>
                 <tr>

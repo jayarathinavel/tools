@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Mileage Records";
+    $pageTitle = "Vehicle Tracker - Mileage";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
@@ -8,11 +8,16 @@
     $mileageRecords = fetchMileageRecords($vehicle);
 ?>
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
 <div class="container">
     <?php
         getSuccessOrFailureMessage();
     ?>
     <?php
+        $calculatedMileage = [];
         $mileage = [];
         $nextFuelEmptyAt = [];
         $firstFuelEmptyAt = [];
@@ -36,35 +41,41 @@
             if(isset($nextFuelEmptyAt['odometer_reading']) && isset($firstFuelEmptyAt['odometer_reading']) && $fuelQuantity > 0) {
                 $mileage = ($nextFuelEmptyAt['odometer_reading'] - $firstFuelEmptyAt['odometer_reading'])/$fuelQuantity;
                 $nextFuelEmptyAt = $firstFuelEmptyAt;
-                echo $date .'--->'. $mileage.'<br>';
+                $calculatedMileage[$date] = $mileage;
+                // echo $date .'--->'. $mileage.'<br>';
                 $firstFuelEmptyAt = [];
                 $fuelQuantity = 0;
                 $date = null;
             }
         }
     ?>
-    <h1>Mileage Records</h1>
+    <h1>Vehicle Tracker - Mileage</h1>
     <?php
        displayVehicleDetails($vehicle);
     ?>
-    <a href="add.php" class="btn btn-primary mb-3">Add New Record</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Fuel State</th>
-                <th>Odometer Reading</th>
-                <th>Comments</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if(isset($mileageRecords) && count($mileageRecords) > 0) { ?>
+    <div class="mt-2 mb-2">
+        <?php echo isset($vehicle) ? '' : '<div class="text-danger mb-2"> No vehicles are available, <a href="/pages/tools/vehicle-tracker/vehicles/add.php">create a vehicle </a> first!</div>' ?>
+        <a href="add.php" class="btn btn-primary <?php echo isset($vehicle) ? '' : 'disabled' ?>">Add New Record</a>
+    </div>
+    <div class='p-3 border' style='overflow-x: auto;'>
+        <table class="table" id="mileage-records-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Fuel State</th>
+                    <th>Odometer Reading</th>
+                    <th>Mileage</th>
+                    <th>Comments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
                 <?php foreach ($mileageRecords as $record): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($record['date']); ?></td>
                         <td><?php echo htmlspecialchars($record['fuel_state']); ?></td>
                         <td><?php echo htmlspecialchars($record['odometer_reading']); ?></td>
+                        <td><?php echo isset($calculatedMileage[$record['date']]) ? round($calculatedMileage[$record['date']], 2) : '-'?></td>
                         <td><?php echo htmlspecialchars($record['comments']); ?></td>
                         <td>
                             <a href="edit.php?id=<?php echo htmlspecialchars($record['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
@@ -72,15 +83,24 @@
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            <?php } else { ?>
-                <tr>
-                    <td colspan="6" class="text-center">No Data found</td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#mileage-records-table').DataTable({
+            paging: false,
+            "order": [[0, "desc"]],
+            "columnDefs": [
+                { "orderable": false, "targets": [4] }
+            ],
+            "bInfo": false,
+        });
+    });
+
+</script>
 
 <?php
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
