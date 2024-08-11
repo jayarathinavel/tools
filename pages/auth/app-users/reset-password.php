@@ -3,7 +3,7 @@
     require_once $rootPath . '/config/config.php';
     startSession();
     if(!isset($_SESSION["appUserLoggedIn"]) && $_SESSION["appUserLoggedIn"] === true){
-        header("location: /pages/auth/app-users");
+        header("location: /pages/auth/app-users/login.php");
         exit;
     }
     $conn = initDb();
@@ -34,7 +34,7 @@
                 if(mysqli_stmt_execute($stmt)){
                     session_destroy();
                     setSuccessOrFailureMessage("success", "Password Reset Successfull");
-                    header("location: /pages/auth/app-users");
+                    header("location: /pages/auth/app-users/login.php");
                     exit();
                 } else{
                     echo "Oops! Something went wrong. Please try again later.";

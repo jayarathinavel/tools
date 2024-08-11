@@ -51,27 +51,60 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <button class="nav-link back-button active" onclick="goBack()"> < Back</button>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <?php
             if(isAppUserLoggedIn()){
                 echo'
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pages/auth/app-users/logout.php">Logout</a>
+                    <li class="nav-item dropstart">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        '.$_SESSION["username"].'
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/pages/auth/app-users/reset-password.php">Rest Password</a></li>
+                        <li><a class="dropdown-item" href="/pages/auth/app-users/logout.php">Logout</a></li>
+                    </ul>
                     </li>
                 ';
             }
         ?>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Page</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
     </div>
   </div>
 </nav>
+<?php
+    function generate_breadcrumbs() {
+        $path = $_SERVER['REQUEST_URI'];
+        $path = trim($path, '/');
+        $pathArray = explode('/', $path);
+
+        $breadcrumbs = '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+        $breadcrumbs .= '<li class="breadcrumb-item"><a href="/">Home</a></li>';
+
+        $currentPath = '';
+        foreach ($pathArray as $key => $value) {
+            $currentPath .= '/' . $value;
+
+            // Skip "pages" and "tools" from the breadcrumb trail
+            if ($value !== 'pages' && $value !== 'tools'
+                    && $value !== 'auth' && $value !== 'app-users') {
+                // Remove ".php" extension and handle "id" query parameters
+                $fileName = pathinfo($value, PATHINFO_FILENAME);
+                $label = ucfirst(str_replace('-', ' ', $fileName));
+
+                if ($key < count($pathArray) - 1) {
+                    $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $currentPath . '/view.php">' . $label . '</a></li>';
+                } else {
+                    $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . $label . '</li>';
+                }
+            }
+        }
+
+        $breadcrumbs .= '</ol></nav>';
+        return $breadcrumbs;
+    }
+?>
+
+<div class="container">
+    <?php echo generate_breadcrumbs(); ?>
+</div>

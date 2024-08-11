@@ -56,7 +56,7 @@
     function appUserLoginRequired($redirectTo) {
         if (!isset($_SESSION["appUserLoggedIn"]) || $_SESSION["appUserLoggedIn"] !== true) {
             $_SESSION['redirectTo'] = $redirectTo;
-            header("location: /pages/auth/app-users");
+            header("location: /pages/auth/app-users/login.php");
             exit;
         }
     }

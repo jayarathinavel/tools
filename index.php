@@ -31,18 +31,6 @@
             </div>
         </div>
     </div>
-
-    <?php
-        if(isAppUserLoggedIn()) {
-            echo'
-                <div class="text-center p-2 mt-4" style="border: 1px solid #DBDADA; border-radius: 5px;">
-                    <span class="fw-bold"> Settings</span><br>
-                    <a href="/pages/auth/app-users/reset-password.php"> Reset Password</a>
-                </div>
-            ';
-        }
-    ?>
-
 </div>
 
 <?php
