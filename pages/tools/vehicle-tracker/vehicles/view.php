@@ -29,7 +29,7 @@ $conn = initDb();
                     <td><?php echo htmlspecialchars($row['name']); ?></td>
                     <td><?php echo htmlspecialchars($row['description']); ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-trash-fill"></i><i class="bi bi-pencil-fill"></i></a>
+                        <a href="edit.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-pencil-fill"></i></a>
                         <a href="delete.php?id=<?php echo htmlspecialchars($row['id']); ?>&operation=delete" class="btn btn-danger btn-sm m-1" onclick="return confirm('Are you sure?');"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>
