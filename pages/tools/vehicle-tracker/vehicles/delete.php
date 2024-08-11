@@ -10,6 +10,11 @@ try {
         $id = $conn->real_escape_string($id);
         $query = "DELETE FROM vehicles WHERE id='$id'";
         if ($conn->query($query)) {
+            $deleteOdometerQuery = "DELETE from odometer WHERE vehicle_id = $id";
+            $deleteMileageQuery = "DELETE from mileage WHERE vehicle_id = $id";
+            $conn->query($deleteOdometerQuery);
+            $conn->query($deleteMileageQuery);
+            clearSelectedVehicle();
             setSuccessOrFailureMessage('success', 'Deleted Successfully');
         } else {
             throw new Exception('Error executing query: ' . $conn->error);
