@@ -45,7 +45,7 @@
 
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark p-2 mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Tools</a>
+    <a class="navbar-brand" href="/"> <i class="bi bi-tools"></i> Tools</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
