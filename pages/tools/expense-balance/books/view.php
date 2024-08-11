@@ -7,17 +7,13 @@
     $userId = expenseBalanceUser();
 ?>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-
 <div class="container">
     <?php
         getSuccessOrFailureMessage();
     ?>
     <h1>Expense Balance Books</h1>
     <div style="overflow-x: auto;">
-        <table id="expense-books-table" class="table table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -48,17 +44,6 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#expense-books-table').DataTable({
-            paging: false,
-            "order": [[0, "desc"]],
-            "columnDefs": [
-                { "orderable": false, "targets": [2] }
-            ],
-            "bInfo": false,
-        });
-    });
-
     function confirmDelete() {
         return confirm("Deleteing a Expense balance book will also delete all its Entries. Are you sure you want to delete this book?");
     }

@@ -16,13 +16,24 @@
         if(isset($book)) {
             $persons = fetchPersonsFromExpenseBalanceBook($book);
         }
+        if(isset($book)) {
+            $books = fetchBooks($userId);
+        }
         else {
             echo '<div class="alert alert-danger mb-3" role="alert">No Book is available, create a book first!</div>';
-
         }
         
     ?>
     <form action="" method="post">
+        <div class="fw-bold mb-2">
+            <?php
+                foreach ($books as $id => $name):
+                    if($id == intval($book)) {
+                        echo 'Add New Expense to ' . $name;
+                    }
+                endforeach;
+            ?>
+        </div>
         <div class="form-group">
             <label for="expense_name">Expense Name:</label>
             <input type="text" id="expense_name" name="expense_name" class="form-control" required>
