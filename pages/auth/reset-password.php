@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group mt-2">
-                <input type="submit" class="btn btn-success" value="Submit">
+                <input type="submit" class="btn btn-primary" value="Submit">
                 <a class="btn btn-danger ms-2" href="/pages/admin/dashboard.php">Cancel</a>
             </div>
         </form>

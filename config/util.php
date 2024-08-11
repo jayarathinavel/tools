@@ -56,7 +56,7 @@
     function appUserLoginRequired($redirectTo) {
         if (!isset($_SESSION["appUserLoggedIn"]) || $_SESSION["appUserLoggedIn"] !== true) {
             $_SESSION['redirectTo'] = $redirectTo;
-            header("location: /pages/auth/app-users");
+            header("location: /pages/auth/app-users/login.php");
             exit;
         }
     }
@@ -189,4 +189,17 @@
                 };
             </script>
         ";
+    }
+
+    function getNextDayDate($dateString) {
+        // Assuming $dateString is in 'YYYY-MM-DD' format
+        $date = new DateTime($dateString);
+        $date->modify('+1 day');
+        // Get the new date as a string in 'YYYY-MM-DD' format
+        return $date->format('Y-m-d');
+    }
+
+    function formatDate($dateString) {
+        $date = new DateTime($dateString);
+        return $date->format('d-M-Y'); // Outputs: '08-Aug-2024'
     }

@@ -112,7 +112,7 @@
     </div>
     <div class="mt-2 mb-2">
         <?php echo isset($book) ? '' : '<div class="text-danger mb-2"> No books are available, <a href="books/add.php">create a book </a> first!</div>' ?>
-        <a href="add.php" class="btn btn-success <?php echo isset($book) ? '' : 'disabled' ?>" >Add New Expense</a>
+        <a href="add.php" class="btn btn-primary <?php echo isset($book) ? '' : 'disabled' ?>" >Add New Expense</a>
     </div>
     <h4>Expenses List</h4>
     <div class="p-2" style="overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px; ">
@@ -136,8 +136,8 @@
                     <td><?php echo $persons[$expense['person']]; ?></td>
                     <td><?php echo $expense['date']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-primary">Edit</a>
-                        <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
+                        <a href="edit.php?id=<?php echo $expense['id']; ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="delete.php?operation=delete&id=<?php echo $expense['id']; ?>" class="btn btn-danger btn-sm m-1" onclick="return confirmDelete();"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>
                 <?php } ?>

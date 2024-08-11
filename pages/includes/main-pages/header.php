@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+        error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING &~E_DEPRECATED);
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
         try {
@@ -38,40 +38,74 @@
         }
     ?>
     <link rel="stylesheet" href="/resources/stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Tools" ?></title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark p-2 mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Tools</a>
+    <a class="navbar-brand" href="/"> <i class="bi bi-tools"></i> Tools</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-            <button class="nav-link back-button active" onclick="goBack()"> < Back</button>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <?php
             if(isAppUserLoggedIn()){
                 echo'
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pages/auth/app-users/logout.php">Logout</a>
+                    <li class="nav-item dropstart">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        '.$_SESSION["username"].'
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/pages/auth/app-users/reset-password.php">Rest Password</a></li>
+                        <li><a class="dropdown-item" href="/pages/auth/app-users/logout.php">Logout</a></li>
+                    </ul>
                     </li>
                 ';
             }
         ?>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Page</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> -->
       </ul>
     </div>
   </div>
 </nav>
+<?php
+    function generate_breadcrumbs() {
+        $path = $_SERVER['REQUEST_URI'];
+        $path = trim($path, '/');
+        $pathArray = explode('/', $path);
+
+        $breadcrumbs = '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+        $breadcrumbs .= '<li class="breadcrumb-item"><a href="/">Home</a></li>';
+
+        $currentPath = '';
+        foreach ($pathArray as $key => $value) {
+            $currentPath .= '/' . $value;
+
+            // Skip "pages" and "tools" from the breadcrumb trail
+            if ($value !== 'pages' && $value !== 'tools'
+                    && $value !== 'auth' && $value !== 'app-users') {
+                // Remove ".php" extension and handle "id" query parameters
+                $fileName = pathinfo($value, PATHINFO_FILENAME);
+                $label = ucfirst(str_replace('-', ' ', $fileName));
+
+                if ($key < count($pathArray) - 1) {
+                    $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . $currentPath . '/view.php">' . $label . '</a></li>';
+                } else {
+                    $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . $label . '</li>';
+                }
+            }
+        }
+
+        $breadcrumbs .= '</ol></nav>';
+        return $breadcrumbs;
+    }
+?>
+
+<div class="container">
+    <?php echo generate_breadcrumbs(); ?>
+</div>

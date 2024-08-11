@@ -87,7 +87,7 @@
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group mt-2">
-                <input type="submit" class="btn btn-success" value="Login">
+                <input type="submit" class="btn btn-primary" value="Login">
             </div>
         </form>
     </div>
