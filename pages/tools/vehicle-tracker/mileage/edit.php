@@ -2,6 +2,7 @@
     $pageTitle = "Edit Mileage Record";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
+    appUserLoginRequired($_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
     $appUserId = vehicleTrackerUser();
 
@@ -49,5 +50,6 @@
 </div>
 
 <?php
+    appUserLoginRequiredClose();
     require_once $rootPath . '/pages/includes/main-pages/footer.php';
 ?>
