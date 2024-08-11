@@ -34,16 +34,16 @@ $vehicles = fetchVehicles($userId);
     <h1>Edit Odometer Record</h1>
     <form action="" method="post">
         <input type="hidden" name="id" value="<?php echo $recordId; ?>">
-        <div class="form-group">
-            <label for="vehicle">Vehicle:</label>
-            <select id="vehicle" name="vehicle" class="form-control" required>
-                <?php foreach ($vehicles as $id => $name): ?>
-                    <option value="<?php echo htmlspecialchars($id); ?>" <?php echo ($id == $record['vehicle_id']) ? 'selected' : ''; ?>>
-                        <?php echo htmlspecialchars($name); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+        <div class="fw-bold">
+            <?php
+                foreach ($vehicles as $id => $name):
+                    if($id == $record['vehicle_id']) {
+                        echo 'Editing a Odometer Record of ' . $name;
+                    }
+                endforeach;
+            ?>
         </div>
+        <input type="hidden" name="vehicle" value="<?php echo $record['vehicle_id']; ?>">
         <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" class="form-control" value="<?php echo htmlspecialchars($record['date']); ?>" required>

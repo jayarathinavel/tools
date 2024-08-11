@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" class="form-control" value="<?php echo htmlspecialchars($mileageRecord['date']); ?>" required>
+            <input type="datetime" id="date" name="date" class="form-control" value="<?php echo htmlspecialchars($mileageRecord['date']); ?>" required>
         </div>
         <div class="form-group">
             <label for="fuel_state">Fuel State:</label>

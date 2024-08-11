@@ -9,10 +9,10 @@
             $selectedVehicle = $_SESSION['vehicleTrackerSelectedVehicle'];
         } else{
             $conn = initDb();
-            $books = $conn->query("SELECT * FROM vehicles WHERE user_id = $userId");
+            $vehicles = $conn->query("SELECT * FROM vehicles WHERE user_id = $userId");
             $conn->close();
-            if($books->num_rows > 0){
-                $selectedVehicle = $books->fetch_assoc()["id"];
+            if($vehicles->num_rows > 0){
+                $selectedVehicle = $vehicles->fetch_assoc()["id"];
                 $_SESSION['vehicleTrackerSelectedVehicle'] = $selectedVehicle;
             }
         }
@@ -84,5 +84,12 @@
         $query = "SELECT * FROM mileage WHERE id=$id";
         $result = $conn->query($query);
         return $result->fetch_assoc();
+    }
+
+    function fetchLatestOdometerRecord($vehicleId){
+        $conn = initDb();
+        $sql = "SELECT * FROM odometer WHERE vehicle_id = $vehicleId ORDER BY id DESC LIMIT 1";
+        $result = $conn->query($sql);
+        return  $result->fetch_assoc();
     }
     
