@@ -25,3 +25,17 @@
     function expenseBalanceUser(){
         return $_SESSION['appUserId'];
     }
+
+    function fetchBooks($userId) {
+        $conn = initDb();
+        $query = "SELECT id, name FROM expense_balance_book WHERE user_id=$userId";
+        $result = $conn->query($query);
+        if ($result === false) {
+            return [];
+        }
+        $books = [];
+        while ($row = $result->fetch_assoc()) {
+            $books[$row['id']] = $row['name'];
+        }
+        return $books;
+    }
