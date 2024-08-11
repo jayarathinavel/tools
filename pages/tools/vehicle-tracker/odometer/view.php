@@ -33,7 +33,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
     </div>
  
     <div class='p-3 border' style='overflow-x: auto;'>
-        <table id='odometer-table' class='table table-striped'>
+        <table id='odometer-table' class='table'>
             <thead>
                 <tr>
                     <th>Date</th>

@@ -116,7 +116,7 @@
     </div>
     <h4>Expenses List</h4>
     <div class="p-2" style="overflow-x: auto; border: 1px solid #DBDADA; border-radius: 5px; ">
-        <table id="expenses-table" class="table table-striped">
+        <table id="expenses-table" class="table">
             <thead>
                 <tr>
                     <th>Expense Name</th>
