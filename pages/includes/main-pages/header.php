@@ -38,6 +38,7 @@
         }
     ?>
     <link rel="stylesheet" href="/resources/stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Tools" ?></title>
 </head>
 <body>
