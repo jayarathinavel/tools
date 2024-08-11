@@ -19,8 +19,8 @@
             <input type="text" id="name" name="name" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="persons">Persons:</label>
-            <input type="text" id="persons" name="persons" class="form-control" required>
+            <label for="persons">Persons: <span class="fw-light">(Comma Seperated Values)</span></label>
+            <input type="text" placeholder="Ant, Bee, Cat" id="persons" name="persons" class="form-control" required>
         </div>
         <input type="submit" value="Add Expense Book" class="btn btn-primary mt-2">
     </form>
