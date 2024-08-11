@@ -19,6 +19,10 @@
         return $selectedVehicle;
     }
 
+    function clearSelectedVehicle(){
+        unset($_SESSION['vehicleTrackerSelectedVehicle']);
+    }
+
     function fetchVehicleDetails($vehicleId){
         if(isset($vehicleId)){
             $conn = initDb();
