@@ -65,3 +65,38 @@ CREATE TABLE `app_users` (
 INSERT INTO app_users
 (id, username, password)
 VALUES(1, 'jrv', '$2y$10$7Jcr0kj23BGMHZRhFdLd3e9XSvL82pmIFfl3/u3LcmyB9ZOtiervy');
+
+CREATE TABLE `mileage` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `vehicle_id` int NOT NULL,
+  `date` datetime NOT NULL,
+  `fuel_state` varchar(255) DEFAULT NULL,
+  `comments` text,
+  `odometer_reading` decimal(10,2) NOT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `vehicle_id` (`vehicle_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `odometer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `vehicle_id` int NOT NULL,
+  `date` date NOT NULL,
+  `start_distance` decimal(10,1) NOT NULL,
+  `end_distance` decimal(10,1) NOT NULL DEFAULT '0.0',
+  `comment` text,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `vehicle_id` (`vehicle_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `vehicles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` text,
+  `user_id` int NOT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

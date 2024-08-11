@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="description">Description:</label>
             <textarea id="description" name="description" class="form-control"></textarea>
         </div>
-        <input type="submit" value="Add Vehicle" class="btn btn-success mt-2">
+        <input type="submit" value="Add Vehicle" class="btn btn-primary mt-2">
     </form>
 </div>
 

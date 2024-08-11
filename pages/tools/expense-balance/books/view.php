@@ -34,8 +34,8 @@
                     <td><?php echo $expenseBook['name']; ?></td>
                     <td><?php echo $expenseBook['persons']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $expenseBook['id']; ?>" class="btn btn-primary">Edit</a>
-                        <a href="delete.php?operation=delete&id=<?php echo $expenseBook['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
+                        <a href="edit.php?id=<?php echo $expenseBook['id']; ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="delete.php?operation=delete&id=<?php echo $expenseBook['id']; ?>" class="btn btn-danger btn-sm m-1" onclick="return confirmDelete();"><i class="bi bi-trash-fill"></i></a>
                     </td>
                 </tr>
                 <?php
@@ -44,8 +44,7 @@
             </tbody>
         </table>
     </div>
-    <a href="add.php" class="btn btn-success mt-2">Add New Expense Book</a>
-    <a href="/pages/tools/expense-balance/view.php" class="btn btn-secondary mt-2">Back to Expenses</a>
+    <a href="add.php" class="btn btn-primary mt-2">Add New Expense Book</a>
 </div>
 
 <script>

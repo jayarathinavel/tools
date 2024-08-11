@@ -29,7 +29,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
     ?>
     <div class="mt-2 mb-2">
         <?php echo isset($vehicle) ? '' : '<div class="text-danger mb-2"> No vehicles are available, <a href="/pages/tools/vehicle-tracker/vehicles/add.php">create a vehicle </a> first!</div>' ?>
-        <a href="add.php" class="btn btn-success <?php echo isset($vehicle) ? '' : 'disabled' ?>">Add New Odometer Record</a>
+        <a href="add.php" class="btn btn-primary <?php echo isset($vehicle) ? '' : 'disabled' ?>">Add New Odometer Record</a>
     </div>
  
     <div class='p-3 border' style='overflow-x: auto;'>
@@ -53,8 +53,8 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
                         <td><?php echo $record['end_distance']; ?></td>
                         <td><?php echo $record['comment']; ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $record['id']; ?>" class="btn btn-primary">Edit</a>
-                            <a href="delete.php?operation=delete&id=<?php echo $record['id']; ?>" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
+                            <a href="edit.php?id=<?php echo $record['id']; ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-pencil-fill"></i></a>
+                            <a href="delete.php?operation=delete&id=<?php echo $record['id']; ?>" class="btn btn-danger btn-sm m-1" onclick="return confirmDelete();"><i class="bi bi-trash-fill"></i></a>
                         </td>
                     </tr>
                 <?php

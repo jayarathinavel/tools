@@ -44,7 +44,7 @@
             <label for="comments">Comments:</label>
             <textarea id="comments" name="comments" class="form-control"><?php echo htmlspecialchars($mileageRecord['comments']); ?></textarea>
         </div>
-        <input type="submit" value="Update Record" class="btn btn-success mt-2">
+        <input type="submit" value="Update Record" class="btn btn-primary mt-2">
     </form>
 </div>
 

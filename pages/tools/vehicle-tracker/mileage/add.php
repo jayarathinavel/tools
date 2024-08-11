@@ -55,7 +55,7 @@
             <label for="comments">Comments:</label>
             <textarea id="comments" name="comments" class="form-control"></textarea>
         </div>
-        <input type="submit" value="Add Record" class="btn btn-success mt-2">
+        <input type="submit" value="Add Record" class="btn btn-primary mt-2">
     </form>
 </div>
 

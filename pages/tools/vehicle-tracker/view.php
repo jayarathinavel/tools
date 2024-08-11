@@ -74,7 +74,7 @@
                             <input type="number" value="0" id="end_distance" name="end_distance" hidden required>
                             <div class="form-group d-flex align-items-center">
                                 <input type="number" value="<?php echo $latestOdometerRecord['end_distance'] ?>" id="start_distance" name="start_distance" class="form-control me-2" step="any" required>
-                                <button type="submit" class="btn btn-success d-flex align-items-center">
+                                <button type="submit" class="btn btn-primary d-flex align-items-center">
                                     <i class="bi bi-check"></i> <!-- Bootstrap check icon -->
                                 </button>
                             </div>
@@ -91,7 +91,7 @@
                                 <div class="form-group">
                                     <textarea id="comment" rows = "1" name="comment" placeholder = "Any Comments ?" class="form-control"><?php echo htmlspecialchars($latestOdometerRecord['comment']); ?></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-success ms-2 d-flex align-items-center">
+                                <button type="submit" class="btn btn-primary ms-2 d-flex align-items-center">
                                     <i class="bi bi-check"></i>
                                 </button>
                             </div>
@@ -127,7 +127,6 @@
         </div>
     </div>
 </div>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <?php
     appUserLoginRequiredClose();
     require_once $rootPath . '/pages/includes/main-pages/footer.php';

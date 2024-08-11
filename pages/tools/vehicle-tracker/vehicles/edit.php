@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $vehicle) {
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" class="form-control"><?php echo htmlspecialchars($vehicle['description']); ?></textarea>
             </div>
-            <input type="submit" value="Update Vehicle" class="btn btn-warning mt-2">
+            <input type="submit" value="Update Vehicle" class="btn btn-primary mt-2">
         </form>
     <?php else: ?>
         <div class="alert alert-danger">Vehicle not found!</div>

@@ -78,8 +78,8 @@
                         <td><?php echo isset($calculatedMileage[$record['date']]) ? round($calculatedMileage[$record['date']], 2) : '-'?></td>
                         <td><?php echo htmlspecialchars($record['comments']); ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo htmlspecialchars($record['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="delete.php?operation=delete&id=<?php echo htmlspecialchars($record['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to delete this Mileage Record?');">Delete</a>
+                            <a href="edit.php?id=<?php echo htmlspecialchars($record['id']); ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-pencil-fill"></i></a>
+                            <a href="delete.php?operation=delete&id=<?php echo htmlspecialchars($record['id']); ?>" class="btn btn-danger btn-sm m-1" onclick="return confirm('Are you sure want to delete this Mileage Record?');"><i class="bi bi-trash-fill"></i></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

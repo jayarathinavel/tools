@@ -60,7 +60,7 @@ $vehicles = fetchVehicles($userId);
             <label for="comment">Comment:</label>
             <textarea id="comment" name="comment" class="form-control"><?php echo htmlspecialchars($record['comment']); ?></textarea>
         </div>
-        <input type="submit" value="Update Record" class="btn btn-success mt-2">
+        <input type="submit" value="Update Record" class="btn btn-primary mt-2">
     </form>
 </div>
 

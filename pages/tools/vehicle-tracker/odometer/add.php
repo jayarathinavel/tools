@@ -48,7 +48,7 @@ $vehicle = findVehicleForUser($userId);
             <label for="comment">Comment:</label>
             <textarea id="comment" name="comment" class="form-control"></textarea>
         </div>
-        <input type="submit" value="Add Record" class="btn btn-success mt-2">
+        <input type="submit" value="Add Record" class="btn btn-primary mt-2">
     </form>
 </div>
 
