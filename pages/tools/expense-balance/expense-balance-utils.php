@@ -15,6 +15,12 @@
         return $selectedBook;
     }
 
+    function clearSelectedBook(){
+        if(isset($_SESSION['expenseBalanceSelectedBook'])) {
+            unset($_SESSION['expenseBalanceSelectedBook']);
+        }
+    }
+
     function fetchPersonsFromExpenseBalanceBook($book){
         $conn = initDb();
         $expenseBookDetails = $conn->query("SELECT * FROM expense_balance_book WHERE id=$book");

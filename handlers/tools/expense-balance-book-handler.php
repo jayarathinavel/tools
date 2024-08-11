@@ -26,6 +26,7 @@ if (isset($_POST['id'])) {
         $persons = $_POST['persons'];
         $conn->query("INSERT INTO expense_balance_book (name, persons, user_id) VALUES ('$name', '$persons', '$userId')");
         setSuccessOrFailureMessage('success', 'Added Successfully');
+        clearSelectedBook();
     } catch (Exception $e) {
         setSuccessOrFailureMessage('failure', 'Failed to Add!' . ' ' . $e->getMessage());
     }

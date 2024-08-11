@@ -20,7 +20,10 @@
     }
 
     function clearSelectedVehicle(){
-        unset($_SESSION['vehicleTrackerSelectedVehicle']);
+        if(isset($_SESSION['vehicleTrackerSelectedVehicle'])) {
+            unset($_SESSION['vehicleTrackerSelectedVehicle']);
+        }
+        
     }
 
     function fetchVehicleDetails($vehicleId){

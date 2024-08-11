@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query = "INSERT INTO vehicles (name, description, user_id) VALUES ('$name', '$description', '$userId')";
             if ($conn->query($query)) {
                 setSuccessOrFailureMessage('success', 'Added Successfully');
+                clearSelectedVehicle();
             } else {
                 throw new Exception('Error executing query: ' . $conn->error);
             }
