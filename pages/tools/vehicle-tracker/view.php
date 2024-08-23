@@ -67,7 +67,7 @@
                         <?php if(isset($latestOdometerRecord) && $latestOdometerRecord['end_distance'] != 0) { ?>
                             <div class="fw-light">
                                 Distance travelled on <?php echo formatDate($latestOdometerRecord['date']) ?> :
-                                <?php echo $latestOdometerRecord['end_distance'] - $latestOdometerRecord['start_distance'] ?> kms
+                                <?php echo round(($latestOdometerRecord['end_distance'] - $latestOdometerRecord['start_distance']), 2) ?> kms
                             </div>
                             <div class="fw-light mb-2">Add start distance for <?php echo formatDate(getNextDayDate($latestOdometerRecord['date'])) ?></div>
                             <input type="date" value="<?php echo getNextDayDate($latestOdometerRecord['date']) ?>" id="date" name="date" class="form-control" hidden required>
