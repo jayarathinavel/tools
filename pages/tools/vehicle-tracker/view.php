@@ -65,11 +65,12 @@
                     <h5 class="mb-1">Odometer</h5>
                     <form action="" method="post">
                         <?php if(isset($latestOdometerRecord) && $latestOdometerRecord['end_distance'] != 0) { ?>
-                            <div class="fw-light">
+                            <div class="fw-bold">
                                 Distance travelled on <?php echo formatDate($latestOdometerRecord['date']) ?> :
                                 <?php echo round(($latestOdometerRecord['end_distance'] - $latestOdometerRecord['start_distance']), 2) ?> kms
                             </div>
                             <div class="fw-light mb-2">Add start distance for <?php echo formatDate(getNextDayDate($latestOdometerRecord['date'])) ?></div>
+                            <!-- <div class="fw-light mb-2">Today is <?php //echo formatDate(date("Y-m-d")) ?></div> -->
                             <input type="date" value="<?php echo getNextDayDate($latestOdometerRecord['date']) ?>" id="date" name="date" class="form-control" hidden required>
                             <input type="number" value="0" id="end_distance" name="end_distance" hidden required>
                             <div class="form-group d-flex align-items-center">
@@ -80,6 +81,7 @@
                             </div>
                         <?php } elseif(isset($latestOdometerRecord) && $latestOdometerRecord['end_distance'] == 0){?>
                             <div class="fw-bold mb-2">Add end distance for <?php echo $latestOdometerRecord['date'] ?></div>
+                            <div class="fw-light mb-2">Started on <?php echo $latestOdometerRecord['start_distance'] ?> kms</div>
                             <input type="hidden" name="id" value="<?php echo $latestOdometerRecord['id']; ?>">
                             <input type="hidden" name="vehicle" value="<?php echo $latestOdometerRecord['vehicle_id']; ?>">
                             <input type="date" id="date" name="date" class="form-control" value="<?php echo htmlspecialchars($latestOdometerRecord['date']); ?>" required hidden>
