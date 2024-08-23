@@ -39,6 +39,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
                     <th>Date</th>
                     <th>Start Distance</th>
                     <th>End Distance</th>
+                    <th>Distance</th>
                     <th>Comment</th>
                     <th>Action</th>
                 </tr>
@@ -51,6 +52,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
                         <td><?php echo $record['date']; ?></td>
                         <td><?php echo $record['start_distance']; ?></td>
                         <td><?php echo $record['end_distance']; ?></td>
+                        <td><?php echo round(($record['end_distance'] - $record['start_distance']), 2); ?></td>
                         <td><?php echo $record['comment']; ?></td>
                         <td>
                             <a href="edit.php?id=<?php echo $record['id']; ?>" class="btn btn-warning btn-sm m-1"><i class="bi bi-pencil-fill"></i></a>
@@ -70,7 +72,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
             paging: false,
             "order": [[0, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [4] }
+                { "orderable": false, "targets": [5] }
             ],
             "bInfo": false,
         });
