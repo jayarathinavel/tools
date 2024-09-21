@@ -39,7 +39,7 @@
     ?>
     <link rel="stylesheet" href="/resources/stylesheet.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="resources/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/resources/favicon.svg">
     <title><?php echo (isset($pageTitle) && !empty($pageTitle)) ? $pageTitle : "Tools" ?></title>
 </head>
 <body>

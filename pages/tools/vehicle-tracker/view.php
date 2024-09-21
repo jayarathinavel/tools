@@ -6,7 +6,11 @@
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
     $userId = vehicleTrackerUser();
     $vehicle = findVehicleForUser($userId);
-    $latestOdometerRecord = fetchLatestOdometerRecord($vehicle)
+    $latestOdometerRecord = fetchLatestOdometerRecord($vehicle);
+    $latestMileageRecords = fetchLatestMileageAndFuelQuantity($vehicle);
+    $latestMileageRecord = $latestMileageRecords['latest_fuel_empty'];
+    $latestFuelQuantityRecord = $latestMileageRecords['latest_fuel_quantity'];
+    $maintenanceRecords = fetchMaintenanceRecords($vehicle);
 ?>
 
 <div class="container mt-5">
@@ -59,7 +63,7 @@
                 <div>
                     <?php
                         if (isset($_POST['date'])) {
-                            includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-handler.php');
+                            includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
                         }
                     ?>
                     <h5 class="mb-1">Odometer</h5>
@@ -105,25 +109,63 @@
         </div>
         <!-- Mileage -->
         <div class="col-md-4 mb-3 <?php echo !isset($vehicle) ? 'd-none' : ''?>">
-            <div class="d-flex align-items-center p-3 border rounded">
+            <div class="d-flex align-items-start p-3 border rounded">
                 <div class="me-3">
                     <i class="bi bi-speedometer fs-2"></i>
                 </div>
                 <div>
                     <h5 class="mb-1">Mileage</h5>
+                    <p class='mb-0'>Lastest Readings:</p>
+                    <p class='mb-0'>
+                        <span class="badge bg-primary"><?php echo date('d M', strtotime($latestMileageRecord['date'])) ?></span>
+                        Mileage at
+                        <?php echo $latestMileageRecord['odometer_reading']?>
+                        kms = <?php echo round($latestMileageRecord['calculated_mileage'], 2)?> kms
+                    </p>
+                    <p class='mb-0'>
+                        <span class="badge bg-primary"><?php echo date('d M', strtotime($latestFuelQuantityRecord['date'])) ?></span>
+                        Fuel at
+                        <?php echo $latestFuelQuantityRecord['odometer_reading']?>
+                        kms = <?php echo $latestFuelQuantityRecord['fuel_state']?> L
+                    </p>
                     <a href="mileage/view.php" class="btn btn-link">Manage Mileage</a>
                 </div>
             </div>
         </div>
         <!-- Vehicles -->
         <div class="col-md-4 mb-3">
-            <div class="d-flex align-items-center p-3 border rounded">
+            <div class="d-flex align-items-start p-3 border rounded">
                 <div class="me-3">
                     <i class="bi bi-car-front fs-2"></i>
                 </div>
                 <div>
-                    <h5 class="mb-1">Vehicles</h5>
-                    <a href="vehicles/view.php" class="btn btn-link">Manage Vehicles</a>
+                    <h5 class="mb-1">Maintainence</h5>
+                    <div>
+                        <?php
+                            $latestOdometerReading = ($latestOdometerRecord['end_distance']) == 0 ? ($latestOdometerRecord['start_distance']) : ($latestOdometerRecord['end_distance']);
+                            $upcomingMaintenances = [];
+
+                            foreach ($maintenanceRecords as $record) {
+                                $kilometersToDue = $record['odometer_due'] - $latestOdometerReading;
+
+                                if ($kilometersToDue <= 1000 && $kilometersToDue >= 0) {
+                                    $upcomingMaintenances[] = $record;
+                                }
+                            }
+
+                            if (!empty($upcomingMaintenances)) {
+                                echo "Maintenance due within the next 1000 km:<br>";
+                                foreach ($upcomingMaintenances as $maintenance) {
+                                    echo "<ul class='mb-0'>";
+                                    echo "<li><span class='fw-bold'>" . htmlspecialchars($maintenance['description']) . "</span>, at: " . htmlspecialchars($maintenance['odometer_due']) . " kms </li>";
+                                    echo "</ul>";
+                                }
+                            } else {
+                                echo "<p class='mb-0'>No maintenance due within the next 1000 km.</p>";
+                            }
+                        ?>
+                    </div>
+                    <a href="maintainence/view.php" class="btn btn-link">Manage Maintainence</a>
                 </div>
             </div>
         </div>

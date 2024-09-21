@@ -20,7 +20,8 @@
     echo !(strpos($currentURL, 'pages/tools/expense-balance/view.php')
             || strpos($currentURL, 'pages/tools/expense-balance/books/view.php')
             || strpos($currentURL, 'pages/tools/vehicle-tracker/odometer/view.php')
-            || strpos($currentURL, 'pages/tools/vehicle-tracker/mileage/view.php')) ?
+            || strpos($currentURL, 'pages/tools/vehicle-tracker/mileage/view.php')
+            || strpos($currentURL, 'pages/tools/vehicle-tracker/maintainence/view.php')) ?
         '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>' : '';
 ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

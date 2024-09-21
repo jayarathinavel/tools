@@ -23,7 +23,7 @@ if (!$record) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-handler.php');
+    includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
 }
 
 $vehicles = fetchVehicles($userId);
