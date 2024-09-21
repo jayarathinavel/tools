@@ -182,4 +182,17 @@
         return $result->fetch_assoc();
     }
     
+    function fetchNotes($vehicle) {
+        $conn = initDb();
+        $query = "SELECT id, date, note FROM notes WHERE vehicle_id=$vehicle";
+        $result = $conn->query($query);
+        if ($result === false) {
+            return [];
+        }
+        $notes = [];
+        while ($row = $result->fetch_assoc()) {
+            $notes[] = $row;
+        }
+        return $notes;
+    }
     
