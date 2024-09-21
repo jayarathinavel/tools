@@ -164,7 +164,7 @@
         if (isset($vehicleId)) {
             global $conn;
             $vehicleId = $conn->real_escape_string($vehicleId);
-            $query = "SELECT * FROM vt_maintainence WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
+            $query = "SELECT * FROM vt_maintenance  WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
             $result = $conn->query($query);
             $maintenanceRecords = [];
             while ($row = $result->fetch_assoc()) {
@@ -177,7 +177,7 @@
     function findMaintenanceRecord($id) {
         global $conn;
         $id = $conn->real_escape_string($id);
-        $query = "SELECT * FROM vt_maintainence WHERE id = $id";
+        $query = "SELECT * FROM vt_maintenance  WHERE id = $id";
         $result = $conn->query($query);
         return $result->fetch_assoc();
     }

@@ -20,7 +20,7 @@
     <?php
         
     ?>
-    <h1>Vehicle Tracker - Maintainence</h1>
+    <h1>Vehicle Tracker - Maintenance </h1>
     <?php
        displayVehicleDetails($vehicle);
     ?>

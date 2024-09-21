@@ -139,7 +139,7 @@
                     <i class="bi bi-car-front fs-2"></i>
                 </div>
                 <div>
-                    <h5 class="mb-1">Maintainence</h5>
+                    <h5 class="mb-1">Maintenance </h5>
                     <div>
                         <?php
                             $latestOdometerReading = ($latestOdometerRecord['end_distance']) == 0 ? ($latestOdometerRecord['start_distance']) : ($latestOdometerRecord['end_distance']);
@@ -165,7 +165,7 @@
                             }
                         ?>
                     </div>
-                    <a href="maintainence/view.php" class="btn btn-link">Manage Maintainence</a>
+                    <a href="maintenance/view.php" class="btn btn-link">Manage Maintenance </a>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
             $id = $conn->real_escape_string($id);
-            $conn->query("DELETE FROM vt_maintainence WHERE id=$id");
+            $conn->query("DELETE FROM vt_maintenance  WHERE id=$id");
             setSuccessOrFailureMessage('success', 'Deleted Successfully');
         }
     } catch (Exception $e) {

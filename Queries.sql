@@ -102,7 +102,7 @@ CREATE TABLE `vehicles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE `vt_maintainence` (
+CREATE TABLE `vt_maintenance ` (
   `id` int NOT NULL AUTO_INCREMENT,
   `vehicle_id` int NOT NULL,
   `date` date NOT NULL,

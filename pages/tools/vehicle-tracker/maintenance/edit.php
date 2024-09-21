@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Edit Maintainence Record";
+    $pageTitle = "Edit Maintenance  Record";
     $rootPath = $_SERVER['DOCUMENT_ROOT'];
     require_once $rootPath . '/pages/includes/main-pages/header.php';
     appUserLoginRequired($_SERVER['REQUEST_URI']);
@@ -7,7 +7,7 @@
     $appUserId = vehicleTrackerUser();
 
     if (isset($_POST['date'])) {
-        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-maintainence-handler.php');
+        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-maintenance-handler.php');
     }
 
     $id = $_GET['id'];
