@@ -12,7 +12,7 @@ $vehicle = findVehicleForUser($userId);
     <h1>Add Odometer Record</h1>
     <?php
     if (isset($_POST['date'])) {
-        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-handler.php');
+        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
     }
     if(isset($vehicle)) {
         $vehicles = fetchVehicles($userId);
