@@ -10,7 +10,7 @@
     ?>
     <h1>Vehicle Tracker - Vehicles</h1>
     <?php
-        $result = executeQuery("SELECT * FROM vehicles");
+        $result = executeQuery("SELECT * FROM vt_vehicles");
     ?>
     <table class="table">
         <thead>

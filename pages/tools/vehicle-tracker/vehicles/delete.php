@@ -5,10 +5,10 @@
     try {
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
-            $query = "DELETE FROM vehicles WHERE id='$id'";
+            $query = "DELETE FROM vt_vehicles WHERE id='$id'";
             if (executeQuery($query)) {
-                $deleteOdometerQuery = "DELETE from odometer WHERE vehicle_id = $id";
-                $deleteMileageQuery = "DELETE from mileage WHERE vehicle_id = $id";
+                $deleteOdometerQuery = "DELETE from vt_odometer WHERE vehicle_id = $id";
+                $deleteMileageQuery = "DELETE from vt_mileage WHERE vehicle_id = $id";
                 $deleteMaintenanceQuery = "DELETE from vt_maintenance WHERE vehicle_id = $id";
                 $deleteNotesQuery = "DELETE from vt_notes WHERE vehicle_id = $id";
                 executeQuery($deleteOdometerQuery);

@@ -8,7 +8,7 @@
         if(isset($_SESSION['vehicleTrackerSelectedVehicle'])){
             $selectedVehicle = $_SESSION['vehicleTrackerSelectedVehicle'];
         } else{
-            $vehicles = executeQuery("SELECT * FROM vehicles WHERE user_id = $userId");
+            $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id = $userId");
             if($vehicles->num_rows > 0){
                 $selectedVehicle = $vehicles->fetch_assoc()["id"];
                 $_SESSION['vehicleTrackerSelectedVehicle'] = $selectedVehicle;
@@ -26,7 +26,7 @@
 
     function fetchVehicleDetails($vehicleId){
         if(isset($vehicleId)){
-            $query = "SELECT * FROM vehicles WHERE id=$vehicleId";
+            $query = "SELECT * FROM vt_vehicles WHERE id=$vehicleId";
             return executeQuery($query)->fetch_assoc();
         }
     }
@@ -43,7 +43,7 @@
     }
 
     function fetchVehicles($userId) {
-        $query = "SELECT id, name FROM vehicles WHERE user_id=$userId";
+        $query = "SELECT id, name FROM vt_vehicles WHERE user_id=$userId";
         $result = executeQuery($query);
         if ($result === false) {
             return [];
@@ -56,7 +56,7 @@
     }
 
     function findOdometerRecord($recordId) {
-        $query = "SELECT * FROM odometer WHERE id = '$recordId'";
+        $query = "SELECT * FROM vt_odometer WHERE id = '$recordId'";
         $result = executeQuery($query);
         if ($result && $result->num_rows > 0) {
             return $result->fetch_assoc();
@@ -67,7 +67,7 @@
 
     function fetchMileageRecords($vehicleId) {
         if(isset($vehicleId)){
-            $query = "SELECT * FROM mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
+            $query = "SELECT * FROM vt_mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
             $result = executeQuery($query);
             $mileageRecords = [];
             while ($row = $result->fetch_assoc()) {
@@ -78,13 +78,13 @@
     }
 
     function findMileageRecord($id) {
-        $query = "SELECT * FROM mileage WHERE id=$id";
+        $query = "SELECT * FROM vt_mileage WHERE id=$id";
         $result = executeQuery($query);
         return $result->fetch_assoc();
     }
 
     function fetchLatestOdometerRecord($vehicleId){
-        $sql = "SELECT * FROM odometer WHERE vehicle_id = $vehicleId ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT * FROM vt_odometer WHERE vehicle_id = $vehicleId ORDER BY id DESC LIMIT 1";
         $result = executeQuery($sql);
         return  $result->fetch_assoc();
     }
@@ -165,18 +165,5 @@
         $query = "SELECT * FROM vt_maintenance  WHERE id = $id";
         $result = executeQuery($query);
         return $result->fetch_assoc();
-    }
-    
-    function fetchNotes($vehicle) {
-        $query = "SELECT id, date, note FROM notes WHERE vehicle_id=$vehicle";
-        $result = executeQuery($query);
-        if ($result === false) {
-            return [];
-        }
-        $notes = [];
-        while ($row = $result->fetch_assoc()) {
-            $notes[] = $row;
-        }
-        return $notes;
     }
     

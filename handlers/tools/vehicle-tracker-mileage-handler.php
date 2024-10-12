@@ -11,11 +11,11 @@
 
         if (isset($_POST['id'])) { // Update record
             $id = $_POST['id'];
-            executeQuery("UPDATE mileage SET date='$date', vehicle_id='$vehicle_id', fuel_state='$fuel_state', comments='$comments', odometer_reading='$odometer_reading' WHERE id=$id");
+            executeQuery("UPDATE vt_mileage SET date='$date', vehicle_id='$vehicle_id', fuel_state='$fuel_state', comments='$comments', odometer_reading='$odometer_reading' WHERE id=$id");
             setSuccessOrFailureMessage("success", "Record updated successfully.");
         } else { // Add new record
             $vehicle_id = findVehicleForUser($userId);
-            executeQuery("INSERT INTO mileage (vehicle_id, date, fuel_state, comments, odometer_reading) VALUES ('$vehicle_id', '$date', '$fuel_state', '$comments', '$odometer_reading')");
+            executeQuery("INSERT INTO vt_mileage (vehicle_id, date, fuel_state, comments, odometer_reading) VALUES ('$vehicle_id', '$date', '$fuel_state', '$comments', '$odometer_reading')");
             setSuccessOrFailureMessage("success", "Record added successfully.");
         }
         Database::getInstance()->closeConnection();

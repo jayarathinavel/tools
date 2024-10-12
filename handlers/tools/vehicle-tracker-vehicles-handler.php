@@ -8,7 +8,7 @@
         try {
             if ($id) {
                 // Update existing vehicle
-                $query = "UPDATE vehicles SET name='$name', description='$description' WHERE id='$id'";
+                $query = "UPDATE vt_vehicles SET name='$name', description='$description' WHERE id='$id'";
                 if (executeQuery($query)) {
                     setSuccessOrFailureMessage('success', 'Updated Successfully');
                 } else {
@@ -16,7 +16,7 @@
                 }
             } else {
                 // Insert new vehicle
-                $query = "INSERT INTO vehicles (name, description, user_id) VALUES ('$name', '$description', '$userId')";
+                $query = "INSERT INTO vt_vehicles (name, description, user_id) VALUES ('$name', '$description', '$userId')";
                 if (executeQuery($query)) {
                     setSuccessOrFailureMessage('success', 'Added Successfully');
                     clearSelectedVehicle();

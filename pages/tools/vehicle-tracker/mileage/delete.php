@@ -5,7 +5,7 @@
     try {
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
-            executeQuery("DELETE FROM mileage WHERE id=$id");
+            executeQuery("DELETE FROM vt_mileage WHERE id=$id");
             setSuccessOrFailureMessage('success', 'Deleted Successfully');
         }
     } catch (Exception $e) {

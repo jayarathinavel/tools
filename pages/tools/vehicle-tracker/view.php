@@ -19,7 +19,7 @@
         Add a vechicle to get started!
     </div>
     <?php
-        $vehicles = executeQuery("SELECT * FROM vehicles WHERE user_id=$userId");
+        $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['vehicleId'])) {
                 $vehicle = $_POST['vehicleId'];

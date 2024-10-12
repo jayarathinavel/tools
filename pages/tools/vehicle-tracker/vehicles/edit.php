@@ -6,7 +6,7 @@
     $vehicle = null;
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $result = executeQuery("SELECT * FROM vehicles WHERE id='$id'");
+        $result = executeQuery("SELECT * FROM vt_vehicles WHERE id='$id'");
         if ($result->num_rows == 1) {
             $vehicle = $result->fetch_assoc();
         }
