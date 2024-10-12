@@ -96,15 +96,20 @@
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $themeValue = $row['value'];
-                setThemeToSession($themeValue);
+                setToSession("theme", $themeValue);
             }
         }
         return $themeValue;
     }
 
-    function setThemeToSession($theme){
+    function setToSession($sessionVariable, $value){
         startSession();
-        $_SESSION["theme"] = $theme;
+        $_SESSION[$sessionVariable] = $value;
+    }
+
+    function getFromSession($sessionVariable){
+        startSession();
+        return $_SESSION[$sessionVariable];
     }
 
     function printAssociativeArray($array) {

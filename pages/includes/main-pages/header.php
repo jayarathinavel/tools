@@ -58,7 +58,7 @@
                 echo'
                     <li class="nav-item dropstart">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        '.$_SESSION["username"].'
+                        '.getFromSession("username").'
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/pages/auth/app-users/reset-password.php">Rest Password</a></li>

@@ -16,7 +16,8 @@
 
             if ($result) {
                 setSuccessOrFailureMessage('success', 'Theme updated successfully.');
-                setThemeToSession($selectedTheme);
+                setToSession("theme",$selectedTheme);
+                $themeValue = fetchThemeValue();
             } else {
                 setSuccessOrFailureMessage('failure', 'Failed to update the theme.');
             }
