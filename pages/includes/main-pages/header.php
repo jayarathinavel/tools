@@ -9,8 +9,7 @@
 
         try {
             require_once $rootPath . '/config/config.php';
-            $conn = initDb();
-            $themeValue = fetchThemeValue($conn);
+            $themeValue = fetchThemeValue();
             $cssFilePath = $rootPath . '/resources/bootswatch/' . $themeValue . '/bootstrap.min.css';
             if (isset($themeValue) && !empty($themeValue) && $themeValue != "default" && file_exists($cssFilePath)) {
                 echo '
@@ -75,7 +74,7 @@
   </div>
 </nav>
 <?php
-    function generate_breadcrumbs() {
+    function generateBreadcrumbs() {
         $path = $_SERVER['REQUEST_URI'];
         $path = trim($path, '/');
         $pathArray = explode('/', $path);
@@ -108,5 +107,5 @@
 ?>
 
 <div class="container">
-    <?php echo generate_breadcrumbs(); ?>
+    <?php echo generateBreadcrumbs(); ?>
 </div>

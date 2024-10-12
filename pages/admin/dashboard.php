@@ -7,7 +7,6 @@
 ?>
 <h4 class="text-center"> Welcome Admin </h4>
 <div class="text-center">
-    <a href="contact-submissions.php">Contact Form Submissions </a> <br/>
     <a href="change-theme.php">Change Theme</a> <br/>
     <h5> Settings </h5>
     <a href="/pages/auth/reset-password.php">Reset Password</a> <br>

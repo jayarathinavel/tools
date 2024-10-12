@@ -10,16 +10,6 @@ INSERT INTO users
 (id, username, password)
 VALUES(1, 'admin', '$2y$10$1oJoW2QjLU8hr0RYYajcWO4YKaHqYunPv1TCSLZphsDlOC0rr8OBK');
 
-CREATE TABLE contact_form (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    subject VARCHAR(255) NOT NULL,
-    message TEXT NOT NULL,
-    submission_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE `variables` (
   `key` varchar(100) NOT NULL,
   `value` varchar(100) NOT NULL,

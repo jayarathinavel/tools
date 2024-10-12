@@ -8,11 +8,6 @@ require_once $rootPath . '/pages/includes/admin-pages/header.php';
 <h4 class="text-center"> Help </h4>
 <ul>
     <li>
-        <p><strong>Contact Form Submissions</strong>:<br />
-            This link takes you to a page where you can view submissions from the contact form. You can see
-            the messages and information sent by users through the contact form. </p>
-    </li>
-    <li>
         <p><strong>Change Theme</strong>:<br />
             The &quot;Change Theme&quot; link allows you to customize the visual appearance of your Web application. You
             can select from different themes to change the overall look and feel. Choose a theme that

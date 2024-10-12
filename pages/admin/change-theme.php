@@ -7,25 +7,22 @@
     $successMessage = '';
     $errorMessage = '';
     try {
-        $conn = initDb();
-        $themeValue = fetchThemeValue($conn);
+        $themeValue = fetchThemeValue();
         if (isset($_POST['theme']) && ($_POST['theme'] != $themeValue)) {
             $selectedTheme = $_POST['theme'];
-            $sql = "INSERT INTO variables (`key`, `value`) VALUES ('theme', ?)
-                    ON DUPLICATE KEY UPDATE `value` = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $selectedTheme, $selectedTheme);
+            $sql = "INSERT INTO variables (`key`, `value`) VALUES ('theme', '$selectedTheme')
+                    ON DUPLICATE KEY UPDATE `value` = '$selectedTheme'";
+            $result = executeQuery($sql);
 
-            if ($stmt->execute()) {
-                $successMessage = 'Theme updated successfully.';
-                $themeValue = fetchThemeValue($conn);
+            if ($result) {
+                setSuccessOrFailureMessage('success', 'Theme updated successfully.');
+                setThemeToSession($selectedTheme);
             } else {
-                $errorMessage = 'Failed to update the theme.';
+                setSuccessOrFailureMessage('failure', 'Failed to update the theme.');
             }
-            $stmt->close();
         }
     } catch (Exception $e) {
-        $errorMessage = 'An error occurred: ' . $e->getMessage();
+        setSuccessOrFailureMessage('failure', $e->getMessage());
     }
 ?>
 
@@ -41,7 +38,6 @@
                         echo "<option value='default'>Default</option>";
                         foreach ($themes as $theme) {
                             if ($theme != '.' && $theme != '..' && is_dir($folderPath . '/' . $theme)) {
-                                // Convert folder name to sentence case
                                 $folderName = ucwords(str_replace('_', ' ', $theme));
                                 echo "<option value='$theme'>$folderName</option>";
                             }
@@ -53,12 +49,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <?php
-    if ($successMessage) {
-        echo '<div class="alert alert-success mt-3">' . $successMessage . '</div>';
-    }
-    if ($errorMessage) {
-        echo '<div class="alert alert-danger mt-3">' . $errorMessage . '</div>';
-    }
+        getSuccessOrFailureMessage();
     ?>
 </div>
 
@@ -72,6 +63,5 @@
 </script>
 
 <?php
-$conn->close();
-require_once $rootPath . '/pages/includes/admin-pages/footer.php';
+    require_once $rootPath . '/pages/includes/admin-pages/footer.php';
 ?>
