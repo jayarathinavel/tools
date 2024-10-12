@@ -1,12 +1,10 @@
 <?php
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/config/config.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
     includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
-    $conn = initDb();
     try {
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
-            $conn->query("DELETE FROM expense_balance WHERE id=$id");
+            executeQuery("DELETE FROM expense_balance WHERE id=$id");
             setSuccessOrFailureMessage('success', 'Deleted Successfully');
         }
     } catch (Exception $e) {

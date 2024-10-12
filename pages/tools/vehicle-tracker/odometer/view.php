@@ -1,12 +1,9 @@
 <?php
-$pageTitle = "Vehicle Tracker - Odometer";
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-appUserLoginRequired($_SERVER['REQUEST_URI']);
-includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
-$userId = vehicleTrackerUser();
-$vehicle = findVehicleForUser($userId);
-$vehicleDetails = fetchVehicleDetails($vehicle);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Vehicle Tracker - Odometer", "main", $_SERVER['REQUEST_URI']);
+    includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
+    $userId = vehicleTrackerUser();
+    $vehicle = findVehicleForUser($userId);
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -21,7 +18,7 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
     <?php
         $odometerRecords = [];
         if (isset($vehicle)) {
-            $odometerRecords = $conn->query("SELECT * FROM odometer WHERE vehicle_id = $vehicle");
+            $odometerRecords = executeQuery("SELECT * FROM odometer WHERE vehicle_id = $vehicle");
         }
     ?>
     <?php
@@ -84,6 +81,5 @@ $vehicleDetails = fetchVehicleDetails($vehicle);
 </script>
 
 <?php
-appUserLoginRequiredClose();
-require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

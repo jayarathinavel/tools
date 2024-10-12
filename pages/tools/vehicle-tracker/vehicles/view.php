@@ -1,10 +1,7 @@
 <?php
-$pageTitle = "Vehicle Tracker - Vehicles";
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-appUserLoginRequired($_SERVER['REQUEST_URI']);
-includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
-$conn = initDb();
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Vehicle Tracker - Vehicles", "main", $_SERVER['REQUEST_URI']);
+    includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
 ?>
 
 <div class="container">
@@ -13,7 +10,7 @@ $conn = initDb();
     ?>
     <h1>Vehicle Tracker - Vehicles</h1>
     <?php
-        $result = $conn->query("SELECT * FROM vehicles");
+        $result = executeQuery("SELECT * FROM vehicles");
     ?>
     <table class="table">
         <thead>
@@ -40,6 +37,5 @@ $conn = initDb();
 </div>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

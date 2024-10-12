@@ -1,8 +1,6 @@
 <?php
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    $pageTitle = "Add Note";
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Add Note", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
 ?>
 
@@ -27,7 +25,6 @@
 </div>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
     setTodaysDateForForm();
 ?>

@@ -1,8 +1,6 @@
 <?php
-    $pageTitle = "Vehicle Tracker";
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Vehicle Tracker", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
     $userId = vehicleTrackerUser();
     $vehicle = findVehicleForUser($userId);
@@ -21,7 +19,7 @@
         Add a vechicle to get started!
     </div>
     <?php
-        $vehicles = $conn->query("SELECT * FROM vehicles WHERE user_id=$userId");
+        $vehicles = executeQuery("SELECT * FROM vehicles WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['vehicleId'])) {
                 $vehicle = $_POST['vehicleId'];
@@ -122,19 +120,25 @@
                 </div>
                 <div>
                     <h5 class="mb-1">Mileage</h5>
-                    <p class='mb-0'>Lastest Readings:</p>
-                    <p class='mb-0'>
-                        <span class="badge bg-success"><?php echo date('d M', strtotime($latestMileageRecord['date'])) ?></span>
-                        Mileage at
-                        <?php echo $latestMileageRecord['odometer_reading']?>
-                        kms = <?php echo round($latestMileageRecord['calculated_mileage'], 2)?> kms
-                    </p>
-                    <p class='mb-0'>
-                        <span class="badge bg-success"><?php echo date('d M', strtotime($latestFuelQuantityRecord['date'])) ?></span>
-                        Fuel at
-                        <?php echo $latestFuelQuantityRecord['odometer_reading']?>
-                        kms = <?php echo $latestFuelQuantityRecord['fuel_state']?> L
-                    </p>
+                    <?php if(!empty($latestMileageRecord) || !empty($latestFuelQuantityRecord) ){ ?>
+                        <p class='mb-0'>Lastest Readings:</p>
+                    <?php } ?>
+                    <?php if(!empty($latestMileageRecord)){ ?>
+                        <p class='mb-0'>
+                            <span class="badge bg-success"><?php echo date('d M', strtotime($latestMileageRecord['date'])) ?></span>
+                            Mileage at
+                            <?php echo $latestMileageRecord['odometer_reading']?>
+                            kms = <?php echo round($latestMileageRecord['calculated_mileage'], 2)?> kms
+                        </p>
+                    <?php } ?>
+                    <?php if(!empty($latestFuelQuantityRecord)){ ?>
+                        <p class='mb-0'>
+                            <span class="badge bg-success"><?php echo date('d M', strtotime($latestFuelQuantityRecord['date'])) ?></span>
+                            Fuel at
+                            <?php echo $latestFuelQuantityRecord['odometer_reading']?>
+                            kms = <?php echo $latestFuelQuantityRecord['fuel_state']?> L
+                        </p>
+                    <?php } ?>
                     <a href="mileage/view.php" class="btn btn-link">Manage Mileage</a>
                 </div>
             </div>
@@ -149,26 +153,28 @@
                     <h5 class="mb-1">Maintenance </h5>
                     <div>
                         <?php
-                            $latestOdometerReading = ($latestOdometerRecord['end_distance']) == 0 ? ($latestOdometerRecord['start_distance']) : ($latestOdometerRecord['end_distance']);
-                            $upcomingMaintenances = [];
+                            if(!empty($latestOdometerReading)){
+                                $latestOdometerReading = ($latestOdometerRecord['end_distance']) == 0 ? ($latestOdometerRecord['start_distance']) : ($latestOdometerRecord['end_distance']);
+                                $upcomingMaintenances = [];
 
-                            foreach ($maintenanceRecords as $record) {
-                                $kilometersToDue = $record['odometer_due'] - $latestOdometerReading;
+                                foreach ($maintenanceRecords as $record) {
+                                    $kilometersToDue = $record['odometer_due'] - $latestOdometerReading;
 
-                                if ($kilometersToDue <= 1000 && $kilometersToDue >= 0) {
-                                    $upcomingMaintenances[] = $record;
+                                    if ($kilometersToDue <= 1000 && $kilometersToDue >= 0) {
+                                        $upcomingMaintenances[] = $record;
+                                    }
                                 }
-                            }
 
-                            if (!empty($upcomingMaintenances)) {
-                                echo "Maintenance due within the next 1000 km:<br>";
-                                foreach ($upcomingMaintenances as $maintenance) {
-                                    echo "<ul class='mb-0'>";
-                                    echo "<li><span class='fw-bold'>" . htmlspecialchars($maintenance['description']) . "</span>, at: " . htmlspecialchars($maintenance['odometer_due']) . " kms </li>";
-                                    echo "</ul>";
+                                if (!empty($upcomingMaintenances)) {
+                                    echo "Maintenance due within the next 1000 km:<br>";
+                                    foreach ($upcomingMaintenances as $maintenance) {
+                                        echo "<ul class='mb-0'>";
+                                        echo "<li><span class='fw-bold'>" . htmlspecialchars($maintenance['description']) . "</span>, at: " . htmlspecialchars($maintenance['odometer_due']) . " kms </li>";
+                                        echo "</ul>";
+                                    }
+                                } else {
+                                    echo "<p class='mb-0'>No maintenance due within the next 1000 km.</p>";
                                 }
-                            } else {
-                                echo "<p class='mb-0'>No maintenance due within the next 1000 km.</p>";
                             }
                         ?>
                     </div>
@@ -179,6 +185,5 @@
     </div>
 </div>
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

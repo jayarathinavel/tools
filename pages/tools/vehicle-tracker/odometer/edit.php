@@ -1,32 +1,30 @@
 <?php
-$pageTitle = "Edit Odometer Record";
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-appUserLoginRequired($_SERVER['REQUEST_URI']);
-includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
-$userId = vehicleTrackerUser();
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Edit Odometer Record", "main", $_SERVER['REQUEST_URI']);
+    includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
+    $userId = vehicleTrackerUser();
 
-// Check if the record ID is provided
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    echo '<div class="alert alert-danger mb-3" role="alert">Invalid record ID!</div>';
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
-    exit;
-}
+    // Check if the record ID is provided
+    if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+        echo '<div class="alert alert-danger mb-3" role="alert">Invalid record ID!</div>';
+        require_once $rootPath . '/pages/includes/main-pages/footer.php';
+        exit;
+    }
 
-$recordId = intval($_GET['id']);
-$record = findOdometerRecord($recordId);
+    $recordId = intval($_GET['id']);
+    $record = findOdometerRecord($recordId);
 
-if (!$record) {
-    echo '<div class="alert alert-danger mb-3" role="alert">Record not found!</div>';
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
-    exit;
-}
+    if (!$record) {
+        echo '<div class="alert alert-danger mb-3" role="alert">Record not found!</div>';
+        require_once $rootPath . '/pages/includes/main-pages/footer.php';
+        exit;
+    }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
-}
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
+    }
 
-$vehicles = fetchVehicles($userId);
+    $vehicles = fetchVehicles($userId);
 
 ?>
 
@@ -65,6 +63,5 @@ $vehicles = fetchVehicles($userId);
 </div>
 
 <?php
-appUserLoginRequiredClose();
-require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

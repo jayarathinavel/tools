@@ -1,8 +1,6 @@
 <?php
-    $pageTitle = "Add Maintenance  Record";
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Add Maintenance  Record", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
     $userId = vehicleTrackerUser();
     $vehicle = findVehicleForUser($userId);
@@ -52,7 +50,6 @@
 </div>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
     setTodaysDateForForm();
 ?>

@@ -8,7 +8,6 @@
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
         try {
-            require_once $rootPath . '/config/config.php';
             $themeValue = fetchThemeValue();
             $cssFilePath = $rootPath . '/resources/bootswatch/' . $themeValue . '/bootstrap.min.css';
             if (isset($themeValue) && !empty($themeValue) && $themeValue != "default" && file_exists($cssFilePath)) {

@@ -1,8 +1,6 @@
 <?php
-    $pageTitle = "Vehicle Tracker - Notes";
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Vehicle Tracker - Notes", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
     $userId = vehicleTrackerUser();
     $vehicle = findVehicleForUser($userId);
@@ -10,6 +8,9 @@
 
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
+    <?php
+       displayVehicleDetails($vehicle);
+    ?>
     <h1>Vehicle Tracker - Notes</h1>
     <div style="overflow-x: auto;">
         <table class="table">
@@ -22,7 +23,7 @@
             </thead>
             <tbody>
                 <?php
-                    $notes = $conn->query("SELECT * FROM vt_notes WHERE vehicle_id=$vehicle ORDER BY date DESC");
+                    $notes = executeQuery("SELECT * FROM vt_notes WHERE vehicle_id=$vehicle ORDER BY date DESC");
                     foreach ($notes as $note) {
                 ?>
                 <tr>
@@ -47,6 +48,5 @@
 </script>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

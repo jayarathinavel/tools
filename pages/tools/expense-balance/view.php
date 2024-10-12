@@ -1,8 +1,6 @@
 <?php
-    $pageTitle = "Expense Balance";
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Expense Balanace", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
     $userId = expenseBalanceUser();
     $book = findBookExpenseBalance($userId)
@@ -19,7 +17,7 @@
     <h1>Expense Balance</h1>
     <?php
         $expenses = [];
-        $expenseBooks = $conn->query("SELECT * FROM expense_balance_book WHERE user_id=$userId");
+        $expenseBooks = executeQuery("SELECT * FROM expense_balance_book WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['expenseBookId'])) {
                 $book = $_POST['expenseBookId'];
@@ -30,7 +28,7 @@
             }
         }
         if(isset($book)) {
-            $expenses = $conn->query("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
+            $expenses = executeQuery("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
             $persons = fetchPersonsFromExpenseBalanceBook($book);
         }
     ?>
@@ -163,6 +161,5 @@
 </script>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

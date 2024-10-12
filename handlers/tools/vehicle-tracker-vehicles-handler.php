@@ -1,34 +1,33 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $conn = initDb();
-    $userId = vehicleTrackerUser();
-    $id = isset($_POST['id']) ? $conn->real_escape_string($_POST['id']) : null;
-    $name = $conn->real_escape_string($_POST['name']);
-    $description = $conn->real_escape_string($_POST['description']);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $userId = vehicleTrackerUser();
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
 
-    try {
-        if ($id) {
-            // Update existing vehicle
-            $query = "UPDATE vehicles SET name='$name', description='$description' WHERE id='$id'";
-            if ($conn->query($query)) {
-                setSuccessOrFailureMessage('success', 'Updated Successfully');
+        try {
+            if ($id) {
+                // Update existing vehicle
+                $query = "UPDATE vehicles SET name='$name', description='$description' WHERE id='$id'";
+                if (executeQuery($query)) {
+                    setSuccessOrFailureMessage('success', 'Updated Successfully');
+                } else {
+                    throw new Exception('Error executing query');
+                }
             } else {
-                throw new Exception('Error executing query: ' . $conn->error);
+                // Insert new vehicle
+                $query = "INSERT INTO vehicles (name, description, user_id) VALUES ('$name', '$description', '$userId')";
+                if (executeQuery($query)) {
+                    setSuccessOrFailureMessage('success', 'Added Successfully');
+                    clearSelectedVehicle();
+                } else {
+                    throw new Exception('Error executing query');
+                }
             }
-        } else {
-            // Insert new vehicle
-            $query = "INSERT INTO vehicles (name, description, user_id) VALUES ('$name', '$description', '$userId')";
-            if ($conn->query($query)) {
-                setSuccessOrFailureMessage('success', 'Added Successfully');
-                clearSelectedVehicle();
-            } else {
-                throw new Exception('Error executing query: ' . $conn->error);
-            }
+        } catch (Exception $e) {
+            setSuccessOrFailureMessage('failure', 'Failed to Save! ' . $e->getMessage());
         }
-    } catch (Exception $e) {
-        setSuccessOrFailureMessage('failure', 'Failed to Save! ' . $e->getMessage());
+        Database::getInstance()->closeConnection();
+        header("Location: view.php");
+        exit;
     }
-
-    header("Location: view.php");
-    exit;
-}

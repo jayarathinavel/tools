@@ -1,28 +1,29 @@
 <?php
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/config/config.php';
-includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
-$conn = initDb();
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
 
-try {
-    if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
-        $id = $_GET['id'];
-        $id = $conn->real_escape_string($id);
-        $query = "DELETE FROM vehicles WHERE id='$id'";
-        if ($conn->query($query)) {
-            $deleteOdometerQuery = "DELETE from odometer WHERE vehicle_id = $id";
-            $deleteMileageQuery = "DELETE from mileage WHERE vehicle_id = $id";
-            $conn->query($deleteOdometerQuery);
-            $conn->query($deleteMileageQuery);
-            clearSelectedVehicle();
-            setSuccessOrFailureMessage('success', 'Deleted Successfully');
-        } else {
-            throw new Exception('Error executing query: ' . $conn->error);
+    try {
+        if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
+            $id = $_GET['id'];
+            $query = "DELETE FROM vehicles WHERE id='$id'";
+            if (executeQuery($query)) {
+                $deleteOdometerQuery = "DELETE from odometer WHERE vehicle_id = $id";
+                $deleteMileageQuery = "DELETE from mileage WHERE vehicle_id = $id";
+                $deleteMaintenanceQuery = "DELETE from vt_maintenance WHERE vehicle_id = $id";
+                $deleteNotesQuery = "DELETE from vt_notes WHERE vehicle_id = $id";
+                executeQuery($deleteOdometerQuery);
+                executeQuery($deleteMileageQuery);
+                executeQuery($deleteMaintenanceQuery);
+                executeQuery($deleteNotesQuery);
+                clearSelectedVehicle();
+                setSuccessOrFailureMessage('success', 'Deleted Successfully');
+            } else {
+                throw new Exception('Error executing query');
+            }
         }
+    } catch (Exception $e) {
+        setSuccessOrFailureMessage('failure', 'Failed to Delete! ' . $e->getMessage());
     }
-} catch (Exception $e) {
-    setSuccessOrFailureMessage('failure', 'Failed to Delete! ' . $e->getMessage());
-}
 
-header("Location: view.php");
-exit;
+    header("Location: view.php");
+    exit;

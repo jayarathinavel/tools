@@ -1,6 +1,6 @@
 <?php
-    $pageTitle = "Home";
-    require_once 'pages/includes/main-pages/header.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Home", "main", null);
 ?>
 
 <div class="container">
@@ -34,5 +34,5 @@
 </div>
 
 <?php
-    require_once 'pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>
