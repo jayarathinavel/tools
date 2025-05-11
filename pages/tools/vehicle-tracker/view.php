@@ -96,6 +96,7 @@
                             <div class="form-group">
                                 <input type="number" id="end_distance" name="end_distance" class="form-control" step="any" placeholder="End Distance" required>
                             </div>
+                            <input type="hidden" name="addingEndDistance" value="<?php echo true ?>">
                             <div class="form-row d-flex align-items-center mt-2">
                                 <div class="form-group">
                                     <textarea id="comment" rows = "1" name="comment" placeholder = "Any Comments ?" class="form-control"><?php echo htmlspecialchars($latestOdometerRecord['comment']); ?></textarea>
