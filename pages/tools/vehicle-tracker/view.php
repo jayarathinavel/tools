@@ -142,7 +142,7 @@
                 </div>
             </div>
         </div>
-        <!-- Vehicles -->
+        <!-- Maintainence -->
         <div class="col-md-4 mb-3">
             <div class="d-flex align-items-start p-3 border rounded">
                 <div class="me-3">
@@ -152,7 +152,7 @@
                     <h5 class="mb-1">Maintenance </h5>
                     <div>
                         <?php
-                            if(!empty($latestOdometerReading)){
+                            if(!empty($latestOdometerRecord)){
                                 $latestOdometerReading = ($latestOdometerRecord['end_distance']) == 0 ? ($latestOdometerRecord['start_distance']) : ($latestOdometerRecord['end_distance']);
                                 $upcomingMaintenances = [];
 
