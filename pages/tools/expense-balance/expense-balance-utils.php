@@ -4,9 +4,7 @@
         if(isset($_SESSION['expenseBalanceSelectedBook'])){
             $selectedBook = $_SESSION['expenseBalanceSelectedBook'];
         } else{
-            $conn = initDb();
-            $books = $conn->query("SELECT * FROM expense_balance_book WHERE user_id = $userId");
-            $conn->close();
+            $books = executeQuery("SELECT * FROM expense_balance_book WHERE user_id = $userId");
             if($books->num_rows > 0){
                 $selectedBook = $books->fetch_assoc()["id"];
                 $_SESSION['expenseBalanceSelectedBook'] = $selectedBook;
@@ -22,8 +20,7 @@
     }
 
     function fetchPersonsFromExpenseBalanceBook($book){
-        $conn = initDb();
-        $expenseBookDetails = $conn->query("SELECT * FROM expense_balance_book WHERE id=$book");
+        $expenseBookDetails = executeQuery("SELECT * FROM expense_balance_book WHERE id=$book");
         $persons = $expenseBookDetails->fetch_assoc()["persons"];
         return array_map('trim', explode("," , $persons));
     }
@@ -33,9 +30,8 @@
     }
 
     function fetchBooks($userId) {
-        $conn = initDb();
         $query = "SELECT id, name FROM expense_balance_book WHERE user_id=$userId";
-        $result = $conn->query($query);
+        $result = executeQuery($query);
         if ($result === false) {
             return [];
         }

@@ -1,6 +1,6 @@
 <?php
     function vehicleTrackerUser(){
-        return 1;
+        return $_SESSION['appUserId'];
     }
 
     function findVehicleForUser($userId){
@@ -8,9 +8,7 @@
         if(isset($_SESSION['vehicleTrackerSelectedVehicle'])){
             $selectedVehicle = $_SESSION['vehicleTrackerSelectedVehicle'];
         } else{
-            $conn = initDb();
-            $vehicles = $conn->query("SELECT * FROM vehicles WHERE user_id = $userId");
-            $conn->close();
+            $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id = $userId");
             if($vehicles->num_rows > 0){
                 $selectedVehicle = $vehicles->fetch_assoc()["id"];
                 $_SESSION['vehicleTrackerSelectedVehicle'] = $selectedVehicle;
@@ -28,9 +26,8 @@
 
     function fetchVehicleDetails($vehicleId){
         if(isset($vehicleId)){
-            $conn = initDb();
-            $query = "SELECT * FROM vehicles WHERE id=$vehicleId";
-            return $conn->query($query)->fetch_assoc();
+            $query = "SELECT * FROM vt_vehicles WHERE id=$vehicleId";
+            return executeQuery($query)->fetch_assoc();
         }
     }
 
@@ -46,9 +43,8 @@
     }
 
     function fetchVehicles($userId) {
-        $conn = initDb();
-        $query = "SELECT id, name FROM vehicles WHERE user_id=$userId";
-        $result = $conn->query($query);
+        $query = "SELECT id, name FROM vt_vehicles WHERE user_id=$userId";
+        $result = executeQuery($query);
         if ($result === false) {
             return [];
         }
@@ -60,10 +56,8 @@
     }
 
     function findOdometerRecord($recordId) {
-        $conn = initDb();
-        $recordId = $conn->real_escape_string($recordId);
-        $query = "SELECT * FROM odometer WHERE id = '$recordId'";
-        $result = $conn->query($query);
+        $query = "SELECT * FROM vt_odometer WHERE id = '$recordId'";
+        $result = executeQuery($query);
         if ($result && $result->num_rows > 0) {
             return $result->fetch_assoc();
         } else {
@@ -73,10 +67,8 @@
 
     function fetchMileageRecords($vehicleId) {
         if(isset($vehicleId)){
-            global $conn;
-            $vehicleId = $conn->real_escape_string($vehicleId);
-            $query = "SELECT * FROM mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
-            $result = $conn->query($query);
+            $query = "SELECT * FROM vt_mileage WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
+            $result = executeQuery($query);
             $mileageRecords = [];
             while ($row = $result->fetch_assoc()) {
                 $mileageRecords[] = $row;
@@ -86,17 +78,14 @@
     }
 
     function findMileageRecord($id) {
-        global $conn;
-        $id = $conn->real_escape_string($id);
-        $query = "SELECT * FROM mileage WHERE id=$id";
-        $result = $conn->query($query);
+        $query = "SELECT * FROM vt_mileage WHERE id=$id";
+        $result = executeQuery($query);
         return $result->fetch_assoc();
     }
 
     function fetchLatestOdometerRecord($vehicleId){
-        $conn = initDb();
-        $sql = "SELECT * FROM odometer WHERE vehicle_id = $vehicleId ORDER BY id DESC LIMIT 1";
-        $result = $conn->query($sql);
+        $sql = "SELECT * FROM vt_odometer WHERE vehicle_id = $vehicleId ORDER BY id DESC LIMIT 1";
+        $result = executeQuery($sql);
         return  $result->fetch_assoc();
     }
 
@@ -162,10 +151,8 @@
     
     function fetchMaintenanceRecords($vehicleId) {
         if (isset($vehicleId)) {
-            global $conn;
-            $vehicleId = $conn->real_escape_string($vehicleId);
             $query = "SELECT * FROM vt_maintenance  WHERE vehicle_id = $vehicleId ORDER BY date DESC;";
-            $result = $conn->query($query);
+            $result = executeQuery($query);
             $maintenanceRecords = [];
             while ($row = $result->fetch_assoc()) {
                 $maintenanceRecords[] = $row;
@@ -175,24 +162,8 @@
     }
 
     function findMaintenanceRecord($id) {
-        global $conn;
-        $id = $conn->real_escape_string($id);
         $query = "SELECT * FROM vt_maintenance  WHERE id = $id";
-        $result = $conn->query($query);
+        $result = executeQuery($query);
         return $result->fetch_assoc();
-    }
-    
-    function fetchNotes($vehicle) {
-        $conn = initDb();
-        $query = "SELECT id, date, note FROM notes WHERE vehicle_id=$vehicle";
-        $result = $conn->query($query);
-        if ($result === false) {
-            return [];
-        }
-        $notes = [];
-        while ($row = $result->fetch_assoc()) {
-            $notes[] = $row;
-        }
-        return $notes;
     }
     

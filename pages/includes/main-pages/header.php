@@ -8,9 +8,7 @@
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
         try {
-            require_once $rootPath . '/config/config.php';
-            $conn = initDb();
-            $themeValue = fetchThemeValue($conn);
+            $themeValue = fetchThemeValue();
             $cssFilePath = $rootPath . '/resources/bootswatch/' . $themeValue . '/bootstrap.min.css';
             if (isset($themeValue) && !empty($themeValue) && $themeValue != "default" && file_exists($cssFilePath)) {
                 echo '
@@ -60,7 +58,7 @@
                 echo'
                     <li class="nav-item dropstart">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        '.$_SESSION["username"].'
+                        '.getFromSession("username").'
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/pages/auth/app-users/reset-password.php">Rest Password</a></li>
@@ -75,7 +73,7 @@
   </div>
 </nav>
 <?php
-    function generate_breadcrumbs() {
+    function generateBreadcrumbs() {
         $path = $_SERVER['REQUEST_URI'];
         $path = trim($path, '/');
         $pathArray = explode('/', $path);
@@ -108,5 +106,5 @@
 ?>
 
 <div class="container">
-    <?php echo generate_breadcrumbs(); ?>
+    <?php echo generateBreadcrumbs(); ?>
 </div>

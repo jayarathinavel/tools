@@ -12,30 +12,31 @@
     }
 
     function initDb() {
-        $servername = DB_SERVERNAME;
-        $username = DB_USERNAME;
-        $password = DB_PASSWORD;
-        $dbname = DB_NAME;
-
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-        return $conn;
+        return (Database::getInstance()->getConnection());
     }
 
-    function initDbPdo() {
-        $servername = DB_SERVERNAME;
-        $username = DB_USERNAME;
-        $password = DB_PASSWORD;
-        $dbname = DB_NAME;
-        try {
-            $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $pdo;
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
+    function executeQuery($sql) {
+        $timer = new Timer('Database Query');
+        $conn = initDb();
+        // Allow only DML and DQL queries
+        if (preg_match('/^\s*(CREATE|ALTER|DROP|TRUNCATE)\s+/i', $sql)) {
+            die("SQL Error: DDL queries are not allowed.");
+        }
+    
+        $result = $conn->query($sql);
+    
+        if ($result === false) {
+            die("SQL Error: " . $conn->error);
+        }
+    
+        if (preg_match('/^\s*(SELECT|SHOW|DESCRIBE|EXPLAIN)\s+/i', $sql)) {
+            $timer->changeName("Select Query");
+            $timer->stop();
+            return $result;
+        } else {
+            $timer->changeName("Insert/Update/Detele Query");
+            $timer->stop();
+            return $conn->affected_rows > 0;
         }
     }
 
@@ -54,6 +55,7 @@
     }
 
     function appUserLoginRequired($redirectTo) {
+        startSession();
         if (!isset($_SESSION["appUserLoggedIn"]) || $_SESSION["appUserLoggedIn"] !== true) {
             $_SESSION['redirectTo'] = $redirectTo;
             header("location: /pages/auth/app-users/login.php");
@@ -82,64 +84,32 @@
         return htmlentities($data, ENT_QUOTES, 'UTF-8');
     }
 
-    function fetchThemeValue($conn){
+    function fetchThemeValue(){
         $themeValue = '';
-        $sql = "SELECT `value` FROM variables WHERE `key` = 'theme'";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $themeValue = $row['value'];
+        startSession();
+        if(isset($_SESSION["theme"])){
+            $themeValue = $_SESSION["theme"];
+        } else{
+            $sql = "SELECT `value` FROM variables WHERE `key` = 'theme'";
+            $result = executeQuery($sql);
+            
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $themeValue = $row['value'];
+                setToSession("theme", $themeValue);
+            }
         }
         return $themeValue;
     }
 
-    function checkSMTPStatus($host, $port, $username, $password) {
-        $status = false;
-        try {
-            $smtpTest = new PHPMailer();
-            $smtpTest->isSMTP();
-            $smtpTest->Host = $host;
-            $smtpTest->Port = $port;
-            $smtpTest->SMTPAuth = true;
-            $smtpTest->Username = $username;
-            $smtpTest->Password = $password;
-            $smtpTest->SMTPSecure = 'tls'; // Use 'ssl' or 'tls' as needed
-            $smtpTest->Timeout = 5; // Set a timeout for the connection
-            $smtpTest->SMTPDebug = 0; // Set to 2 for debugging
-    
-            if ($smtpTest->smtpConnect()) {
-                $status = true;
-                $smtpTest->smtpClose();
-            }
-        } catch (Exception $e) {
-            throw new Exception($e -> getMessage());
-        }
-        return $status;
+    function setToSession($sessionVariable, $value){
+        startSession();
+        $_SESSION[$sessionVariable] = $value;
     }
-    function checkCertificateValidity($url) {
-        $context = stream_context_create(['ssl' => ['capture_peer_cert' => true]]);
-        $stream = stream_socket_client("ssl://$url:443", $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
-        if ($stream) {
-            $params = stream_context_get_params($stream);
-            $certificate = openssl_x509_parse($params['options']['ssl']['peer_certificate']);
-    
-            if ($certificate) {
-                $validFrom = date('Y-m-d', $certificate['validFrom_time_t']);
-                $validTo = date('Y-m-d', $certificate['validTo_time_t']);
-                $currentDate = date('Y-m-d');
-    
-                $isValid = ($currentDate >= $validFrom && $currentDate <= $validTo);
-                return [
-                    'subject' => $certificate['subject'],
-                    'issuer' => $certificate['issuer'],
-                    'valid_from' => $validFrom,
-                    'valid_to' => $validTo,
-                    'is_valid' => $isValid,
-                ];
-            }
-        }
-        return null;
+
+    function getFromSession($sessionVariable){
+        startSession();
+        return $_SESSION[$sessionVariable];
     }
 
     function printAssociativeArray($array) {
@@ -202,4 +172,58 @@
     function formatDate($dateString) {
         $date = new DateTime($dateString);
         return $date->format('d-M-Y'); // Outputs: '08-Aug-2024'
+    }
+
+    function initializePage($pageTitleParam, $moduleTypeParam, $redirectToAfterAuth) {
+        global $rootPath;
+        $rootPath = $_SERVER['DOCUMENT_ROOT'];
+
+        global $pageTitle;
+        $pageTitle = $pageTitleParam;
+
+        global $moduleType;
+        $moduleType = $moduleTypeParam;
+
+        if(isset($moduleType)) {
+            require_once $rootPath . '/pages/includes/'.$moduleType.'-pages/header.php';
+        }
+        if(isset($redirectToAfterAuth)){
+            appUserLoginRequired($redirectToAfterAuth);
+        }
+    }
+
+    function initializePageFooter($rootPath, $moduleType) {
+        require_once $rootPath . '/config/footer-config.php';
+        if(isAppUserLoggedIn()){
+            appUserLoginRequiredClose();
+        }
+        if(isset($moduleType)) {
+            require_once $rootPath . '/pages/includes/'.$moduleType.'-pages/footer.php';
+        }
+    }
+
+    class Timer {
+        private $startTime;
+        private $name;
+
+        public function __construct($name) {
+            $this->name = $name;
+            $this->startTime = microtime(true);
+        }
+
+        public function changeName($name) {
+            $this->name = $name;
+        }
+
+        public function stop() {
+            if ($this->startTime) {
+                $endTime = microtime(true);
+                $executionTime = ($endTime - $this->startTime) * 1000;  // Calculate time in milliseconds
+                writeLog(Logger::DEBUG, "$this->name took " . number_format($executionTime, 2) . " ms");
+
+                $this->startTime = null;
+            } else {
+                writeLog(Logger::ERROR, "Timer for $this->name has already been stopped or not started");
+            }
+        }
     }

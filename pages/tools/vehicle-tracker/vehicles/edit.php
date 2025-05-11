@@ -1,24 +1,20 @@
 <?php
-$pageTitle = "Edit Vehicle";
-$rootPath = $_SERVER['DOCUMENT_ROOT'];
-require_once $rootPath . '/pages/includes/main-pages/header.php';
-appUserLoginRequired($_SERVER['REQUEST_URI']);
-includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
-$conn = initDb();
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Edit Vehicle", "main", $_SERVER['REQUEST_URI']);
+    includePhpFileFromRoot($rootPath, '/pages/tools/vehicle-tracker/vehicle-tracker-utils.php');
 
-$vehicle = null;
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $id = $conn->real_escape_string($id);
-    $result = $conn->query("SELECT * FROM vehicles WHERE id='$id'");
-    if ($result->num_rows == 1) {
-        $vehicle = $result->fetch_assoc();
+    $vehicle = null;
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $result = executeQuery("SELECT * FROM vt_vehicles WHERE id='$id'");
+        if ($result->num_rows == 1) {
+            $vehicle = $result->fetch_assoc();
+        }
     }
-}
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $vehicle) {
-    includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-vehicles-handler.php');
-}
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && $vehicle) {
+        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-vehicles-handler.php');
+    }
 ?>
 
 <div class="container">
@@ -42,6 +38,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $vehicle) {
 </div>
 
 <?php
-appUserLoginRequiredClose();
-require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

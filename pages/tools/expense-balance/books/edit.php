@@ -1,11 +1,9 @@
 <?php
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    $pageTitle = "Edit Expense Book";
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Edit Expense Book", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
     $id = $_GET['id'];
-    $expenseBook = $conn->query("SELECT * FROM expense_balance_book WHERE id=$id")->fetch_assoc();
+    $expenseBook = executeQuery("SELECT * FROM expense_balance_book WHERE id=$id")->fetch_assoc();
 ?>
 
 <div class="container">
@@ -30,6 +28,5 @@
 </div>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>

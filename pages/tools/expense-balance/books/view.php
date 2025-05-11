@@ -1,8 +1,6 @@
 <?php
-    $pageTitle = "Expense Balance Books";
-    $rootPath = $_SERVER['DOCUMENT_ROOT'];
-    require_once $rootPath . '/pages/includes/main-pages/header.php';
-    appUserLoginRequired($_SERVER['REQUEST_URI']);
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Expense Balance Books", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/expense-balance/expense-balance-utils.php');
     $userId = expenseBalanceUser();
 ?>
@@ -23,7 +21,7 @@
             </thead>
             <tbody>
                 <?php
-                    $expenseBooks = $conn->query("SELECT * FROM expense_balance_book WHERE user_id=$userId");
+                    $expenseBooks = executeQuery("SELECT * FROM expense_balance_book WHERE user_id=$userId");
                     foreach ($expenseBooks as $expenseBook) {
                 ?>
                 <tr>
@@ -50,6 +48,5 @@
 </script>
 
 <?php
-    appUserLoginRequiredClose();
-    require_once $rootPath . '/pages/includes/main-pages/footer.php';
+    initializePageFooter($rootPath, $moduleType);
 ?>
