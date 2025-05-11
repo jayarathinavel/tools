@@ -18,7 +18,7 @@
     <?php
         $odometerRecords = [];
         if (isset($vehicle)) {
-            $odometerRecords = executeQuery("SELECT * FROM odometer WHERE vehicle_id = $vehicle");
+            $odometerRecords = executeQuery("SELECT * FROM vt_odometer WHERE vehicle_id = $vehicle");
         }
     ?>
     <?php

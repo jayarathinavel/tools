@@ -9,6 +9,9 @@
     $latestMileageRecord = $latestMileageRecords['latest_fuel_empty'];
     $latestFuelQuantityRecord = $latestMileageRecords['latest_fuel_quantity'];
     $maintenanceRecords = fetchMaintenanceRecords($vehicle);
+    if (isset($_POST['date'])) {
+        includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
+    }
 ?>
 
 <div class="container mt-5">
@@ -58,19 +61,14 @@
         </div>
     </div>
 
-    <!-- Odometer -->
     <div class="row">
+        <!-- Odometer -->
         <div class="col-md-4 mb-3 <?php echo !isset($vehicle) ? 'd-none' : ''?>">
             <div class="d-flex align-items-start p-3 border rounded">
                 <div class="me-3">
                     <i class="bi bi-speedometer2 fs-2"></i>
                 </div>
                 <div>
-                    <?php
-                        if (isset($_POST['date'])) {
-                            includePhpFileFromRoot($rootPath, '/handlers/tools/vehicle-tracker-handler.php');
-                        }
-                    ?>
                     <h5 class="mb-1">Odometer</h5>
                     <form action="" method="post">
                         <?php if(isset($latestOdometerRecord) && $latestOdometerRecord['end_distance'] != 0) { ?>

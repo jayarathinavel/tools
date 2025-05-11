@@ -5,7 +5,7 @@
     try {
         if (isset($_GET['operation']) && $_GET['operation'] == 'delete') {
             $id = $_GET['id'];
-            $query = "DELETE FROM odometer WHERE id='$id'";
+            $query = "DELETE FROM vt_odometer WHERE id='$id'";
             if (executeQuery($query)) {
                 setSuccessOrFailureMessage('success', 'Deleted Successfully');
             } else {
