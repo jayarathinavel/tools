@@ -8,7 +8,7 @@
         if(isset($_SESSION['vehicleTrackerSelectedVehicle'])){
             $selectedVehicle = $_SESSION['vehicleTrackerSelectedVehicle'];
         } else{
-            $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id = $userId");
+            $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id = $userId order by timestamp desc");
             if($vehicles->num_rows > 0){
                 $selectedVehicle = $vehicles->fetch_assoc()["id"];
                 $_SESSION['vehicleTrackerSelectedVehicle'] = $selectedVehicle;
@@ -43,7 +43,7 @@
     }
 
     function fetchVehicles($userId) {
-        $query = "SELECT id, name FROM vt_vehicles WHERE user_id=$userId";
+        $query = "SELECT id, name FROM vt_vehicles WHERE user_id=$userId  order by timestamp desc";
         $result = executeQuery($query);
         if ($result === false) {
             return [];
