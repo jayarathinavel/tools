@@ -50,7 +50,6 @@
                     <input type="submit" value="Change" class="btn btn-sm btn-primary">
                 </form>
                 <a class="btn btn-sm btn-secondary" href="books/view.php">Manage Books</a>
-                <a class="btn btn-sm btn-info" href="view.php">View Bills</a>
             </div>
         <?php } else { ?>
             <div class="text-danger mb-2"> No books are available, <a href="books/add.php">create a book </a> first!</div>
@@ -58,6 +57,12 @@
     </div>
 
     <?php if(isset($book)): ?>
+        <div class="row mb-4 justify-content-center">
+            <div class="col-auto">
+                <a class="btn btn-sm btn-info" href="view.php">View Bills</a>
+            </div>
+        </div>
+
         <!-- Summary Cards -->
         <div class="row mb-4">
             <div class="col-md-4">
