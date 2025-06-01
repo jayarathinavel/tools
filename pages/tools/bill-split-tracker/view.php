@@ -48,7 +48,6 @@
                     <input type="submit" value="Change" class="btn btn-sm btn-primary">
                 </form>
                 <a class="btn btn-sm btn-secondary" href="books/view.php">Manage Books</a>
-                <a class="btn btn-sm btn-info" href="summary.php">View Summary</a>
             </div>
         <?php } ?>
         
@@ -76,6 +75,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
+            <a class="btn btn-sm btn-info" href="summary.php">View Summary</a>
         <?php endif; ?>
     </div>
     

@@ -29,6 +29,16 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card" style="width: 100%;">
+                    <img src="resources/images/bill-split-tracker.png" class="card-img-top" alt="Bill Split Tracker">
+                    <div class="card-body">
+                        <h5 class="card-title">Bill Split Tracker</h5>
+                        <p class="card-text">Track group bills, split expenses, and manage shared payments easily.</p>
+                        <a href="/pages/tools/bill-split-tracker/view.php" class="btn btn-primary">Bill Split Tracker</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
