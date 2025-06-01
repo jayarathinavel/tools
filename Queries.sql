@@ -115,3 +115,31 @@ CREATE TABLE `vt_notes` (
 RENAME TABLE vehicles TO vt_vehicles;
 RENAME TABLE odometer TO vt_odometer;
 RENAME TABLE mileage TO vt_mileage;
+-- Bill Split Tracker
+-- Bill Split Book Table
+CREATE TABLE IF NOT EXISTS `bill_split_book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `persons` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+);
+
+-- Bill Split Table
+CREATE TABLE IF NOT EXISTS `bill_split` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bill_name` varchar(255) NOT NULL,
+  `total_amount` decimal(10,2) NOT NULL,
+  `paid_by` varchar(100) NOT NULL,
+  `split_type` enum('equal','custom') NOT NULL DEFAULT 'equal',
+  `splits` json NOT NULL,
+  `date` date NOT NULL,
+  `bill_split_book_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `bill_split_book_id` (`bill_split_book_id`),
+  FOREIGN KEY (`bill_split_book_id`) REFERENCES `bill_split_book` (`id`) ON DELETE CASCADE
+);
+
