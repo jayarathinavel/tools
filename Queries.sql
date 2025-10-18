@@ -166,3 +166,28 @@ CREATE TABLE `events_anniversary_celebration` (
   KEY `idx_celebrations_date` (`date`),
   CONSTRAINT `fk_celebration_event` FOREIGN KEY (`event_id`) REFERENCES `events_anniversary` (`id`) ON DELETE CASCADE
 );
+
+
+-- Notebook tables
+
+CREATE TABLE `notebook` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `notebook_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `notebook_page` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `notebook_id` int NOT NULL,
+  `page_name` varchar(255) NOT NULL,
+  `markdown_content` longtext NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `notebook_id` (`notebook_id`),
+  CONSTRAINT `notebook_page_ibfk_1` FOREIGN KEY (`notebook_id`) REFERENCES `notebook` (`id`) ON DELETE CASCADE
+);
