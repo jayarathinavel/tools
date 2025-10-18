@@ -143,3 +143,26 @@ CREATE TABLE IF NOT EXISTS `bill_split` (
   FOREIGN KEY (`bill_split_book_id`) REFERENCES `bill_split_book` (`id`) ON DELETE CASCADE
 );
 
+-- Event Tracker Tables
+CREATE TABLE `events_anniversary` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci,
+  `original_date` date NOT NULL,
+  `added_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_events_user` (`user_id`)
+);
+
+CREATE TABLE `events_anniversary_celebration` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `event_id` int unsigned NOT NULL,
+  `date` date NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_celebrations_event` (`event_id`),
+  KEY `idx_celebrations_date` (`date`),
+  CONSTRAINT `fk_celebration_event` FOREIGN KEY (`event_id`) REFERENCES `events_anniversary` (`id`) ON DELETE CASCADE
+);
