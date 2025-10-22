@@ -22,3 +22,7 @@ Users
         Vehicle Tracker: /pages/tools/vehicle-tracker/view.php
 
         Bill Split Tracker: /pages/tools/bill-split-tracker/view.php
+
+        Events Tracker: /pages/tools/events-anniversary/view.php
+
+        Notebook: /pages/tools/notebook/view.php
