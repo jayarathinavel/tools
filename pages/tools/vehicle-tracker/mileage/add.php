@@ -47,7 +47,10 @@
         <input type="hidden" id="fuel_state" name="fuel_state">
         <div class="form-group">
             <label for="odometer_reading">Odometer Reading:</label>
-            <input type="number" id="odometer_reading" name="odometer_reading" class="form-control" step="any" required>
+            <div class="input-group">
+                <input type="number" id="odometer_reading" name="odometer_reading" class="form-control" step="any" required>
+                <input type="number" id="trip" name="trip" class="form-control ms-2" step="any" value="0" placeholder="Trip (default 0)">
+            </div>
         </div>
         <div class="form-group">
             <label for="comments">Comments:</label>
@@ -63,6 +66,19 @@
 ?>
 
 <script>
+
+    const odometerInput = document.getElementById('odometer_reading');
+    const tripInput = document.getElementById('trip');
+
+    document.getElementById('add-mileage-record').addEventListener('submit', function(event) {
+        const odometerValue = parseFloat(odometerInput.value) || 0;
+        const tripValue = parseFloat(tripInput.value) || 0;
+
+        if (tripValue !== 0) {
+            odometerInput.value = odometerValue - tripValue;
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         const quantityInput = document.getElementById('fuel_quantity');
         const emptyCheckbox = document.getElementById('fuel_empty');
