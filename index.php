@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Notebook</h5>
                         <p class="card-text">Digital Notebook to take notes and manage your thoughts</p>
-                        <a href="/pages/tools/Notebook/view.php" class="btn btn-primary">Notebook</a>
+                        <a href="/pages/tools/notebook/view.php" class="btn btn-primary">Notebook</a>
                     </div>
                 </div>
             </div>
