@@ -191,3 +191,5 @@ CREATE TABLE `notebook_page` (
   KEY `notebook_id` (`notebook_id`),
   CONSTRAINT `notebook_page_ibfk_1` FOREIGN KEY (`notebook_id`) REFERENCES `notebook` (`id`) ON DELETE CASCADE
 );
+
+ALTER TABLE notebook_page CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
