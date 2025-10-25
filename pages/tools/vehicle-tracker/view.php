@@ -5,6 +5,7 @@
     $userId = vehicleTrackerUser();
     $vehicle = findVehicleForUser($userId);
     $latestOdometerRecord = fetchLatestOdometerRecord($vehicle);
+    $previousOdometerRecord = fetchPreviousOdometerRecord($vehicle);
     $latestMileageRecords = fetchLatestMileageAndFuelQuantity($vehicle);
     $latestMileageRecord = $latestMileageRecords['latest_fuel_empty'];
     $latestFuelQuantityRecord = $latestMileageRecords['latest_fuel_quantity'];
@@ -88,7 +89,8 @@
                             </div>
                         <?php } elseif(isset($latestOdometerRecord) && $latestOdometerRecord['end_distance'] == 0){?>
                             <div class="fw-bold mb-2">Add end distance for <?php echo $latestOdometerRecord['date'] ?></div>
-                            <div class="fw-light mb-2">Started on <?php echo $latestOdometerRecord['start_distance'] ?> kms</div>
+                            <div class="fw-light">Started on <?php echo $latestOdometerRecord['start_distance'] ?> kms</div>
+                            <div class="fw-light mb-2"> Previous day (<?php echo formatDateShort($previousOdometerRecord['date']) ?> ) trip: <?php echo round(($previousOdometerRecord['end_distance'] - $previousOdometerRecord['start_distance']), 2) ?> kms </div>
                             <input type="hidden" name="id" value="<?php echo $latestOdometerRecord['id']; ?>">
                             <input type="hidden" name="vehicle" value="<?php echo $latestOdometerRecord['vehicle_id']; ?>">
                             <input type="date" id="date" name="date" class="form-control" value="<?php echo htmlspecialchars($latestOdometerRecord['date']); ?>" required hidden>

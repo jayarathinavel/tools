@@ -89,6 +89,12 @@
         return  $result->fetch_assoc();
     }
 
+    function fetchPreviousOdometerRecord($vehicleId){
+        $sql = "SELECT * FROM vt_odometer WHERE vehicle_id = $vehicleId ORDER BY id DESC LIMIT 1 OFFSET 1";
+        $result = executeQuery($sql);
+        return  $result->fetch_assoc();
+    }
+
     //fetchLatestMileageAndFuelQuantity
     {
         function fetchLatestMileageAndFuelQuantity($vehicleId) {

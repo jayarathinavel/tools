@@ -174,6 +174,11 @@
         return $date->format('d-M-Y'); // Outputs: '08-Aug-2024'
     }
 
+    function formatDateShort($dateString) {
+        $date = new DateTime($dateString);
+        return $date->format('d/M'); // Outputs: '08/Aug'
+    }
+
     function initializePage($pageTitleParam, $moduleTypeParam, $redirectToAfterAuth) {
         global $rootPath;
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
