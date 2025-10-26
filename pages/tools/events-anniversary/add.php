@@ -20,6 +20,20 @@
             <input type="date" id="original_date" name="original_date" class="form-control" required>
         </div>
         <div class="form-group">
+            <label for="type">Type: <span class="fw-light">(Required)</span></label>
+            <select id="type" name="type" class="form-control" required onchange="toggleCustomTypeInput()">
+                <option value="">Select a type</option>
+                <option value="birthday">Birthday</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="memory">Memory</option>
+                <option value="custom">Custom</option>
+            </select>
+        </div>
+        <div class="form-group" id="customTypeGroup" style="display: none;">
+            <label for="custom_type">Custom Type: <span class="fw-light">(Required)</span></label>
+            <input type="text" id="custom_type" name="custom_type" class="form-control" placeholder="Enter custom event type">
+        </div>
+        <div class="form-group">
             <label for="note">Note: <span class="fw-light">(Optional)</span></label>
             <textarea id="note" name="note" class="form-control" rows="3" placeholder="Any additional info"></textarea>
         </div>
@@ -28,9 +42,27 @@
 </div>
 
 <script>
+    function toggleCustomTypeInput() {
+        const typeSelect = document.getElementById('type');
+        const customTypeGroup = document.getElementById('customTypeGroup');
+        const customTypeInput = document.getElementById('custom_type');
+        
+        if (typeSelect.value === 'custom') {
+            customTypeGroup.style.display = 'block';
+            customTypeInput.required = true;
+        } else {
+            customTypeGroup.style.display = 'none';
+            customTypeInput.required = false;
+            customTypeInput.value = '';
+        }
+    }
+
     function validateEventForm() {
         const name = document.getElementById('name').value.trim();
         const date = document.getElementById('original_date').value;
+        const type = document.getElementById('type').value;
+        const customType = document.getElementById('custom_type').value.trim();
+        
         if (!name) {
             alert("Please enter a name.");
             return false;
@@ -39,11 +71,19 @@
             alert("Please select an original date.");
             return false;
         }
+        if (!type) {
+            alert("Please select an event type.");
+            return false;
+        }
+        if (type === 'custom' && !customType) {
+            alert("Please enter a custom event type.");
+            return false;
+        }
         return true;
     }
 </script>
 
 <?php
     initializePageFooter($rootPath, $moduleType);
-    setTodaysDateForForm(); // Will set today's date for <input type="date"> if you rely on a helper
+    setTodaysDateForForm();
 ?>

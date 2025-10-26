@@ -193,3 +193,5 @@ CREATE TABLE `notebook_page` (
 );
 
 ALTER TABLE notebook_page CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE events_anniversary ADD `type` varchar(100) NULL;

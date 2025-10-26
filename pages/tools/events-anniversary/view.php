@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Type</th>
                     <th>Original Date</th>
                     <th>Next Occurrence</th>
                     <th>Action</th>
@@ -27,6 +28,7 @@
                 ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td><?php echo htmlspecialchars(ucfirst($row['type'])); ?></td>
                         <td><?php echo formatDisplayDate($row['original_date']); ?></td>
                         <td><?php echo formatDisplayDate($next); ?></td>
                         <td>
@@ -39,7 +41,7 @@
                         endwhile;
                     else:
                 ?>
-                    <tr><td colspan="4">No events yet.</td></tr>
+                    <tr><td colspan="5">No events yet.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
