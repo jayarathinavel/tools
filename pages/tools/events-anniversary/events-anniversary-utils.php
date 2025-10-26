@@ -50,4 +50,27 @@
             return $originalDate;
         }
     }
+
+    function getDaysUntilEvent($eventDate) {
+        try {
+            $today = new DateTime('today');
+            $event = new DateTime($eventDate);
+            $interval = $today->diff($event);
+            return (int)$interval->format('%r%a'); // Returns negative if past, positive if future
+        } catch (Exception $e) {
+            return -1;
+        }
+    }
+
+    function getAlertColor($daysUntil) {
+        if ($daysUntil < 0) {
+            return 'secondary'; // Past event
+        } elseif ($daysUntil <= 1) {
+            return 'danger'; // Red - soon (1 day)
+        } elseif ($daysUntil <= 3) {
+            return 'warning'; // Yellow - getting closer (2-3 days)
+        } else {
+            return 'success'; // Green - plenty of time (4+ days)
+        }
+    }
 ?>

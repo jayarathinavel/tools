@@ -1,10 +1,58 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 initializePage("Home", "main", null);
+includePhpFileFromRoot($rootPath, '/pages/tools/events-anniversary/events-anniversary-utils.php');
+$userId = $_SESSION['appUserId'] ?? null;
 ?>
 
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
+    
+    <!-- Added upcoming events reminders section -->
+    <?php if ($userId): ?>
+        <?php
+            $upcomingEvents = executeQuery("SELECT id, name, original_date, type FROM events_anniversary WHERE user_id = $userId ORDER BY original_date ASC");
+            $eventsToRemind = [];
+            if ($upcomingEvents && $upcomingEvents->num_rows > 0) {
+                while ($row = $upcomingEvents->fetch_assoc()) {
+                    $nextOccurrence = nextOccurrence($row['original_date']);
+                    $daysUntil = getDaysUntilEvent($nextOccurrence);
+                    
+                    // Only show events within 7 days
+                    if ($daysUntil >= 0 && $daysUntil <= 7) {
+                        $eventsToRemind[] = [
+                            'id' => $row['id'],
+                            'name' => $row['name'],
+                            'type' => $row['type'],
+                            'nextDate' => $nextOccurrence,
+                            'daysUntil' => $daysUntil
+                        ];
+                    }
+                }
+            }
+            
+            if (!empty($eventsToRemind)):
+        ?>
+            <div class="mb-4">
+                <h5 class="mb-3">Upcoming Events</h5>
+                <?php foreach ($eventsToRemind as $event): ?>
+                    <?php $alertColor = getAlertColor($event['daysUntil']); ?>
+                    <a href="/pages/tools/events-anniversary/event.php?id=<?php echo $event['id']; ?>" style="text-decoration: none;">
+                        <div class="alert alert-<?php echo $alertColor; ?> mb-2" role="alert" style="cursor: pointer; transition: opacity 0.2s;">
+                            <strong><?php echo htmlspecialchars($event['name']); ?></strong> 
+                            <span class="badge bg-dark ms-2"><?php echo ucfirst($event['type']); ?></span>
+                            <br>
+                            <small>
+                                <?php echo formatDisplayDate($event['nextDate']); ?> 
+                                (<?php echo $event['daysUntil']; ?> day<?php echo $event['daysUntil'] !== 1 ? 's' : ''; ?> away)
+                            </small>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
     <div class="container">
         <div class="row justify-content-center" id="toolCards">
             <!-- Each card has a data-app attribute for identification -->
