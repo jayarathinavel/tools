@@ -30,12 +30,12 @@
                 <option value="birthday" <?php echo ($event['type'] === 'birthday') ? 'selected' : ''; ?>>Birthday</option>
                 <option value="anniversary" <?php echo ($event['type'] === 'anniversary') ? 'selected' : ''; ?>>Anniversary</option>
                 <option value="memory" <?php echo ($event['type'] === 'memory') ? 'selected' : ''; ?>>Memory</option>
-                <option value="custom" <?php echo ($event['type'] === 'custom') ? 'selected' : ''; ?>>Custom</option>
+                <option value="custom" <?php echo ($event['type'] !== 'birthday' && $event['type'] !== 'anniversary' && $event['type'] !== 'memory') ? 'selected' : ''; ?>>Custom</option>
             </select>
         </div>
         <div class="form-group" id="customTypeGroup" style="display: <?php echo ($event['type'] === 'custom') ? 'block' : 'none'; ?>;">
             <label for="custom_type">Custom Type: <span class="fw-light">(Required)</span></label>
-            <input type="text" id="custom_type" name="custom_type" class="form-control" placeholder="Enter custom event type" value="<?php echo ($event['type'] === 'custom') ? htmlspecialchars($event['name']) : ''; ?>">
+            <input type="text" id="custom_type" name="custom_type" class="form-control" placeholder="Enter custom event type" value="<?php echo ($event['type'] !== 'birthday' && $event['type'] !== 'anniversary' && $event['type'] !== 'memory') ? htmlspecialchars($event['type']) : ''; ?>">
         </div>
         <div class="form-group">
             <label for="note">Note:</label>
