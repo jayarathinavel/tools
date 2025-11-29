@@ -1,6 +1,9 @@
 <?php
     function findBookCashbook($userId){
         $selectedBook = null;
+        if($_GET['book_id']) {
+            return intval($_GET['book_id']);
+        }
         if(isset($_SESSION['cashbookSelectedBook'])){
             $selectedBook = $_SESSION['cashbookSelectedBook'];
         } else{
