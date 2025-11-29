@@ -92,7 +92,7 @@
         <a class="btn btn-sm btn-info" href="books/view.php">Manage Books</a>
     </div>
 
-    <form method="post" class="mb-3">
+    <form id="cashbookFilterForm" method="post" class="mb-3">
         <input type="hidden" name="filter" value="1">
         <div class="row g-2">
             <div class="col-auto">
@@ -105,12 +105,15 @@
                     <option value="custom" <?php echo ($selectedTimeRange === 'custom') ? 'selected' : ''; ?>>Custom</option>
                 </select>
             </div>
-            <div class="col-auto">
-                <input type="date" name="start_date" class="form-control" value="<?php echo htmlspecialchars($selectedStartDate); ?>">
+            <div class="col-auto custom-dates-wrapper" style="display:none;">
+                <input type="date" name="start_date" class="form-control"
+                    value="<?php echo htmlspecialchars($selectedStartDate); ?>">
             </div>
-            <div class="col-auto">
-                <input type="date" name="end_date" class="form-control" value="<?php echo htmlspecialchars($selectedEndDate); ?>">
+            <div class="col-auto custom-dates-wrapper" style="display:none;">
+                <input type="date" name="end_date" class="form-control"
+                    value="<?php echo htmlspecialchars($selectedEndDate); ?>">
             </div>
+
             <div class="col-auto">
                 <select name="category_id" class="form-control">
                     <option value="">-- Category --</option>
@@ -128,10 +131,99 @@
                 </select>
             </div>
             <div class="col-auto">
-                <button class="btn btn-primary" type="submit">Filter</button>
+                <button class="btn btn-sm btn-primary" type="submit">Filter</button>
+                <button id="clearCashbookFiltersBtn" class="btn btn-sm btn-secondary" style="display:none;">Clear Filters</button>
             </div>
         </div>
     </form>
+
+    <script>
+        (function(){
+            const form = document.getElementById('cashbookFilterForm');
+            if (!form) return;
+            const storageKey = 'cashbookFilters_v1';
+            const autoFlag = 'cashbookFiltersAutoApplied';
+
+            // Restore saved filters
+            try {
+                const saved = localStorage.getItem(storageKey);
+                const clearBtn = document.getElementById('clearCashbookFiltersBtn');
+                if (saved) {
+                    if (clearBtn) clearBtn.style.display = 'inline-block';
+                    const data = JSON.parse(saved);
+                    if (data.time_range !== undefined && form.time_range) form.time_range.value = data.time_range;
+                    if (data.start_date !== undefined && form.start_date) form.start_date.value = data.start_date;
+                    if (data.end_date !== undefined && form.end_date) form.end_date.value = data.end_date;
+                    if (data.category_id !== undefined && form.category_id) form.category_id.value = data.category_id;
+                    if (data.bank_account_id !== undefined && form.bank_account_id) form.bank_account_id.value = data.bank_account_id;
+
+                    // Auto-submit only if server hasn't already applied the filter and not auto-applied in this session
+                    var serverApplied = <?php echo isset($_POST['filter']) ? 'true' : 'false'; ?>;
+                    if (!serverApplied && sessionStorage.getItem(autoFlag) !== '1') {
+                        sessionStorage.setItem(autoFlag, '1');
+                        form.submit();
+                    }
+                } else {
+                    // Hide button if no filters saved
+                    if (clearBtn) clearBtn.style.display = 'none';
+                }
+            } catch(e) {
+                console.warn('Failed to restore cashbook filters', e);
+            }
+
+            // Save current filters on submit
+            form.addEventListener('submit', function(){
+                try {
+                    const data = {
+                        time_range: form.time_range ? form.time_range.value : '',
+                        start_date: form.start_date ? form.start_date.value : '',
+                        end_date: form.end_date ? form.end_date.value : '',
+                        category_id: form.category_id ? form.category_id.value : '',
+                        bank_account_id: form.bank_account_id ? form.bank_account_id.value : ''
+                    };
+                    localStorage.setItem(storageKey, JSON.stringify(data));
+                } catch(e) { console.warn('Failed to save cashbook filters', e); }
+            });
+
+            // Clear saved filters button
+            const clearBtn = document.getElementById('clearCashbookFiltersBtn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function(e){
+                    e.preventDefault();
+                    try {
+                        localStorage.removeItem(storageKey);
+                        sessionStorage.removeItem(autoFlag);
+                    } catch(e) {}
+                    if (clearBtn) clearBtn.style.display = 'none';
+                    // reset UI values
+                    if (form.time_range) form.time_range.value = '';
+                    if (form.start_date) form.start_date.value = '';
+                    if (form.end_date) form.end_date.value = '';
+                    if (form.category_id) form.category_id.value = '';
+                    if (form.bank_account_id) form.bank_account_id.value = '';
+                    form.submit();
+                });
+            }
+        
+            // Show/hide custom date fields
+            function updateCustomDateVisibility() {
+                const isCustom = form.time_range && form.time_range.value === 'custom';
+                document.querySelectorAll('.custom-dates-wrapper').forEach(el => {
+                    el.style.display = isCustom ? 'block' : 'none';
+                });
+            }
+
+            // Listen for time range changes
+            if (form.time_range) {
+                form.time_range.addEventListener('change', updateCustomDateVisibility);
+            }
+
+            // Apply visibility on page load (including restored values)
+            updateCustomDateVisibility();
+
+        
+        })();
+    </script>
 
     <?php if($book): ?>
         <table class="table">
