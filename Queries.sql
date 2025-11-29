@@ -195,3 +195,43 @@ CREATE TABLE `notebook_page` (
 ALTER TABLE notebook_page CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 ALTER TABLE events_anniversary ADD `type` varchar(100) NULL;
+
+-- Cashbook tables
+
+CREATE TABLE IF NOT EXISTS `cashbook_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cashbook_bank_account` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `initial_balance` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `cashbook_book_id` int NOT NULL DEFAULT 0,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cashbook_category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `cashbook_book_id` int NOT NULL DEFAULT 0,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cashbook_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `amount` decimal(14,2) NOT NULL,
+  `type` enum('expense','income') NOT NULL DEFAULT 'expense',
+  `category_id` int DEFAULT NULL,
+  `bank_account_id` int DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `cashbook_book_id` int NOT NULL DEFAULT 0,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
