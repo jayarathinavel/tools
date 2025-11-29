@@ -3,6 +3,18 @@
     initializePage("Cashbook", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
     $userId = cashbookUser();
+
+    // available books for selector
+    $books = fetchCashbookBooks($userId);
+
+    // handle book selection form POST -> save in session and reload to avoid resubmit
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cashbookBookId'])) {
+        $_SESSION['cashbookSelectedBook'] = intval($_POST['cashbookBookId']);
+        setSuccessOrFailureMessage('success', 'Book Changed');
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
+
     $book = findBookCashbook($userId);
     $bankAccounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
@@ -85,7 +97,36 @@
 ?>
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
-    <h1>Cashbook</h1>
+
+    <div class="d-flex align-items-center mb-3">
+        <h1 class="me-3">Cashbook</h1>
+    </div>
+
+    <div class="d-flex align-items-center mb-3">
+        <?php if ($book && isset($books[$book])): ?>
+            <div class="me-2">
+                Current Book: <strong><?php echo htmlspecialchars($books[$book]); ?></strong>
+            </div>
+        <?php endif; ?>
+    
+        <!-- Toggle button -->
+        <button title="Change Book" type="button" id="toggleBookSelector" class="btn btn-sm btn-outline-primary me-2">
+            <i class="bi-chevron-down"></i>
+        </button>
+    
+        <!-- Book selector (hidden initially) -->
+        <form id="bookSelectorForm" method="post" class="d-inline-block me-2 d-none" style="margin:0;">
+            <select name="cashbookBookId" title="Select Book" onchange="this.form.submit()" class="form-select form-select-sm">
+                <option value="" disabled <?php echo empty($book) ? 'selected' : ''; ?>>-- Select Book --</option>
+                <?php foreach ($books as $id => $name): ?>
+                    <option value="<?php echo $id; ?>" <?php echo ($book && intval($book) === intval($id)) ? 'selected' : ''; ?>>
+                        <?php echo htmlspecialchars($name); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    </div>
+
     <div class="mb-3">
         <a class="btn btn-sm btn-primary" href="add.php">Add Entry</a>
         <a class="btn btn-sm btn-secondary" href="summary.php">Summary</a>
@@ -223,6 +264,10 @@
 
         
         })();
+
+        document.getElementById('toggleBookSelector').addEventListener('click', function () {
+            document.getElementById('bookSelectorForm').classList.toggle('d-none');
+        });
     </script>
 
     <?php if($book): ?>
