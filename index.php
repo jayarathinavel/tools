@@ -106,6 +106,16 @@ $userId = $_SESSION['appUserId'] ?? null;
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 col-lg-4 mb-4" data-app="cashbook">
+                <div class="card" style="width: 100%;">
+                    <img src="resources/images/cashbook.png" class="card-img-top" alt="Cashbook">
+                    <div class="card-body">
+                        <h5 class="card-title">Cashbook</h5>
+                        <p class="card-text">Manage your personal finances with ease using Cashbook</p>
+                        <a href="/pages/tools/cashbook/view.php" class="btn btn-primary app-link">Cashbook</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

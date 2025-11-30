@@ -1,0 +1,2074 @@
+[2025-11-29 16:03:06.831] [DEBUG]: New Database Connection
+[2025-11-29 16:03:06.854] [DEBUG]: Database Connection took 22.49 ms
+[2025-11-29 16:03:06.866] [DEBUG]: Select Query took 35.07 ms
+[2025-11-29 16:03:06.871] [DEBUG]: Closing Database Connection
+[2025-11-29 16:03:17.393] [DEBUG]: New Database Connection
+[2025-11-29 16:03:17.409] [DEBUG]: Database Connection took 15.01 ms
+[2025-11-29 16:03:17.416] [DEBUG]: Select Query took 22.57 ms
+[2025-11-29 16:03:23.537] [DEBUG]: New Database Connection
+[2025-11-29 16:03:23.539] [DEBUG]: Database Connection took 1.64 ms
+[2025-11-29 16:03:23.540] [DEBUG]: Select Query took 2.55 ms
+[2025-11-29 16:03:33.591] [DEBUG]: New Database Connection
+[2025-11-29 16:03:33.605] [DEBUG]: Database Connection took 13.95 ms
+[2025-11-29 16:03:33.609] [DEBUG]: Select Query took 17.10 ms
+[2025-11-29 16:03:43.287] [DEBUG]: New Database Connection
+[2025-11-29 16:03:43.308] [DEBUG]: Database Connection took 21.00 ms
+[2025-11-29 16:03:43.314] [DEBUG]: Insert/Update/Detele Query took 5.68 ms
+[2025-11-29 16:03:48.498] [DEBUG]: New Database Connection
+[2025-11-29 16:03:48.501] [DEBUG]: Database Connection took 2.82 ms
+[2025-11-29 16:03:48.503] [DEBUG]: Select Query took 4.34 ms
+[2025-11-29 16:03:55.483] [DEBUG]: New Database Connection
+[2025-11-29 16:03:55.507] [DEBUG]: Database Connection took 23.64 ms
+[2025-11-29 16:03:55.508] [DEBUG]: Select Query took 24.71 ms
+[2025-11-29 16:03:56.883] [DEBUG]: New Database Connection
+[2025-11-29 16:03:56.902] [DEBUG]: Database Connection took 19.23 ms
+[2025-11-29 16:03:56.903] [DEBUG]: Select Query took 20.43 ms
+[2025-11-29 16:03:56.906] [DEBUG]: Select Query took 2.28 ms
+[2025-11-29 16:03:56.910] [DEBUG]: Select Query took 3.48 ms
+[2025-11-29 16:03:56.913] [DEBUG]: Select Query took 2.21 ms
+[2025-11-29 16:04:04.455] [DEBUG]: New Database Connection
+[2025-11-29 16:04:04.470] [DEBUG]: Database Connection took 14.96 ms
+[2025-11-29 16:04:04.472] [DEBUG]: Select Query took 16.58 ms
+[2025-11-29 16:04:04.473] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 16:13:39.405] [DEBUG]: New Database Connection
+[2025-11-29 16:13:39.430] [DEBUG]: Database Connection took 24.56 ms
+[2025-11-29 16:13:39.430] [DEBUG]: Closing Database Connection
+[2025-11-29 16:15:57.743] [DEBUG]: New Database Connection
+[2025-11-29 16:15:57.745] [DEBUG]: Database Connection took 2.73 ms
+[2025-11-29 16:15:57.746] [DEBUG]: Closing Database Connection
+[2025-11-29 16:15:59.047] [DEBUG]: New Database Connection
+[2025-11-29 16:15:59.050] [DEBUG]: Database Connection took 2.56 ms
+[2025-11-29 16:15:59.054] [DEBUG]: Insert/Update/Detele Query took 3.29 ms
+[2025-11-29 16:15:59.102] [DEBUG]: New Database Connection
+[2025-11-29 16:15:59.126] [DEBUG]: Database Connection took 24.03 ms
+[2025-11-29 16:15:59.128] [DEBUG]: Select Query took 26.00 ms
+[2025-11-29 16:15:59.130] [DEBUG]: Closing Database Connection
+[2025-11-29 16:16:03.185] [DEBUG]: New Database Connection
+[2025-11-29 16:16:03.186] [DEBUG]: Database Connection took 1.56 ms
+[2025-11-29 16:16:03.187] [DEBUG]: Select Query took 2.59 ms
+[2025-11-29 16:16:03.188] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 16:16:03.191] [DEBUG]: Select Query took 0.91 ms
+[2025-11-29 16:16:11.120] [DEBUG]: New Database Connection
+[2025-11-29 16:16:11.123] [DEBUG]: Database Connection took 3.08 ms
+[2025-11-29 16:16:11.125] [DEBUG]: Select Query took 5.16 ms
+[2025-11-29 16:16:11.127] [DEBUG]: Select Query took 1.05 ms
+[2025-11-29 16:16:12.989] [DEBUG]: New Database Connection
+[2025-11-29 16:16:12.991] [DEBUG]: Database Connection took 1.76 ms
+[2025-11-29 16:16:12.992] [DEBUG]: Closing Database Connection
+[2025-11-29 16:16:21.101] [DEBUG]: New Database Connection
+[2025-11-29 16:16:21.103] [DEBUG]: Database Connection took 1.90 ms
+[2025-11-29 16:16:21.108] [DEBUG]: Insert/Update/Detele Query took 4.63 ms
+[2025-11-29 16:16:21.171] [DEBUG]: New Database Connection
+[2025-11-29 16:16:21.183] [DEBUG]: Database Connection took 12.20 ms
+[2025-11-29 16:16:21.185] [DEBUG]: Select Query took 14.00 ms
+[2025-11-29 16:16:21.185] [DEBUG]: Closing Database Connection
+[2025-11-29 16:16:25.007] [DEBUG]: New Database Connection
+[2025-11-29 16:16:25.024] [DEBUG]: Database Connection took 16.08 ms
+[2025-11-29 16:16:25.025] [DEBUG]: Select Query took 17.74 ms
+[2025-11-29 16:16:25.026] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 16:16:25.027] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 16:16:28.079] [DEBUG]: New Database Connection
+[2025-11-29 16:16:28.081] [DEBUG]: Database Connection took 1.64 ms
+[2025-11-29 16:16:28.082] [DEBUG]: Select Query took 2.76 ms
+[2025-11-29 16:16:28.083] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 16:16:49.526] [DEBUG]: New Database Connection
+[2025-11-29 16:16:49.549] [DEBUG]: Database Connection took 22.72 ms
+[2025-11-29 16:16:49.553] [DEBUG]: Insert/Update/Detele Query took 3.97 ms
+[2025-11-29 16:16:49.598] [DEBUG]: New Database Connection
+[2025-11-29 16:16:49.609] [DEBUG]: Database Connection took 11.11 ms
+[2025-11-29 16:16:49.610] [DEBUG]: Select Query took 12.28 ms
+[2025-11-29 16:16:49.611] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 16:16:49.613] [DEBUG]: Select Query took 0.91 ms
+[2025-11-29 16:16:53.147] [DEBUG]: New Database Connection
+[2025-11-29 16:16:53.149] [DEBUG]: Database Connection took 1.85 ms
+[2025-11-29 16:16:53.150] [DEBUG]: Select Query took 2.89 ms
+[2025-11-29 16:16:53.155] [DEBUG]: Select Query took 3.90 ms
+[2025-11-29 16:16:53.156] [DEBUG]: Select Query took 1.19 ms
+[2025-11-29 16:16:58.584] [DEBUG]: New Database Connection
+[2025-11-29 16:16:58.586] [DEBUG]: Database Connection took 2.62 ms
+[2025-11-29 16:16:58.587] [DEBUG]: Select Query took 3.53 ms
+[2025-11-29 16:17:08.644] [DEBUG]: New Database Connection
+[2025-11-29 16:17:08.646] [DEBUG]: Database Connection took 2.08 ms
+[2025-11-29 16:17:08.650] [DEBUG]: Select Query took 5.31 ms
+[2025-11-29 16:17:08.651] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 16:17:08.655] [DEBUG]: Select Query took 1.42 ms
+[2025-11-29 16:17:12.064] [DEBUG]: New Database Connection
+[2025-11-29 16:17:12.078] [DEBUG]: Database Connection took 14.41 ms
+[2025-11-29 16:17:12.079] [DEBUG]: Select Query took 15.74 ms
+[2025-11-29 16:17:12.081] [DEBUG]: Select Query took 0.91 ms
+[2025-11-29 16:17:12.082] [DEBUG]: Select Query took 0.97 ms
+[2025-11-29 16:17:24.306] [DEBUG]: New Database Connection
+[2025-11-29 16:17:24.320] [DEBUG]: Database Connection took 14.10 ms
+[2025-11-29 16:17:24.321] [DEBUG]: Select Query took 15.32 ms
+[2025-11-29 16:17:24.322] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 16:17:24.323] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 16:17:33.907] [DEBUG]: New Database Connection
+[2025-11-29 16:17:33.909] [DEBUG]: Database Connection took 2.10 ms
+[2025-11-29 16:17:33.910] [DEBUG]: Select Query took 3.44 ms
+[2025-11-29 16:17:33.912] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 16:17:33.913] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 16:17:41.339] [DEBUG]: New Database Connection
+[2025-11-29 16:17:41.341] [DEBUG]: Database Connection took 1.99 ms
+[2025-11-29 16:17:41.343] [DEBUG]: Select Query took 3.99 ms
+[2025-11-29 16:17:41.344] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 16:17:41.346] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 16:17:44.732] [DEBUG]: New Database Connection
+[2025-11-29 16:17:44.733] [DEBUG]: Database Connection took 1.88 ms
+[2025-11-29 16:17:44.734] [DEBUG]: Select Query took 2.78 ms
+[2025-11-29 16:17:44.735] [DEBUG]: Select Query took 0.39 ms
+[2025-11-29 16:17:44.736] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 16:38:17.101] [DEBUG]: New Database Connection
+[2025-11-29 16:38:17.120] [DEBUG]: Database Connection took 18.93 ms
+[2025-11-29 16:38:17.122] [DEBUG]: Select Query took 21.46 ms
+[2025-11-29 16:38:17.123] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 16:38:20.695] [DEBUG]: New Database Connection
+[2025-11-29 16:38:20.698] [DEBUG]: Database Connection took 2.52 ms
+[2025-11-29 16:38:20.698] [DEBUG]: Closing Database Connection
+[2025-11-29 16:38:24.063] [DEBUG]: New Database Connection
+[2025-11-29 16:38:24.065] [DEBUG]: Database Connection took 1.52 ms
+[2025-11-29 16:38:24.066] [DEBUG]: Select Query took 2.37 ms
+[2025-11-29 16:38:24.067] [DEBUG]: Select Query took 0.85 ms
+[2025-11-29 16:38:24.068] [DEBUG]: Select Query took 0.97 ms
+[2025-11-29 16:38:25.680] [DEBUG]: New Database Connection
+[2025-11-29 16:38:25.681] [DEBUG]: Database Connection took 1.45 ms
+[2025-11-29 16:38:25.683] [DEBUG]: Select Query took 2.77 ms
+[2025-11-29 16:40:03.362] [DEBUG]: New Database Connection
+[2025-11-29 16:40:03.387] [DEBUG]: Database Connection took 24.78 ms
+[2025-11-29 16:40:03.388] [DEBUG]: Select Query took 25.81 ms
+[2025-11-29 16:40:03.389] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 16:40:03.391] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 16:40:07.241] [DEBUG]: New Database Connection
+[2025-11-29 16:40:07.256] [DEBUG]: Database Connection took 14.29 ms
+[2025-11-29 16:40:07.257] [DEBUG]: Select Query took 15.32 ms
+[2025-11-29 16:40:07.258] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 16:40:07.259] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 16:40:09.191] [DEBUG]: New Database Connection
+[2025-11-29 16:40:09.204] [DEBUG]: Database Connection took 12.74 ms
+[2025-11-29 16:40:09.205] [DEBUG]: Select Query took 13.80 ms
+[2025-11-29 16:40:09.206] [DEBUG]: Closing Database Connection
+[2025-11-29 16:40:11.485] [DEBUG]: New Database Connection
+[2025-11-29 16:40:11.486] [DEBUG]: Database Connection took 1.78 ms
+[2025-11-29 16:40:11.487] [DEBUG]: Select Query took 2.85 ms
+[2025-11-29 16:40:11.488] [DEBUG]: Closing Database Connection
+[2025-11-29 16:40:13.581] [DEBUG]: New Database Connection
+[2025-11-29 16:40:13.584] [DEBUG]: Database Connection took 2.18 ms
+[2025-11-29 16:40:13.585] [DEBUG]: Select Query took 3.59 ms
+[2025-11-29 16:40:13.586] [DEBUG]: Closing Database Connection
+[2025-11-29 16:40:16.198] [DEBUG]: New Database Connection
+[2025-11-29 16:40:16.212] [DEBUG]: Database Connection took 13.80 ms
+[2025-11-29 16:40:16.214] [DEBUG]: Select Query took 15.81 ms
+[2025-11-29 16:40:16.215] [DEBUG]: Closing Database Connection
+[2025-11-29 16:40:18.532] [DEBUG]: New Database Connection
+[2025-11-29 16:40:18.534] [DEBUG]: Database Connection took 2.31 ms
+[2025-11-29 16:40:18.535] [DEBUG]: Select Query took 3.29 ms
+[2025-11-29 16:40:18.536] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 16:40:18.537] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 17:09:18.988] [DEBUG]: New Database Connection
+[2025-11-29 17:09:18.990] [DEBUG]: Database Connection took 2.28 ms
+[2025-11-29 17:09:18.994] [DEBUG]: Select Query took 6.52 ms
+[2025-11-29 17:09:18.996] [DEBUG]: Select Query took 0.82 ms
+[2025-11-29 17:09:18.997] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 17:09:20.969] [DEBUG]: New Database Connection
+[2025-11-29 17:09:20.984] [DEBUG]: Database Connection took 14.66 ms
+[2025-11-29 17:09:20.985] [DEBUG]: Select Query took 15.70 ms
+[2025-11-29 17:09:20.986] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 17:09:20.987] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 17:11:20.521] [DEBUG]: New Database Connection
+[2025-11-29 17:11:20.524] [DEBUG]: Database Connection took 2.47 ms
+[2025-11-29 17:11:20.525] [DEBUG]: Select Query took 3.89 ms
+[2025-11-29 17:11:20.526] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 17:11:20.527] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 17:11:22.367] [DEBUG]: New Database Connection
+[2025-11-29 17:11:22.369] [DEBUG]: Database Connection took 1.63 ms
+[2025-11-29 17:11:22.369] [DEBUG]: Select Query took 2.42 ms
+[2025-11-29 17:11:45.739] [DEBUG]: New Database Connection
+[2025-11-29 17:11:45.758] [DEBUG]: Database Connection took 18.73 ms
+[2025-11-29 17:11:45.759] [DEBUG]: Select Query took 19.60 ms
+[2025-11-29 17:11:45.760] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 17:11:45.761] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 17:11:48.146] [DEBUG]: New Database Connection
+[2025-11-29 17:11:48.148] [DEBUG]: Database Connection took 1.67 ms
+[2025-11-29 17:11:48.150] [DEBUG]: Select Query took 3.50 ms
+[2025-11-29 17:11:48.151] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 17:11:48.152] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 17:11:48.153] [DEBUG]: Closing Database Connection
+[2025-11-29 17:11:54.648] [DEBUG]: New Database Connection
+[2025-11-29 17:11:54.661] [DEBUG]: Database Connection took 12.86 ms
+[2025-11-29 17:11:54.663] [DEBUG]: Select Query took 14.60 ms
+[2025-11-29 17:11:54.664] [DEBUG]: Select Query took 0.77 ms
+[2025-11-29 17:11:54.665] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 17:11:54.673] [DEBUG]: Insert/Update/Detele Query took 7.36 ms
+[2025-11-29 17:11:54.724] [DEBUG]: New Database Connection
+[2025-11-29 17:11:54.739] [DEBUG]: Database Connection took 15.01 ms
+[2025-11-29 17:11:54.740] [DEBUG]: Select Query took 16.38 ms
+[2025-11-29 17:11:54.741] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 17:11:54.742] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 17:11:58.118] [DEBUG]: New Database Connection
+[2025-11-29 17:11:58.143] [DEBUG]: Database Connection took 24.84 ms
+[2025-11-29 17:11:58.144] [DEBUG]: Select Query took 26.10 ms
+[2025-11-29 17:11:58.146] [DEBUG]: Select Query took 0.78 ms
+[2025-11-29 17:11:58.147] [DEBUG]: Select Query took 0.85 ms
+[2025-11-29 17:13:25.674] [DEBUG]: New Database Connection
+[2025-11-29 17:13:25.677] [DEBUG]: Database Connection took 2.66 ms
+[2025-11-29 17:13:25.678] [DEBUG]: Select Query took 4.23 ms
+[2025-11-29 17:13:25.679] [DEBUG]: Closing Database Connection
+[2025-11-29 17:13:29.154] [DEBUG]: New Database Connection
+[2025-11-29 17:13:29.167] [DEBUG]: Database Connection took 13.24 ms
+[2025-11-29 17:13:29.168] [DEBUG]: Select Query took 14.32 ms
+[2025-11-29 17:13:29.169] [DEBUG]: Closing Database Connection
+[2025-11-29 17:13:31.295] [DEBUG]: New Database Connection
+[2025-11-29 17:13:31.296] [DEBUG]: Database Connection took 1.55 ms
+[2025-11-29 17:13:31.297] [DEBUG]: Select Query took 2.41 ms
+[2025-11-29 17:13:31.298] [DEBUG]: Closing Database Connection
+[2025-11-29 17:13:32.784] [DEBUG]: New Database Connection
+[2025-11-29 17:13:32.786] [DEBUG]: Database Connection took 2.29 ms
+[2025-11-29 17:13:32.788] [DEBUG]: Select Query took 3.67 ms
+[2025-11-29 17:13:32.789] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 17:13:32.790] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 17:13:52.494] [DEBUG]: New Database Connection
+[2025-11-29 17:13:52.496] [DEBUG]: Database Connection took 1.94 ms
+[2025-11-29 17:13:52.498] [DEBUG]: Select Query took 3.95 ms
+[2025-11-29 17:13:52.499] [DEBUG]: Closing Database Connection
+[2025-11-29 17:13:55.325] [DEBUG]: New Database Connection
+[2025-11-29 17:13:55.351] [DEBUG]: Database Connection took 25.92 ms
+[2025-11-29 17:13:55.354] [DEBUG]: Select Query took 29.01 ms
+[2025-11-29 17:13:55.355] [DEBUG]: Closing Database Connection
+[2025-11-29 17:14:05.782] [DEBUG]: New Database Connection
+[2025-11-29 17:14:05.784] [DEBUG]: Database Connection took 2.10 ms
+[2025-11-29 17:14:05.786] [DEBUG]: Select Query took 3.45 ms
+[2025-11-29 17:14:05.787] [DEBUG]: Closing Database Connection
+[2025-11-29 17:14:19.316] [DEBUG]: New Database Connection
+[2025-11-29 17:14:19.341] [DEBUG]: Database Connection took 24.99 ms
+[2025-11-29 17:14:19.342] [DEBUG]: Select Query took 26.39 ms
+[2025-11-29 17:14:19.344] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 17:14:19.345] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 17:15:47.718] [DEBUG]: New Database Connection
+[2025-11-29 17:15:47.720] [DEBUG]: Database Connection took 2.16 ms
+[2025-11-29 17:15:47.721] [DEBUG]: Select Query took 3.15 ms
+[2025-11-29 17:15:47.722] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 17:15:47.723] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 17:15:50.859] [DEBUG]: New Database Connection
+[2025-11-29 17:15:50.862] [DEBUG]: Database Connection took 2.44 ms
+[2025-11-29 17:15:50.863] [DEBUG]: Select Query took 3.64 ms
+[2025-11-29 17:15:50.864] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 17:15:50.865] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 17:15:54.643] [DEBUG]: New Database Connection
+[2025-11-29 17:15:54.645] [DEBUG]: Database Connection took 2.05 ms
+[2025-11-29 17:15:54.646] [DEBUG]: Select Query took 3.01 ms
+[2025-11-29 17:15:54.647] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 17:16:00.430] [DEBUG]: New Database Connection
+[2025-11-29 17:16:00.432] [DEBUG]: Database Connection took 1.68 ms
+[2025-11-29 17:16:00.432] [DEBUG]: Closing Database Connection
+[2025-11-29 17:16:03.102] [DEBUG]: New Database Connection
+[2025-11-29 17:16:03.104] [DEBUG]: Database Connection took 1.96 ms
+[2025-11-29 17:16:03.105] [DEBUG]: Select Query took 3.14 ms
+[2025-11-29 17:16:03.106] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:16:03.107] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:16:05.151] [DEBUG]: New Database Connection
+[2025-11-29 17:16:05.153] [DEBUG]: Database Connection took 1.64 ms
+[2025-11-29 17:16:05.154] [DEBUG]: Select Query took 2.89 ms
+[2025-11-29 17:16:05.156] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 17:16:29.490] [DEBUG]: New Database Connection
+[2025-11-29 17:16:29.502] [DEBUG]: Database Connection took 12.16 ms
+[2025-11-29 17:16:29.502] [DEBUG]: Closing Database Connection
+[2025-11-29 17:16:31.641] [DEBUG]: New Database Connection
+[2025-11-29 17:16:31.664] [DEBUG]: Database Connection took 22.72 ms
+[2025-11-29 17:16:31.666] [DEBUG]: Select Query took 24.13 ms
+[2025-11-29 17:16:31.666] [DEBUG]: Closing Database Connection
+[2025-11-29 17:17:55.242] [DEBUG]: New Database Connection
+[2025-11-29 17:17:55.254] [DEBUG]: Database Connection took 12.06 ms
+[2025-11-29 17:17:55.255] [DEBUG]: Select Query took 13.00 ms
+[2025-11-29 17:17:55.256] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 17:17:55.257] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:18:06.985] [DEBUG]: New Database Connection
+[2025-11-29 17:18:06.987] [DEBUG]: Database Connection took 2.24 ms
+[2025-11-29 17:18:06.989] [DEBUG]: Select Query took 3.37 ms
+[2025-11-29 17:18:06.989] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 17:18:17.878] [DEBUG]: New Database Connection
+[2025-11-29 17:18:17.880] [DEBUG]: Database Connection took 1.75 ms
+[2025-11-29 17:18:17.880] [DEBUG]: Closing Database Connection
+[2025-11-29 17:18:26.206] [DEBUG]: New Database Connection
+[2025-11-29 17:18:26.222] [DEBUG]: Database Connection took 15.57 ms
+[2025-11-29 17:18:26.226] [DEBUG]: Insert/Update/Detele Query took 3.47 ms
+[2025-11-29 17:18:26.269] [DEBUG]: New Database Connection
+[2025-11-29 17:18:26.270] [DEBUG]: Database Connection took 1.46 ms
+[2025-11-29 17:18:26.272] [DEBUG]: Select Query took 2.85 ms
+[2025-11-29 17:18:26.273] [DEBUG]: Closing Database Connection
+[2025-11-29 17:18:27.623] [DEBUG]: New Database Connection
+[2025-11-29 17:18:27.640] [DEBUG]: Database Connection took 16.95 ms
+[2025-11-29 17:18:27.641] [DEBUG]: Closing Database Connection
+[2025-11-29 17:18:37.348] [DEBUG]: New Database Connection
+[2025-11-29 17:18:37.360] [DEBUG]: Database Connection took 12.33 ms
+[2025-11-29 17:18:37.368] [DEBUG]: Insert/Update/Detele Query took 7.48 ms
+[2025-11-29 17:18:37.410] [DEBUG]: New Database Connection
+[2025-11-29 17:18:37.412] [DEBUG]: Database Connection took 1.89 ms
+[2025-11-29 17:18:37.413] [DEBUG]: Select Query took 3.20 ms
+[2025-11-29 17:18:37.414] [DEBUG]: Closing Database Connection
+[2025-11-29 17:18:39.542] [DEBUG]: New Database Connection
+[2025-11-29 17:18:39.544] [DEBUG]: Database Connection took 2.05 ms
+[2025-11-29 17:18:39.545] [DEBUG]: Select Query took 3.45 ms
+[2025-11-29 17:18:39.546] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:18:39.548] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 17:18:41.073] [DEBUG]: New Database Connection
+[2025-11-29 17:18:41.087] [DEBUG]: Database Connection took 13.61 ms
+[2025-11-29 17:18:41.088] [DEBUG]: Select Query took 14.58 ms
+[2025-11-29 17:18:41.089] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:18:56.069] [DEBUG]: New Database Connection
+[2025-11-29 17:18:56.093] [DEBUG]: Database Connection took 23.52 ms
+[2025-11-29 17:18:56.093] [DEBUG]: Closing Database Connection
+[2025-11-29 17:19:06.334] [DEBUG]: New Database Connection
+[2025-11-29 17:19:06.349] [DEBUG]: Database Connection took 14.31 ms
+[2025-11-29 17:19:06.353] [DEBUG]: Insert/Update/Detele Query took 3.59 ms
+[2025-11-29 17:19:06.389] [DEBUG]: New Database Connection
+[2025-11-29 17:19:06.391] [DEBUG]: Database Connection took 2.58 ms
+[2025-11-29 17:19:06.392] [DEBUG]: Select Query took 3.72 ms
+[2025-11-29 17:19:06.393] [DEBUG]: Closing Database Connection
+[2025-11-29 17:19:08.532] [DEBUG]: New Database Connection
+[2025-11-29 17:19:08.556] [DEBUG]: Database Connection took 23.73 ms
+[2025-11-29 17:19:08.558] [DEBUG]: Select Query took 25.09 ms
+[2025-11-29 17:19:08.559] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 17:19:08.560] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 17:19:09.602] [DEBUG]: New Database Connection
+[2025-11-29 17:19:09.615] [DEBUG]: Database Connection took 13.27 ms
+[2025-11-29 17:19:09.616] [DEBUG]: Select Query took 14.34 ms
+[2025-11-29 17:19:09.617] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 17:19:27.004] [DEBUG]: New Database Connection
+[2025-11-29 17:19:27.021] [DEBUG]: Database Connection took 16.80 ms
+[2025-11-29 17:19:27.026] [DEBUG]: Insert/Update/Detele Query took 4.88 ms
+[2025-11-29 17:19:27.056] [DEBUG]: New Database Connection
+[2025-11-29 17:19:27.068] [DEBUG]: Database Connection took 11.41 ms
+[2025-11-29 17:19:27.069] [DEBUG]: Select Query took 12.68 ms
+[2025-11-29 17:19:27.070] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 17:19:27.071] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 17:19:32.183] [DEBUG]: New Database Connection
+[2025-11-29 17:19:32.210] [DEBUG]: Database Connection took 26.50 ms
+[2025-11-29 17:19:32.211] [DEBUG]: Select Query took 27.81 ms
+[2025-11-29 17:19:32.212] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 17:19:32.213] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 17:19:32.214] [DEBUG]: Closing Database Connection
+[2025-11-29 17:19:37.382] [DEBUG]: New Database Connection
+[2025-11-29 17:19:37.397] [DEBUG]: Database Connection took 15.28 ms
+[2025-11-29 17:19:37.398] [DEBUG]: Select Query took 16.58 ms
+[2025-11-29 17:19:37.400] [DEBUG]: Select Query took 1.12 ms
+[2025-11-29 17:19:37.402] [DEBUG]: Select Query took 0.98 ms
+[2025-11-29 17:19:37.407] [DEBUG]: Insert/Update/Detele Query took 3.99 ms
+[2025-11-29 17:19:37.437] [DEBUG]: New Database Connection
+[2025-11-29 17:19:37.457] [DEBUG]: Database Connection took 20.08 ms
+[2025-11-29 17:19:37.459] [DEBUG]: Select Query took 21.41 ms
+[2025-11-29 17:19:37.459] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 17:19:37.460] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 17:20:26.545] [DEBUG]: New Database Connection
+[2025-11-29 17:20:26.547] [DEBUG]: Database Connection took 2.02 ms
+[2025-11-29 17:20:26.549] [DEBUG]: Select Query took 3.31 ms
+[2025-11-29 17:20:26.550] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 17:20:26.551] [DEBUG]: Select Query took 0.85 ms
+[2025-11-29 17:20:33.281] [DEBUG]: New Database Connection
+[2025-11-29 17:20:33.302] [DEBUG]: Database Connection took 21.19 ms
+[2025-11-29 17:20:33.304] [DEBUG]: Select Query took 22.86 ms
+[2025-11-29 17:20:33.305] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 17:20:33.307] [DEBUG]: Select Query took 0.88 ms
+[2025-11-29 17:20:47.247] [DEBUG]: New Database Connection
+[2025-11-29 17:20:47.249] [DEBUG]: Database Connection took 1.68 ms
+[2025-11-29 17:20:47.250] [DEBUG]: Select Query took 2.85 ms
+[2025-11-29 17:20:47.251] [DEBUG]: Select Query took 0.38 ms
+[2025-11-29 17:20:47.252] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 17:20:55.350] [DEBUG]: New Database Connection
+[2025-11-29 17:20:55.352] [DEBUG]: Database Connection took 1.99 ms
+[2025-11-29 17:20:55.353] [DEBUG]: Select Query took 3.33 ms
+[2025-11-29 17:20:55.355] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 17:20:55.356] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:20:55.357] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:20:55.358] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 17:20:58.245] [DEBUG]: New Database Connection
+[2025-11-29 17:20:58.258] [DEBUG]: Database Connection took 13.39 ms
+[2025-11-29 17:20:58.260] [DEBUG]: Select Query took 15.13 ms
+[2025-11-29 17:20:58.261] [DEBUG]: Closing Database Connection
+[2025-11-29 17:21:02.100] [DEBUG]: New Database Connection
+[2025-11-29 17:21:02.102] [DEBUG]: Database Connection took 2.12 ms
+[2025-11-29 17:21:02.103] [DEBUG]: Select Query took 3.39 ms
+[2025-11-29 17:21:02.104] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 17:21:02.105] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 17:22:56.981] [DEBUG]: New Database Connection
+[2025-11-29 17:22:57.004] [DEBUG]: Database Connection took 23.37 ms
+[2025-11-29 17:22:57.006] [DEBUG]: Select Query took 24.45 ms
+[2025-11-29 17:22:57.006] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 17:22:57.007] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 17:22:57.008] [DEBUG]: Closing Database Connection
+[2025-11-29 17:23:13.401] [DEBUG]: New Database Connection
+[2025-11-29 17:23:13.414] [DEBUG]: Database Connection took 13.32 ms
+[2025-11-29 17:23:13.416] [DEBUG]: Select Query took 14.69 ms
+[2025-11-29 17:23:13.417] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 17:23:13.418] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 17:23:13.424] [DEBUG]: Insert/Update/Detele Query took 4.01 ms
+[2025-11-29 17:23:13.466] [DEBUG]: New Database Connection
+[2025-11-29 17:23:13.491] [DEBUG]: Database Connection took 25.40 ms
+[2025-11-29 17:23:13.494] [DEBUG]: Select Query took 28.09 ms
+[2025-11-29 17:23:13.495] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 17:23:13.497] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 17:23:29.658] [DEBUG]: New Database Connection
+[2025-11-29 17:23:29.672] [DEBUG]: Database Connection took 14.85 ms
+[2025-11-29 17:23:29.674] [DEBUG]: Select Query took 16.18 ms
+[2025-11-29 17:23:29.675] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 17:23:29.676] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 17:42:31.469] [DEBUG]: New Database Connection
+[2025-11-29 17:42:31.471] [DEBUG]: Database Connection took 2.76 ms
+[2025-11-29 17:42:31.473] [DEBUG]: Select Query took 4.67 ms
+[2025-11-29 17:42:31.475] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 17:42:31.476] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 17:42:36.631] [DEBUG]: New Database Connection
+[2025-11-29 17:42:36.646] [DEBUG]: Database Connection took 15.10 ms
+[2025-11-29 17:42:36.647] [DEBUG]: Select Query took 15.92 ms
+[2025-11-29 17:42:36.647] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 17:42:36.648] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 17:42:41.476] [DEBUG]: New Database Connection
+[2025-11-29 17:42:41.488] [DEBUG]: Database Connection took 11.79 ms
+[2025-11-29 17:42:41.489] [DEBUG]: Select Query took 12.89 ms
+[2025-11-29 17:42:41.490] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 17:42:41.491] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 17:42:44.638] [DEBUG]: New Database Connection
+[2025-11-29 17:42:44.655] [DEBUG]: Database Connection took 16.29 ms
+[2025-11-29 17:42:44.656] [DEBUG]: Select Query took 17.52 ms
+[2025-11-29 17:42:44.657] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 17:42:44.658] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:42:48.901] [DEBUG]: New Database Connection
+[2025-11-29 17:42:48.902] [DEBUG]: Database Connection took 1.75 ms
+[2025-11-29 17:42:48.904] [DEBUG]: Select Query took 3.06 ms
+[2025-11-29 17:42:48.905] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 17:42:48.907] [DEBUG]: Select Query took 0.97 ms
+[2025-11-29 17:42:56.209] [DEBUG]: New Database Connection
+[2025-11-29 17:42:56.211] [DEBUG]: Database Connection took 1.82 ms
+[2025-11-29 17:42:56.213] [DEBUG]: Select Query took 3.57 ms
+[2025-11-29 17:42:56.215] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 17:42:56.216] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 17:43:01.748] [DEBUG]: New Database Connection
+[2025-11-29 17:43:01.762] [DEBUG]: Database Connection took 13.87 ms
+[2025-11-29 17:43:01.763] [DEBUG]: Select Query took 15.04 ms
+[2025-11-29 17:43:01.764] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 17:43:01.765] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 17:43:09.563] [DEBUG]: New Database Connection
+[2025-11-29 17:43:09.565] [DEBUG]: Database Connection took 1.81 ms
+[2025-11-29 17:43:09.566] [DEBUG]: Select Query took 3.10 ms
+[2025-11-29 17:43:09.567] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 17:43:09.569] [DEBUG]: Select Query took 0.86 ms
+[2025-11-29 17:43:13.538] [DEBUG]: New Database Connection
+[2025-11-29 17:43:13.541] [DEBUG]: Database Connection took 2.43 ms
+[2025-11-29 17:43:13.542] [DEBUG]: Select Query took 3.36 ms
+[2025-11-29 17:43:13.543] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 17:43:13.544] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 17:43:22.258] [DEBUG]: New Database Connection
+[2025-11-29 17:43:22.285] [DEBUG]: Database Connection took 26.85 ms
+[2025-11-29 17:43:22.286] [DEBUG]: Select Query took 27.96 ms
+[2025-11-29 17:43:22.288] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 17:43:22.289] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 17:43:23.669] [DEBUG]: New Database Connection
+[2025-11-29 17:43:23.684] [DEBUG]: Database Connection took 14.84 ms
+[2025-11-29 17:43:23.685] [DEBUG]: Select Query took 16.24 ms
+[2025-11-29 17:43:23.686] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 17:43:23.687] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 17:43:58.633] [DEBUG]: New Database Connection
+[2025-11-29 17:43:58.636] [DEBUG]: Database Connection took 3.06 ms
+[2025-11-29 17:43:58.638] [DEBUG]: Select Query took 4.99 ms
+[2025-11-29 17:43:58.639] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 17:43:58.641] [DEBUG]: Select Query took 0.96 ms
+[2025-11-29 17:46:13.267] [DEBUG]: New Database Connection
+[2025-11-29 17:46:13.271] [DEBUG]: Database Connection took 3.44 ms
+[2025-11-29 17:46:13.272] [DEBUG]: Select Query took 5.00 ms
+[2025-11-29 17:46:13.274] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 17:46:13.275] [DEBUG]: Select Query took 0.79 ms
+[2025-11-29 17:46:22.693] [DEBUG]: New Database Connection
+[2025-11-29 17:46:22.705] [DEBUG]: Database Connection took 12.47 ms
+[2025-11-29 17:46:22.707] [DEBUG]: Select Query took 13.88 ms
+[2025-11-29 17:46:22.708] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 17:46:22.709] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 17:46:29.215] [DEBUG]: New Database Connection
+[2025-11-29 17:46:29.228] [DEBUG]: Database Connection took 12.92 ms
+[2025-11-29 17:46:29.229] [DEBUG]: Select Query took 13.91 ms
+[2025-11-29 17:46:29.230] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:46:29.231] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 17:46:33.099] [DEBUG]: New Database Connection
+[2025-11-29 17:46:33.112] [DEBUG]: Database Connection took 12.87 ms
+[2025-11-29 17:46:33.113] [DEBUG]: Select Query took 13.90 ms
+[2025-11-29 17:46:33.114] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 17:46:33.114] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 17:46:38.407] [DEBUG]: New Database Connection
+[2025-11-29 17:46:38.409] [DEBUG]: Database Connection took 1.73 ms
+[2025-11-29 17:46:38.410] [DEBUG]: Select Query took 2.86 ms
+[2025-11-29 17:46:38.410] [DEBUG]: Select Query took 0.39 ms
+[2025-11-29 17:46:38.411] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 17:46:41.475] [DEBUG]: New Database Connection
+[2025-11-29 17:46:41.479] [DEBUG]: Database Connection took 3.29 ms
+[2025-11-29 17:46:41.480] [DEBUG]: Select Query took 4.92 ms
+[2025-11-29 17:46:41.481] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:46:41.482] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 17:46:45.175] [DEBUG]: New Database Connection
+[2025-11-29 17:46:45.191] [DEBUG]: Database Connection took 15.89 ms
+[2025-11-29 17:46:45.192] [DEBUG]: Select Query took 16.81 ms
+[2025-11-29 17:46:45.193] [DEBUG]: Select Query took 0.38 ms
+[2025-11-29 17:46:45.193] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 17:49:40.764] [DEBUG]: New Database Connection
+[2025-11-29 17:49:40.780] [DEBUG]: Database Connection took 16.02 ms
+[2025-11-29 17:49:40.781] [DEBUG]: Select Query took 17.13 ms
+[2025-11-29 17:49:40.783] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 17:49:40.784] [DEBUG]: Select Query took 0.81 ms
+[2025-11-29 17:49:43.035] [DEBUG]: New Database Connection
+[2025-11-29 17:49:43.047] [DEBUG]: Database Connection took 11.94 ms
+[2025-11-29 17:49:43.048] [DEBUG]: Select Query took 12.94 ms
+[2025-11-29 17:49:43.049] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 17:49:43.050] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 17:49:44.077] [DEBUG]: New Database Connection
+[2025-11-29 17:49:44.088] [DEBUG]: Database Connection took 11.47 ms
+[2025-11-29 17:49:44.091] [DEBUG]: Select Query took 14.78 ms
+[2025-11-29 17:49:44.093] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 17:49:44.094] [DEBUG]: Select Query took 0.93 ms
+[2025-11-29 17:49:45.453] [DEBUG]: New Database Connection
+[2025-11-29 17:49:45.478] [DEBUG]: Database Connection took 25.08 ms
+[2025-11-29 17:49:45.480] [DEBUG]: Select Query took 26.27 ms
+[2025-11-29 17:49:45.481] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 17:49:45.482] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 17:49:57.075] [DEBUG]: New Database Connection
+[2025-11-29 17:49:57.099] [DEBUG]: Database Connection took 24.49 ms
+[2025-11-29 17:49:57.100] [DEBUG]: Select Query took 25.54 ms
+[2025-11-29 17:49:57.101] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 17:49:57.102] [DEBUG]: Select Query took 1.00 ms
+[2025-11-29 17:49:57.104] [DEBUG]: Select Query took 0.86 ms
+[2025-11-29 17:49:57.105] [DEBUG]: Select Query took 0.82 ms
+[2025-11-29 17:49:58.894] [DEBUG]: New Database Connection
+[2025-11-29 17:49:58.896] [DEBUG]: Database Connection took 1.80 ms
+[2025-11-29 17:49:58.897] [DEBUG]: Select Query took 2.93 ms
+[2025-11-29 17:49:58.898] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 17:49:58.899] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 17:50:48.777] [DEBUG]: New Database Connection
+[2025-11-29 17:50:48.779] [DEBUG]: Database Connection took 2.44 ms
+[2025-11-29 17:50:48.780] [DEBUG]: Select Query took 3.47 ms
+[2025-11-29 17:50:48.782] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 17:50:48.783] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 17:50:59.796] [DEBUG]: New Database Connection
+[2025-11-29 17:50:59.798] [DEBUG]: Database Connection took 1.89 ms
+[2025-11-29 17:50:59.799] [DEBUG]: Select Query took 3.02 ms
+[2025-11-29 17:50:59.800] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 17:50:59.801] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 17:51:04.228] [DEBUG]: New Database Connection
+[2025-11-29 17:51:04.242] [DEBUG]: Database Connection took 14.50 ms
+[2025-11-29 17:51:04.243] [DEBUG]: Select Query took 15.55 ms
+[2025-11-29 17:51:04.244] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 17:51:04.245] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 17:51:15.951] [DEBUG]: New Database Connection
+[2025-11-29 17:51:15.953] [DEBUG]: Database Connection took 2.32 ms
+[2025-11-29 17:51:15.954] [DEBUG]: Select Query took 3.32 ms
+[2025-11-29 17:51:15.955] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 17:51:15.956] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 17:51:20.901] [DEBUG]: New Database Connection
+[2025-11-29 17:51:20.904] [DEBUG]: Database Connection took 2.55 ms
+[2025-11-29 17:51:20.906] [DEBUG]: Select Query took 4.07 ms
+[2025-11-29 17:51:20.907] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 17:51:20.909] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 17:51:25.622] [DEBUG]: New Database Connection
+[2025-11-29 17:51:25.643] [DEBUG]: Database Connection took 20.86 ms
+[2025-11-29 17:51:25.644] [DEBUG]: Select Query took 22.18 ms
+[2025-11-29 17:51:25.645] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 17:51:25.646] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 17:51:25.880] [DEBUG]: New Database Connection
+[2025-11-29 17:51:25.882] [DEBUG]: Database Connection took 1.57 ms
+[2025-11-29 17:51:25.882] [DEBUG]: Select Query took 2.42 ms
+[2025-11-29 17:51:25.883] [DEBUG]: Select Query took 0.39 ms
+[2025-11-29 17:51:25.884] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 17:53:00.536] [DEBUG]: New Database Connection
+[2025-11-29 17:53:00.539] [DEBUG]: Database Connection took 2.56 ms
+[2025-11-29 17:53:00.540] [DEBUG]: Select Query took 3.87 ms
+[2025-11-29 17:53:00.541] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:53:00.542] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 17:53:21.237] [DEBUG]: New Database Connection
+[2025-11-29 17:53:21.258] [DEBUG]: Database Connection took 21.11 ms
+[2025-11-29 17:53:21.259] [DEBUG]: Select Query took 22.37 ms
+[2025-11-29 17:53:21.260] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 17:53:21.261] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 17:53:33.944] [DEBUG]: New Database Connection
+[2025-11-29 17:53:33.965] [DEBUG]: Database Connection took 21.23 ms
+[2025-11-29 17:53:33.966] [DEBUG]: Select Query took 22.19 ms
+[2025-11-29 17:53:33.967] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 17:53:33.967] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 17:53:41.959] [DEBUG]: New Database Connection
+[2025-11-29 17:53:41.973] [DEBUG]: Database Connection took 13.55 ms
+[2025-11-29 17:53:41.973] [DEBUG]: Select Query took 14.53 ms
+[2025-11-29 17:53:41.975] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 17:53:41.976] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 17:54:05.175] [DEBUG]: New Database Connection
+[2025-11-29 17:54:05.178] [DEBUG]: Database Connection took 2.84 ms
+[2025-11-29 17:54:05.179] [DEBUG]: Select Query took 4.01 ms
+[2025-11-29 17:54:05.180] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 17:54:05.181] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 17:54:15.888] [DEBUG]: New Database Connection
+[2025-11-29 17:54:15.903] [DEBUG]: Database Connection took 14.59 ms
+[2025-11-29 17:54:15.904] [DEBUG]: Select Query took 15.69 ms
+[2025-11-29 17:54:15.906] [DEBUG]: Select Query took 0.90 ms
+[2025-11-29 17:54:15.907] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 17:54:19.472] [DEBUG]: New Database Connection
+[2025-11-29 17:54:19.494] [DEBUG]: Database Connection took 21.83 ms
+[2025-11-29 17:54:19.495] [DEBUG]: Select Query took 23.22 ms
+[2025-11-29 17:54:19.496] [DEBUG]: Select Query took 0.36 ms
+[2025-11-29 17:54:19.497] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 17:54:24.235] [DEBUG]: New Database Connection
+[2025-11-29 17:54:24.249] [DEBUG]: Database Connection took 14.23 ms
+[2025-11-29 17:54:24.250] [DEBUG]: Select Query took 15.30 ms
+[2025-11-29 17:54:24.251] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 17:54:24.252] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 17:55:21.150] [DEBUG]: New Database Connection
+[2025-11-29 17:55:21.170] [DEBUG]: Database Connection took 19.51 ms
+[2025-11-29 17:55:21.171] [DEBUG]: Select Query took 20.75 ms
+[2025-11-29 17:55:21.172] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 17:55:21.173] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 17:55:21.359] [DEBUG]: New Database Connection
+[2025-11-29 17:55:21.362] [DEBUG]: Database Connection took 2.72 ms
+[2025-11-29 17:55:21.363] [DEBUG]: Select Query took 4.04 ms
+[2025-11-29 17:55:21.364] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:55:21.365] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 17:55:23.733] [DEBUG]: New Database Connection
+[2025-11-29 17:55:23.734] [DEBUG]: Database Connection took 1.47 ms
+[2025-11-29 17:55:23.735] [DEBUG]: Select Query took 2.33 ms
+[2025-11-29 17:55:23.736] [DEBUG]: Select Query took 0.38 ms
+[2025-11-29 17:55:23.737] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 17:55:47.121] [DEBUG]: New Database Connection
+[2025-11-29 17:55:47.123] [DEBUG]: Database Connection took 1.79 ms
+[2025-11-29 17:55:47.124] [DEBUG]: Select Query took 3.25 ms
+[2025-11-29 17:55:47.125] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 17:55:47.126] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 17:55:57.736] [DEBUG]: New Database Connection
+[2025-11-29 17:55:57.753] [DEBUG]: Database Connection took 17.48 ms
+[2025-11-29 17:55:57.755] [DEBUG]: Select Query took 18.91 ms
+[2025-11-29 17:55:57.756] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 17:55:57.757] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 17:56:01.946] [DEBUG]: New Database Connection
+[2025-11-29 17:56:01.960] [DEBUG]: Database Connection took 13.15 ms
+[2025-11-29 17:56:01.961] [DEBUG]: Select Query took 14.24 ms
+[2025-11-29 17:56:01.962] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 17:56:01.963] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 17:59:13.302] [DEBUG]: New Database Connection
+[2025-11-29 17:59:13.315] [DEBUG]: Database Connection took 13.08 ms
+[2025-11-29 17:59:13.316] [DEBUG]: Select Query took 14.25 ms
+[2025-11-29 17:59:13.317] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 17:59:13.318] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 17:59:18.620] [DEBUG]: New Database Connection
+[2025-11-29 17:59:18.622] [DEBUG]: Database Connection took 1.60 ms
+[2025-11-29 17:59:18.623] [DEBUG]: Select Query took 2.83 ms
+[2025-11-29 17:59:18.624] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 17:59:18.625] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 18:00:29.358] [DEBUG]: New Database Connection
+[2025-11-29 18:00:29.359] [DEBUG]: Database Connection took 1.87 ms
+[2025-11-29 18:00:29.361] [DEBUG]: Select Query took 3.47 ms
+[2025-11-29 18:00:29.362] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 18:00:29.364] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 18:00:36.165] [DEBUG]: New Database Connection
+[2025-11-29 18:00:36.184] [DEBUG]: Database Connection took 19.23 ms
+[2025-11-29 18:00:36.185] [DEBUG]: Select Query took 20.45 ms
+[2025-11-29 18:00:36.186] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 18:00:36.188] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 18:00:40.730] [DEBUG]: New Database Connection
+[2025-11-29 18:00:40.746] [DEBUG]: Database Connection took 15.53 ms
+[2025-11-29 18:00:40.747] [DEBUG]: Select Query took 16.59 ms
+[2025-11-29 18:00:40.748] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 18:00:40.749] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 18:00:47.541] [DEBUG]: New Database Connection
+[2025-11-29 18:00:47.542] [DEBUG]: Database Connection took 1.61 ms
+[2025-11-29 18:00:47.543] [DEBUG]: Select Query took 2.51 ms
+[2025-11-29 18:00:47.544] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 18:00:47.545] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 18:00:51.787] [DEBUG]: New Database Connection
+[2025-11-29 18:00:51.812] [DEBUG]: Database Connection took 24.52 ms
+[2025-11-29 18:00:51.813] [DEBUG]: Select Query took 26.17 ms
+[2025-11-29 18:00:51.814] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 18:00:51.815] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 18:00:52.619] [DEBUG]: New Database Connection
+[2025-11-29 18:00:52.621] [DEBUG]: Database Connection took 2.33 ms
+[2025-11-29 18:00:52.623] [DEBUG]: Select Query took 3.41 ms
+[2025-11-29 18:00:52.623] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 18:00:52.624] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 18:01:03.483] [DEBUG]: New Database Connection
+[2025-11-29 18:01:03.485] [DEBUG]: Database Connection took 1.74 ms
+[2025-11-29 18:01:03.486] [DEBUG]: Select Query took 2.69 ms
+[2025-11-29 18:01:03.487] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 18:01:03.488] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 18:01:09.353] [DEBUG]: New Database Connection
+[2025-11-29 18:01:09.364] [DEBUG]: Database Connection took 11.87 ms
+[2025-11-29 18:01:09.366] [DEBUG]: Select Query took 13.03 ms
+[2025-11-29 18:01:09.367] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 18:01:09.367] [DEBUG]: Select Query took 0.39 ms
+[2025-11-29 18:01:15.947] [DEBUG]: New Database Connection
+[2025-11-29 18:01:15.959] [DEBUG]: Database Connection took 12.17 ms
+[2025-11-29 18:01:15.961] [DEBUG]: Select Query took 14.24 ms
+[2025-11-29 18:01:15.962] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 18:01:15.964] [DEBUG]: Select Query took 0.94 ms
+[2025-11-29 18:01:16.097] [DEBUG]: New Database Connection
+[2025-11-29 18:01:16.115] [DEBUG]: Database Connection took 18.12 ms
+[2025-11-29 18:01:16.117] [DEBUG]: Select Query took 20.17 ms
+[2025-11-29 18:01:16.119] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 18:01:16.120] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 18:01:22.129] [DEBUG]: New Database Connection
+[2025-11-29 18:01:22.145] [DEBUG]: Database Connection took 15.95 ms
+[2025-11-29 18:01:22.147] [DEBUG]: Select Query took 17.49 ms
+[2025-11-29 18:01:22.148] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 18:01:22.149] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 18:01:26.322] [DEBUG]: New Database Connection
+[2025-11-29 18:01:26.324] [DEBUG]: Database Connection took 1.56 ms
+[2025-11-29 18:01:26.325] [DEBUG]: Select Query took 2.48 ms
+[2025-11-29 18:01:26.326] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 18:01:26.327] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 18:01:44.120] [DEBUG]: New Database Connection
+[2025-11-29 18:01:44.135] [DEBUG]: Database Connection took 15.01 ms
+[2025-11-29 18:01:44.137] [DEBUG]: Select Query took 16.44 ms
+[2025-11-29 18:01:44.137] [DEBUG]: Select Query took 0.37 ms
+[2025-11-29 18:01:44.138] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 18:07:12.419] [DEBUG]: New Database Connection
+[2025-11-29 18:07:12.432] [DEBUG]: Database Connection took 12.72 ms
+[2025-11-29 18:07:12.433] [DEBUG]: Select Query took 13.98 ms
+[2025-11-29 18:07:12.435] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 18:07:12.436] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 18:07:23.240] [DEBUG]: New Database Connection
+[2025-11-29 18:07:23.260] [DEBUG]: Database Connection took 19.56 ms
+[2025-11-29 18:07:23.261] [DEBUG]: Select Query took 20.54 ms
+[2025-11-29 18:07:23.262] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 18:07:23.263] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 18:07:28.142] [DEBUG]: New Database Connection
+[2025-11-29 18:07:28.163] [DEBUG]: Database Connection took 21.64 ms
+[2025-11-29 18:07:28.165] [DEBUG]: Select Query took 22.98 ms
+[2025-11-29 18:07:28.166] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 18:07:28.167] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 18:07:35.370] [DEBUG]: New Database Connection
+[2025-11-29 18:07:35.386] [DEBUG]: Database Connection took 16.25 ms
+[2025-11-29 18:07:35.387] [DEBUG]: Select Query took 17.24 ms
+[2025-11-29 18:07:35.388] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 18:07:35.389] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 18:07:42.591] [DEBUG]: New Database Connection
+[2025-11-29 18:07:42.604] [DEBUG]: Database Connection took 12.89 ms
+[2025-11-29 18:07:42.606] [DEBUG]: Select Query took 14.17 ms
+[2025-11-29 18:07:42.607] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 18:07:42.607] [DEBUG]: Select Query took 0.38 ms
+[2025-11-29 18:07:46.120] [DEBUG]: New Database Connection
+[2025-11-29 18:07:46.136] [DEBUG]: Database Connection took 15.44 ms
+[2025-11-29 18:07:46.137] [DEBUG]: Select Query took 16.69 ms
+[2025-11-29 18:07:46.138] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 18:07:46.139] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 18:07:53.554] [DEBUG]: New Database Connection
+[2025-11-29 18:07:53.567] [DEBUG]: Database Connection took 13.06 ms
+[2025-11-29 18:07:53.568] [DEBUG]: Select Query took 14.08 ms
+[2025-11-29 18:07:53.569] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 18:07:53.570] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 18:08:07.148] [DEBUG]: New Database Connection
+[2025-11-29 18:08:07.151] [DEBUG]: Database Connection took 2.34 ms
+[2025-11-29 18:08:07.152] [DEBUG]: Select Query took 3.84 ms
+[2025-11-29 18:08:07.153] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 18:08:07.155] [DEBUG]: Select Query took 0.90 ms
+[2025-11-29 18:08:16.544] [DEBUG]: New Database Connection
+[2025-11-29 18:08:16.566] [DEBUG]: Database Connection took 21.69 ms
+[2025-11-29 18:08:16.567] [DEBUG]: Select Query took 22.87 ms
+[2025-11-29 18:08:16.568] [DEBUG]: Select Query took 0.39 ms
+[2025-11-29 18:08:16.569] [DEBUG]: Select Query took 0.78 ms
+[2025-11-29 18:08:34.714] [DEBUG]: New Database Connection
+[2025-11-29 18:08:34.729] [DEBUG]: Database Connection took 14.77 ms
+[2025-11-29 18:08:34.730] [DEBUG]: Select Query took 16.32 ms
+[2025-11-29 18:08:34.731] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 18:08:34.732] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 18:08:39.903] [DEBUG]: New Database Connection
+[2025-11-29 18:08:39.920] [DEBUG]: Database Connection took 17.00 ms
+[2025-11-29 18:08:39.921] [DEBUG]: Select Query took 18.09 ms
+[2025-11-29 18:08:39.922] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 18:08:39.923] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 19:46:28.898] [DEBUG]: New Database Connection
+[2025-11-29 19:46:28.900] [DEBUG]: Database Connection took 2.47 ms
+[2025-11-29 19:46:28.906] [DEBUG]: Select Query took 7.71 ms
+[2025-11-29 19:46:28.907] [DEBUG]: Closing Database Connection
+[2025-11-29 19:48:38.442] [DEBUG]: New Database Connection
+[2025-11-29 19:48:38.470] [DEBUG]: Database Connection took 27.27 ms
+[2025-11-29 19:48:38.472] [DEBUG]: Select Query took 29.88 ms
+[2025-11-29 19:48:38.473] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:04.243] [DEBUG]: New Database Connection
+[2025-11-29 19:49:04.266] [DEBUG]: Database Connection took 23.87 ms
+[2025-11-29 19:49:04.282] [DEBUG]: Select Query took 39.37 ms
+[2025-11-29 19:49:04.283] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:15.865] [DEBUG]: New Database Connection
+[2025-11-29 19:49:15.866] [DEBUG]: Database Connection took 1.58 ms
+[2025-11-29 19:49:15.868] [DEBUG]: Select Query took 3.52 ms
+[2025-11-29 19:49:15.869] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:18.401] [DEBUG]: New Database Connection
+[2025-11-29 19:49:18.403] [DEBUG]: Database Connection took 1.90 ms
+[2025-11-29 19:49:18.404] [DEBUG]: Select Query took 2.89 ms
+[2025-11-29 19:49:18.405] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 19:49:18.406] [DEBUG]: Select Query took 1.35 ms
+[2025-11-29 19:49:18.575] [DEBUG]: New Database Connection
+[2025-11-29 19:49:18.589] [DEBUG]: Database Connection took 13.53 ms
+[2025-11-29 19:49:18.590] [DEBUG]: Select Query took 14.50 ms
+[2025-11-29 19:49:18.590] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 19:49:18.591] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 19:49:22.082] [DEBUG]: New Database Connection
+[2025-11-29 19:49:22.102] [DEBUG]: Database Connection took 20.61 ms
+[2025-11-29 19:49:22.103] [DEBUG]: Select Query took 21.73 ms
+[2025-11-29 19:49:22.104] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 19:49:22.105] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 19:49:26.703] [DEBUG]: New Database Connection
+[2025-11-29 19:49:26.715] [DEBUG]: Database Connection took 12.19 ms
+[2025-11-29 19:49:26.716] [DEBUG]: Select Query took 13.55 ms
+[2025-11-29 19:49:26.718] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 19:49:26.718] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 19:49:27.944] [DEBUG]: New Database Connection
+[2025-11-29 19:49:27.946] [DEBUG]: Database Connection took 2.79 ms
+[2025-11-29 19:49:27.948] [DEBUG]: Select Query took 4.31 ms
+[2025-11-29 19:49:27.949] [DEBUG]: Select Query took 0.94 ms
+[2025-11-29 19:49:27.951] [DEBUG]: Select Query took 0.86 ms
+[2025-11-29 19:49:30.085] [DEBUG]: New Database Connection
+[2025-11-29 19:49:30.088] [DEBUG]: Database Connection took 2.49 ms
+[2025-11-29 19:49:30.089] [DEBUG]: Select Query took 3.39 ms
+[2025-11-29 19:49:30.089] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 19:49:30.091] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 19:49:38.780] [DEBUG]: New Database Connection
+[2025-11-29 19:49:38.782] [DEBUG]: Database Connection took 1.47 ms
+[2025-11-29 19:49:38.783] [DEBUG]: Select Query took 2.99 ms
+[2025-11-29 19:49:38.784] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:40.731] [DEBUG]: New Database Connection
+[2025-11-29 19:49:40.742] [DEBUG]: Database Connection took 11.54 ms
+[2025-11-29 19:49:40.744] [DEBUG]: Select Query took 13.24 ms
+[2025-11-29 19:49:40.745] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:46.713] [DEBUG]: New Database Connection
+[2025-11-29 19:49:46.738] [DEBUG]: Database Connection took 24.91 ms
+[2025-11-29 19:49:46.740] [DEBUG]: Select Query took 26.61 ms
+[2025-11-29 19:49:46.741] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:47.970] [DEBUG]: New Database Connection
+[2025-11-29 19:49:47.972] [DEBUG]: Database Connection took 1.98 ms
+[2025-11-29 19:49:47.974] [DEBUG]: Select Query took 3.91 ms
+[2025-11-29 19:49:47.975] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 19:49:47.976] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 19:49:49.934] [DEBUG]: New Database Connection
+[2025-11-29 19:49:49.936] [DEBUG]: Database Connection took 1.73 ms
+[2025-11-29 19:49:49.937] [DEBUG]: Select Query took 3.02 ms
+[2025-11-29 19:49:49.938] [DEBUG]: Closing Database Connection
+[2025-11-29 19:49:51.810] [DEBUG]: New Database Connection
+[2025-11-29 19:49:51.823] [DEBUG]: Database Connection took 12.80 ms
+[2025-11-29 19:49:51.824] [DEBUG]: Select Query took 14.21 ms
+[2025-11-29 19:49:51.825] [DEBUG]: Closing Database Connection
+[2025-11-29 19:50:00.020] [DEBUG]: New Database Connection
+[2025-11-29 19:50:00.023] [DEBUG]: Database Connection took 3.00 ms
+[2025-11-29 19:50:00.033] [DEBUG]: Insert/Update/Detele Query took 13.22 ms
+[2025-11-29 19:50:00.083] [DEBUG]: New Database Connection
+[2025-11-29 19:50:00.105] [DEBUG]: Database Connection took 21.96 ms
+[2025-11-29 19:50:00.107] [DEBUG]: Select Query took 23.31 ms
+[2025-11-29 19:50:00.108] [DEBUG]: Closing Database Connection
+[2025-11-29 19:50:02.052] [DEBUG]: New Database Connection
+[2025-11-29 19:50:02.066] [DEBUG]: Database Connection took 13.66 ms
+[2025-11-29 19:50:02.067] [DEBUG]: Select Query took 15.20 ms
+[2025-11-29 19:50:02.069] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 19:50:02.069] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 19:50:14.225] [DEBUG]: New Database Connection
+[2025-11-29 19:50:14.227] [DEBUG]: Database Connection took 1.87 ms
+[2025-11-29 19:50:14.228] [DEBUG]: Select Query took 2.74 ms
+[2025-11-29 19:50:14.228] [DEBUG]: Closing Database Connection
+[2025-11-29 19:50:20.190] [DEBUG]: New Database Connection
+[2025-11-29 19:50:20.203] [DEBUG]: Database Connection took 12.89 ms
+[2025-11-29 19:50:20.205] [DEBUG]: Select Query took 14.20 ms
+[2025-11-29 19:50:20.206] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 19:50:20.206] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 19:50:29.385] [DEBUG]: New Database Connection
+[2025-11-29 19:50:29.410] [DEBUG]: Database Connection took 25.43 ms
+[2025-11-29 19:50:29.412] [DEBUG]: Select Query took 27.36 ms
+[2025-11-29 19:50:29.413] [DEBUG]: Closing Database Connection
+[2025-11-29 19:52:04.739] [DEBUG]: New Database Connection
+[2025-11-29 19:52:04.759] [DEBUG]: Database Connection took 19.89 ms
+[2025-11-29 19:52:04.761] [DEBUG]: Select Query took 21.32 ms
+[2025-11-29 19:52:04.761] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 19:52:04.762] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 19:52:07.048] [DEBUG]: New Database Connection
+[2025-11-29 19:52:07.051] [DEBUG]: Database Connection took 2.27 ms
+[2025-11-29 19:52:07.052] [DEBUG]: Select Query took 3.44 ms
+[2025-11-29 19:52:07.053] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 19:52:07.054] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 19:52:07.054] [DEBUG]: Closing Database Connection
+[2025-11-29 19:52:13.912] [DEBUG]: New Database Connection
+[2025-11-29 19:52:13.914] [DEBUG]: Database Connection took 2.43 ms
+[2025-11-29 19:52:13.916] [DEBUG]: Select Query took 3.76 ms
+[2025-11-29 19:52:13.917] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 19:52:13.917] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 19:52:13.923] [DEBUG]: Insert/Update/Detele Query took 4.01 ms
+[2025-11-29 19:52:13.960] [DEBUG]: New Database Connection
+[2025-11-29 19:52:13.976] [DEBUG]: Database Connection took 15.58 ms
+[2025-11-29 19:52:13.977] [DEBUG]: Select Query took 16.78 ms
+[2025-11-29 19:52:13.978] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 19:52:13.979] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 19:52:31.569] [DEBUG]: New Database Connection
+[2025-11-29 19:52:31.580] [DEBUG]: Database Connection took 11.68 ms
+[2025-11-29 19:52:31.581] [DEBUG]: Select Query took 12.57 ms
+[2025-11-29 19:52:31.582] [DEBUG]: Closing Database Connection
+[2025-11-29 19:52:38.689] [DEBUG]: New Database Connection
+[2025-11-29 19:52:38.709] [DEBUG]: Database Connection took 20.48 ms
+[2025-11-29 19:52:38.711] [DEBUG]: Select Query took 22.02 ms
+[2025-11-29 19:52:38.712] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 19:52:38.713] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 19:52:43.041] [DEBUG]: New Database Connection
+[2025-11-29 19:52:43.066] [DEBUG]: Database Connection took 25.08 ms
+[2025-11-29 19:52:43.067] [DEBUG]: Select Query took 26.67 ms
+[2025-11-29 19:52:43.068] [DEBUG]: Closing Database Connection
+[2025-11-29 19:52:50.083] [DEBUG]: New Database Connection
+[2025-11-29 19:52:50.108] [DEBUG]: Database Connection took 24.85 ms
+[2025-11-29 19:52:50.113] [DEBUG]: Insert/Update/Detele Query took 4.85 ms
+[2025-11-29 19:52:50.144] [DEBUG]: New Database Connection
+[2025-11-29 19:52:50.170] [DEBUG]: Database Connection took 26.13 ms
+[2025-11-29 19:52:50.172] [DEBUG]: Select Query took 28.02 ms
+[2025-11-29 19:52:50.173] [DEBUG]: Closing Database Connection
+[2025-11-29 19:52:52.818] [DEBUG]: New Database Connection
+[2025-11-29 19:52:52.819] [DEBUG]: Database Connection took 1.61 ms
+[2025-11-29 19:52:52.820] [DEBUG]: Select Query took 2.85 ms
+[2025-11-29 19:52:52.822] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 19:52:52.823] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 19:52:57.765] [DEBUG]: New Database Connection
+[2025-11-29 19:52:57.769] [DEBUG]: Database Connection took 4.07 ms
+[2025-11-29 19:52:57.771] [DEBUG]: Select Query took 6.23 ms
+[2025-11-29 19:52:57.772] [DEBUG]: Closing Database Connection
+[2025-11-29 19:53:02.771] [DEBUG]: New Database Connection
+[2025-11-29 19:53:02.797] [DEBUG]: Database Connection took 25.70 ms
+[2025-11-29 19:53:02.798] [DEBUG]: Select Query took 26.94 ms
+[2025-11-29 19:53:02.799] [DEBUG]: Select Query took 0.36 ms
+[2025-11-29 19:53:02.800] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 19:53:21.624] [DEBUG]: New Database Connection
+[2025-11-29 19:53:21.651] [DEBUG]: Database Connection took 26.57 ms
+[2025-11-29 19:53:21.652] [DEBUG]: Select Query took 28.23 ms
+[2025-11-29 19:53:21.654] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 19:53:21.654] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 19:56:11.274] [DEBUG]: New Database Connection
+[2025-11-29 19:56:11.278] [DEBUG]: Database Connection took 3.35 ms
+[2025-11-29 19:56:11.279] [DEBUG]: Select Query took 4.53 ms
+[2025-11-29 19:56:11.280] [DEBUG]: Closing Database Connection
+[2025-11-29 19:56:14.282] [DEBUG]: New Database Connection
+[2025-11-29 19:56:14.308] [DEBUG]: Database Connection took 26.85 ms
+[2025-11-29 19:56:14.310] [DEBUG]: Select Query took 28.06 ms
+[2025-11-29 19:56:14.311] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 19:56:14.312] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 19:56:18.623] [DEBUG]: New Database Connection
+[2025-11-29 19:56:18.637] [DEBUG]: Database Connection took 13.38 ms
+[2025-11-29 19:56:18.638] [DEBUG]: Select Query took 14.57 ms
+[2025-11-29 19:56:18.638] [DEBUG]: Closing Database Connection
+[2025-11-29 19:56:22.362] [DEBUG]: New Database Connection
+[2025-11-29 19:56:22.364] [DEBUG]: Database Connection took 2.03 ms
+[2025-11-29 19:56:22.365] [DEBUG]: Select Query took 2.96 ms
+[2025-11-29 19:56:22.365] [DEBUG]: Closing Database Connection
+[2025-11-29 19:56:28.749] [DEBUG]: New Database Connection
+[2025-11-29 19:56:28.765] [DEBUG]: Database Connection took 15.14 ms
+[2025-11-29 19:56:28.766] [DEBUG]: Select Query took 16.37 ms
+[2025-11-29 19:56:28.767] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 19:56:28.768] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 19:56:28.901] [DEBUG]: New Database Connection
+[2025-11-29 19:56:28.918] [DEBUG]: Database Connection took 17.06 ms
+[2025-11-29 19:56:28.920] [DEBUG]: Select Query took 18.45 ms
+[2025-11-29 19:56:28.921] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 19:56:28.922] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 19:57:23.322] [DEBUG]: New Database Connection
+[2025-11-29 19:57:23.324] [DEBUG]: Database Connection took 2.25 ms
+[2025-11-29 19:57:23.325] [DEBUG]: Select Query took 3.88 ms
+[2025-11-29 19:57:23.327] [DEBUG]: Closing Database Connection
+[2025-11-29 19:57:30.952] [DEBUG]: New Database Connection
+[2025-11-29 19:57:30.966] [DEBUG]: Database Connection took 14.07 ms
+[2025-11-29 19:57:30.968] [DEBUG]: Select Query took 15.58 ms
+[2025-11-29 19:57:30.968] [DEBUG]: Closing Database Connection
+[2025-11-29 19:57:34.199] [DEBUG]: New Database Connection
+[2025-11-29 19:57:34.201] [DEBUG]: Database Connection took 1.75 ms
+[2025-11-29 19:57:34.202] [DEBUG]: Select Query took 2.78 ms
+[2025-11-29 19:57:34.202] [DEBUG]: Closing Database Connection
+[2025-11-29 19:57:37.369] [DEBUG]: New Database Connection
+[2025-11-29 19:57:37.372] [DEBUG]: Database Connection took 2.33 ms
+[2025-11-29 19:57:37.373] [DEBUG]: Select Query took 3.79 ms
+[2025-11-29 19:57:37.374] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 19:57:37.375] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 19:57:40.176] [DEBUG]: New Database Connection
+[2025-11-29 19:57:40.190] [DEBUG]: Database Connection took 14.65 ms
+[2025-11-29 19:57:40.192] [DEBUG]: Select Query took 16.64 ms
+[2025-11-29 19:57:40.194] [DEBUG]: Closing Database Connection
+[2025-11-29 19:57:45.665] [DEBUG]: New Database Connection
+[2025-11-29 19:57:45.679] [DEBUG]: Database Connection took 13.78 ms
+[2025-11-29 19:57:45.680] [DEBUG]: Select Query took 14.91 ms
+[2025-11-29 19:57:45.681] [DEBUG]: Closing Database Connection
+[2025-11-29 19:59:11.444] [DEBUG]: New Database Connection
+[2025-11-29 19:59:11.471] [DEBUG]: Database Connection took 27.52 ms
+[2025-11-29 19:59:11.472] [DEBUG]: Select Query took 28.51 ms
+[2025-11-29 19:59:11.473] [DEBUG]: Select Query took 0.29 ms
+[2025-11-29 19:59:11.474] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 19:59:22.245] [DEBUG]: New Database Connection
+[2025-11-29 19:59:22.261] [DEBUG]: Database Connection took 15.89 ms
+[2025-11-29 19:59:22.263] [DEBUG]: Select Query took 17.24 ms
+[2025-11-29 19:59:22.264] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 19:59:22.265] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 19:59:22.266] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 19:59:22.267] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:10:05.621] [DEBUG]: New Database Connection
+[2025-11-29 20:10:05.624] [DEBUG]: Database Connection took 2.85 ms
+[2025-11-29 20:10:05.627] [DEBUG]: Select Query took 5.68 ms
+[2025-11-29 20:10:05.628] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:10:05.629] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:10:05.630] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 20:10:12.997] [DEBUG]: New Database Connection
+[2025-11-29 20:10:13.018] [DEBUG]: Database Connection took 20.38 ms
+[2025-11-29 20:10:13.019] [DEBUG]: Select Query took 22.05 ms
+[2025-11-29 20:10:13.064] [DEBUG]: New Database Connection
+[2025-11-29 20:10:13.067] [DEBUG]: Database Connection took 2.12 ms
+[2025-11-29 20:10:13.068] [DEBUG]: Select Query took 3.40 ms
+[2025-11-29 20:10:13.069] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 20:10:13.070] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 20:10:13.072] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 20:10:24.920] [DEBUG]: New Database Connection
+[2025-11-29 20:10:24.934] [DEBUG]: Database Connection took 14.09 ms
+[2025-11-29 20:10:24.937] [DEBUG]: Select Query took 16.80 ms
+[2025-11-29 20:10:24.938] [DEBUG]: Closing Database Connection
+[2025-11-29 20:11:32.928] [DEBUG]: New Database Connection
+[2025-11-29 20:11:32.931] [DEBUG]: Database Connection took 2.83 ms
+[2025-11-29 20:11:32.932] [DEBUG]: Select Query took 4.25 ms
+[2025-11-29 20:11:32.933] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 20:11:32.935] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:11:32.936] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 20:12:00.104] [DEBUG]: New Database Connection
+[2025-11-29 20:12:00.122] [DEBUG]: Database Connection took 17.60 ms
+[2025-11-29 20:12:00.123] [DEBUG]: Select Query took 19.16 ms
+[2025-11-29 20:12:00.124] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 20:12:00.125] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:12:00.126] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:12:01.798] [DEBUG]: New Database Connection
+[2025-11-29 20:12:01.815] [DEBUG]: Database Connection took 17.56 ms
+[2025-11-29 20:12:01.817] [DEBUG]: Select Query took 19.21 ms
+[2025-11-29 20:12:01.818] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:12:01.819] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 20:12:01.820] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:12:14.721] [DEBUG]: New Database Connection
+[2025-11-29 20:12:14.723] [DEBUG]: Database Connection took 2.05 ms
+[2025-11-29 20:12:14.724] [DEBUG]: Select Query took 3.21 ms
+[2025-11-29 20:12:14.725] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 20:12:14.726] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:12:14.728] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 20:12:16.006] [DEBUG]: New Database Connection
+[2025-11-29 20:12:16.027] [DEBUG]: Database Connection took 21.23 ms
+[2025-11-29 20:12:16.029] [DEBUG]: Select Query took 22.49 ms
+[2025-11-29 20:12:16.030] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 20:12:16.031] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:12:16.032] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:12:51.893] [DEBUG]: New Database Connection
+[2025-11-29 20:12:51.911] [DEBUG]: Database Connection took 17.69 ms
+[2025-11-29 20:12:51.912] [DEBUG]: Select Query took 18.89 ms
+[2025-11-29 20:12:51.913] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 20:12:51.915] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:12:51.916] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:13:09.370] [DEBUG]: New Database Connection
+[2025-11-29 20:13:09.372] [DEBUG]: Database Connection took 2.16 ms
+[2025-11-29 20:13:09.373] [DEBUG]: Select Query took 3.33 ms
+[2025-11-29 20:13:09.374] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:13:09.376] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 20:13:09.377] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:14:00.597] [DEBUG]: New Database Connection
+[2025-11-29 20:14:00.600] [DEBUG]: Database Connection took 2.17 ms
+[2025-11-29 20:14:00.601] [DEBUG]: Select Query took 3.85 ms
+[2025-11-29 20:14:00.603] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 20:14:00.604] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 20:14:00.605] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 20:14:10.804] [DEBUG]: New Database Connection
+[2025-11-29 20:14:10.819] [DEBUG]: Database Connection took 14.94 ms
+[2025-11-29 20:14:10.821] [DEBUG]: Select Query took 16.53 ms
+[2025-11-29 20:14:10.822] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:14:10.824] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 20:14:10.825] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:14:33.870] [DEBUG]: New Database Connection
+[2025-11-29 20:14:33.873] [DEBUG]: Database Connection took 2.55 ms
+[2025-11-29 20:14:33.874] [DEBUG]: Select Query took 3.63 ms
+[2025-11-29 20:14:33.875] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 20:14:33.876] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:14:33.877] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:14:40.329] [DEBUG]: New Database Connection
+[2025-11-29 20:14:40.349] [DEBUG]: Database Connection took 20.46 ms
+[2025-11-29 20:14:40.350] [DEBUG]: Select Query took 21.81 ms
+[2025-11-29 20:14:40.352] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:14:40.353] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 20:14:40.354] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 20:15:12.132] [DEBUG]: New Database Connection
+[2025-11-29 20:15:12.146] [DEBUG]: Database Connection took 13.89 ms
+[2025-11-29 20:15:12.147] [DEBUG]: Select Query took 15.11 ms
+[2025-11-29 20:15:12.149] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 20:15:12.150] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 20:15:12.151] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 20:15:45.259] [DEBUG]: New Database Connection
+[2025-11-29 20:15:45.261] [DEBUG]: Database Connection took 2.49 ms
+[2025-11-29 20:15:45.262] [DEBUG]: Select Query took 3.69 ms
+[2025-11-29 20:15:45.264] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:15:45.265] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 20:15:45.266] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:16:41.964] [DEBUG]: New Database Connection
+[2025-11-29 20:16:41.967] [DEBUG]: Database Connection took 2.30 ms
+[2025-11-29 20:16:41.968] [DEBUG]: Select Query took 3.40 ms
+[2025-11-29 20:16:41.969] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 20:16:41.970] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:16:41.971] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 20:16:56.961] [DEBUG]: New Database Connection
+[2025-11-29 20:16:56.964] [DEBUG]: Database Connection took 2.68 ms
+[2025-11-29 20:16:56.965] [DEBUG]: Select Query took 4.02 ms
+[2025-11-29 20:16:56.967] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:16:56.968] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:16:56.969] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:17:16.172] [DEBUG]: New Database Connection
+[2025-11-29 20:17:16.175] [DEBUG]: Database Connection took 2.53 ms
+[2025-11-29 20:17:16.176] [DEBUG]: Select Query took 3.69 ms
+[2025-11-29 20:17:16.177] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:17:16.178] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:17:16.179] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 20:21:24.111] [DEBUG]: New Database Connection
+[2025-11-29 20:21:24.138] [DEBUG]: Database Connection took 26.92 ms
+[2025-11-29 20:21:24.139] [DEBUG]: Select Query took 28.30 ms
+[2025-11-29 20:21:24.140] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 20:21:24.142] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:21:24.143] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 20:21:33.045] [DEBUG]: New Database Connection
+[2025-11-29 20:21:33.056] [DEBUG]: Database Connection took 11.28 ms
+[2025-11-29 20:21:33.057] [DEBUG]: Select Query took 12.43 ms
+[2025-11-29 20:21:33.059] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 20:21:33.060] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 20:21:33.061] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:22:06.505] [DEBUG]: New Database Connection
+[2025-11-29 20:22:06.525] [DEBUG]: Database Connection took 19.85 ms
+[2025-11-29 20:22:06.526] [DEBUG]: Select Query took 20.91 ms
+[2025-11-29 20:22:06.527] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:22:06.528] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 20:22:06.529] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 20:23:42.572] [DEBUG]: New Database Connection
+[2025-11-29 20:23:42.598] [DEBUG]: Database Connection took 25.79 ms
+[2025-11-29 20:23:42.600] [DEBUG]: Select Query took 27.34 ms
+[2025-11-29 20:23:42.601] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:23:42.602] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 20:23:42.603] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 20:26:14.905] [DEBUG]: New Database Connection
+[2025-11-29 20:26:14.926] [DEBUG]: Database Connection took 21.18 ms
+[2025-11-29 20:26:14.928] [DEBUG]: Select Query took 22.95 ms
+[2025-11-29 20:26:14.929] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:26:14.930] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:26:14.931] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:26:28.036] [DEBUG]: New Database Connection
+[2025-11-29 20:26:28.038] [DEBUG]: Database Connection took 1.57 ms
+[2025-11-29 20:26:28.038] [DEBUG]: Select Query took 2.46 ms
+[2025-11-29 20:26:28.040] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 20:26:28.041] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:26:28.042] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:26:33.206] [DEBUG]: New Database Connection
+[2025-11-29 20:26:33.232] [DEBUG]: Database Connection took 26.29 ms
+[2025-11-29 20:26:33.234] [DEBUG]: Select Query took 27.67 ms
+[2025-11-29 20:26:33.282] [DEBUG]: New Database Connection
+[2025-11-29 20:26:33.296] [DEBUG]: Database Connection took 14.13 ms
+[2025-11-29 20:26:33.297] [DEBUG]: Select Query took 15.42 ms
+[2025-11-29 20:26:33.298] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 20:26:33.299] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:26:33.300] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:27:17.835] [DEBUG]: New Database Connection
+[2025-11-29 20:27:17.837] [DEBUG]: Database Connection took 1.89 ms
+[2025-11-29 20:27:17.838] [DEBUG]: Select Query took 3.04 ms
+[2025-11-29 20:27:17.839] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:27:17.840] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 20:27:17.841] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 20:27:24.986] [DEBUG]: New Database Connection
+[2025-11-29 20:27:24.988] [DEBUG]: Database Connection took 1.80 ms
+[2025-11-29 20:27:24.989] [DEBUG]: Select Query took 2.84 ms
+[2025-11-29 20:27:24.990] [DEBUG]: Closing Database Connection
+[2025-11-29 20:27:52.878] [DEBUG]: New Database Connection
+[2025-11-29 20:27:52.899] [DEBUG]: Database Connection took 21.03 ms
+[2025-11-29 20:27:52.900] [DEBUG]: Select Query took 21.91 ms
+[2025-11-29 20:27:52.900] [DEBUG]: Closing Database Connection
+[2025-11-29 20:28:36.443] [DEBUG]: New Database Connection
+[2025-11-29 20:28:36.446] [DEBUG]: Database Connection took 2.06 ms
+[2025-11-29 20:28:36.447] [DEBUG]: Select Query took 3.35 ms
+[2025-11-29 20:28:36.447] [DEBUG]: Closing Database Connection
+[2025-11-29 20:28:41.340] [DEBUG]: New Database Connection
+[2025-11-29 20:28:41.366] [DEBUG]: Database Connection took 26.27 ms
+[2025-11-29 20:28:41.368] [DEBUG]: Select Query took 27.78 ms
+[2025-11-29 20:28:41.374] [DEBUG]: Insert/Update/Detele Query took 5.16 ms
+[2025-11-29 20:28:41.424] [DEBUG]: New Database Connection
+[2025-11-29 20:28:41.426] [DEBUG]: Database Connection took 2.18 ms
+[2025-11-29 20:28:41.428] [DEBUG]: Select Query took 3.67 ms
+[2025-11-29 20:28:41.429] [DEBUG]: Closing Database Connection
+[2025-11-29 20:32:13.407] [DEBUG]: New Database Connection
+[2025-11-29 20:32:13.425] [DEBUG]: Database Connection took 17.63 ms
+[2025-11-29 20:32:13.427] [DEBUG]: Select Query took 19.62 ms
+[2025-11-29 20:32:13.428] [DEBUG]: Closing Database Connection
+[2025-11-29 20:33:54.785] [DEBUG]: New Database Connection
+[2025-11-29 20:33:54.787] [DEBUG]: Database Connection took 1.92 ms
+[2025-11-29 20:33:54.789] [DEBUG]: Select Query took 3.14 ms
+[2025-11-29 20:33:54.790] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:33:54.791] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:33:54.792] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 20:34:00.295] [DEBUG]: New Database Connection
+[2025-11-29 20:34:00.297] [DEBUG]: Database Connection took 1.66 ms
+[2025-11-29 20:34:00.298] [DEBUG]: Select Query took 2.70 ms
+[2025-11-29 20:34:00.341] [DEBUG]: New Database Connection
+[2025-11-29 20:34:00.363] [DEBUG]: Database Connection took 22.21 ms
+[2025-11-29 20:34:00.365] [DEBUG]: Select Query took 23.76 ms
+[2025-11-29 20:34:00.366] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 20:34:00.367] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:34:00.368] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:35:01.194] [DEBUG]: New Database Connection
+[2025-11-29 20:35:01.211] [DEBUG]: Database Connection took 17.24 ms
+[2025-11-29 20:35:01.213] [DEBUG]: Select Query took 18.70 ms
+[2025-11-29 20:35:01.214] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:35:01.216] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 20:35:01.217] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 20:35:01.218] [DEBUG]: Closing Database Connection
+[2025-11-29 20:35:05.068] [DEBUG]: New Database Connection
+[2025-11-29 20:35:05.089] [DEBUG]: Database Connection took 20.65 ms
+[2025-11-29 20:35:05.090] [DEBUG]: Select Query took 22.33 ms
+[2025-11-29 20:35:05.126] [DEBUG]: New Database Connection
+[2025-11-29 20:35:05.150] [DEBUG]: Database Connection took 24.70 ms
+[2025-11-29 20:35:05.152] [DEBUG]: Select Query took 25.97 ms
+[2025-11-29 20:35:05.153] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:35:05.154] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 20:35:05.155] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 20:35:05.156] [DEBUG]: Closing Database Connection
+[2025-11-29 20:35:51.501] [DEBUG]: New Database Connection
+[2025-11-29 20:35:51.522] [DEBUG]: Database Connection took 21.11 ms
+[2025-11-29 20:35:51.523] [DEBUG]: Select Query took 22.11 ms
+[2025-11-29 20:35:51.524] [DEBUG]: Select Query took 0.38 ms
+[2025-11-29 20:35:51.525] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:35:51.526] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 20:37:20.265] [DEBUG]: New Database Connection
+[2025-11-29 20:37:20.267] [DEBUG]: Database Connection took 2.58 ms
+[2025-11-29 20:37:20.269] [DEBUG]: Select Query took 4.04 ms
+[2025-11-29 20:37:20.270] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:37:20.272] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 20:37:20.273] [DEBUG]: Select Query took 0.81 ms
+[2025-11-29 20:37:28.082] [DEBUG]: New Database Connection
+[2025-11-29 20:37:28.097] [DEBUG]: Database Connection took 14.58 ms
+[2025-11-29 20:37:28.098] [DEBUG]: Select Query took 15.84 ms
+[2025-11-29 20:37:28.135] [DEBUG]: New Database Connection
+[2025-11-29 20:37:28.159] [DEBUG]: Database Connection took 24.32 ms
+[2025-11-29 20:37:28.161] [DEBUG]: Select Query took 26.85 ms
+[2025-11-29 20:37:28.163] [DEBUG]: Select Query took 0.78 ms
+[2025-11-29 20:37:28.164] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 20:37:28.165] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 20:37:31.851] [DEBUG]: New Database Connection
+[2025-11-29 20:37:31.854] [DEBUG]: Database Connection took 2.44 ms
+[2025-11-29 20:37:31.855] [DEBUG]: Select Query took 3.90 ms
+[2025-11-29 20:37:31.926] [DEBUG]: New Database Connection
+[2025-11-29 20:37:31.946] [DEBUG]: Database Connection took 19.62 ms
+[2025-11-29 20:37:31.947] [DEBUG]: Select Query took 20.59 ms
+[2025-11-29 20:37:31.948] [DEBUG]: Select Query took 0.90 ms
+[2025-11-29 20:37:31.949] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:37:31.950] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:38:02.730] [DEBUG]: New Database Connection
+[2025-11-29 20:38:02.748] [DEBUG]: Database Connection took 17.42 ms
+[2025-11-29 20:38:02.749] [DEBUG]: Select Query took 18.47 ms
+[2025-11-29 20:38:02.750] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:38:02.751] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:38:02.752] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:39:42.802] [DEBUG]: New Database Connection
+[2025-11-29 20:39:42.804] [DEBUG]: Database Connection took 1.64 ms
+[2025-11-29 20:39:42.805] [DEBUG]: Select Query took 3.08 ms
+[2025-11-29 20:39:42.806] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 20:39:42.807] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:39:42.808] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:41:26.346] [DEBUG]: New Database Connection
+[2025-11-29 20:41:26.347] [DEBUG]: Database Connection took 1.82 ms
+[2025-11-29 20:41:26.349] [DEBUG]: Select Query took 3.10 ms
+[2025-11-29 20:41:26.350] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:41:26.351] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 20:41:26.352] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 20:46:09.491] [DEBUG]: New Database Connection
+[2025-11-29 20:46:09.494] [DEBUG]: Database Connection took 3.25 ms
+[2025-11-29 20:46:09.495] [DEBUG]: Select Query took 4.64 ms
+[2025-11-29 20:46:09.497] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 20:46:09.498] [DEBUG]: Select Query took 0.77 ms
+[2025-11-29 20:46:09.499] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 20:47:00.863] [DEBUG]: New Database Connection
+[2025-11-29 20:47:00.883] [DEBUG]: Database Connection took 20.00 ms
+[2025-11-29 20:47:00.884] [DEBUG]: Select Query took 21.19 ms
+[2025-11-29 20:47:00.885] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:47:00.886] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:47:00.887] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 20:47:38.700] [DEBUG]: New Database Connection
+[2025-11-29 20:47:38.714] [DEBUG]: Database Connection took 13.71 ms
+[2025-11-29 20:47:38.715] [DEBUG]: Select Query took 14.95 ms
+[2025-11-29 20:47:38.717] [DEBUG]: Select Query took 0.86 ms
+[2025-11-29 20:47:38.718] [DEBUG]: Select Query took 0.81 ms
+[2025-11-29 20:47:38.720] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 20:47:43.498] [DEBUG]: New Database Connection
+[2025-11-29 20:47:43.500] [DEBUG]: Database Connection took 1.69 ms
+[2025-11-29 20:47:43.501] [DEBUG]: Select Query took 2.82 ms
+[2025-11-29 20:47:43.502] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:47:43.503] [DEBUG]: Select Query took 0.39 ms
+[2025-11-29 20:47:43.503] [DEBUG]: Closing Database Connection
+[2025-11-29 20:47:47.496] [DEBUG]: New Database Connection
+[2025-11-29 20:47:47.520] [DEBUG]: Database Connection took 23.42 ms
+[2025-11-29 20:47:47.522] [DEBUG]: Select Query took 25.27 ms
+[2025-11-29 20:47:47.523] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 20:47:47.524] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:47:47.529] [DEBUG]: Insert/Update/Detele Query took 4.54 ms
+[2025-11-29 20:47:47.567] [DEBUG]: New Database Connection
+[2025-11-29 20:47:47.581] [DEBUG]: Database Connection took 14.39 ms
+[2025-11-29 20:47:47.582] [DEBUG]: Select Query took 15.50 ms
+[2025-11-29 20:47:47.583] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:47:47.584] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 20:47:47.585] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 20:48:56.711] [DEBUG]: New Database Connection
+[2025-11-29 20:48:56.728] [DEBUG]: Database Connection took 17.30 ms
+[2025-11-29 20:48:56.729] [DEBUG]: Select Query took 18.70 ms
+[2025-11-29 20:48:56.730] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 20:48:56.732] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:48:56.733] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:49:23.159] [DEBUG]: New Database Connection
+[2025-11-29 20:49:23.162] [DEBUG]: Database Connection took 2.63 ms
+[2025-11-29 20:49:23.163] [DEBUG]: Select Query took 3.64 ms
+[2025-11-29 20:49:23.164] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 20:49:23.165] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 20:49:23.165] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 20:49:40.723] [DEBUG]: New Database Connection
+[2025-11-29 20:49:40.725] [DEBUG]: Database Connection took 2.72 ms
+[2025-11-29 20:49:40.727] [DEBUG]: Select Query took 4.32 ms
+[2025-11-29 20:49:40.729] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 20:51:59.307] [DEBUG]: New Database Connection
+[2025-11-29 20:51:59.309] [DEBUG]: Database Connection took 2.56 ms
+[2025-11-29 20:51:59.311] [DEBUG]: Select Query took 4.15 ms
+[2025-11-29 20:51:59.312] [DEBUG]: Select Query took 0.88 ms
+[2025-11-29 20:51:59.314] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 20:51:59.315] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:52:24.455] [DEBUG]: New Database Connection
+[2025-11-29 20:52:24.457] [DEBUG]: Database Connection took 2.34 ms
+[2025-11-29 20:52:24.458] [DEBUG]: Select Query took 3.59 ms
+[2025-11-29 20:52:24.485] [DEBUG]: New Database Connection
+[2025-11-29 20:52:24.503] [DEBUG]: Database Connection took 18.04 ms
+[2025-11-29 20:52:24.505] [DEBUG]: Select Query took 19.64 ms
+[2025-11-29 20:52:24.506] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 20:52:24.508] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:52:24.508] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:52:34.070] [DEBUG]: New Database Connection
+[2025-11-29 20:52:34.072] [DEBUG]: Database Connection took 2.09 ms
+[2025-11-29 20:52:34.073] [DEBUG]: Select Query took 3.07 ms
+[2025-11-29 20:52:34.102] [DEBUG]: New Database Connection
+[2025-11-29 20:52:34.114] [DEBUG]: Database Connection took 11.55 ms
+[2025-11-29 20:52:34.115] [DEBUG]: Select Query took 12.82 ms
+[2025-11-29 20:52:34.116] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 20:52:34.117] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 20:52:34.118] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:52:41.710] [DEBUG]: New Database Connection
+[2025-11-29 20:52:41.713] [DEBUG]: Database Connection took 2.16 ms
+[2025-11-29 20:52:41.714] [DEBUG]: Select Query took 3.27 ms
+[2025-11-29 20:52:41.715] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:52:41.716] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:52:41.717] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:52:43.394] [DEBUG]: New Database Connection
+[2025-11-29 20:52:43.395] [DEBUG]: Database Connection took 1.49 ms
+[2025-11-29 20:52:43.396] [DEBUG]: Select Query took 2.40 ms
+[2025-11-29 20:52:43.397] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 20:52:43.400] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:52:43.401] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:53:11.457] [DEBUG]: New Database Connection
+[2025-11-29 20:53:11.459] [DEBUG]: Database Connection took 2.28 ms
+[2025-11-29 20:53:11.460] [DEBUG]: Select Query took 3.42 ms
+[2025-11-29 20:53:11.462] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 20:53:11.463] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:53:11.464] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 20:53:27.293] [DEBUG]: New Database Connection
+[2025-11-29 20:53:27.308] [DEBUG]: Database Connection took 14.63 ms
+[2025-11-29 20:53:27.309] [DEBUG]: Select Query took 15.94 ms
+[2025-11-29 20:53:27.310] [DEBUG]: Select Query took 0.38 ms
+[2025-11-29 20:53:27.312] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 20:53:27.313] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 20:54:58.280] [DEBUG]: New Database Connection
+[2025-11-29 20:54:58.283] [DEBUG]: Database Connection took 2.88 ms
+[2025-11-29 20:54:58.285] [DEBUG]: Select Query took 4.38 ms
+[2025-11-29 20:54:58.287] [DEBUG]: Select Query took 1.47 ms
+[2025-11-29 20:54:58.288] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 20:54:58.289] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:55:40.600] [DEBUG]: New Database Connection
+[2025-11-29 20:55:40.625] [DEBUG]: Database Connection took 25.06 ms
+[2025-11-29 20:55:40.626] [DEBUG]: Select Query took 26.58 ms
+[2025-11-29 20:55:40.628] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 20:55:40.629] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 20:55:40.630] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 20:55:53.262] [DEBUG]: New Database Connection
+[2025-11-29 20:55:53.275] [DEBUG]: Database Connection took 12.96 ms
+[2025-11-29 20:55:53.276] [DEBUG]: Select Query took 14.06 ms
+[2025-11-29 20:55:53.278] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 20:55:53.279] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:55:53.280] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:56:34.856] [DEBUG]: New Database Connection
+[2025-11-29 20:56:34.858] [DEBUG]: Database Connection took 1.72 ms
+[2025-11-29 20:56:34.859] [DEBUG]: Select Query took 2.69 ms
+[2025-11-29 20:56:34.860] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:56:34.861] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 20:56:34.863] [DEBUG]: Select Query took 0.78 ms
+[2025-11-29 20:57:20.445] [DEBUG]: New Database Connection
+[2025-11-29 20:57:20.471] [DEBUG]: Database Connection took 25.71 ms
+[2025-11-29 20:57:20.472] [DEBUG]: Select Query took 26.99 ms
+[2025-11-29 20:57:20.473] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 20:57:20.474] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:57:20.475] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 20:57:30.189] [DEBUG]: New Database Connection
+[2025-11-29 20:57:30.192] [DEBUG]: Database Connection took 2.22 ms
+[2025-11-29 20:57:30.193] [DEBUG]: Select Query took 3.37 ms
+[2025-11-29 20:57:30.256] [DEBUG]: New Database Connection
+[2025-11-29 20:57:30.270] [DEBUG]: Database Connection took 14.19 ms
+[2025-11-29 20:57:30.271] [DEBUG]: Select Query took 15.41 ms
+[2025-11-29 20:57:30.272] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:57:30.273] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:57:30.274] [DEBUG]: Select Query took 0.36 ms
+[2025-11-29 20:57:38.005] [DEBUG]: New Database Connection
+[2025-11-29 20:57:38.026] [DEBUG]: Database Connection took 20.65 ms
+[2025-11-29 20:57:38.027] [DEBUG]: Select Query took 21.81 ms
+[2025-11-29 20:57:38.072] [DEBUG]: New Database Connection
+[2025-11-29 20:57:38.074] [DEBUG]: Database Connection took 1.84 ms
+[2025-11-29 20:57:38.076] [DEBUG]: Select Query took 3.64 ms
+[2025-11-29 20:57:38.077] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:57:38.079] [DEBUG]: Select Query took 0.82 ms
+[2025-11-29 20:57:38.080] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:57:43.003] [DEBUG]: New Database Connection
+[2025-11-29 20:57:43.006] [DEBUG]: Database Connection took 2.38 ms
+[2025-11-29 20:57:43.007] [DEBUG]: Select Query took 3.43 ms
+[2025-11-29 20:57:43.067] [DEBUG]: New Database Connection
+[2025-11-29 20:57:43.080] [DEBUG]: Database Connection took 12.79 ms
+[2025-11-29 20:57:43.081] [DEBUG]: Select Query took 14.18 ms
+[2025-11-29 20:57:43.083] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:57:43.084] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 20:57:43.085] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:57:45.324] [DEBUG]: New Database Connection
+[2025-11-29 20:57:45.338] [DEBUG]: Database Connection took 14.05 ms
+[2025-11-29 20:57:45.340] [DEBUG]: Select Query took 15.41 ms
+[2025-11-29 20:57:45.381] [DEBUG]: New Database Connection
+[2025-11-29 20:57:45.385] [DEBUG]: Database Connection took 3.64 ms
+[2025-11-29 20:57:45.386] [DEBUG]: Select Query took 4.70 ms
+[2025-11-29 20:57:45.387] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:57:45.388] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:57:45.389] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 20:58:03.474] [DEBUG]: New Database Connection
+[2025-11-29 20:58:03.490] [DEBUG]: Database Connection took 15.34 ms
+[2025-11-29 20:58:03.491] [DEBUG]: Select Query took 16.44 ms
+[2025-11-29 20:58:03.492] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 20:58:03.493] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 20:58:03.494] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 20:58:18.870] [DEBUG]: New Database Connection
+[2025-11-29 20:58:18.883] [DEBUG]: Database Connection took 12.80 ms
+[2025-11-29 20:58:18.885] [DEBUG]: Select Query took 14.50 ms
+[2025-11-29 20:58:18.886] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:58:18.887] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 20:58:18.888] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:58:19.039] [DEBUG]: New Database Connection
+[2025-11-29 20:58:19.051] [DEBUG]: Database Connection took 12.57 ms
+[2025-11-29 20:58:19.052] [DEBUG]: Select Query took 13.92 ms
+[2025-11-29 20:58:19.053] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 20:58:19.055] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 20:58:19.056] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 20:58:23.491] [DEBUG]: New Database Connection
+[2025-11-29 20:58:23.508] [DEBUG]: Database Connection took 17.40 ms
+[2025-11-29 20:58:23.510] [DEBUG]: Select Query took 18.90 ms
+[2025-11-29 20:58:23.511] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 20:58:23.512] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 20:58:23.513] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:58:25.940] [DEBUG]: New Database Connection
+[2025-11-29 20:58:25.959] [DEBUG]: Database Connection took 18.88 ms
+[2025-11-29 20:58:25.960] [DEBUG]: Select Query took 20.39 ms
+[2025-11-29 20:58:25.962] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 20:58:25.963] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 20:58:25.964] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 20:58:34.875] [DEBUG]: New Database Connection
+[2025-11-29 20:58:34.888] [DEBUG]: Database Connection took 13.80 ms
+[2025-11-29 20:58:34.890] [DEBUG]: Select Query took 15.81 ms
+[2025-11-29 20:58:34.892] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 20:58:34.893] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 20:58:34.894] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 20:58:36.431] [DEBUG]: New Database Connection
+[2025-11-29 20:58:36.445] [DEBUG]: Database Connection took 13.23 ms
+[2025-11-29 20:58:36.446] [DEBUG]: Select Query took 14.50 ms
+[2025-11-29 20:58:36.447] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 20:58:36.448] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 20:58:36.449] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:00:20.267] [DEBUG]: New Database Connection
+[2025-11-29 21:00:20.270] [DEBUG]: Database Connection took 2.47 ms
+[2025-11-29 21:00:20.271] [DEBUG]: Select Query took 4.01 ms
+[2025-11-29 21:00:20.272] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:00:20.274] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:00:20.275] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:00:23.020] [DEBUG]: New Database Connection
+[2025-11-29 21:00:23.034] [DEBUG]: Database Connection took 14.15 ms
+[2025-11-29 21:00:23.035] [DEBUG]: Select Query took 15.48 ms
+[2025-11-29 21:00:23.037] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:00:23.039] [DEBUG]: Select Query took 0.87 ms
+[2025-11-29 21:00:23.040] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 21:01:06.719] [DEBUG]: New Database Connection
+[2025-11-29 21:01:06.721] [DEBUG]: Database Connection took 2.17 ms
+[2025-11-29 21:01:06.722] [DEBUG]: Select Query took 3.08 ms
+[2025-11-29 21:01:06.723] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:01:06.724] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:01:06.725] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 21:01:24.303] [DEBUG]: New Database Connection
+[2025-11-29 21:01:24.316] [DEBUG]: Database Connection took 13.27 ms
+[2025-11-29 21:01:24.317] [DEBUG]: Select Query took 14.35 ms
+[2025-11-29 21:01:24.318] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 21:01:24.319] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:01:24.320] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 21:01:44.067] [DEBUG]: New Database Connection
+[2025-11-29 21:01:44.089] [DEBUG]: Database Connection took 22.39 ms
+[2025-11-29 21:01:44.090] [DEBUG]: Select Query took 23.84 ms
+[2025-11-29 21:01:44.092] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:01:44.093] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:01:44.094] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:01:57.632] [DEBUG]: New Database Connection
+[2025-11-29 21:01:57.645] [DEBUG]: Database Connection took 13.28 ms
+[2025-11-29 21:01:57.647] [DEBUG]: Select Query took 14.82 ms
+[2025-11-29 21:01:57.648] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 21:01:57.649] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:01:57.650] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:02:03.904] [DEBUG]: New Database Connection
+[2025-11-29 21:02:03.919] [DEBUG]: Database Connection took 14.78 ms
+[2025-11-29 21:02:03.921] [DEBUG]: Select Query took 16.96 ms
+[2025-11-29 21:02:03.923] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 21:02:03.924] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:02:03.925] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:02:21.972] [DEBUG]: New Database Connection
+[2025-11-29 21:02:21.991] [DEBUG]: Database Connection took 19.05 ms
+[2025-11-29 21:02:21.993] [DEBUG]: Select Query took 20.71 ms
+[2025-11-29 21:02:21.994] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:02:21.995] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:02:21.996] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:03:08.085] [DEBUG]: New Database Connection
+[2025-11-29 21:03:08.110] [DEBUG]: Database Connection took 25.82 ms
+[2025-11-29 21:03:08.112] [DEBUG]: Select Query took 27.21 ms
+[2025-11-29 21:03:08.122] [DEBUG]: Select Query took 9.40 ms
+[2025-11-29 21:03:08.123] [DEBUG]: Select Query took 0.78 ms
+[2025-11-29 21:03:08.125] [DEBUG]: Select Query took 0.86 ms
+[2025-11-29 21:03:20.781] [DEBUG]: New Database Connection
+[2025-11-29 21:03:20.795] [DEBUG]: Database Connection took 14.02 ms
+[2025-11-29 21:03:20.796] [DEBUG]: Select Query took 15.03 ms
+[2025-11-29 21:03:20.797] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 21:03:20.798] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:03:20.799] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:03:42.194] [DEBUG]: New Database Connection
+[2025-11-29 21:03:42.196] [DEBUG]: Database Connection took 1.70 ms
+[2025-11-29 21:03:42.197] [DEBUG]: Select Query took 2.63 ms
+[2025-11-29 21:03:42.198] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 21:04:10.334] [DEBUG]: New Database Connection
+[2025-11-29 21:04:10.349] [DEBUG]: Database Connection took 14.60 ms
+[2025-11-29 21:04:10.349] [DEBUG]: Closing Database Connection
+[2025-11-29 21:04:12.374] [DEBUG]: New Database Connection
+[2025-11-29 21:04:12.399] [DEBUG]: Database Connection took 24.53 ms
+[2025-11-29 21:04:12.400] [DEBUG]: Select Query took 26.17 ms
+[2025-11-29 21:04:12.401] [DEBUG]: Closing Database Connection
+[2025-11-29 21:04:18.100] [DEBUG]: New Database Connection
+[2025-11-29 21:04:18.101] [DEBUG]: Database Connection took 1.68 ms
+[2025-11-29 21:04:18.103] [DEBUG]: Select Query took 3.23 ms
+[2025-11-29 21:04:18.104] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:04:18.105] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 21:04:18.106] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:04:31.500] [DEBUG]: New Database Connection
+[2025-11-29 21:04:31.502] [DEBUG]: Database Connection took 1.61 ms
+[2025-11-29 21:04:31.503] [DEBUG]: Select Query took 2.55 ms
+[2025-11-29 21:04:31.504] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 21:04:31.505] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 21:04:31.506] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 21:04:33.912] [DEBUG]: New Database Connection
+[2025-11-29 21:04:33.927] [DEBUG]: Database Connection took 15.74 ms
+[2025-11-29 21:04:33.929] [DEBUG]: Select Query took 17.07 ms
+[2025-11-29 21:04:33.929] [DEBUG]: Closing Database Connection
+[2025-11-29 21:04:35.911] [DEBUG]: New Database Connection
+[2025-11-29 21:04:35.925] [DEBUG]: Database Connection took 13.63 ms
+[2025-11-29 21:04:35.926] [DEBUG]: Select Query took 15.01 ms
+[2025-11-29 21:04:35.927] [DEBUG]: Closing Database Connection
+[2025-11-29 21:05:34.055] [DEBUG]: New Database Connection
+[2025-11-29 21:05:34.057] [DEBUG]: Database Connection took 2.36 ms
+[2025-11-29 21:05:34.058] [DEBUG]: Select Query took 3.42 ms
+[2025-11-29 21:05:34.059] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:05:34.061] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:05:34.062] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:08:46.861] [DEBUG]: New Database Connection
+[2025-11-29 21:08:46.864] [DEBUG]: Database Connection took 2.32 ms
+[2025-11-29 21:08:46.865] [DEBUG]: Select Query took 3.86 ms
+[2025-11-29 21:08:46.866] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:08:46.868] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 21:08:46.869] [DEBUG]: Select Query took 0.83 ms
+[2025-11-29 21:08:46.874] [DEBUG]: Select Query took 4.26 ms
+[2025-11-29 21:10:59.575] [DEBUG]: New Database Connection
+[2025-11-29 21:10:59.598] [DEBUG]: Database Connection took 23.38 ms
+[2025-11-29 21:10:59.600] [DEBUG]: Select Query took 24.81 ms
+[2025-11-29 21:10:59.601] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:10:59.602] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:10:59.603] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 21:10:59.605] [DEBUG]: Select Query took 1.09 ms
+[2025-11-29 21:10:59.842] [DEBUG]: New Database Connection
+[2025-11-29 21:10:59.864] [DEBUG]: Database Connection took 21.99 ms
+[2025-11-29 21:10:59.865] [DEBUG]: Select Query took 22.92 ms
+[2025-11-29 21:10:59.866] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 21:10:59.867] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:10:59.868] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:10:59.869] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:11:22.914] [DEBUG]: New Database Connection
+[2025-11-29 21:11:22.916] [DEBUG]: Database Connection took 2.35 ms
+[2025-11-29 21:11:22.918] [DEBUG]: Select Query took 3.99 ms
+[2025-11-29 21:11:22.919] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:11:22.920] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:11:22.921] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:11:22.922] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 21:12:21.321] [DEBUG]: New Database Connection
+[2025-11-29 21:12:21.325] [DEBUG]: Database Connection took 3.21 ms
+[2025-11-29 21:12:21.326] [DEBUG]: Select Query took 4.62 ms
+[2025-11-29 21:12:21.328] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:12:21.329] [DEBUG]: Select Query took 0.90 ms
+[2025-11-29 21:12:21.331] [DEBUG]: Select Query took 0.79 ms
+[2025-11-29 21:12:21.333] [DEBUG]: Select Query took 1.09 ms
+[2025-11-29 21:14:12.335] [DEBUG]: New Database Connection
+[2025-11-29 21:14:12.357] [DEBUG]: Database Connection took 22.33 ms
+[2025-11-29 21:14:12.358] [DEBUG]: Select Query took 23.90 ms
+[2025-11-29 21:14:12.360] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:14:12.361] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 21:14:12.363] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 21:14:12.364] [DEBUG]: Select Query took 0.94 ms
+[2025-11-29 21:16:57.869] [DEBUG]: New Database Connection
+[2025-11-29 21:16:57.886] [DEBUG]: Database Connection took 16.79 ms
+[2025-11-29 21:16:57.889] [DEBUG]: Select Query took 20.38 ms
+[2025-11-29 21:16:57.891] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 21:16:57.892] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 21:16:57.894] [DEBUG]: Select Query took 0.87 ms
+[2025-11-29 21:16:57.896] [DEBUG]: Select Query took 1.52 ms
+[2025-11-29 21:17:15.577] [DEBUG]: New Database Connection
+[2025-11-29 21:17:15.602] [DEBUG]: Database Connection took 25.40 ms
+[2025-11-29 21:17:15.605] [DEBUG]: Select Query took 28.16 ms
+[2025-11-29 21:17:15.606] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:17:15.607] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:17:15.608] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:17:15.609] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 21:17:29.105] [DEBUG]: New Database Connection
+[2025-11-29 21:17:29.108] [DEBUG]: Database Connection took 2.80 ms
+[2025-11-29 21:17:29.109] [DEBUG]: Select Query took 4.26 ms
+[2025-11-29 21:17:29.111] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:17:29.112] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 21:17:29.113] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 21:17:29.114] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 21:19:29.948] [DEBUG]: New Database Connection
+[2025-11-29 21:19:29.974] [DEBUG]: Database Connection took 26.04 ms
+[2025-11-29 21:19:29.976] [DEBUG]: Select Query took 27.39 ms
+[2025-11-29 21:19:29.977] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:19:29.978] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:19:29.979] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:19:29.980] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 21:19:30.195] [DEBUG]: New Database Connection
+[2025-11-29 21:19:30.197] [DEBUG]: Database Connection took 1.95 ms
+[2025-11-29 21:19:30.199] [DEBUG]: Select Query took 3.29 ms
+[2025-11-29 21:19:30.200] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:19:30.201] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 21:19:30.202] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:19:30.203] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:19:53.566] [DEBUG]: New Database Connection
+[2025-11-29 21:19:53.579] [DEBUG]: Database Connection took 12.43 ms
+[2025-11-29 21:19:53.580] [DEBUG]: Select Query took 13.42 ms
+[2025-11-29 21:19:53.581] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:19:53.582] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:19:53.583] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 21:19:53.584] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:20:14.300] [DEBUG]: New Database Connection
+[2025-11-29 21:20:14.313] [DEBUG]: Database Connection took 13.20 ms
+[2025-11-29 21:20:14.314] [DEBUG]: Select Query took 14.28 ms
+[2025-11-29 21:20:14.315] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 21:20:14.316] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:20:14.317] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 21:20:14.318] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:20:57.706] [DEBUG]: New Database Connection
+[2025-11-29 21:20:57.708] [DEBUG]: Database Connection took 2.32 ms
+[2025-11-29 21:20:57.710] [DEBUG]: Select Query took 3.45 ms
+[2025-11-29 21:20:57.711] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:20:57.712] [DEBUG]: Select Query took 0.78 ms
+[2025-11-29 21:20:57.713] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 21:20:57.714] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:21:17.379] [DEBUG]: New Database Connection
+[2025-11-29 21:21:17.394] [DEBUG]: Database Connection took 14.71 ms
+[2025-11-29 21:21:17.395] [DEBUG]: Select Query took 15.80 ms
+[2025-11-29 21:21:17.396] [DEBUG]: Select Query took 0.36 ms
+[2025-11-29 21:21:17.397] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:21:17.398] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:21:17.399] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 21:21:24.445] [DEBUG]: New Database Connection
+[2025-11-29 21:21:24.472] [DEBUG]: Database Connection took 26.84 ms
+[2025-11-29 21:21:24.474] [DEBUG]: Select Query took 28.50 ms
+[2025-11-29 21:21:24.475] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:21:24.476] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 21:21:24.477] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:21:24.478] [DEBUG]: Select Query took 0.71 ms
+[2025-11-29 21:21:32.446] [DEBUG]: New Database Connection
+[2025-11-29 21:21:32.469] [DEBUG]: Database Connection took 23.78 ms
+[2025-11-29 21:21:32.471] [DEBUG]: Select Query took 25.17 ms
+[2025-11-29 21:21:32.472] [DEBUG]: Select Query took 0.79 ms
+[2025-11-29 21:21:32.473] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:21:32.475] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:21:32.476] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:22:00.880] [DEBUG]: New Database Connection
+[2025-11-29 21:22:00.903] [DEBUG]: Database Connection took 22.88 ms
+[2025-11-29 21:22:00.904] [DEBUG]: Select Query took 24.19 ms
+[2025-11-29 21:22:00.905] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:22:00.906] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:22:00.907] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:22:00.908] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:22:54.030] [DEBUG]: New Database Connection
+[2025-11-29 21:22:54.044] [DEBUG]: Database Connection took 13.72 ms
+[2025-11-29 21:22:54.045] [DEBUG]: Select Query took 14.74 ms
+[2025-11-29 21:22:54.046] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 21:22:54.047] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 21:22:54.048] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:22:54.049] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 21:23:27.035] [DEBUG]: New Database Connection
+[2025-11-29 21:23:27.037] [DEBUG]: Database Connection took 2.21 ms
+[2025-11-29 21:23:27.039] [DEBUG]: Select Query took 3.49 ms
+[2025-11-29 21:23:27.040] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:23:27.041] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:23:27.042] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 21:23:27.043] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 21:24:59.594] [DEBUG]: New Database Connection
+[2025-11-29 21:24:59.616] [DEBUG]: Database Connection took 21.64 ms
+[2025-11-29 21:24:59.617] [DEBUG]: Select Query took 22.80 ms
+[2025-11-29 21:24:59.618] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 21:24:59.620] [DEBUG]: Select Query took 0.70 ms
+[2025-11-29 21:24:59.621] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:24:59.627] [DEBUG]: Select Query took 5.82 ms
+[2025-11-29 21:25:03.247] [DEBUG]: New Database Connection
+[2025-11-29 21:25:03.272] [DEBUG]: Database Connection took 25.06 ms
+[2025-11-29 21:25:03.273] [DEBUG]: Select Query took 26.41 ms
+[2025-11-29 21:25:03.274] [DEBUG]: Closing Database Connection
+[2025-11-29 21:25:05.296] [DEBUG]: New Database Connection
+[2025-11-29 21:25:05.308] [DEBUG]: Database Connection took 11.57 ms
+[2025-11-29 21:25:05.309] [DEBUG]: Select Query took 13.03 ms
+[2025-11-29 21:25:05.310] [DEBUG]: Closing Database Connection
+[2025-11-29 21:25:07.938] [DEBUG]: New Database Connection
+[2025-11-29 21:25:07.964] [DEBUG]: Database Connection took 26.09 ms
+[2025-11-29 21:25:07.964] [DEBUG]: Closing Database Connection
+[2025-11-29 21:25:13.337] [DEBUG]: New Database Connection
+[2025-11-29 21:25:13.350] [DEBUG]: Database Connection took 13.03 ms
+[2025-11-29 21:25:13.352] [DEBUG]: Select Query took 14.47 ms
+[2025-11-29 21:25:13.353] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:25:13.354] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:25:13.355] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 21:25:13.356] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:25:16.246] [DEBUG]: New Database Connection
+[2025-11-29 21:25:16.249] [DEBUG]: Database Connection took 2.30 ms
+[2025-11-29 21:25:16.250] [DEBUG]: Select Query took 3.49 ms
+[2025-11-29 21:25:16.251] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:25:29.788] [DEBUG]: New Database Connection
+[2025-11-29 21:25:29.813] [DEBUG]: Database Connection took 24.79 ms
+[2025-11-29 21:25:29.814] [DEBUG]: Select Query took 25.89 ms
+[2025-11-29 21:25:29.815] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:25:29.816] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:25:29.817] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:25:29.818] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:26:39.801] [DEBUG]: New Database Connection
+[2025-11-29 21:26:39.818] [DEBUG]: Database Connection took 16.87 ms
+[2025-11-29 21:26:39.820] [DEBUG]: Select Query took 19.36 ms
+[2025-11-29 21:26:39.821] [DEBUG]: Closing Database Connection
+[2025-11-29 21:28:17.757] [DEBUG]: New Database Connection
+[2025-11-29 21:28:17.759] [DEBUG]: Database Connection took 1.53 ms
+[2025-11-29 21:28:17.760] [DEBUG]: Select Query took 2.76 ms
+[2025-11-29 21:28:17.761] [DEBUG]: Closing Database Connection
+[2025-11-29 21:28:52.720] [DEBUG]: New Database Connection
+[2025-11-29 21:28:52.741] [DEBUG]: Database Connection took 21.14 ms
+[2025-11-29 21:28:52.767] [DEBUG]: Select Query took 47.17 ms
+[2025-11-29 21:28:52.768] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:28:52.777] [DEBUG]: Select Query took 8.40 ms
+[2025-11-29 21:28:52.780] [DEBUG]: Closing Database Connection
+[2025-11-29 21:29:01.496] [DEBUG]: New Database Connection
+[2025-11-29 21:29:01.509] [DEBUG]: Database Connection took 12.72 ms
+[2025-11-29 21:29:01.510] [DEBUG]: Select Query took 14.43 ms
+[2025-11-29 21:29:01.511] [DEBUG]: Closing Database Connection
+[2025-11-29 21:29:03.944] [DEBUG]: New Database Connection
+[2025-11-29 21:29:03.964] [DEBUG]: Database Connection took 20.48 ms
+[2025-11-29 21:29:03.965] [DEBUG]: Select Query took 21.78 ms
+[2025-11-29 21:29:03.966] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 21:29:03.967] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 21:29:03.968] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:29:03.973] [DEBUG]: Select Query took 4.73 ms
+[2025-11-29 21:29:06.043] [DEBUG]: New Database Connection
+[2025-11-29 21:29:06.058] [DEBUG]: Database Connection took 15.12 ms
+[2025-11-29 21:29:06.059] [DEBUG]: Select Query took 16.61 ms
+[2025-11-29 21:29:06.060] [DEBUG]: Closing Database Connection
+[2025-11-29 21:29:11.612] [DEBUG]: New Database Connection
+[2025-11-29 21:29:11.613] [DEBUG]: Database Connection took 1.78 ms
+[2025-11-29 21:29:11.614] [DEBUG]: Select Query took 2.88 ms
+[2025-11-29 21:29:11.615] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:29:11.617] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 21:29:11.618] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:29:11.619] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 21:29:14.396] [DEBUG]: New Database Connection
+[2025-11-29 21:29:14.397] [DEBUG]: Database Connection took 1.56 ms
+[2025-11-29 21:29:14.398] [DEBUG]: Select Query took 2.72 ms
+[2025-11-29 21:29:14.399] [DEBUG]: Closing Database Connection
+[2025-11-29 21:29:25.243] [DEBUG]: New Database Connection
+[2025-11-29 21:29:25.268] [DEBUG]: Database Connection took 25.43 ms
+[2025-11-29 21:29:25.270] [DEBUG]: Select Query took 27.48 ms
+[2025-11-29 21:29:25.272] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 21:29:25.273] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:29:25.274] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:29:25.275] [DEBUG]: Select Query took 0.57 ms
+[2025-11-29 21:30:33.589] [DEBUG]: New Database Connection
+[2025-11-29 21:30:33.592] [DEBUG]: Database Connection took 3.51 ms
+[2025-11-29 21:30:33.594] [DEBUG]: Select Query took 5.12 ms
+[2025-11-29 21:30:33.596] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:30:33.597] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:30:33.598] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 21:30:33.599] [DEBUG]: Select Query took 0.77 ms
+[2025-11-29 21:32:00.579] [DEBUG]: New Database Connection
+[2025-11-29 21:32:00.582] [DEBUG]: Database Connection took 3.01 ms
+[2025-11-29 21:32:00.584] [DEBUG]: Select Query took 4.31 ms
+[2025-11-29 21:32:00.585] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 21:32:00.586] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 21:32:00.587] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:32:00.588] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:32:12.893] [DEBUG]: New Database Connection
+[2025-11-29 21:32:12.896] [DEBUG]: Database Connection took 2.68 ms
+[2025-11-29 21:32:12.897] [DEBUG]: Select Query took 3.96 ms
+[2025-11-29 21:32:12.898] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:32:12.899] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 21:32:12.901] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:32:12.901] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:32:16.836] [DEBUG]: New Database Connection
+[2025-11-29 21:32:16.839] [DEBUG]: Database Connection took 3.21 ms
+[2025-11-29 21:32:16.841] [DEBUG]: Select Query took 4.81 ms
+[2025-11-29 21:32:16.842] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:32:16.843] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:32:16.844] [DEBUG]: Select Query took 0.43 ms
+[2025-11-29 21:32:16.844] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:32:23.944] [DEBUG]: New Database Connection
+[2025-11-29 21:32:23.963] [DEBUG]: Database Connection took 19.26 ms
+[2025-11-29 21:32:23.965] [DEBUG]: Select Query took 20.99 ms
+[2025-11-29 21:32:23.967] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 21:32:23.968] [DEBUG]: Select Query took 0.73 ms
+[2025-11-29 21:32:23.969] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:32:23.970] [DEBUG]: Select Query took 0.85 ms
+[2025-11-29 21:32:25.475] [DEBUG]: New Database Connection
+[2025-11-29 21:32:25.476] [DEBUG]: Database Connection took 1.44 ms
+[2025-11-29 21:32:25.477] [DEBUG]: Select Query took 2.31 ms
+[2025-11-29 21:32:25.478] [DEBUG]: Closing Database Connection
+[2025-11-29 21:32:30.523] [DEBUG]: New Database Connection
+[2025-11-29 21:32:30.548] [DEBUG]: Database Connection took 25.32 ms
+[2025-11-29 21:32:30.550] [DEBUG]: Select Query took 27.00 ms
+[2025-11-29 21:32:30.551] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 21:32:30.552] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:32:30.553] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:32:30.554] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:32:30.748] [DEBUG]: New Database Connection
+[2025-11-29 21:32:30.765] [DEBUG]: Database Connection took 17.19 ms
+[2025-11-29 21:32:30.767] [DEBUG]: Select Query took 18.39 ms
+[2025-11-29 21:32:30.768] [DEBUG]: Select Query took 0.64 ms
+[2025-11-29 21:32:30.769] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 21:32:30.771] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:32:30.772] [DEBUG]: Select Query took 0.77 ms
+[2025-11-29 21:32:32.807] [DEBUG]: New Database Connection
+[2025-11-29 21:32:32.809] [DEBUG]: Database Connection took 2.05 ms
+[2025-11-29 21:32:32.810] [DEBUG]: Select Query took 3.01 ms
+[2025-11-29 21:32:32.811] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:32:32.812] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:32:32.813] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:32:32.814] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:32:45.461] [DEBUG]: New Database Connection
+[2025-11-29 21:32:45.486] [DEBUG]: Database Connection took 25.52 ms
+[2025-11-29 21:32:45.487] [DEBUG]: Select Query took 26.48 ms
+[2025-11-29 21:32:45.488] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 21:32:45.489] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:32:45.490] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:32:45.491] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:32:50.024] [DEBUG]: New Database Connection
+[2025-11-29 21:32:50.026] [DEBUG]: Database Connection took 2.23 ms
+[2025-11-29 21:32:50.027] [DEBUG]: Select Query took 3.40 ms
+[2025-11-29 21:32:50.028] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 21:32:50.029] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:32:50.030] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:32:50.031] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 21:32:51.332] [DEBUG]: New Database Connection
+[2025-11-29 21:32:51.346] [DEBUG]: Database Connection took 13.72 ms
+[2025-11-29 21:32:51.347] [DEBUG]: Select Query took 14.77 ms
+[2025-11-29 21:32:51.348] [DEBUG]: Select Query took 0.32 ms
+[2025-11-29 21:32:51.349] [DEBUG]: Select Query took 0.77 ms
+[2025-11-29 21:32:51.350] [DEBUG]: Select Query took 0.89 ms
+[2025-11-29 21:32:51.351] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:32:52.389] [DEBUG]: New Database Connection
+[2025-11-29 21:32:52.404] [DEBUG]: Database Connection took 14.54 ms
+[2025-11-29 21:32:52.405] [DEBUG]: Select Query took 15.69 ms
+[2025-11-29 21:32:52.406] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:32:52.407] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 21:32:52.408] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:32:52.409] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:32:59.186] [DEBUG]: New Database Connection
+[2025-11-29 21:32:59.213] [DEBUG]: Database Connection took 26.67 ms
+[2025-11-29 21:32:59.214] [DEBUG]: Select Query took 28.01 ms
+[2025-11-29 21:32:59.215] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:32:59.216] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:32:59.217] [DEBUG]: Closing Database Connection
+[2025-11-29 21:33:04.852] [DEBUG]: New Database Connection
+[2025-11-29 21:33:04.874] [DEBUG]: Database Connection took 22.18 ms
+[2025-11-29 21:33:04.875] [DEBUG]: Select Query took 23.43 ms
+[2025-11-29 21:33:04.876] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:33:04.877] [DEBUG]: Select Query took 0.42 ms
+[2025-11-29 21:33:04.883] [DEBUG]: Insert/Update/Detele Query took 4.58 ms
+[2025-11-29 21:33:04.926] [DEBUG]: New Database Connection
+[2025-11-29 21:33:04.950] [DEBUG]: Database Connection took 23.65 ms
+[2025-11-29 21:33:04.951] [DEBUG]: Select Query took 24.85 ms
+[2025-11-29 21:33:04.952] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 21:33:04.953] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:33:04.954] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:33:04.955] [DEBUG]: Select Query took 0.52 ms
+[2025-11-29 21:37:29.090] [DEBUG]: New Database Connection
+[2025-11-29 21:37:29.093] [DEBUG]: Database Connection took 2.35 ms
+[2025-11-29 21:37:29.095] [DEBUG]: Select Query took 4.31 ms
+[2025-11-29 21:37:29.096] [DEBUG]: Closing Database Connection
+[2025-11-29 21:38:40.886] [DEBUG]: New Database Connection
+[2025-11-29 21:38:40.909] [DEBUG]: Database Connection took 23.33 ms
+[2025-11-29 21:38:40.913] [DEBUG]: Select Query took 27.00 ms
+[2025-11-29 21:38:40.914] [DEBUG]: Closing Database Connection
+[2025-11-29 21:38:43.532] [DEBUG]: New Database Connection
+[2025-11-29 21:38:43.549] [DEBUG]: Database Connection took 16.63 ms
+[2025-11-29 21:38:43.551] [DEBUG]: Select Query took 18.33 ms
+[2025-11-29 21:38:43.552] [DEBUG]: Closing Database Connection
+[2025-11-29 21:38:44.911] [DEBUG]: New Database Connection
+[2025-11-29 21:38:44.935] [DEBUG]: Database Connection took 23.56 ms
+[2025-11-29 21:38:44.938] [DEBUG]: Select Query took 26.38 ms
+[2025-11-29 21:38:44.939] [DEBUG]: Closing Database Connection
+[2025-11-29 21:43:41.546] [DEBUG]: New Database Connection
+[2025-11-29 21:43:41.550] [DEBUG]: Database Connection took 3.78 ms
+[2025-11-29 21:43:41.551] [DEBUG]: Select Query took 5.40 ms
+[2025-11-29 21:43:41.553] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 21:43:41.554] [DEBUG]: Select Query took 0.72 ms
+[2025-11-29 21:43:41.556] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 21:43:41.557] [DEBUG]: Select Query took 0.96 ms
+[2025-11-29 21:43:41.857] [DEBUG]: New Database Connection
+[2025-11-29 21:43:41.860] [DEBUG]: Database Connection took 3.11 ms
+[2025-11-29 21:43:41.861] [DEBUG]: Select Query took 4.75 ms
+[2025-11-29 21:43:41.863] [DEBUG]: Select Query took 0.83 ms
+[2025-11-29 21:43:41.865] [DEBUG]: Select Query took 0.85 ms
+[2025-11-29 21:43:41.866] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 21:43:41.867] [DEBUG]: Select Query took 0.97 ms
+[2025-11-29 21:43:48.530] [DEBUG]: New Database Connection
+[2025-11-29 21:43:48.557] [DEBUG]: Database Connection took 26.55 ms
+[2025-11-29 21:43:48.558] [DEBUG]: Select Query took 27.97 ms
+[2025-11-29 21:43:48.635] [DEBUG]: New Database Connection
+[2025-11-29 21:43:48.637] [DEBUG]: Database Connection took 2.12 ms
+[2025-11-29 21:43:48.639] [DEBUG]: Select Query took 3.57 ms
+[2025-11-29 21:43:48.641] [DEBUG]: Select Query took 1.63 ms
+[2025-11-29 21:43:48.643] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 21:43:48.644] [DEBUG]: Select Query took 0.74 ms
+[2025-11-29 21:43:48.646] [DEBUG]: Select Query took 0.96 ms
+[2025-11-29 21:43:54.067] [DEBUG]: New Database Connection
+[2025-11-29 21:43:54.093] [DEBUG]: Database Connection took 26.16 ms
+[2025-11-29 21:43:54.095] [DEBUG]: Select Query took 27.38 ms
+[2025-11-29 21:43:54.146] [DEBUG]: New Database Connection
+[2025-11-29 21:43:54.172] [DEBUG]: Database Connection took 26.15 ms
+[2025-11-29 21:43:54.174] [DEBUG]: Select Query took 28.03 ms
+[2025-11-29 21:43:54.175] [DEBUG]: Select Query took 0.46 ms
+[2025-11-29 21:43:54.176] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:43:54.177] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 21:43:54.178] [DEBUG]: Select Query took 0.61 ms
+[2025-11-29 21:44:07.217] [DEBUG]: New Database Connection
+[2025-11-29 21:44:07.242] [DEBUG]: Database Connection took 25.18 ms
+[2025-11-29 21:44:07.243] [DEBUG]: Select Query took 26.38 ms
+[2025-11-29 21:44:07.244] [DEBUG]: Select Query took 0.36 ms
+[2025-11-29 21:44:07.245] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:44:07.246] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:44:07.247] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:44:14.472] [DEBUG]: New Database Connection
+[2025-11-29 21:44:14.499] [DEBUG]: Database Connection took 27.11 ms
+[2025-11-29 21:44:14.500] [DEBUG]: Select Query took 28.55 ms
+[2025-11-29 21:44:14.501] [DEBUG]: Select Query took 0.53 ms
+[2025-11-29 21:44:14.503] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:44:14.504] [DEBUG]: Select Query took 0.81 ms
+[2025-11-29 21:44:14.505] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:44:19.514] [DEBUG]: New Database Connection
+[2025-11-29 21:44:19.517] [DEBUG]: Database Connection took 2.31 ms
+[2025-11-29 21:44:19.518] [DEBUG]: Select Query took 3.71 ms
+[2025-11-29 21:44:19.519] [DEBUG]: Select Query took 0.58 ms
+[2025-11-29 21:44:19.520] [DEBUG]: Select Query took 0.65 ms
+[2025-11-29 21:44:19.521] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:44:19.523] [DEBUG]: Select Query took 0.80 ms
+[2025-11-29 21:44:26.444] [DEBUG]: New Database Connection
+[2025-11-29 21:44:26.468] [DEBUG]: Database Connection took 23.66 ms
+[2025-11-29 21:44:26.469] [DEBUG]: Select Query took 25.55 ms
+[2025-11-29 21:44:26.470] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:44:26.472] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:44:26.472] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:44:26.473] [DEBUG]: Select Query took 0.69 ms
+[2025-11-29 21:44:32.694] [DEBUG]: New Database Connection
+[2025-11-29 21:44:32.697] [DEBUG]: Database Connection took 2.60 ms
+[2025-11-29 21:44:32.698] [DEBUG]: Select Query took 3.56 ms
+[2025-11-29 21:44:32.700] [DEBUG]: Select Query took 1.07 ms
+[2025-11-29 21:44:32.701] [DEBUG]: Select Query took 0.77 ms
+[2025-11-29 21:44:32.702] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:44:32.703] [DEBUG]: Select Query took 0.56 ms
+[2025-11-29 21:44:37.310] [DEBUG]: New Database Connection
+[2025-11-29 21:44:37.336] [DEBUG]: Database Connection took 26.48 ms
+[2025-11-29 21:44:37.338] [DEBUG]: Select Query took 28.12 ms
+[2025-11-29 21:44:37.384] [DEBUG]: New Database Connection
+[2025-11-29 21:44:37.399] [DEBUG]: Database Connection took 15.73 ms
+[2025-11-29 21:44:37.401] [DEBUG]: Select Query took 17.13 ms
+[2025-11-29 21:44:37.402] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:44:37.403] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:44:37.403] [DEBUG]: Select Query took 0.41 ms
+[2025-11-29 21:44:37.404] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:44:37.562] [DEBUG]: New Database Connection
+[2025-11-29 21:44:37.586] [DEBUG]: Database Connection took 24.19 ms
+[2025-11-29 21:44:37.587] [DEBUG]: Select Query took 25.54 ms
+[2025-11-29 21:44:37.589] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:44:37.590] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:44:37.591] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:44:37.591] [DEBUG]: Select Query took 0.49 ms
+[2025-11-29 21:44:41.293] [DEBUG]: New Database Connection
+[2025-11-29 21:44:41.295] [DEBUG]: Database Connection took 1.66 ms
+[2025-11-29 21:44:41.296] [DEBUG]: Select Query took 2.65 ms
+[2025-11-29 21:44:41.377] [DEBUG]: New Database Connection
+[2025-11-29 21:44:41.390] [DEBUG]: Database Connection took 12.85 ms
+[2025-11-29 21:44:41.392] [DEBUG]: Select Query took 14.08 ms
+[2025-11-29 21:44:41.393] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:44:41.393] [DEBUG]: Select Query took 0.51 ms
+[2025-11-29 21:44:41.395] [DEBUG]: Select Query took 0.75 ms
+[2025-11-29 21:44:41.396] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:45:24.715] [DEBUG]: New Database Connection
+[2025-11-29 21:45:24.734] [DEBUG]: Database Connection took 19.27 ms
+[2025-11-29 21:45:24.736] [DEBUG]: Select Query took 20.58 ms
+[2025-11-29 21:45:24.737] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:45:24.738] [DEBUG]: Select Query took 0.67 ms
+[2025-11-29 21:45:24.739] [DEBUG]: Select Query took 0.68 ms
+[2025-11-29 21:45:24.741] [DEBUG]: Select Query took 0.94 ms
+[2025-11-29 21:46:03.008] [DEBUG]: New Database Connection
+[2025-11-29 21:46:03.010] [DEBUG]: Database Connection took 2.62 ms
+[2025-11-29 21:46:03.012] [DEBUG]: Select Query took 4.06 ms
+[2025-11-29 21:46:03.013] [DEBUG]: Select Query took 0.54 ms
+[2025-11-29 21:46:03.014] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:47:36.106] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 21:47:36.107] [DEBUG]: Select Query took 0.66 ms
+[2025-11-29 21:53:05.597] [DEBUG]: New Database Connection
+[2025-11-29 21:53:05.623] [DEBUG]: Database Connection took 26.04 ms
+[2025-11-29 21:53:05.624] [DEBUG]: Select Query took 27.30 ms
+[2025-11-29 21:53:05.625] [DEBUG]: Select Query took 0.45 ms
+[2025-11-29 21:53:05.626] [DEBUG]: Select Query took 0.50 ms
+[2025-11-29 21:53:05.627] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:53:05.628] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:53:09.883] [DEBUG]: New Database Connection
+[2025-11-29 21:53:09.902] [DEBUG]: Database Connection took 18.42 ms
+[2025-11-29 21:53:09.903] [DEBUG]: Select Query took 19.69 ms
+[2025-11-29 21:53:09.974] [DEBUG]: New Database Connection
+[2025-11-29 21:53:09.977] [DEBUG]: Database Connection took 2.14 ms
+[2025-11-29 21:53:09.978] [DEBUG]: Select Query took 3.16 ms
+[2025-11-29 21:53:09.978] [DEBUG]: Select Query took 0.36 ms
+[2025-11-29 21:53:09.979] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:53:09.981] [DEBUG]: Select Query took 0.84 ms
+[2025-11-29 21:53:09.982] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:57:58.444] [DEBUG]: New Database Connection
+[2025-11-29 21:57:58.468] [DEBUG]: Database Connection took 23.91 ms
+[2025-11-29 21:57:58.470] [DEBUG]: Select Query took 25.13 ms
+[2025-11-29 21:57:58.471] [DEBUG]: Select Query took 0.40 ms
+[2025-11-29 21:57:58.471] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:57:58.472] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:57:58.473] [DEBUG]: Select Query took 0.59 ms
+[2025-11-29 21:58:02.694] [DEBUG]: New Database Connection
+[2025-11-29 21:58:02.696] [DEBUG]: Database Connection took 1.63 ms
+[2025-11-29 21:58:02.697] [DEBUG]: Select Query took 2.52 ms
+[2025-11-29 21:58:02.760] [DEBUG]: New Database Connection
+[2025-11-29 21:58:02.779] [DEBUG]: Database Connection took 19.01 ms
+[2025-11-29 21:58:02.781] [DEBUG]: Select Query took 20.60 ms
+[2025-11-29 21:58:02.782] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:58:02.783] [DEBUG]: Select Query took 0.47 ms
+[2025-11-29 21:58:02.784] [DEBUG]: Select Query took 0.63 ms
+[2025-11-29 21:58:02.785] [DEBUG]: Select Query took 0.55 ms
+[2025-11-29 21:58:08.731] [DEBUG]: New Database Connection
+[2025-11-29 21:58:08.745] [DEBUG]: Database Connection took 13.41 ms
+[2025-11-29 21:58:08.746] [DEBUG]: Select Query took 14.66 ms
+[2025-11-29 21:58:08.747] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:58:08.748] [DEBUG]: Select Query took 0.44 ms
+[2025-11-29 21:58:08.749] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:58:08.750] [DEBUG]: Select Query took 0.76 ms
+[2025-11-29 21:58:10.032] [DEBUG]: New Database Connection
+[2025-11-29 21:58:10.034] [DEBUG]: Database Connection took 1.95 ms
+[2025-11-29 21:58:10.036] [DEBUG]: Select Query took 3.07 ms
+[2025-11-29 21:58:10.037] [DEBUG]: Select Query took 0.60 ms
+[2025-11-29 21:58:10.038] [DEBUG]: Select Query took 0.62 ms
+[2025-11-29 21:58:10.039] [DEBUG]: Select Query took 0.48 ms
+[2025-11-29 21:58:10.040] [DEBUG]: Select Query took 0.53 ms
