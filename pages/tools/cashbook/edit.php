@@ -57,8 +57,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Date</label>
-            <input type="date" name="date" class="form-control" value="<?php echo $entry['date'] ? $entry['date'] : date('Y-m-d'); ?>">
+            <label>Date & Time</label>
+            <input type="datetime-local" name="date" class="form-control" value="<?php echo ($entry['date']) ? date('Y-m-d\TH:i', strtotime($entry['date'])) : date('Y-m-d\TH:i'); ?>">
         </div>
         <button class="btn btn-primary mt-2" type="submit">Save</button>
         <a class="btn btn-secondary mt-2" href="view.php">Cancel</a>

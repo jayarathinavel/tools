@@ -81,7 +81,10 @@
         }
 
         if(!empty($start) && !empty($end)) {
-            $where[] = "`date` BETWEEN '" . mysqli_real_escape_string(Database::getInstance()->getConnection(), $start) . "' AND '" . mysqli_real_escape_string(Database::getInstance()->getConnection(), $end) . "'";
+            // convert date inputs to full datetime range so DATETIME column comparisons include whole days
+            $startDt = $start . ' 00:00:00';
+            $endDt = $end . ' 23:59:59';
+            $where[] = "`date` BETWEEN '" . mysqli_real_escape_string(Database::getInstance()->getConnection(), $startDt) . "' AND '" . mysqli_real_escape_string(Database::getInstance()->getConnection(), $endDt) . "'";
             // update UI date inputs to show computed values for presets
             $selectedStartDate = $start;
             $selectedEndDate = $end;

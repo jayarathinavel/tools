@@ -48,8 +48,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Date</label>
-            <input type="date" name="date" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+            <label>Date & Time</label>
+            <input type="datetime-local" name="date" class="form-control" value="<?php echo date('Y-m-d\TH:i'); ?>">
         </div>
         <input type="hidden" name="cashbook_book_id" value="<?php echo $book; ?>">
         <button class="btn btn-primary mt-2" type="submit">Save</button>

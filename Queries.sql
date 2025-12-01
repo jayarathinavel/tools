@@ -259,3 +259,5 @@ INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Business Income'
 INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Investment Income', 0);
 INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Other Income', 0);
 INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Lending', 0);
+
+ALTER TABLE `cashbook_entry` MODIFY COLUMN `date` DATETIME NULL DEFAULT NULL;
