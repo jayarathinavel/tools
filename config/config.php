@@ -48,6 +48,9 @@
     }
 
     function writeLog($type, $message){
+        if (!ENABLE_LOGGING) {
+            return;
+        }
         $logger = new Logger($_SERVER['DOCUMENT_ROOT'] . '/logs.log');
         /* Logging Levels: LEVEL_ERROR_ONLY and LEVEL_ALL */
         $logger->setLogLevel(Logger::LEVEL_ALL);
