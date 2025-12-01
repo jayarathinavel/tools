@@ -27,6 +27,9 @@
             <select name="type" class="form-control">
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
+                <option value="repayment">Credit Card Repayment</option>
+                <option value="lend">Lend</option>
+                <option value="lend_repayment">Lend Repayment</option>
             </select>
         </div>
         <div class="form-group">

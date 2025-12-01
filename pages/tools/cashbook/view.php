@@ -111,10 +111,10 @@
     $whereSql = $book ? ('WHERE ' . implode(' AND ', $where)) : '';
     $entries = $book ? executeQuery("SELECT * FROM cashbook_entry $whereSql ORDER BY `date` DESC") : [];
 
-    // compute totals for current filter (uses same $whereSql as entries query)
+    // compute totals for current filter (uses same $whereSql as entries query - only income/expense)
     $totals = ['income' => 0.0, 'expense' => 0.0];
     if ($book) {
-        $totRes = executeQuery("SELECT `type`, IFNULL(SUM(amount),0) AS sum FROM cashbook_entry $whereSql GROUP BY `type`");
+        $totRes = executeQuery("SELECT `type`, IFNULL(SUM(amount),0) AS sum FROM cashbook_entry $whereSql AND type IN ('income', 'expense') GROUP BY `type`");
         while ($r = mysqli_fetch_assoc($totRes)) {
             $type = $r['type'];
             $totals[$type] = floatval($r['sum']);
@@ -381,8 +381,21 @@
 
                             <div class="text-end">
                                 <div class="fs-5 fw-bold <?php echo $amountClass; ?>">
-                                    <?php echo ($e['type'] === 'income') ? '+' : '-'; ?><?php echo number_format($e['amount'], 2); ?>
+                                    <?php 
+                                        if ($e['type'] === 'income') {
+                                            echo '+' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'expense') {
+                                            echo '-' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'repayment') {
+                                            echo '⟵ ' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'lend') {
+                                            echo '→ ' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'lend_repayment') {
+                                            echo '⟶ ' . number_format($e['amount'], 2);
+                                        }
+                                    ?>
                                 </div>
+                                <small class="text-muted"><?php echo ucfirst(str_replace('_', ' ', $e['type'])); ?></small>
                                 <div class="mt-2">
                                     <a class="btn btn-sm btn-outline-warning me-1" href="edit.php?id=<?php echo $e['id']; ?>" title="Edit">
                                         <i class="bi bi-pencil-fill"></i>

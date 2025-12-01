@@ -15,9 +15,19 @@
             $initial = floatval($a['initial_balance']);
             $income = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='income'")->fetch_assoc()['sum'];
             $expense = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='expense'")->fetch_assoc()['sum'];
-            $balances[$id] = $initial + floatval($income) - floatval($expense);
+            
+            // Get adjustment amounts (non-income/expense transactions)
+            $repayment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='repayment'")->fetch_assoc()['sum'];
+            $lend = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='lend'")->fetch_assoc()['sum'];
+            $lendRepayment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='lend_repayment'")->fetch_assoc()['sum'];
+            
+            // Balance: initial + income - expense - repayment - lend + lend_repayment
+            $balances[$id] = $initial + floatval($income) - floatval($expense) - floatval($repayment) - floatval($lend) + floatval($lendRepayment);
             $expenses[$id] = floatval($expense);
             $incomes[$id] = floatval($income);
+            $lends[$id] = floatval($lend);
+            $lendRepayments[$id] = floatval($lendRepayment);
+            $repayments[$id] = floatval($repayment);
             $initials[$id] = $initial;
         }
     }
@@ -50,6 +60,24 @@
                                 <small class="text-muted">Total Expense</small>
                                 <div class="fs-6 text-danger">- ₹ <?php echo number_format($expenses[$id], 2); ?></div>
                             </div>
+                            <?php if ($lends[$id] != 0): ?>
+                                <div class="mb-3">
+                                    <small class="text-muted">Lends</small>
+                                    <div class="fs-6 text-danger">- ₹ <?php echo number_format($lends[$id], 2); ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($lendRepayments[$id] != 0): ?>
+                                <div class="mb-3">
+                                    <small class="text-muted">Lend Repayments</small>
+                                    <div class="fs-6 text-success">+ ₹ <?php echo number_format($lendRepayments[$id], 2); ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($repayments[$id] != 0): ?>
+                                <div class="mb-3">
+                                    <small class="text-muted">Repayments</small>
+                                    <div class="fs-6 text-success">+ ₹ <?php echo number_format($repayments[$id], 2); ?></div>
+                                </div>
+                            <?php endif; ?>
                             <hr>
                             <div>
                                 <small class="text-muted">Current Balance</small>
