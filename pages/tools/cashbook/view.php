@@ -15,36 +15,49 @@
         exit;
     }
 
+    // Handle filter form POST -> redirect to GET to avoid form resubmission
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['filter'])) {
+        $queryParams = [
+            'time_range' => $_POST['time_range'] ?? '',
+            'start_date' => $_POST['start_date'] ?? '',
+            'end_date' => $_POST['end_date'] ?? '',
+            'category_id' => $_POST['category_id'] ?? '',
+            'bank_account_id' => $_POST['bank_account_id'] ?? ''
+        ];
+        $queryString = http_build_query(array_filter($queryParams));
+        header("Location: " . $_SERVER['PHP_SELF'] . ($queryString ? '?' . $queryString : ''));
+        exit;
+    }
+
     $book = findBookCashbook($userId);
     $bankAccounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
 
     // preserve filter selections
-    $selectedTimeRange = '';
-    $selectedStartDate = '';
-    $selectedEndDate = '';
-    $selectedCategoryId = '';
-    $selectedBankAccountId = '';
+    $selectedTimeRange = $_GET['time_range'] ?? '';
+    $selectedStartDate = $_GET['start_date'] ?? '';
+    $selectedEndDate = $_GET['end_date'] ?? '';
+    $selectedCategoryId = $_GET['category_id'] ?? '';
+    $selectedBankAccountId = $_GET['bank_account_id'] ?? '';
 
     // build filter form values and where clause
     $where = [];
     $start = null;
     $end = null;
 
-    if(isset($_POST['filter']) && $book) {
-        $f = $_POST;
-
-        // read posted values first
-        $selectedTimeRange = isset($f['time_range']) ? $f['time_range'] : '';
-        $selectedStartDate = isset($f['start_date']) ? $f['start_date'] : '';
-        $selectedEndDate = isset($f['end_date']) ? $f['end_date'] : '';
-        $selectedCategoryId = isset($f['category_id']) ? $f['category_id'] : '';
-        $selectedBankAccountId = isset($f['bank_account_id']) ? $f['bank_account_id'] : '';
+    if(!empty($selectedTimeRange) || !empty($selectedStartDate) || !empty($selectedEndDate) || !empty($selectedCategoryId) || !empty($selectedBankAccountId)) {
+        $f = [
+            'time_range' => $selectedTimeRange,
+            'start_date' => $selectedStartDate,
+            'end_date' => $selectedEndDate,
+            'category_id' => $selectedCategoryId,
+            'bank_account_id' => $selectedBankAccountId
+        ];
 
         // determine start/end from presets or direct dates
-        if(!empty($selectedTimeRange)){
+        if(!empty($f['time_range'])){
             $today = date('Y-m-d');
-            switch($selectedTimeRange){
+            switch($f['time_range']){
                 case 'this_month':
                     $start = date('Y-m-01');
                     $end = $today;
@@ -218,7 +231,7 @@
                         <div class="col-auto">
                             <button class="btn btn-sm btn-primary" type="submit"><i class="bi bi-funnel-fill me-1"></i>Filter</button>
                             <button id="clearCashbookFiltersBtn" class="btn btn-sm btn-outline-secondary ms-1" type="button"
-                                style="<?php echo (isset($_POST['filter']) || (!empty($selectedTimeRange) || !empty($selectedStartDate) || !empty($selectedCategoryId) || !empty($selectedBankAccountId))) ? 'display:inline-block;' : 'display:none;'; ?>">
+                                style="<?php echo (!empty($selectedTimeRange) || !empty($selectedStartDate) || !empty($selectedEndDate) || !empty($selectedCategoryId) || !empty($selectedBankAccountId)) ? 'display:inline-block;' : 'display:none;'; ?>">
                                 Clear
                             </button>
                         </div>
