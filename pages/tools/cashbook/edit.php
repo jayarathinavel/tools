@@ -41,7 +41,7 @@
         <div class="form-group">
             <label>Category</label>
             <select name="category_id" class="form-control">
-                <option value="">-- none --</option>
+                <option value="" hidden>Select a category</option>
                 <?php foreach($categories as $cid => $cname): ?>
                     <option value="<?php echo $cid; ?>" <?php echo ($entry['category_id'] == $cid) ? 'selected' : ''; ?>><?php echo htmlspecialchars($cname); ?></option>
                 <?php endforeach; ?>
@@ -50,7 +50,7 @@
         <div class="form-group">
             <label>Bank Account</label>
             <select name="bank_account_id" class="form-control">
-                <option value="">-- none --</option>
+                <option value="" hidden>Select an account</option>
                 <?php foreach($accounts as $a): ?>
                     <option value="<?php echo $a['id']; ?>" <?php echo ($entry['bank_account_id'] == $a['id']) ? 'selected' : ''; ?>><?php echo htmlspecialchars($a['name']); ?></option>
                 <?php endforeach; ?>

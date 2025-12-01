@@ -30,20 +30,20 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Category <small><a href="categories/add.php">Add</a></small></label>
+            <label>Category <small><a href="categories/view.php">View Categories</a></small></label>
             <select name="category_id" class="form-control">
-                <option value="">-- none --</option>
+                <option value="" hidden>Select a category</option>
                 <?php foreach($categories as $id => $name): ?>
                     <option value="<?php echo $id; ?>"><?php echo $name; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
         <div class="form-group">
-            <label>Bank Account <small><a href="banks/add.php">Add</a></small></label>
+            <label>Bank Account <small><a href="banks/view.php">View Accounts</a></small></label>
             <select name="bank_account_id" class="form-control">
-                <option value="">-- none --</option>
+                <option value="" hidden>Select an account</option>
                 <?php foreach($accounts as $a): ?>
-                    <option value="<?php echo $a['id']; ?>"><?php echo $a['name']; ?> (<?php echo $a['initial_balance']; ?>)</option>
+                    <option value="<?php echo $a['id']; ?>"><?php echo $a['name']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

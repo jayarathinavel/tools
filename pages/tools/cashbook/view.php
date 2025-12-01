@@ -161,6 +161,12 @@
                             <a class="btn btn-sm btn-info text-white" href="books/view.php">
                                 <i class="bi bi-book me-1"></i>Books
                             </a>
+                            <a class="btn btn-sm btn-primary" title="View Accounts" href="banks/view.php">
+                                <i class="bi bi-bank"></i>
+                            </a>
+                            <a class="btn btn-sm btn-secondary" title="View Categories" href="categories/view.php">
+                                <i class="bi bi-tags"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -235,3 +235,27 @@ CREATE TABLE IF NOT EXISTS `cashbook_entry` (
   `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Food', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Snacks', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Groceries', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Fuel', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Health & Medical', 0);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Fashions', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Rent', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Home Maintenance', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Personal Care', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Entertainment', 0);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Education', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Gifts & Donations', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Travel', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Outing', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Recreation', 0);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Salary', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Business Income', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Investment Income', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Other Income', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Lending', 0);

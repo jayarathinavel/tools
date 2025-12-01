@@ -22,11 +22,11 @@
         <tbody>
             <?php
                 if($book) {
-                    $categories = executeQuery("SELECT * FROM cashbook_category WHERE cashbook_book_id=$book ORDER BY creation_timestamp DESC");
+                    $categories = executeQuery("SELECT * FROM cashbook_category WHERE cashbook_book_id=$book OR cashbook_book_id = 0 ORDER BY creation_timestamp DESC");
                     while($c = mysqli_fetch_assoc($categories)):
             ?>
             <tr>
-                <td><?php echo htmlspecialchars($c['name']); ?></td>
+                <td<?php if($c['cashbook_book_id'] == 0) echo ' style="font-weight: bold;"'; ?>><?php echo htmlspecialchars($c['name']); ?></td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="edit.php?id=<?php echo $c['id']; ?>"><i class="bi bi-pencil-fill"></i></a>
                     <a class="btn btn-sm btn-danger" href="delete.php?id=<?php echo $c['id']; ?>&operation=delete" onclick="return confirm('Delete this category?');"><i class="bi bi-trash-fill"></i></a>

@@ -23,8 +23,6 @@
                     <a class="btn btn-sm btn-warning" title="Edit" href="edit.php?id=<?php echo $b['id']; ?>"><i class="bi bi-pencil-fill"></i></a>
                     <a class="btn btn-sm btn-danger" title="Delete" href="delete.php?id=<?php echo $b['id']; ?>&operation=delete" onclick="return confirm('Deleting a book will also delete all its entries, accounts and categories. Are you sure?');"><i class="bi bi-trash-fill"></i></a>
                     <a class="btn btn-sm btn-info" title="View Entries" href="../view.php?book_id=<?php echo $b['id']; ?>"><i class="bi bi-journal-text"></i></a>
-                    <a class="btn btn-sm btn-primary" title="View Accounts" href="../banks/view.php?book_id=<?php echo $b['id']; ?>"><i class="bi bi-people"></i></a>
-                    <a class="btn btn-sm btn-secondary" title="View Categories" href="../categories/view.php?book_id=<?php echo $b['id']; ?>"><i class="bi bi-tags"></i></a>
                 </td>
             </tr>
             <?php endwhile; ?>

@@ -2,7 +2,7 @@
     function findBookCashbook($userId){
         $selectedBook = null;
         if($_GET['book_id']) {
-            return intval($_GET['book_id']);
+            $_SESSION['cashbookSelectedBook'] = intval(value: $_GET['book_id']);
         }
         if(isset($_SESSION['cashbookSelectedBook'])){
             $selectedBook = $_SESSION['cashbookSelectedBook'];
@@ -27,7 +27,7 @@
         return $accounts;
     }
     function fetchCategoriesFromCashbook($book){
-        $q = executeQuery("SELECT * FROM cashbook_category WHERE cashbook_book_id=$book");
+        $q = executeQuery("SELECT * FROM cashbook_category WHERE cashbook_book_id=$book or cashbook_book_id = 0");
         $cats = [];
         while($r = mysqli_fetch_assoc($q)) $cats[$r['id']] = $r['name'];
         return $cats;
