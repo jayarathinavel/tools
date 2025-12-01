@@ -16,7 +16,6 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Created</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,7 +27,6 @@
             ?>
             <tr>
                 <td><?php echo htmlspecialchars($c['name']); ?></td>
-                <td><?php echo $c['creation_timestamp']; ?></td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="edit.php?id=<?php echo $c['id']; ?>"><i class="bi bi-pencil-fill"></i></a>
                     <a class="btn btn-sm btn-danger" href="delete.php?id=<?php echo $c['id']; ?>&operation=delete" onclick="return confirm('Delete this category?');"><i class="bi bi-trash-fill"></i></a>

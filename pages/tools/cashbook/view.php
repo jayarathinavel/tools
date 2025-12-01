@@ -117,34 +117,35 @@
                         <?php if ($book && isset($books[$book])): ?>
                             <h2><strong><?php echo htmlspecialchars($books[$book]); ?></strong></h2>
                         <?php endif; ?>
-                        <!-- Toggle button -->
-                        <button title="Change Book" type="button" id="toggleBookSelector" class="btn btn-sm btn-outline-primary">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <form id="bookSelectorForm" method="post" class="d-none m-0">
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-text bg-white border-end-0">Change Book</span>
-                                <select name="cashbookBookId" title="Select Book" onchange="this.form.submit()" class="form-select form-select-sm">
-                                    <option value="" disabled <?php echo empty($book) ? 'selected' : ''; ?>>Select book</option>
-                                    <?php foreach ($books as $id => $name): ?>
-                                        <option value="<?php echo $id; ?>" <?php echo ($book && intval($book) === intval($id)) ? 'selected' : ''; ?>>
-                                            <?php echo htmlspecialchars($name); ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </form>
                     </div>
 
                     <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
-                        <!-- Buttons Section -->
-                        <div class="d-flex flex-wrap gap-2 ms-md-3">
+                        <!-- Buttons Section + Book selector dropdown -->
+                        <div class="d-flex flex-wrap gap-2 ms-md-3 align-items-center">
                             <a class="btn btn-sm btn-primary" href="add.php">
                                 <i class="bi bi-plus-lg me-1"></i>Add Entry
                             </a>
                             <a class="btn btn-sm btn-secondary" href="summary.php">
                                 <i class="bi bi-list-task me-1"></i>Summary
                             </a>
+                            <!-- Book selector dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-arrow-left-right me-1"></i>Change Book
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <?php foreach ($books as $id => $name): ?>
+                                        <li>
+                                            <form method="post" class="m-0" style="display:inline;">
+                                                <input type="hidden" name="cashbookBookId" value="<?php echo $id; ?>">
+                                                <button type="submit" class="dropdown-item <?php echo ($book && intval($book) === intval($id)) ? 'active' : ''; ?>">
+                                                    <?php echo htmlspecialchars($name); ?>
+                                                </button>
+                                            </form>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
                             <a class="btn btn-sm btn-info text-white" href="books/view.php">
                                 <i class="bi bi-book me-1"></i>Manage Books
                             </a>
@@ -316,10 +317,6 @@
 
             
             })();
-
-            document.getElementById('toggleBookSelector').addEventListener('click', function () {
-                document.getElementById('bookSelectorForm').classList.toggle('d-none');
-            });
         </script>
 
         <div class="row">

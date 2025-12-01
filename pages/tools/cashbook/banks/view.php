@@ -17,7 +17,6 @@
             <tr>
                 <th>Name</th>
                 <th>Initial Balance</th>
-                <th>Created</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -30,7 +29,6 @@
             <tr>
                 <td><?php echo htmlspecialchars($a['name']); ?></td>
                 <td><?php echo number_format($a['initial_balance'], 2); ?></td>
-                <td><?php echo $a['creation_timestamp']; ?></td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="edit.php?id=<?php echo $a['id']; ?>"><i class="bi bi-pencil-fill"></i></a>
                     <a class="btn btn-sm btn-danger" href="delete.php?id=<?php echo $a['id']; ?>&operation=delete" onclick="return confirm('Delete this account?');"><i class="bi bi-trash-fill"></i></a>
