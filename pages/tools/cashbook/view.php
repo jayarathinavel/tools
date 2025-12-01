@@ -111,12 +111,42 @@
     <?php if($book): ?>
         <div class="card mb-3 shadow-sm">
             <div class="card-body">
-                <!-- Book selector -->
+                <!-- Book Actions -->
                 <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2">
                     <div class="d-flex align-items-center gap-3">
-                        <?php if ($book && isset($books[$book])): ?>
-                            <h2><strong><?php echo htmlspecialchars($books[$book]); ?></strong></h2>
-                        <?php endif; ?>
+                        <!-- Title with dropdown -->
+                        <style>
+                            /* make split button look like a heading and hide text while open */
+                            .title-btn { font-size: 1.5rem; font-weight: 700; color: inherit; text-decoration: none; }
+                            .btn-group.show .title-text { visibility: hidden; }
+                            .title-btn:focus, .title-split-toggle:focus { box-shadow: none; }
+                        </style>
+
+                        <div class="btn-group" role="group">
+                            <!-- main title button -->
+                            <button type="button" class="btn btn-link title-btn m-0 p-0">
+                                <span class="title-text"><?php echo ($book && isset($books[$book])) ? htmlspecialchars($books[$book]) : 'Change Book'; ?></span>
+                            </button>
+
+                            <!-- split dropdown toggle -->
+                            <button type="button" class="btn btn-link dropdown-toggle dropdown-toggle-split title-split-toggle p-0 ms-2"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Book List</span>
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                <?php foreach ($books as $id => $name): ?>
+                                    <li>
+                                        <form method="post" class="m-0">
+                                            <input type="hidden" name="cashbookBookId" value="<?php echo $id; ?>">
+                                            <button type="submit" class="dropdown-item <?php echo ($book && intval($book) === intval($id)) ? 'active' : ''; ?>">
+                                                <?php echo htmlspecialchars($name); ?>
+                                            </button>
+                                        </form>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
@@ -128,26 +158,8 @@
                             <a class="btn btn-sm btn-secondary" href="summary.php">
                                 <i class="bi bi-list-task me-1"></i>Summary
                             </a>
-                            <!-- Book selector dropdown -->
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-arrow-left-right me-1"></i>Change Book
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <?php foreach ($books as $id => $name): ?>
-                                        <li>
-                                            <form method="post" class="m-0" style="display:inline;">
-                                                <input type="hidden" name="cashbookBookId" value="<?php echo $id; ?>">
-                                                <button type="submit" class="dropdown-item <?php echo ($book && intval($book) === intval($id)) ? 'active' : ''; ?>">
-                                                    <?php echo htmlspecialchars($name); ?>
-                                                </button>
-                                            </form>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
                             <a class="btn btn-sm btn-info text-white" href="books/view.php">
-                                <i class="bi bi-book me-1"></i>Manage Books
+                                <i class="bi bi-book me-1"></i>Books
                             </a>
                         </div>
                     </div>
