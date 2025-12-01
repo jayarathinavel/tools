@@ -18,3 +18,6 @@
         <button class="btn btn-primary mt-2" type="submit">Create</button>
     </form>
 </div>
+<?php
+    initializePageFooter($rootPath, $moduleType);
+?>

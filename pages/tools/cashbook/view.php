@@ -375,3 +375,6 @@
         <div class="alert alert-warning">No book selected / available. <a href="books/add.php">Create one</a> first. </div>
     <?php endif; ?>
 </div>
+<?php
+    initializePageFooter($rootPath, $moduleType);
+?>
