@@ -99,7 +99,7 @@
                             <?php if ($investments[$id] != 0): ?>
                                 <div class="mb-3">
                                     <small class="text-muted">Investments</small>
-                                    <div class="fs-6 text-success">+ ₹ <?php echo number_format($investments[$id], 2); ?></div>
+                                    <div class="fs-6 text-danger">- ₹ <?php echo number_format($investments[$id], 2); ?></div>
                                 </div>
                             <?php endif; ?>
                             <hr>
