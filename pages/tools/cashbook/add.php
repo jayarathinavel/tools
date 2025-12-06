@@ -46,7 +46,6 @@
 
 </style>
 <div class="container">
-    <h1>Add Entry</h1>
     <?php getSuccessOrFailureMessage(); ?>
     <?php if(!$book) echo '<div class="alert alert-danger">No book. Create one first.</div>'; ?>
     <form method="post" action="">

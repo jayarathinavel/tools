@@ -9,7 +9,6 @@
     }
 ?>
 <div class="container">
-    <h1>Add Category</h1>
     <?php if(!$book) echo '<div class="alert alert-danger">No book selected. Create or select a book first.</div>'; ?>
     <form method="post" action="">
         <div class="form-group">

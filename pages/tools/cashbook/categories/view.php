@@ -7,7 +7,6 @@
 ?>
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
-    <h1>Categories</h1>
     <?php if(!$book) echo '<div class="alert alert-danger">No book selected.</div>'; ?>
     <div class="mb-3">
         <a class="btn btn-sm btn-primary" href="add.php">Add Category</a>

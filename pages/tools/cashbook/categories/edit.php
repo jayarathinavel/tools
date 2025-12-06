@@ -13,7 +13,6 @@
     }
 ?>
 <div class="container">
-    <h1>Edit Category</h1>
     <form method="post" action="">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <div class="form-group">

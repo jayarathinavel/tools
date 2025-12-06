@@ -6,7 +6,6 @@
 ?>
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
-    <h1>Cashbook Books</h1>
     <div class="mb-3">
         <a class="btn btn-sm btn-primary" href="add.php">Add New Book</a>
     </div>

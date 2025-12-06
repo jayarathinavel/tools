@@ -40,8 +40,7 @@
     }
 ?>
 <div class="container mt-4">
-    <h1 class="mb-4">Summary</h1>
-    <h3><?php echo $bookName; ?></h3>
+    <h2><?php echo $bookName; ?></h2>
     <?php if(!$book): ?>
         <div class="alert alert-danger">No book selected.</div>
     <?php else: ?>

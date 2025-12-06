@@ -4,7 +4,6 @@
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
 ?>
 <div class="container">
-    <h1>Add Cashbook Book</h1>
     <?php
     if (isset($_POST['name'])) {
         includePhpFileFromRoot($rootPath, '/handlers/tools/cashbook-book-handler.php');
