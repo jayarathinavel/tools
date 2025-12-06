@@ -42,13 +42,13 @@
             $title = mysqli_real_escape_string($conn, $_POST['title']);
             $amount = floatval($_POST['amount']);
             $type = mysqli_real_escape_string($conn, $_POST['type']);
-            $category_id = !empty($_POST['category_id']) ? intval($_POST['category_id']) : null;
-            $bank_account_id = !empty($_POST['bank_account_id']) ? intval($_POST['bank_account_id']) : null;
+            $category_id = !empty($_POST['category_id']) ? intval($_POST['category_id']) : "NULL";
+            $bank_account_id = !empty($_POST['bank_account_id']) ? intval($_POST['bank_account_id']) : "NULL";
             $date = mysqli_real_escape_string($conn, $_POST['date']);
             $bookId = intval($_POST['cashbook_book_id']);
             if ($type === 'transfer') {
                 // For transfer, create two entries: transfer_out and transfer_in
-                $to_account_id = !empty($_POST['to_account_id']) ? intval($_POST['to_account_id']) : null;
+                $to_account_id = !empty($_POST['to_account_id']) ? intval($_POST['to_account_id']) : "NULL";
                 if ($bank_account_id === $to_account_id) {
                     throw new Exception("From and To bank accounts cannot be the same for a transfer.");
                 }
