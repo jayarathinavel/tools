@@ -202,6 +202,8 @@
         const entriesContainer = document.getElementById('cashbookEntries');
         const pagination = document.getElementById('cashbookPagination');
         const perPageSelect = document.getElementById('cashbookItemsPerPage');
+        const clearCashbookFiltersBtn = document.getElementById('clearCashbookFiltersBtn');
+
 
         if (!form || !entriesContainer || !pagination || !perPageSelect) return;
 
@@ -277,8 +279,6 @@
                     break;
             }
             
-            console.log(start, end);
-
             if (start) start = normalizeStart(start);
             if (end) end = normalizeEnd(end);
 
@@ -297,6 +297,11 @@
             renderEntries(filtered);
             renderTotals(filtered);
             renderPagination(filtered);
+            if (Object.values(f).some(v => v)) {
+                clearCashbookFiltersBtn.style.display = 'inline-block';
+            } else {
+                clearCashbookFiltersBtn.style.display = 'none';
+            }
         }
 
         function renderEntries(entries){
@@ -450,8 +455,9 @@
         }
 
         form.addEventListener('submit', e=>{e.preventDefault(); currentPage=1; filterEntries();});
-        document.getElementById('clearCashbookFiltersBtn').addEventListener('click', e=>{
+        clearCashbookFiltersBtn.addEventListener('click', e=>{
             e.preventDefault(); localStorage.removeItem(STORAGE_KEY); form.reset(); updateCustomDates(); currentPage=1; filterEntries();
+            clearCashbookFiltersBtn.style.display = 'none';
         });
         perPageSelect.addEventListener('change', function(){itemsPerPage=parseInt(this.value); localStorage.setItem(ITEMS_PER_PAGE_KEY,itemsPerPage); currentPage=1; filterEntries();});
 
