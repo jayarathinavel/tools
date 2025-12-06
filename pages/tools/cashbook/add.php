@@ -9,9 +9,11 @@
     }
     $accounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
+    $prefill = $_SESSION['cashbook_prefill'] ?? [];
 ?>
 <div class="container">
     <h1>Add Entry</h1>
+    <?php getSuccessOrFailureMessage(); ?>
     <?php if(!$book) echo '<div class="alert alert-danger">No book. Create one first.</div>'; ?>
     <form method="post" action="">
         <div class="form-group">
@@ -25,14 +27,26 @@
         <div class="form-group">
             <label>Type</label>
             <select name="type" id="entryType" class="form-control" required>
-                <option value="expense">Expense</option>
-                <option value="income">Income</option>
-                <option value="repayment">Credit Card Repayment</option>
-                <option value="lend">Lend</option>
-                <option value="lend_repayment">Lend Repayment</option>
-                <option value="transfer">Transfer</option>
-                <option value="investment">Investment</option>
+                <?php
+                    $types = [
+                        'expense' => 'Expense',
+                        'income' => 'Income',
+                        'repayment' => 'Credit Card Repayment',
+                        'lend' => 'Lend',
+                        'lend_repayment' => 'Lend Repayment',
+                        'transfer' => 'Transfer',
+                        'investment' => 'Investment'
+                    ];
+
+                    $selectedType = $prefill['type'] ?? 'expense';
+
+                    foreach ($types as $value => $label) {
+                        $selected = ($selectedType === $value) ? 'selected' : '';
+                        echo "<option value=\"$value\" $selected>$label</option>";
+                    }
+                ?>
             </select>
+
         </div>
         <div class="form-group">
             <label>Category <small><a href="categories/view.php">View Categories</a></small></label>
@@ -46,9 +60,11 @@
         <div class="form-group">
             <label>Bank Account <small><a href="banks/view.php">View Accounts</a></small></label>
             <select name="bank_account_id" class="form-control" required>
-                <option value="" hidden>Select an account</option>
-                <?php foreach($accounts as $a): ?>
-                    <option value="<?php echo $a['id']; ?>"><?php echo $a['name']; ?></option>
+                <?php foreach ($accounts as $a): ?>
+                    <option value="<?= $a['id'] ?>"
+                        <?= (($prefill['bank_account_id'] ?? '') == $a['id']) ? 'selected' : '' ?>>
+                        <?= $a['name'] ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -63,12 +79,18 @@
         </div>
         <div class="form-group">
             <label>Date & Time</label>
-            <input type="datetime-local" name="date" class="form-control" value="<?php echo date('Y-m-d\TH:i'); ?>">
+            <input type="datetime-local" name="date" class="form-control" value="<?= htmlspecialchars($prefill['date'] ?? date('Y-m-d\TH:i')) ?>">
         </div>
         <input type="hidden" name="cashbook_book_id" value="<?php echo $book; ?>">
-        <button class="btn btn-primary mt-2" type="submit">Save</button>
+        <button type="submit" name="action" value="save" class="btn btn-primary mt-2">
+            Save
+        </button>
+        <button type="submit" name="action" value="save_new" class="btn btn-outline-primary ms-2 mt-2">
+            Save & Add New
+        </button>
     </form>
 </div>
+<?php unset($_SESSION['cashbook_prefill']); ?>
 <script>
     document.getElementById('entryType').addEventListener('change', function () {
         const toAccount = document.getElementById('toAccountWrapper');

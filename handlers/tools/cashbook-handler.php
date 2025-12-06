@@ -38,6 +38,12 @@
     // Add entry (POST without id)
     if (isset($_POST['title'])) {
         try {
+            $action = $_POST['action'] ?? 'save';
+            $_SESSION['cashbook_prefill'] = [
+                'date' => $_POST['date'],
+                'bank_account_id' => $_POST['bank_account_id'] ?? ($_POST['from_account_id'] ?? null),
+                'type' => $_POST['type']
+            ];
             $conn = Database::getInstance()->getConnection();
             $title = mysqli_real_escape_string($conn, $_POST['title']);
             $amount = floatval($_POST['amount']);
@@ -57,7 +63,11 @@
                 // Incoming entry
                 executeQuery("INSERT INTO cashbook_entry (title, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title',$amount,'transfer_in',$category_id,$to_account_id,'$date',$bookId)");
                 setSuccessOrFailureMessage('success', 'Transfer Entry Added');
-                header("Location: view.php");
+                if ($action === 'save_new') {
+                    header("Location: add.php");
+                } else {
+                    header("Location: view.php");
+                }
                 exit;
             }
             executeQuery("INSERT INTO cashbook_entry (title, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title',$amount,'$type',$category_id,$bank_account_id,'$date',$bookId)");
@@ -65,7 +75,11 @@
         } catch (Exception $e) {
             setSuccessOrFailureMessage('failure', 'Failed to add: '.$e->getMessage());
         }
-        header("Location: view.php");
+        if ($action === 'save_new') {
+            header("Location: add.php");
+        } else {
+            header("Location: view.php");
+        }
         exit;
     }
 ?>
