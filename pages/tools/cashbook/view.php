@@ -353,7 +353,7 @@
             })();
         </script>
 
-        <div class="row">
+        <div class="row" id="cashbookEntries">
             <?php while($e = mysqli_fetch_assoc($entries)):
                 $catName = ($e['category_id'] && isset($categories[$e['category_id']])) ? $categories[$e['category_id']] : '';
                 $accName = ($e['bank_account_id'] && isset($bankAccounts[$e['bank_account_id']]['name'])) ? $bankAccounts[$e['bank_account_id']]['name'] : '';
@@ -420,11 +420,133 @@
                 </div>
             </div>
             <?php endwhile; ?>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <small class="text-muted">
+                    Show
+                    <select id="cashbookItemsPerPage"
+                            class="form-select form-select-sm d-inline-block w-auto mx-1">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    entries per page
+                </small>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+                <nav>
+                    <ul id="cashbookPagination" class="pagination pagination-sm mb-0"></ul>
+                </nav>
+            </div>
         </div>
     <?php else: ?>
         <div class="alert alert-warning">No book selected / available. <a href="books/add.php">Create one</a> first. </div>
     <?php endif; ?>
 </div>
+<script>
+    (function () {
+        const STORAGE_KEY = 'cashbook_items_per_page';
+        const container = document.getElementById('cashbookEntries');
+        const pagination = document.getElementById('cashbookPagination');
+        const perPageSelect = document.getElementById('cashbookItemsPerPage');
+
+        if (!container || !pagination || !perPageSelect) return;
+
+        const items = Array.from(container.querySelectorAll(':scope > div'));
+
+        let itemsPerPage = parseInt(
+            localStorage.getItem(STORAGE_KEY) ||
+            perPageSelect.value
+        );
+
+        let currentPage = 1;
+
+        perPageSelect.value = itemsPerPage;
+
+        function totalPages() {
+            return Math.ceil(items.length / itemsPerPage);
+        }
+
+        function renderPage(page) {
+            const pages = totalPages();
+            currentPage = Math.min(Math.max(page, 1), pages);
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+
+            items.forEach((item, i) => {
+                item.style.display =
+                    i >= start && i < end ? '' : 'none';
+            });
+
+            renderPagination();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderPagination() {
+            pagination.innerHTML = '';
+            const pages = totalPages();
+
+            if (pages <= 1) {
+                pagination.style.display = 'none';
+                return;
+            }
+
+            pagination.style.display = '';
+
+            const makeBtn = (label, page, disabled, active) => {
+                const li = document.createElement('li');
+                li.className =
+                    'page-item' +
+                    (disabled ? ' disabled' : '') +
+                    (active ? ' active' : '');
+
+                const a = document.createElement('a');
+                a.href = '#';
+                a.className = 'page-link';
+                a.textContent = label;
+
+                a.onclick = e => {
+                    e.preventDefault();
+                    if (!disabled && !active) renderPage(page);
+                };
+
+                li.appendChild(a);
+                return li;
+            };
+
+            pagination.appendChild(
+                makeBtn('‹', currentPage - 1, currentPage === 1)
+            );
+
+            for (let i = 1; i <= pages; i++) {
+                pagination.appendChild(
+                    makeBtn(i, i, false, i === currentPage)
+                );
+            }
+
+            pagination.appendChild(
+                makeBtn('›', currentPage + 1, currentPage === pages)
+            );
+        }
+
+        // When dropdown changes
+        perPageSelect.addEventListener('change', function () {
+            itemsPerPage = parseInt(this.value);
+            localStorage.setItem(STORAGE_KEY, itemsPerPage);
+            renderPage(1);
+        });
+
+        // Hide selector if not needed
+        if (items.length <= itemsPerPage) {
+            perPageSelect.closest('div').style.display = 'none';
+        }
+
+        renderPage(1);
+    })();
+</script>
+
+
 <?php
     initializePageFooter($rootPath, $moduleType);
 ?>
