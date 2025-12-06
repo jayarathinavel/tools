@@ -262,4 +262,4 @@ INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Lending', 0);
 
 ALTER TABLE `cashbook_entry` MODIFY COLUMN `date` DATETIME NULL DEFAULT NULL;
 
-ALTER TABLE `cashbook_entry` MODIFY COLUMN `type` enum('expense','income','repayment','lend','lend_repayment') NOT NULL DEFAULT 'expense';
+ALTER TABLE `cashbook_entry` MODIFY COLUMN `type` enum('expense','income','repayment','lend','lend_repayment', 'transfer_in', 'transfer_out', 'investment') NOT NULL DEFAULT 'expense';

@@ -357,7 +357,7 @@
             <?php while($e = mysqli_fetch_assoc($entries)):
                 $catName = ($e['category_id'] && isset($categories[$e['category_id']])) ? $categories[$e['category_id']] : '';
                 $accName = ($e['bank_account_id'] && isset($bankAccounts[$e['bank_account_id']]['name'])) ? $bankAccounts[$e['bank_account_id']]['name'] : '';
-                $amountClass = ($e['type'] === 'income') ? 'text-success' : 'text-danger';
+                $amountClass = in_array($e['type'], ['income', 'transfer_in', 'lend_repayment']) ? 'text-success' : 'text-danger';
             ?>
             <div class="col-12 col-md-6 col-lg-4 mb-2">
                 <div class="card mb-2 shadow-sm h-100">
@@ -392,6 +392,12 @@
                                             echo '→ ' . number_format($e['amount'], 2);
                                         } elseif ($e['type'] === 'lend_repayment') {
                                             echo '⟶ ' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'transfer_in') {
+                                            echo '⇒ ' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'transfer_out') {
+                                            echo '⇐ ' . number_format($e['amount'], 2);
+                                        } elseif ($e['type'] === 'investment') {
+                                            echo '⤴ ' . number_format($e['amount'], 2);
                                         }
                                     ?>
                                 </div>

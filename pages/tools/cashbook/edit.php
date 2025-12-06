@@ -39,6 +39,9 @@
                 <option value="repayment" <?php echo ($entry['type'] === 'repayment') ? 'selected' : ''; ?>>Credit Card Repayment</option>
                 <option value="lend" <?php echo ($entry['type'] === 'lend') ? 'selected' : ''; ?>>Lend</option>
                 <option value="lend_repayment" <?php echo ($entry['type'] === 'lend_repayment') ? 'selected' : ''; ?>>Lend Repayment</option>
+                <option value="transfer_in" <?php echo ($entry['type'] === 'transfer_in') ? 'selected' : ''; ?>>Transfer In</option>
+                <option value="transfer_out" <?php echo ($entry['type'] === 'transfer_out') ? 'selected' : ''; ?>>Transfer Out</option>
+                <option value="investment" <?php echo ($entry['type'] === 'investment') ? 'selected' : ''; ?>>Investment</option>
             </select>
         </div>
         <div class="form-group">

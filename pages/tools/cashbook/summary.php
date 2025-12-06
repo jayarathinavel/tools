@@ -20,14 +20,20 @@
             $repayment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='repayment'")->fetch_assoc()['sum'];
             $lend = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='lend'")->fetch_assoc()['sum'];
             $lendRepayment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='lend_repayment'")->fetch_assoc()['sum'];
+            $transferIn = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='transfer_in'")->fetch_assoc()['sum'];
+            $transferOut = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='transfer_out'")->fetch_assoc()['sum'];
+            $investment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='investment'")->fetch_assoc()['sum'];
             
             // Balance: initial + income - expense - repayment - lend + lend_repayment
-            $balances[$id] = $initial + floatval($income) - floatval($expense) - floatval($repayment) - floatval($lend) + floatval($lendRepayment);
+            $balances[$id] = $initial + floatval($income) - floatval($expense) - floatval($repayment) - floatval($lend) + floatval($lendRepayment) + floatval($transferIn) - floatval($transferOut) - floatval($investment);
             $expenses[$id] = floatval($expense);
             $incomes[$id] = floatval($income);
             $lends[$id] = floatval($lend);
             $lendRepayments[$id] = floatval($lendRepayment);
             $repayments[$id] = floatval($repayment);
+            $transfersIn[$id] = floatval($transferIn);
+            $transfersOut[$id] = floatval($transferOut);
+            $investments[$id] = floatval($investment);
             $initials[$id] = $initial;
         }
     }
@@ -76,6 +82,24 @@
                                 <div class="mb-3">
                                     <small class="text-muted">Repayments</small>
                                     <div class="fs-6 text-success">+ ₹ <?php echo number_format($repayments[$id], 2); ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($transfersIn[$id] != 0): ?>
+                                <div class="mb-3">
+                                    <small class="text-muted">Transfers In</small>
+                                    <div class="fs-6 text-success">+ ₹ <?php echo number_format($transfersIn[$id], 2); ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($transfersOut[$id] != 0): ?>
+                                <div class="mb-3">
+                                    <small class="text-muted">Transfers Out</small>
+                                    <div class="fs-6 text-danger">- ₹ <?php echo number_format($transfersOut[$id], 2); ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($investments[$id] != 0): ?>
+                                <div class="mb-3">
+                                    <small class="text-muted">Investments</small>
+                                    <div class="fs-6 text-success">+ ₹ <?php echo number_format($investments[$id], 2); ?></div>
                                 </div>
                             <?php endif; ?>
                             <hr>

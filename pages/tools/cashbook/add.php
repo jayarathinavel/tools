@@ -24,12 +24,14 @@
         </div>
         <div class="form-group">
             <label>Type</label>
-            <select name="type" class="form-control">
+            <select name="type" id="entryType" class="form-control" required>
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
                 <option value="repayment">Credit Card Repayment</option>
                 <option value="lend">Lend</option>
                 <option value="lend_repayment">Lend Repayment</option>
+                <option value="transfer">Transfer</option>
+                <option value="investment">Investment</option>
             </select>
         </div>
         <div class="form-group">
@@ -43,10 +45,19 @@
         </div>
         <div class="form-group">
             <label>Bank Account <small><a href="banks/view.php">View Accounts</a></small></label>
-            <select name="bank_account_id" class="form-control">
+            <select name="bank_account_id" class="form-control" required>
                 <option value="" hidden>Select an account</option>
                 <?php foreach($accounts as $a): ?>
                     <option value="<?php echo $a['id']; ?>"><?php echo $a['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form-group d-none" id="toAccountWrapper">
+            <label>To Bank Account</label>
+            <select name="to_account_id" class="form-control">
+                <option hidden value="">Select account</option>
+                <?php foreach($accounts as $a): ?>
+                    <option value="<?= $a['id']; ?>"><?= $a['name']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -58,6 +69,19 @@
         <button class="btn btn-primary mt-2" type="submit">Save</button>
     </form>
 </div>
+<script>
+    document.getElementById('entryType').addEventListener('change', function () {
+        const toAccount = document.getElementById('toAccountWrapper');
+
+        if (this.value === 'transfer') {
+            toAccount.classList.remove('d-none');
+            toAccount.querySelector('select').setAttribute('required', true);
+        } else {
+            toAccount.classList.add('d-none');
+            toAccount.querySelector('select').removeAttribute('required');
+        }
+    });
+</script>
 <?php
     initializePageFooter($rootPath, $moduleType);
 ?>
