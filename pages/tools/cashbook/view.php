@@ -22,9 +22,14 @@
     // fetch all entries for the book
     $entries = $book ? executeQuery("SELECT * FROM cashbook_entry WHERE cashbook_book_id=" . intval($book) . " ORDER BY `date` DESC") : [];
     $entriesArr = [];
-    while($e = mysqli_fetch_assoc($entries)) {
-        $entriesArr[] = $e;
+    if($entries) {
+        while($e = mysqli_fetch_assoc($entries)) {
+            $entriesArr[] = $e;
+        }
+    } else {
+        $entriesArr = [];
     }
+    
 ?>
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
@@ -175,7 +180,7 @@
         </div>
     </div>
     <?php else: ?>
-        <div class="alert alert-warning">No book selected / available. <a href="books/add.php">Create one</a> first. </div>
+        <div class="alert alert-warning">No book available. <a href="books/add.php">Create one</a> first. </div>
     <?php endif; ?>
 </div>
 

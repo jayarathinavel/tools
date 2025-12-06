@@ -4,7 +4,6 @@
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
     $userId = cashbookUser();
     $book = findBookCashbook($userId);
-    $bookName = executeQuery("SELECT name FROM cashbook_book WHERE id={$book}")->fetch_assoc()['name'] ?? 'No Book Selected';
     $accounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $balances = [];
     $expenses = [];
@@ -17,6 +16,7 @@
     $transfersOut = [];
     $investments = [];
     if($book){
+        $bookName = executeQuery("SELECT name FROM cashbook_book WHERE id={$book}")->fetch_assoc()['name'] ?? 'No Book Selected';
         foreach($accounts as $a){
             $id = $a['id'];
             $initial = floatval($a['initial_balance']);
@@ -145,109 +145,111 @@
             </div>
         </div>
         <div class="row g-4">
-            <?php foreach($accounts as $a): 
+            <?php foreach($accounts as $a):
                 $id = $a['id'];
                 $balance = $balances[$id];
                 $balanceClass = $balance >= 0 ? 'text-success' : 'text-danger';
                 $collapseId = "collapse{$id}";
                 $headingId = "heading{$id}";
             ?>
+                <?php if($initials[$id] > 0): ?>
 
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="accordion shadow-sm" id="accordion-<?php echo $id; ?>">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="accordion shadow-sm" id="accordion-<?php echo $id; ?>">
 
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="<?php echo $headingId; ?>">
-                            <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#<?php echo $collapseId; ?>"
-                                    aria-expanded="false"
-                                    aria-controls="<?php echo $collapseId; ?>">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="<?php echo $headingId; ?>">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#<?php echo $collapseId; ?>"
+                                            aria-expanded="false"
+                                            aria-controls="<?php echo $collapseId; ?>">
 
-                                <div class="d-flex w-100 align-items-center">
-                                    <span class="fw-bold">
-                                        <?php echo htmlspecialchars($a['name']); ?>
-                                    </span>
+                                        <div class="d-flex w-100 align-items-center">
+                                            <span class="fw-bold">
+                                                <?php echo htmlspecialchars($a['name']); ?>
+                                            </span>
 
-                                    <span class="ms-auto fw-bold me-2 <?php echo $balanceClass; ?>">
-                                        ₹ <?php echo number_format($balance, 2); ?>
-                                    </span>
-                                </div>
-                            </button>
+                                            <span class="ms-auto fw-bold me-2 <?php echo $balanceClass; ?>">
+                                                ₹ <?php echo number_format($balance, 2); ?>
+                                            </span>
+                                        </div>
+                                    </button>
 
-                        </h2>
+                                </h2>
 
-                        <div id="<?php echo $collapseId; ?>"
-                            class="accordion-collapse collapse">
-                            <div class="accordion-body">
+                                <div id="<?php echo $collapseId; ?>"
+                                    class="accordion-collapse collapse">
+                                    <div class="accordion-body">
 
-                                <div class="mb-2">
-                                    <small class="text-muted">Initial Balance</small>
-                                    <div>₹ <?php echo number_format($initials[$id], 2); ?></div>
-                                </div>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Initial Balance</small>
+                                            <div>₹ <?php echo number_format($initials[$id], 2); ?></div>
+                                        </div>
 
-                                <div class="mb-2">
-                                    <small class="text-muted">Income</small>
-                                    <div class="text-success">+ ₹ <?php echo number_format($incomes[$id], 2); ?></div>
-                                </div>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Income</small>
+                                            <div class="text-success">+ ₹ <?php echo number_format($incomes[$id], 2); ?></div>
+                                        </div>
 
-                                <div class="mb-2">
-                                    <small class="text-muted">Expense</small>
-                                    <div class="text-danger">- ₹ <?php echo number_format($expenses[$id], 2); ?></div>
-                                </div>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Expense</small>
+                                            <div class="text-danger">- ₹ <?php echo number_format($expenses[$id], 2); ?></div>
+                                        </div>
 
-                                <?php if ($lends[$id] != 0): ?>
-                                <div class="mb-2">
-                                    <small class="text-muted">Lends</small>
-                                    <div class="text-danger">- ₹ <?php echo number_format($lends[$id], 2); ?></div>
-                                </div>
-                                <?php endif; ?>
+                                        <?php if ($lends[$id] != 0): ?>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Lends</small>
+                                            <div class="text-danger">- ₹ <?php echo number_format($lends[$id], 2); ?></div>
+                                        </div>
+                                        <?php endif; ?>
 
-                                <?php if ($lendRepayments[$id] != 0): ?>
-                                <div class="mb-2">
-                                    <small class="text-muted">Lend Repayments</small>
-                                    <div class="text-success">+ ₹ <?php echo number_format($lendRepayments[$id], 2); ?></div>
-                                </div>
-                                <?php endif; ?>
+                                        <?php if ($lendRepayments[$id] != 0): ?>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Lend Repayments</small>
+                                            <div class="text-success">+ ₹ <?php echo number_format($lendRepayments[$id], 2); ?></div>
+                                        </div>
+                                        <?php endif; ?>
 
-                                <?php if ($repayments[$id] != 0): ?>
-                                <div class="mb-2">
-                                    <small class="text-muted">Repayments</small>
-                                    <div class="text-success">+ ₹ <?php echo number_format($repayments[$id], 2); ?></div>
-                                </div>
-                                <?php endif; ?>
+                                        <?php if ($repayments[$id] != 0): ?>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Repayments</small>
+                                            <div class="text-success">+ ₹ <?php echo number_format($repayments[$id], 2); ?></div>
+                                        </div>
+                                        <?php endif; ?>
 
-                                <?php if ($transfersIn[$id] != 0): ?>
-                                <div class="mb-2">
-                                    <small class="text-muted">Transfers In</small>
-                                    <div class="text-success">+ ₹ <?php echo number_format($transfersIn[$id], 2); ?></div>
-                                </div>
-                                <?php endif; ?>
+                                        <?php if ($transfersIn[$id] != 0): ?>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Transfers In</small>
+                                            <div class="text-success">+ ₹ <?php echo number_format($transfersIn[$id], 2); ?></div>
+                                        </div>
+                                        <?php endif; ?>
 
-                                <?php if ($transfersOut[$id] != 0): ?>
-                                <div class="mb-2">
-                                    <small class="text-muted">Transfers Out</small>
-                                    <div class="text-danger">- ₹ <?php echo number_format($transfersOut[$id], 2); ?></div>
-                                </div>
-                                <?php endif; ?>
+                                        <?php if ($transfersOut[$id] != 0): ?>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Transfers Out</small>
+                                            <div class="text-danger">- ₹ <?php echo number_format($transfersOut[$id], 2); ?></div>
+                                        </div>
+                                        <?php endif; ?>
 
-                                <?php if ($investments[$id] != 0): ?>
-                                <div class="mb-2">
-                                    <small class="text-muted">Investments</small>
-                                    <div class="text-danger">- ₹ <?php echo number_format($investments[$id], 2); ?></div>
-                                </div>
-                                <?php endif; ?>
+                                        <?php if ($investments[$id] != 0): ?>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Investments</small>
+                                            <div class="text-danger">- ₹ <?php echo number_format($investments[$id], 2); ?></div>
+                                        </div>
+                                        <?php endif; ?>
 
-                                <hr>
-                                <div>
-                                    <small class="text-muted">Current Balance</small>
-                                    <div class="fs-5 fw-bold <?php echo $balanceClass; ?>">₹ <?php echo number_format($balance, 2); ?></div>
+                                        <hr>
+                                        <div>
+                                            <small class="text-muted">Current Balance</small>
+                                            <div class="fs-5 fw-bold <?php echo $balanceClass; ?>">₹ <?php echo number_format($balance, 2); ?></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
