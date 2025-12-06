@@ -349,8 +349,8 @@
         }
 
         function renderTotals(entries){
-            const income = entries.filter(e=>['income','transfer_in','lend_repayment'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
-            const expense = entries.filter(e=>['expense','transfer_out','lend','repayment'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
+            const income = entries.filter(e=>['income'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
+            const expense = entries.filter(e=>['expense'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
             document.querySelector('.total-income').innerText='+'+income.toFixed(2);
             document.querySelector('.total-expense').innerText='-'+expense.toFixed(2);
             const netEl = document.querySelector('.total-net');
