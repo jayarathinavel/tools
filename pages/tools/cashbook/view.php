@@ -313,7 +313,7 @@
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <h5 class="card-title mb-1">${e.title}</h5>
+                                    <h5 class="card-title mb-1 text-break">${e.title}</h5>
                                     <div class="text-muted small"><i class="bi bi-calendar-event me-1"></i>${e.date}</div>
                                     <div class="mt-2">${catName?`<span class="badge bg-primary me-1">${catName}</span>`:''}${accName?`<span class="badge bg-info">${accName}</span>`:''}</div>
                                 </div>
