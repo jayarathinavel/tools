@@ -10,6 +10,12 @@
     $expenses = [];
     $incomes = [];
     $initials = [];
+    $lends = [];
+    $lendRepayments = [];
+    $repayments = [];
+    $transfersIn = [];
+    $transfersOut = [];
+    $investments = [];
     if($book){
         foreach($accounts as $a){
             $id = $a['id'];
