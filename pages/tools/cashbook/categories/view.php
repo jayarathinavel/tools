@@ -28,11 +28,12 @@
                 <td<?php if($c['cashbook_book_id'] == 0) echo ' style="font-weight: bold;"'; ?>><?php echo htmlspecialchars($c['name']); ?></td>
                 <td>
                     <a class="btn btn-sm btn-warning" href="edit.php?id=<?php echo $c['id']; ?>"><i class="bi bi-pencil-fill"></i></a>
-                    <a class="btn btn-sm btn-danger" href="delete.php?id=<?php echo $c['id']; ?>&operation=delete" onclick="return confirm('Delete this category?');"><i class="bi bi-trash-fill"></i></a>
+                    <a class="btn btn-sm btn-danger <?php if($c['cashbook_book_id'] == 0) echo ' d-none'; ?> " href="delete.php?id=<?php echo $c['id']; ?>&operation=delete" onclick="return confirm('Delete this category?');"><i class="bi bi-trash-fill"></i></a>
                 </td>
             </tr>
             <?php endwhile; } ?>
         </tbody>
+        <caption>Categories in <strong>bold</strong> are global and available across all cashbook books. They cannot be deleted but can be renamed globally. </caption>
     </table>
 </div>
 <?php

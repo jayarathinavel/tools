@@ -6,6 +6,10 @@
         // Delete category
         try {
             $id = intval($_GET['id']);
+            $cashbookBookId = executeQuery("SELECT cashbook_book_id FROM cashbook_category WHERE id=$id")->fetch_object()->cashbook_book_id;
+            if ($cashbookBookId == 0) {
+                throw new Exception("Cannot delete default category.");
+            }
             executeQuery("DELETE FROM cashbook_category WHERE id=$id");
             setSuccessOrFailureMessage('success', 'Category Deleted Successfully');
         } catch (Exception $e) {
