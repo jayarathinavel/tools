@@ -16,6 +16,7 @@
     }
 
     $book = findBookCashbook($userId);
+    canViewBook($book);
     $bankAccounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
 

@@ -3,6 +3,7 @@
     initializePage("Edit Category", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
     $id = intval($_GET['id']);
+    canEditCategory($id);
     $category = executeQuery("SELECT * FROM cashbook_category WHERE id=$id")->fetch_assoc();
     if (!$category) {
         echo '<div class="alert alert-danger">Category not found.</div>';

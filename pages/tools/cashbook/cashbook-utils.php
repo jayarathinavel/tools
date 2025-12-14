@@ -41,3 +41,43 @@
         while($r = mysqli_fetch_assoc($q)) $arr[$r['id']] = $r['name'];
         return $arr;
     }
+
+    function canEditBook($id) {
+        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=$id")->fetch_assoc()['user_id'];
+        if($userId != $_SESSION['appUserId']) {
+            alert("You do not have permission to edit this book.");
+            exit;
+        }
+    }
+
+    function canEditCategory($id) {
+        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=(SELECT cashbook_book_id FROM cashbook_category WHERE id=$id)")->fetch_assoc()['user_id'];
+        if($userId != $_SESSION['appUserId'] && $userId != 0) {
+            alert("You do not have permission to edit this category.");
+            exit;
+        }
+    }
+
+    function canEditAccount($id) {
+        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=(SELECT cashbook_book_id FROM cashbook_bank_account WHERE id=$id)")->fetch_assoc()['user_id'];
+        if($userId != $_SESSION['appUserId']) {
+            alert("You do not have permission to edit this account.");
+            exit;
+        }
+    }
+
+    function canEditTransaction($id) {
+        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=(SELECT book_id FROM cashbook_transaction WHERE id=$id)")->fetch_assoc()['user_id'];
+        if($userId != $_SESSION['appUserId']) {
+            alert("You do not have permission to edit this transaction.");
+            exit;
+        }
+    }
+
+    function canViewBook($id) {
+        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=$id")->fetch_assoc()['user_id'];
+        if($userId != $_SESSION['appUserId']) {
+            alert("You do not have permission to view this book.");
+            exit;
+        }
+    }

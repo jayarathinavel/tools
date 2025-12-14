@@ -232,3 +232,6 @@
             }
         }
     }
+    function alert($message) {
+        echo '<div class="container"> <div class="alert alert-danger">' . $message . '</div> </div>';
+    }

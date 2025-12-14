@@ -3,6 +3,7 @@
     initializePage("Edit Bank Account", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
     $id = intval($_GET['id']);
+    canEditAccount($id);
     $account = executeQuery("SELECT * FROM cashbook_bank_account WHERE id=$id")->fetch_assoc();
     if (!$account) {
         echo '<div class="alert alert-danger">Account not found.</div>';

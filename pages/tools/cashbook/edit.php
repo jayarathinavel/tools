@@ -4,6 +4,7 @@
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
 
     $id = intval($_GET['id']);
+    canEditTransaction($id);
     $entry = executeQuery("SELECT * FROM cashbook_entry WHERE id=$id")->fetch_assoc();
     if (!$entry) {
         echo '<div class="alert alert-danger">Entry not found.</div>';
