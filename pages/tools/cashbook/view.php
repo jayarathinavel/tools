@@ -99,62 +99,131 @@
             </div>
 
             <!-- Filter Section -->
-            <div class="mt-3">
-                <form id="cashbookFilterForm" class="row g-2 align-items-center">
-                    <div class="col-auto">
-                        <input
-                            type="search"
-                            name="search"
-                            class="form-control form-control-sm"
-                            placeholder="Search entries…"
-                        >
+            <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
+
+                <!-- 🔍 Search -->
+                <input type="search"
+                    name="search"
+                    form="cashbookFilterForm"
+                    class="form-control form-control-sm"
+                    placeholder="Search entries…"
+                    style="max-width:220px;">
+
+                <!-- 🎛️ Open offcanvas -->
+                <button class="btn btn-sm btn-outline-secondary ms-auto"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#cashbookFiltersCanvas">
+                    <i class="bi bi-sliders"></i> Filters
+                </button>
+
+                <!-- 🧹 Clear -->
+                <button id="clearCashbookFiltersBtn"
+                        class="btn btn-sm btn-outline-warning"
+                        type="button"
+                        style="display:none;">
+                    Clear
+                </button>
+            </div>
+
+            <form id="cashbookFilterForm">
+                <div class="offcanvas offcanvas-end"
+                    tabindex="-1"
+                    id="cashbookFiltersCanvas">
+
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">
+                            <i class="bi bi-funnel-fill me-1"></i>Filters
+                        </h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="offcanvas"></button>
                     </div>
 
-                    <div class="col-auto">
-                        <select name="time_range" class="form-select form-select-sm" id="timeRangeSelect">
-                        </select>
+                    <div class="offcanvas-body">
+
+                        <div class="mb-3">
+                            <label class="form-label small">Time range</label>
+                            <select name="time_range"
+                                    class="form-select form-select-sm"
+                                    id="timeRangeSelect"></select>
+                        </div>
+
+                        <div class="mb-3 custom-dates-wrapper" style="display:none;">
+                            <label class="form-label small">Start date</label>
+                            <input type="date"
+                                name="start_date"
+                                class="form-control form-control-sm">
+                        </div>
+
+                        <div class="mb-3 custom-dates-wrapper" style="display:none;">
+                            <label class="form-label small">End date</label>
+                            <input type="date"
+                                name="end_date"
+                                class="form-control form-control-sm">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small">Category</label>
+                            <select name="category_id"
+                                    class="form-select form-select-sm">
+                                <option value="">All Categories</option>
+                                <?php foreach($categories as $id=>$n): ?>
+                                    <option value="<?= $id ?>"><?= htmlspecialchars($n) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small">Account</label>
+                            <select name="bank_account_id"
+                                    class="form-select form-select-sm">
+                                <option value="">All Accounts</option>
+                                <?php foreach($bankAccounts as $a): ?>
+                                    <option value="<?= $a['id'] ?>"><?= htmlspecialchars($a['name']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small">Type</label>
+                            <select name="type"
+                                    class="form-select form-select-sm">
+                                <option value="">All Types</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                                <option value="transfer_in">Transfer In</option>
+                                <option value="transfer_out">Transfer Out</option>
+                                <option value="lend">Lend</option>
+                                <option value="repayment">Repayment</option>
+                                <option value="lend_repayment">Lend Repayment</option>
+                                <option value="investment">Investment</option>
+                            </select>
+                        </div>
+
                     </div>
-                    <div class="col-auto custom-dates-wrapper" style="display:none;">
-                        <input type="date" name="start_date" class="form-control form-control-sm">
+
+                    <div class="offcanvas-footer border-top p-3 d-flex gap-2">
+                        <button class="btn btn-primary btn-sm flex-fill"
+                                type="submit"
+                                data-bs-dismiss="offcanvas">
+                            Apply
+                        </button>
+
+                        <button class="btn btn-outline-secondary btn-sm flex-fill"
+                                type="button"
+                                onclick="document.getElementById('clearCashbookFiltersBtn').click()">
+                            Clear
+                        </button>
                     </div>
-                    <div class="col-auto custom-dates-wrapper" style="display:none;">
-                        <input type="date" name="end_date" class="form-control form-control-sm">
-                    </div>
-                    <div class="col-auto">
-                        <select name="category_id" class="form-select form-select-sm">
-                            <option value="">All Categories</option>
-                            <?php foreach($categories as $id=>$n): ?>
-                            <option value="<?php echo $id;?>"><?php echo htmlspecialchars($n); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="col-auto">
-                        <select name="bank_account_id" class="form-select form-select-sm">
-                            <option value="">All Accounts</option>
-                            <?php foreach($bankAccounts as $a): ?>
-                            <option value="<?php echo $a['id'];?>"><?php echo htmlspecialchars($a['name']); ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="col-auto">
-                        <select name="type" class="form-select form-select-sm">
-                            <option value="">All Types</option>
-                            <option value="income">Income</option>
-                            <option value="expense">Expense</option>
-                            <option value="transfer_in">Transfer In</option>
-                            <option value="transfer_out">Transfer Out</option>
-                            <option value="lend">Lend</option>
-                            <option value="repayment">Repayment</option>
-                            <option value="lend_repayment">Lend Repayment</option>
-                            <option value="investment">Investment</option>
-                        </select>
-                    </div>
-                    <div class="col-auto">
-                        <button class="btn btn-sm btn-primary" type="submit"><i class="bi bi-funnel-fill me-1"></i>Filter</button>
-                        <button id="clearCashbookFiltersBtn" class="btn btn-sm btn-outline-secondary ms-1" type="button">Clear</button>
-                    </div>
-                </form>
+                </div>
+            </form>
+
+            <div id="cashbookFilterSummary"
+                class="small text-muted mt-2"
+                style="display:none;">
             </div>
+
 
             <!-- Totals -->
             <table class="table table-borderless text-center mt-3">
@@ -223,6 +292,10 @@
 
         if (!form || !entriesContainer || !pagination || !perPageSelect) return;
 
+                const timeRangeSelect = document.getElementById('timeRangeSelect');
+
+        buildTimeRangeOptions();
+
         // Restore filter state
         let filterState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
         if (form.search) form.search.value = filterState.search || '';
@@ -232,6 +305,8 @@
         if (form.category_id) form.category_id.value = filterState.category_id || '';
         if (form.bank_account_id) form.bank_account_id.value = filterState.bank_account_id || '';
         if (form.type) form.type.value = filterState.type || '';
+
+        updateCustomDates();
 
         function updateCustomDates() {
             const isCustom = form.time_range.value === 'custom';
@@ -272,15 +347,11 @@
             return { min, max };
         }
 
-
         form.time_range.addEventListener('change', updateCustomDates);
-        updateCustomDates();
 
         let currentPage = 1;
         let itemsPerPage = parseInt(localStorage.getItem(ITEMS_PER_PAGE_KEY) || perPageSelect.value);
         perPageSelect.value = itemsPerPage;
-
-        const timeRangeSelect = document.getElementById('timeRangeSelect');
 
         function buildTimeRangeOptions() {
             if (!timeRangeSelect || !CASHBOOK_ENTRIES.length) return;
@@ -355,7 +426,21 @@
             addOption('custom', 'Custom');
         }
 
-        buildTimeRangeOptions();
+        function updateFilterButtonState(f) {
+            const btn = document.getElementById('cashbookApplyFilterBtn');
+            if (!btn) return;
+
+            const hasFilters = Object.values(f).some(v => v);
+
+            btn.classList.remove('btn-primary', 'btn-success', 'btn-warning');
+
+            if (hasFilters) {
+                btn.classList.add('btn-success'); // 👈 active state
+            } else {
+                btn.classList.add('btn-primary'); // 👈 default
+            }
+        }
+
 
         function filterEntries() {
             const f = {
@@ -458,6 +543,8 @@
             renderEntries(filtered);
             renderTotals(filtered);
             renderPagination(filtered);
+            renderFilterSummary(f);
+
             if (Object.values(f).some(v => v)) {
                 clearCashbookFiltersBtn.style.display = 'inline-block';
             } else {
@@ -613,6 +700,69 @@
             pagination.appendChild(
                 makeBtn('»', totalPages, currentPage === totalPages)
             );
+        }
+
+        function renderFilterSummary(f) {
+            const parts = [];
+
+            // Time range
+            if (f.time_range) {
+                const map = {
+                    this_month: 'This month',
+                    last_month: 'Last month',
+                    next_month: 'Next month',
+                    this_year: 'This year',
+                    last_year: 'Last year'
+                };
+
+                if (map[f.time_range]) {
+                    parts.push(map[f.time_range]);
+                } else if (f.time_range.startsWith('month_')) {
+                    const [, y, m] = f.time_range.split('_');
+                    const month = new Date(y, m).toLocaleString('default', { month: 'long' });
+                    parts.push(`${month} ${y}`);
+                } else if (f.time_range === 'custom') {
+                    if (f.start_date && f.end_date) {
+                        parts.push(`${f.start_date} → ${f.end_date}`);
+                    } else if (f.start_date) {
+                        parts.push(`From ${f.start_date}`);
+                    } else if (f.end_date) {
+                        parts.push(`Until ${f.end_date}`);
+                    }
+                }
+            }
+
+            // Category
+            if (f.category_id) {
+                parts.push(`Category: ${CATEGORIES[f.category_id]}`);
+            }
+
+            // Account
+            if (f.bank_account_id) {
+                parts.push(`Account: ${ACCOUNTS[f.bank_account_id]?.name}`);
+            }
+
+            // Type
+            if (f.type) {
+                parts.push(`Type: ${f.type.replace('_', ' ')}`);
+            }
+
+            // Search
+            if (f.search) {
+                parts.push(`Search: “${f.search}”`);
+            }
+
+            const summaryEl = document.getElementById('cashbookFilterSummary');
+
+            if (parts.length) {
+                summaryEl.innerHTML =
+                    `<i class="bi bi-info-circle me-1"></i>
+                    <strong>Applied filters:</strong> ${parts.join(' · ')}`;
+                summaryEl.style.display = '';
+            } else {
+                summaryEl.style.display = 'none';
+                summaryEl.innerHTML = '';
+            }
         }
 
         form.search.addEventListener('input', () => {
