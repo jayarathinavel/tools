@@ -111,13 +111,7 @@
                     </div>
 
                     <div class="col-auto">
-                        <select name="time_range" class="form-select form-select-sm">
-                            <option value="">All Time</option>
-                            <option value="this_month">This Month</option>
-                            <option value="last_month">Last Month</option>
-                            <option value="this_year">This Year</option>
-                            <option value="last_year">Last Year</option>
-                            <option value="custom">Custom</option>
+                        <select name="time_range" class="form-select form-select-sm" id="timeRangeSelect">
                         </select>
                     </div>
                     <div class="col-auto custom-dates-wrapper" style="display:none;">
@@ -241,15 +235,127 @@
 
         function updateCustomDates() {
             const isCustom = form.time_range.value === 'custom';
+
             document.querySelectorAll('.custom-dates-wrapper')
                 .forEach(el => el.style.display = isCustom ? 'block' : 'none');
+
+            if (!isCustom) return;
+
+            const bounds = getEntryDateBounds();
+            if (!bounds) return;
+
+            const end = new Date(bounds.max);
+            const start = new Date(end);
+            start.setDate(start.getDate() - 50);
+
+            // Clamp start to earliest entry
+            if (start < bounds.min) {
+                start.setTime(bounds.min.getTime());
+            }
+
+            form.end_date.value = end.toISOString().slice(0, 10);
+            form.start_date.value = start.toISOString().slice(0, 10);
         }
+
+        function getEntryDateBounds() {
+            if (!CASHBOOK_ENTRIES.length) return null;
+
+            let min = null;
+            let max = null;
+
+            CASHBOOK_ENTRIES.forEach(e => {
+                const d = new Date(e.date.replace(' ', 'T'));
+                if (!min || d < min) min = d;
+                if (!max || d > max) max = d;
+            });
+
+            return { min, max };
+        }
+
+
         form.time_range.addEventListener('change', updateCustomDates);
         updateCustomDates();
 
         let currentPage = 1;
         let itemsPerPage = parseInt(localStorage.getItem(ITEMS_PER_PAGE_KEY) || perPageSelect.value);
         perPageSelect.value = itemsPerPage;
+
+        const timeRangeSelect = document.getElementById('timeRangeSelect');
+
+        function buildTimeRangeOptions() {
+            if (!timeRangeSelect || !CASHBOOK_ENTRIES.length) return;
+
+            const today = new Date();
+            const currentYear = today.getFullYear();
+
+            const monthNames = [
+                'January','February','March','April','May','June',
+                'July','August','September','October','November','December'
+            ];
+
+            // Build year → months map
+            const yearMonthMap = {};
+            CASHBOOK_ENTRIES.forEach(e => {
+                const d = new Date(e.date.replace(' ', 'T'));
+                const y = d.getFullYear();
+                const m = d.getMonth();
+
+                if (!yearMonthMap[y]) yearMonthMap[y] = new Set();
+                yearMonthMap[y].add(m);
+            });
+
+            const years = Object.keys(yearMonthMap)
+                .map(Number)
+                .sort((a, b) => b - a);
+
+            const hasCurrentYear = years.includes(currentYear);
+
+            timeRangeSelect.innerHTML = '';
+
+            const addOption = (value, label, parent) => {
+                const opt = document.createElement('option');
+                opt.value = value;
+                opt.textContent = label;
+                (parent || timeRangeSelect).appendChild(opt);
+            };
+
+            // Always
+            addOption('', 'All Time');
+
+            // ⏱ Show month shortcuts ONLY if current year exists
+            if (hasCurrentYear) {
+                addOption('this_month', 'This Month');
+                addOption('last_month', 'Last Month');
+                addOption('next_month', 'Next Month');
+            }
+
+            // Year shortcuts only when meaningful
+            if (years.length > 1) {
+                addOption('this_year', 'This Year');
+                addOption('last_year', 'Last Year');
+            }
+
+            // Month groups for every year
+            years.forEach(y => {
+                const group = document.createElement('optgroup');
+                group.label = y.toString();
+                timeRangeSelect.appendChild(group);
+
+                [...yearMonthMap[y]]
+                    .sort((a, b) => a - b)
+                    .forEach(m => {
+                        addOption(
+                            `month_${y}_${m}`,
+                            monthNames[m],
+                            group
+                        );
+                    });
+            });
+
+            addOption('custom', 'Custom');
+        }
+
+        buildTimeRangeOptions();
 
         function filterEntries() {
             const f = {
@@ -277,33 +383,45 @@
             const today = new Date();
             let start = null, end = null;
 
-            switch (f.time_range) {
-                case 'this_month':
+            switch (true) {
+                case f.time_range === 'this_month':
                     start = new Date(today.getFullYear(), today.getMonth(), 1);
-                    end = new Date(today.getFullYear(), today.getMonth() + 1, 0); // last day of this month
+                    end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
                     break;
 
-                case 'last_month':
+                case f.time_range === 'last_month':
                     start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-                    end = new Date(today.getFullYear(), today.getMonth(), 0); // last day of last month
+                    end = new Date(today.getFullYear(), today.getMonth(), 0);
                     break;
 
-                case 'this_year':
+                case f.time_range === 'next_month':
+                    start = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+                    end = new Date(today.getFullYear(), today.getMonth() + 2, 0);
+                    break;
+
+                case f.time_range === 'this_year':
                     start = new Date(today.getFullYear(), 0, 1);
                     end = new Date(today.getFullYear(), 11, 31);
                     break;
 
-                case 'last_year':
-                    const y = today.getFullYear() - 1;
-                    start = new Date(y, 0, 1);
-                    end = new Date(y, 11, 31);
+                case f.time_range === 'last_year':
+                    start = new Date(today.getFullYear() - 1, 0, 1);
+                    end = new Date(today.getFullYear() - 1, 11, 31);
                     break;
 
-                case 'custom':
+                case f.time_range?.startsWith('month_'): {
+                    const [, y, m] = f.time_range.split('_').map(Number);
+                    start = new Date(y, m, 1);
+                    end = new Date(y, m + 1, 0);
+                    break;
+                }
+
+                case f.time_range === 'custom':
                     start = f.start_date ? new Date(f.start_date) : null;
                     end = f.end_date ? new Date(f.end_date) : null;
                     break;
             }
+
             
             if (start) start = normalizeStart(start);
             if (end) end = normalizeEnd(end);
