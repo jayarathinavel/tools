@@ -143,6 +143,19 @@
                         </select>
                     </div>
                     <div class="col-auto">
+                        <select name="type" class="form-select form-select-sm">
+                            <option value="">All Types</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                            <option value="transfer_in">Transfer In</option>
+                            <option value="transfer_out">Transfer Out</option>
+                            <option value="lend">Lend</option>
+                            <option value="repayment">Repayment</option>
+                            <option value="lend_repayment">Lend Repayment</option>
+                            <option value="investment">Investment</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
                         <button class="btn btn-sm btn-primary" type="submit"><i class="bi bi-funnel-fill me-1"></i>Filter</button>
                         <button id="clearCashbookFiltersBtn" class="btn btn-sm btn-outline-secondary ms-1" type="button">Clear</button>
                     </div>
@@ -224,6 +237,7 @@
         if (form.end_date) form.end_date.value = filterState.end_date || '';
         if (form.category_id) form.category_id.value = filterState.category_id || '';
         if (form.bank_account_id) form.bank_account_id.value = filterState.bank_account_id || '';
+        if (form.type) form.type.value = filterState.type || '';
 
         function updateCustomDates() {
             const isCustom = form.time_range.value === 'custom';
@@ -244,7 +258,8 @@
                 end_date: form.end_date.value,
                 category_id: form.category_id.value,
                 bank_account_id: form.bank_account_id.value,
-                search: form.search.value.trim().toLowerCase()
+                search: form.search.value.trim().toLowerCase(),
+                type: form.type.value
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(f));
 
@@ -301,6 +316,7 @@
 
                 if (f.category_id && Number(f.category_id) !== Number(e.category_id)) return false;
                 if (f.bank_account_id && Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
+                if (f.type && e.type !== f.type) return false;
 
                 // 🔍 SEARCH MATCH
                 if (f.search) {
