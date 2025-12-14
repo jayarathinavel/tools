@@ -67,7 +67,7 @@
     }
 
     function canEditTransaction($id) {
-        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=(SELECT book_id FROM cashbook_transaction WHERE id=$id)")->fetch_assoc()['user_id'];
+        $userId = executeQuery("SELECT user_id FROM cashbook_book WHERE id=(SELECT cashbook_book_id FROM cashbook_entry WHERE id=$id)")->fetch_assoc()['user_id'];
         if($userId != $_SESSION['appUserId']) {
             alert("You do not have permission to edit this transaction.");
             exit;
