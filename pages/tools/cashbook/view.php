@@ -274,14 +274,14 @@
     const CASHBOOK_ENTRIES = <?php echo json_encode($entriesArr, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>;
     const CATEGORIES = <?php echo json_encode($categories); ?>;
     const ACCOUNTS = <?php echo json_encode(array_column($bankAccounts, null, 'id')); ?>;
-    const CURRENT_BOOK = <?php echo json_encode($book); ?>;
+    const CURRENT_USER = <?php echo json_encode($userId); ?>;
 </script>
 
 <!-- Client-side filtering & pagination -->
 <script>
     (function () {
-        const STORAGE_KEY = 'cashbookFilters_' + CURRENT_BOOK;
-        const ITEMS_PER_PAGE_KEY = 'cashbookItemsPerPage_' + CURRENT_BOOK;
+        const STORAGE_KEY = 'cashbookFilters_' + CURRENT_USER;
+        const ITEMS_PER_PAGE_KEY = 'cashbookItemsPerPage_' + CURRENT_USER;
 
         const form = document.getElementById('cashbookFilterForm');
         const entriesContainer = document.getElementById('cashbookEntries');
