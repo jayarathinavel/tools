@@ -102,6 +102,15 @@
             <div class="mt-3">
                 <form id="cashbookFilterForm" class="row g-2 align-items-center">
                     <div class="col-auto">
+                        <input
+                            type="search"
+                            name="search"
+                            class="form-control form-control-sm"
+                            placeholder="Search entries…"
+                        >
+                    </div>
+
+                    <div class="col-auto">
                         <select name="time_range" class="form-select form-select-sm">
                             <option value="">All Time</option>
                             <option value="this_month">This Month</option>
@@ -209,6 +218,7 @@
 
         // Restore filter state
         let filterState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        if (form.search) form.search.value = filterState.search || '';
         if (form.time_range) form.time_range.value = filterState.time_range || '';
         if (form.start_date) form.start_date.value = filterState.start_date || '';
         if (form.end_date) form.end_date.value = filterState.end_date || '';
@@ -233,7 +243,8 @@
                 start_date: form.start_date.value,
                 end_date: form.end_date.value,
                 category_id: form.category_id.value,
-                bank_account_id: form.bank_account_id.value
+                bank_account_id: form.bank_account_id.value,
+                search: form.search.value.trim().toLowerCase()
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(f));
 
@@ -290,6 +301,22 @@
 
                 if (f.category_id && Number(f.category_id) !== Number(e.category_id)) return false;
                 if (f.bank_account_id && Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
+
+                // 🔍 SEARCH MATCH
+                if (f.search) {
+                    const catName = e.category_id ? (CATEGORIES[e.category_id] || '') : '';
+                    const accName = e.bank_account_id ? (ACCOUNTS[e.bank_account_id]?.name || '') : '';
+
+                    const haystack = [
+                        e.title,
+                        e.type,
+                        e.amount,
+                        catName,
+                        accName
+                    ].join(' ').toLowerCase();
+
+                    if (!haystack.includes(f.search)) return false;
+                }
 
                 return true;
             });
@@ -453,6 +480,11 @@
                 makeBtn('»', totalPages, currentPage === totalPages)
             );
         }
+
+        form.search.addEventListener('input', () => {
+            currentPage = 1;
+            filterEntries();
+        });
 
         form.addEventListener('submit', e=>{e.preventDefault(); currentPage=1; filterEntries();});
         clearCashbookFiltersBtn.addEventListener('click', e=>{
