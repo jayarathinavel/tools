@@ -78,7 +78,10 @@
         $path = trim($path, '/');
         $pathArray = explode('/', $path);
 
-        $breadcrumbs = '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+        $breadcrumbs = '
+        <nav aria-label="breadcrumb" class="d-flex justify-content-between align-items-center">
+            <ol class="breadcrumb">
+        ';
         $breadcrumbs .= '<li class="breadcrumb-item"><a href="/">Home</a></li>';
 
         $currentPath = '';
@@ -100,7 +103,12 @@
             }
         }
 
-        $breadcrumbs .= '</ol></nav>';
+        $breadcrumbs .= '
+            </ol>
+            <div id="breadcrumbSpinner" class="spinner-border spinner-border-sm text-primary mb-auto" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </nav>';
         return $breadcrumbs;
     }
 ?>
