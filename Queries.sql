@@ -195,3 +195,71 @@ CREATE TABLE `notebook_page` (
 ALTER TABLE notebook_page CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 ALTER TABLE events_anniversary ADD `type` varchar(100) NULL;
+
+-- Cashbook tables
+
+CREATE TABLE IF NOT EXISTS `cashbook_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cashbook_bank_account` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `initial_balance` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `cashbook_book_id` int NOT NULL DEFAULT 0,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cashbook_category` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `cashbook_book_id` int NOT NULL DEFAULT 0,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `cashbook_entry` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `amount` decimal(14,2) NOT NULL,
+  `type` enum('expense','income') NOT NULL DEFAULT 'expense',
+  `category_id` int DEFAULT NULL,
+  `bank_account_id` int DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `cashbook_book_id` int NOT NULL DEFAULT 0,
+  `creation_timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Food', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Snacks', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Groceries', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Fuel', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Health & Medical', 0);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Fashions', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Rent', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Home Maintenance', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Personal Care', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Entertainment', 0);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Education', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Gifts & Donations', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Travel', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Outing', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Recreation', 0);
+
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Salary', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Business Income', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Investment Income', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Other Income', 0);
+INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Lending', 0);
+
+ALTER TABLE `cashbook_entry` MODIFY COLUMN `date` DATETIME NULL DEFAULT NULL;
+
+ALTER TABLE `cashbook_entry` MODIFY COLUMN `type` enum('expense','income','repayment','lend','lend_repayment', 'transfer_in', 'transfer_out', 'investment') NOT NULL DEFAULT 'expense';

@@ -2,6 +2,7 @@
     require_once 'constants.php';
     require_once 'database.php';
     require_once 'util.php';
+    date_default_timezone_set('Asia/Kolkata');
 
     class Logger {
         private $logFile;

@@ -1,4 +1,12 @@
 <div class="mt-4"></div>
+<script>
+    window.addEventListener('load', function () {
+        const spinner = document.getElementById('breadcrumbSpinner');
+        if (spinner) {
+            spinner.style.display = 'none';
+        }
+    });
+</script>
 <!-- Bootstrap JS and jQuery -->
 <?php
     $currentURL = $_SERVER['REQUEST_URI'];

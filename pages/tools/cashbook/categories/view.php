@@ -1,0 +1,41 @@
+<?php
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    initializePage("Cashbook Categories", "main", $_SERVER['REQUEST_URI']);
+    includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
+    $userId = cashbookUser();
+    $book = findBookCashbook($userId);
+?>
+<div class="container">
+    <?php getSuccessOrFailureMessage(); ?>
+    <?php if(!$book) echo '<div class="alert alert-danger">No book selected.</div>'; ?>
+    <div class="mb-3">
+        <a class="btn btn-sm btn-primary" href="add.php">Add Category</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                if($book) {
+                    $categories = executeQuery("SELECT * FROM cashbook_category WHERE cashbook_book_id=$book OR cashbook_book_id = 0 ORDER BY creation_timestamp DESC");
+                    while($c = mysqli_fetch_assoc($categories)):
+            ?>
+            <tr>
+                <td<?php if($c['cashbook_book_id'] == 0) echo ' style="font-weight: bold;"'; ?>><?php echo htmlspecialchars($c['name']); ?></td>
+                <td>
+                    <a class="btn btn-sm btn-warning" href="edit.php?id=<?php echo $c['id']; ?>"><i class="bi bi-pencil-fill"></i></a>
+                    <a class="btn btn-sm btn-danger <?php if($c['cashbook_book_id'] == 0) echo ' d-none'; ?> " href="delete.php?id=<?php echo $c['id']; ?>&operation=delete" onclick="return confirm('Delete this category?');"><i class="bi bi-trash-fill"></i></a>
+                </td>
+            </tr>
+            <?php endwhile; } ?>
+        </tbody>
+        <caption>Categories in <strong>bold</strong> are global and available across all cashbook books. They cannot be deleted but can be renamed globally. </caption>
+    </table>
+</div>
+<?php
+    initializePageFooter($rootPath, $moduleType);
+?>
