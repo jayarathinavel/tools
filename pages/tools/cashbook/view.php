@@ -307,8 +307,6 @@
         if (form.bank_account_id) form.bank_account_id.value = filterState.bank_account_id || '';
         if (form.type) form.type.value = filterState.type || '';
 
-        updateCustomDates();
-
         function updateCustomDates() {
             const isCustom = form.time_range.value === 'custom';
 
@@ -568,7 +566,7 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h5 class="card-title mb-1 text-break">${e.title}</h5>
-                                    <div class="text-muted small"><i class="bi bi-calendar-event me-1"></i>${e.date}</div>
+                                    <div class="small"><i class="bi bi-calendar-event me-1"></i>${e.date}</div>
                                     <div class="mt-2">${catName?`<span class="badge bg-primary me-1">${catName}</span>`:''}${accName?`<span class="badge bg-info">${accName}</span>`:''}</div>
                                 </div>
                                 <div class="text-end">
@@ -580,7 +578,6 @@
                                     </div>
                                 </div>
                             </div>
-                            ${e.creation_timestamp?`<div class="mt-3 small text-muted">Created: ${e.creation_timestamp}</div>`:''}
                         </div>
                     </div>
                 </div>`;

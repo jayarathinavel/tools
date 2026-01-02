@@ -6,6 +6,19 @@
             spinner.style.display = 'none';
         }
     });
+
+    //Alerts auto close
+    document.addEventListener('DOMContentLoaded', () => {
+        const alerts = document.querySelectorAll('.alert-dismissible');
+
+        alerts.forEach(alertEl => {
+            setTimeout(() => {
+                const alert = bootstrap.Alert.getOrCreateInstance(alertEl);
+                alert.close();
+            }, 4000); // 4 seconds
+        });
+    });
+
 </script>
 <!-- Bootstrap JS and jQuery -->
 <?php
