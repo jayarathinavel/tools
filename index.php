@@ -51,6 +51,10 @@ $userId = $_SESSION['appUserId'] ?? null;
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+    <?php else: ?>
+        <div class="container mb-3 text-end">
+            <a href="/pages/auth/app-users/login.php" class="btn btn-sm btn-primary">Login</a>
+        </div>
     <?php endif; ?>
 
     <div class="container">
