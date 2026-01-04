@@ -31,7 +31,7 @@
             }
         }
         if(isset($book)) {
-            $bills = executeQuery("SELECT * FROM bill_split WHERE bill_split_book_id = $book ORDER BY date DESC");
+            $bills = executeQuery("SELECT * FROM bill_split WHERE bill_split_book_id = $book ORDER BY date DESC, id DESC");
             $persons = fetchPersonsFromBillSplitBook($book);
             $summary = calculateBillSplitSummary($book);
         }

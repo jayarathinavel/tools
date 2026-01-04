@@ -31,7 +31,7 @@
             }
         }
         if(isset($book)) {
-            $expenses = executeQuery("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book");
+            $expenses = executeQuery("SELECT * FROM expense_balance WHERE expense_balance_book_id = $book ORDER BY date DESC, id DESC");
             $persons = fetchPersonsFromExpenseBalanceBook($book);
         }
     ?>

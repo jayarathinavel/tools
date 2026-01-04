@@ -25,7 +25,7 @@
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
 
     // fetch all entries for the book
-    $entries = $book ? executeQuery("SELECT * FROM cashbook_entry WHERE cashbook_book_id=" . intval($book) . " ORDER BY `date` DESC") : [];
+    $entries = $book ? executeQuery("SELECT * FROM cashbook_entry WHERE cashbook_book_id=" . intval($book) . " ORDER BY `date` DESC, `id` DESC") : [];
     $entriesArr = [];
     if($entries) {
         while($e = mysqli_fetch_assoc($entries)) {
