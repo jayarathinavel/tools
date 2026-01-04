@@ -38,6 +38,12 @@
                                 $_SESSION["appUserLoggedIn"] = true;
                                 $_SESSION["appUserId"] = $id;
                                 $_SESSION["username"] = $username;
+                                // If user checked "Remember me", create persistent token
+                                if(isset($_POST['remember']) && $_POST['remember'] == '1'){
+                                    if(function_exists('createRememberToken')){
+                                        createRememberToken($id, 30);
+                                    }
+                                }
                                 setSuccessOrFailureMessage("success", "You're Logged In");
                                 $redirectTo = isset($_SESSION['redirectTo']) ? $_SESSION['redirectTo'] : '/';
                                 header("location: $redirectTo");
@@ -85,6 +91,10 @@
                 <input type="password" name="password" class="form-control
                     <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
+            </div>
+            <div class="form-group form-check mt-2">
+                <input type="checkbox" name="remember" value="1" class="form-check-input" id="rememberCheck">
+                <label class="form-check-label" for="rememberCheck">Remember me</label>
             </div>
             <div class="form-group mt-2">
                 <input type="submit" class="btn btn-primary" value="Login">

@@ -3,9 +3,7 @@
     require_once $rootPath. '/pages/includes/PHPMailer/PHPMailer.php';
     require_once $rootPath. '/pages/includes/PHPMailer/SMTP.php';
     require_once $rootPath. '/pages/includes/PHPMailer/Exception.php';
-
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+    require_once $rootPath . '/pages/auth/app-users/remember-me.php';
 
     function includePhpFileFromRoot($rootPath, $path) {
         require_once $rootPath . $path;
@@ -43,6 +41,10 @@
     function startSession(){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
+            // Attempt to restore app user session from persistent remember-me cookie
+            if (function_exists('restoreFromRemember')) {
+                restoreFromRemember();
+            }
         }
     }
 
