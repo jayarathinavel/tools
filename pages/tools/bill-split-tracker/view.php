@@ -20,8 +20,11 @@
         $billSplitBooks = executeQuery("SELECT * FROM bill_split_book WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['billSplitBookId'])) {
-                $book = $_POST['billSplitBookId'];
+                $book = intval($_POST['billSplitBookId']);
                 $_SESSION['billSplitSelectedBook'] = $book;
+                if (isset($_SESSION['appUserId'])) {
+                    setUserDefaultBook('bill_split', $book);
+                }
                 setSuccessOrFailureMessage("success", "Book Changed");
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();

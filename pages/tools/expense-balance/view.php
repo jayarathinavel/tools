@@ -20,8 +20,11 @@
         $expenseBooks = executeQuery("SELECT * FROM expense_balance_book WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['expenseBookId'])) {
-                $book = $_POST['expenseBookId'];
+                $book = intval($_POST['expenseBookId']);
                 $_SESSION['expenseBalanceSelectedBook'] = $book;
+                if (isset($_SESSION['appUserId'])) {
+                    setUserDefaultBook('expense_balance', $book);
+                }
                 setSuccessOrFailureMessage("success", "Book Changed");
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();

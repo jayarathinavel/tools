@@ -2,13 +2,22 @@
     function findBookBillSplit($userId){
         $selectedBook = null;
         if(isset($_SESSION['billSplitSelectedBook'])){
-            $selectedBook = $_SESSION['billSplitSelectedBook'];
-        } else{
-            $books = executeQuery("SELECT * FROM bill_split_book WHERE user_id = $userId");
-            if($books->num_rows > 0){
-                $selectedBook = $books->fetch_assoc()["id"];
-                $_SESSION['billSplitSelectedBook'] = $selectedBook;
+            return $_SESSION['billSplitSelectedBook'];
+        }
+        // Try persisted default from DB
+        if(isset($_SESSION['appUserId'])){
+            $dbBook = getUserDefaultBook('bill_split');
+            if($dbBook) {
+                $_SESSION['billSplitSelectedBook'] = $dbBook;
+                return $dbBook;
             }
+        }
+
+        // Fallback to first available book
+        $books = executeQuery("SELECT * FROM bill_split_book WHERE user_id = $userId");
+        if($books && $books->num_rows > 0){
+            $selectedBook = $books->fetch_assoc()["id"];
+            $_SESSION['billSplitSelectedBook'] = $selectedBook;
         }
         return $selectedBook;
     }
@@ -16,6 +25,16 @@
     function clearSelectedBookBillSplit(){
         if(isset($_SESSION['billSplitSelectedBook'])) {
             unset($_SESSION['billSplitSelectedBook']);
+        }
+        if(isset($_SESSION['appUserId'])){
+            $conn = initDb();
+            $stmt = $conn->prepare("DELETE FROM user_default_books WHERE app_user_id = ? AND tool = ?");
+            if($stmt){
+                $tool = 'bill_split';
+                $stmt->bind_param('is', $_SESSION['appUserId'], $tool);
+                $stmt->execute();
+                $stmt->close();
+            }
         }
     }
 

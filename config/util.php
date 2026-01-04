@@ -114,6 +114,35 @@
         return $_SESSION[$sessionVariable];
     }
 
+    // Persist and retrieve user's default/selected book per tool (app users)
+    {
+        function getUserDefaultBook($tool) {
+            startSession();
+            $userId = intval($_SESSION['appUserId']);
+            $conn = initDb();
+            $stmt = $conn->prepare("SELECT book_id FROM user_default_books WHERE app_user_id = ? AND tool = ? LIMIT 1");
+            $stmt->bind_param('is', $userId, $tool);
+            $stmt->execute();
+            $stmt->bind_result($bookId);
+            if ($stmt->fetch()) {
+                $stmt->close();
+                return intval($bookId);
+            }
+            $stmt->close();
+            return null;
+        }
+
+        function setUserDefaultBook($tool, $bookId) {
+            startSession();
+            $userId = intval($_SESSION['appUserId']);
+            $conn = initDb();
+            $stmt = $conn->prepare("INSERT INTO user_default_books (app_user_id, tool, book_id) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE book_id = VALUES(book_id), updated_at = CURRENT_TIMESTAMP");
+            $stmt->bind_param('isi', $userId, $tool, $bookId);
+            $ok = $stmt->execute();
+            $stmt->close();
+            return $ok;
+        }
+    }
     function printAssociativeArray($array) {
         foreach ($array as $key => $value) {
             echo "<br/>$key: $value";

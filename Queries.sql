@@ -263,3 +263,25 @@ INSERT INTO cashbook_category (name, cashbook_book_id) VALUES ('Lending', 0);
 ALTER TABLE `cashbook_entry` MODIFY COLUMN `date` DATETIME NULL DEFAULT NULL;
 
 ALTER TABLE `cashbook_entry` MODIFY COLUMN `type` enum('expense','income','repayment','lend','lend_repayment', 'transfer_in', 'transfer_out', 'investment') NOT NULL DEFAULT 'expense';
+
+-- App User Remember Tokens
+CREATE TABLE app_user_remember_tokens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  selector CHAR(24) NOT NULL,
+  token_hash CHAR(64) NOT NULL,
+  expires_at DATETIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX(selector)
+);
+
+-- Persist user's selected/default book per tool (app users)
+CREATE TABLE IF NOT EXISTS `user_default_books` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app_user_id` int NOT NULL,
+  `tool` varchar(50) NOT NULL,
+  `book_id` int NOT NULL,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_user_tool` (`app_user_id`, `tool`)
+);

@@ -2,13 +2,21 @@
     function findNotebook($userId){
         $selectedNotebook = null;
         if(isset($_SESSION['notebookSelected'])){
-            $selectedNotebook = $_SESSION['notebookSelected'];
-        } else{
-            $notebooks = executeQuery("SELECT * FROM notebook WHERE user_id = $userId");
-            if($notebooks->num_rows > 0){
-                $selectedNotebook = $notebooks->fetch_assoc()["id"];
-                $_SESSION['notebookSelected'] = $selectedNotebook;
+            return $_SESSION['notebookSelected'];
+        }
+
+        if(isset($_SESSION['appUserId'])){
+            $dbNotebook = getUserDefaultBook('notebook');
+            if($dbNotebook){
+                $_SESSION['notebookSelected'] = $dbNotebook;
+                return $dbNotebook;
             }
+        }
+
+        $notebooks = executeQuery("SELECT * FROM notebook WHERE user_id = $userId");
+        if($notebooks && $notebooks->num_rows > 0){
+            $selectedNotebook = $notebooks->fetch_assoc()["id"];
+            $_SESSION['notebookSelected'] = $selectedNotebook;
         }
         return $selectedNotebook;
     }
@@ -16,6 +24,16 @@
     function clearSelectedNotebook(){
         if(isset($_SESSION['notebookSelected'])) {
             unset($_SESSION['notebookSelected']);
+        }
+        if(isset($_SESSION['appUserId'])){
+            $conn = initDb();
+            $stmt = $conn->prepare("DELETE FROM user_default_books WHERE app_user_id = ? AND tool = ?");
+            if($stmt){
+                $tool = 'notebook';
+                $stmt->bind_param('is', $_SESSION['appUserId'], $tool);
+                $stmt->execute();
+                $stmt->close();
+            }
         }
     }
 

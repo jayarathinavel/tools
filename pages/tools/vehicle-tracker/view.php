@@ -26,8 +26,11 @@
         $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id=$userId order by timestamp desc");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['vehicleId'])) {
-                $vehicle = $_POST['vehicleId'];
+                $vehicle = intval($_POST['vehicleId']);
                 $_SESSION['vehicleTrackerSelectedVehicle'] = $vehicle;
+                if (isset($_SESSION['appUserId'])) {
+                    setUserDefaultBook('vehicle_tracker', $vehicle);
+                }
                 setSuccessOrFailureMessage("success", "Vehicle Changed");
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();

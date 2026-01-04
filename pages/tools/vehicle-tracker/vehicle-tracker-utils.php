@@ -6,13 +6,23 @@
     function findVehicleForUser($userId){
         $selectedVehicle = null;
         if(isset($_SESSION['vehicleTrackerSelectedVehicle'])){
-            $selectedVehicle = $_SESSION['vehicleTrackerSelectedVehicle'];
-        } else{
-            $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id = $userId order by timestamp desc");
-            if($vehicles->num_rows > 0){
-                $selectedVehicle = $vehicles->fetch_assoc()["id"];
-                $_SESSION['vehicleTrackerSelectedVehicle'] = $selectedVehicle;
+            return $_SESSION['vehicleTrackerSelectedVehicle'];
+        }
+
+        // Try persisted default from DB
+        if(isset($_SESSION['appUserId'])){
+            $dbVehicle = getUserDefaultBook('vehicle_tracker');
+            if($dbVehicle){
+                $_SESSION['vehicleTrackerSelectedVehicle'] = $dbVehicle;
+                return $dbVehicle;
             }
+        }
+
+        $selectedVehicle = null;
+        $vehicles = executeQuery("SELECT * FROM vt_vehicles WHERE user_id = $userId order by timestamp desc");
+        if($vehicles && $vehicles->num_rows > 0){
+            $selectedVehicle = $vehicles->fetch_assoc()["id"];
+            $_SESSION['vehicleTrackerSelectedVehicle'] = $selectedVehicle;
         }
         return $selectedVehicle;
     }
@@ -21,7 +31,16 @@
         if(isset($_SESSION['vehicleTrackerSelectedVehicle'])) {
             unset($_SESSION['vehicleTrackerSelectedVehicle']);
         }
-        
+        if(isset($_SESSION['appUserId'])){
+            $conn = initDb();
+            $stmt = $conn->prepare("DELETE FROM user_default_books WHERE app_user_id = ? AND tool = ?");
+            if($stmt){
+                $tool = 'vehicle_tracker';
+                $stmt->bind_param('is', $_SESSION['appUserId'], $tool);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
     }
 
     function fetchVehicleDetails($vehicleId){

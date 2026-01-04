@@ -1,23 +1,50 @@
 <?php
     function findBookCashbook($userId){
         $selectedBook = null;
-        if($_GET['book_id']) {
-            $_SESSION['cashbookSelectedBook'] = intval(value: $_GET['book_id']);
-        }
-        if(isset($_SESSION['cashbookSelectedBook'])){
-            $selectedBook = $_SESSION['cashbookSelectedBook'];
-        } else{
-            $books = executeQuery("SELECT * FROM cashbook_book WHERE user_id = $userId");
-            if($books->num_rows > 0){
-                $selectedBook = $books->fetch_assoc()["id"];
-                $_SESSION['cashbookSelectedBook'] = $selectedBook;
+        // if book passed via GET, prefer it and persist
+        if(isset($_GET['book_id'])) {
+            $selectedBook = intval($_GET['book_id']);
+            $_SESSION['cashbookSelectedBook'] = $selectedBook;
+            if (isset($_SESSION['appUserId'])) {
+                setUserDefaultBook('cashbook', $selectedBook);
             }
+            return $selectedBook;
+        }
+
+        if(isset($_SESSION['cashbookSelectedBook'])){
+            return $_SESSION['cashbookSelectedBook'];
+        }
+
+        // Try persisted default from DB
+        if(isset($_SESSION['appUserId'])){
+            $dbBook = getUserDefaultBook('cashbook');
+            if($dbBook) {
+                $_SESSION['cashbookSelectedBook'] = $dbBook;
+                return $dbBook;
+            }
+        }
+
+        // Fallback to first available book
+        $books = executeQuery("SELECT * FROM cashbook_book WHERE user_id = $userId");
+        if($books && $books->num_rows > 0){
+            $selectedBook = $books->fetch_assoc()["id"];
+            $_SESSION['cashbookSelectedBook'] = $selectedBook;
         }
         return $selectedBook;
     }
     function clearSelectedBookCashbook(){
         if(isset($_SESSION['cashbookSelectedBook'])) {
             unset($_SESSION['cashbookSelectedBook']);
+        }
+        if(isset($_SESSION['appUserId'])){
+            $conn = initDb();
+            $stmt = $conn->prepare("DELETE FROM user_default_books WHERE app_user_id = ? AND tool = ?");
+            if($stmt){
+                $tool = 'cashbook';
+                $stmt->bind_param('is', $_SESSION['appUserId'], $tool);
+                $stmt->execute();
+                $stmt->close();
+            }
         }
     }
     function fetchBankAccountsFromCashbook($book){

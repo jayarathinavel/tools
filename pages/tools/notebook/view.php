@@ -22,8 +22,11 @@
         $notebooks = executeQuery("SELECT * FROM notebook WHERE user_id=$userId");
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['notebookId'])) {
-                $notebook = $_POST['notebookId'];
+                $notebook = intval($_POST['notebookId']);
                 $_SESSION['notebookSelected'] = $notebook;
+                if (isset($_SESSION['appUserId'])) {
+                    setUserDefaultBook('notebook', $notebook);
+                }
                 setSuccessOrFailureMessage("success", "Notebook Changed");
                 header("Location: " . $_SERVER['PHP_SELF']);
                 exit();

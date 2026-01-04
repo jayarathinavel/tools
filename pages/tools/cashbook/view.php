@@ -7,9 +7,13 @@
     // available books for selector
     $books = fetchCashbookBooks($userId);
 
-    // handle book selection form POST -> save in session and reload
+    // handle book selection form POST -> save in session, persist and reload
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cashbookBookId'])) {
-        $_SESSION['cashbookSelectedBook'] = intval($_POST['cashbookBookId']);
+        $bookId = intval($_POST['cashbookBookId']);
+        $_SESSION['cashbookSelectedBook'] = $bookId;
+        if (isset($_SESSION['appUserId'])) {
+            setUserDefaultBook('cashbook', $bookId);
+        }
         setSuccessOrFailureMessage('success', 'Book Changed');
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
