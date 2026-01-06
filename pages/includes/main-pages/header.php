@@ -50,6 +50,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/pages/tools/expense-balance/view.php">Expense Balance</a>
+                <a class="dropdown-item" href="/pages/tools/vehicle-tracker/view.php">Vehicle Tracker</a>
+                <a class="dropdown-item" href="/pages/tools/bill-split-tracker/view.php">Bill Split Tracker</a>
+                <a class="dropdown-item" href="/pages/tools/notebook/view.php">Notebook</a>
+                <a class="dropdown-item" href="/pages/tools/events-anniversary/view.php">Events Tracker</a>
+                <a class="dropdown-item" href="/pages/tools/cashbook/view.php">Cashbook</a>
+            </div>
+        </li>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
