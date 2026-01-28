@@ -1,8 +1,11 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
-    initializePage("Cashbook", "main", $_SERVER['REQUEST_URI']);
+    initializePage("Cashbook Report", "main", $_SERVER['REQUEST_URI']);
     includePhpFileFromRoot($rootPath, '/pages/tools/cashbook/cashbook-utils.php');
     $userId = cashbookUser();
+    $book = findBookCashbook($userId);
+    $bankAccounts = $book ? fetchBankAccountsFromCashbook($book) : [];
+    $categories = $book ? fetchCategoriesFromCashbook($book) : [];
 
     // available books for selector
     $books = fetchCashbookBooks($userId);
@@ -19,7 +22,6 @@
         exit;
     }
 
-    $book = findBookCashbook($userId);
     $book ? canViewBook($book) : null;
     $bankAccounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
@@ -34,7 +36,6 @@
     } else {
         $entriesArr = [];
     }
-    
 ?>
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
@@ -53,7 +54,8 @@
                         .title-btn:focus, .title-split-toggle:focus { box-shadow: none; }
                     </style>
 
-                    <div class="btn-group" role="group">
+                    <fieldset class="btn-group">
+                        <legend class="visually-hidden">Select Book</legend>
                         <!-- main title button -->
                         <button type="button" class="btn btn-link title-btn m-0 p-0">
                             <span class="title-text"><?php echo ($book && isset($books[$book])) ? htmlspecialchars($books[$book]) : 'Change Book'; ?></span>
@@ -78,60 +80,45 @@
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                    </div>
+                    </fieldset>
                 </div>
             
                 <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3">
                     <!-- Buttons Section + Book selector dropdown -->
                     <div class="d-flex flex-wrap gap-2 ms-md-3 align-items-center">
-                        <a class="btn btn-sm btn-primary" href="add.php">
-                            <i class="bi bi-plus-lg me-1"></i>Add Entry
+
+                        <a class="btn btn-sm btn-info text-white" href="view.php">
+                            <i class="bi bi-eye me-1"></i>View Book
                         </a>
-                        <a class="btn btn-sm btn-secondary" href="summary.php">
-                            <i class="bi bi-list-task me-1"></i>Summary
-                        </a>
-                        <a class="btn btn-sm btn-info" href="report.php">
-                            <i class="bi-graph-up"></i>
-                        </a>
-                        <a class="btn btn-sm btn-info text-white" href="books/view.php">
-                            <i class="bi bi-book"></i>
-                        </a>
-                        <a class="btn btn-sm btn-primary" title="View Accounts" href="banks/view.php">
-                            <i class="bi bi-bank"></i>
-                        </a>
-                        <a class="btn btn-sm btn-secondary" title="View Categories" href="categories/view.php">
-                            <i class="bi bi-tags"></i>
-                        </a>
+
+                        <!-- 🎛️ Open offcanvas -->
+                    <button class="btn btn-sm btn-outline-secondary ms-auto"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#cashbookFiltersCanvas">
+                        <i class="bi bi-sliders"></i> Filters
+                    </button>
+
+                    <!-- 🧹 Clear -->
+                    <button id="clearCashbookFiltersBtn"
+                            class="btn btn-sm btn-outline-warning"
+                            type="button"
+                            style="display:none;">
+                        Clear
+                    </button>
                     </div>
                 </div>
             </div>
 
             <!-- Filter Section -->
             <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
-
                 <!-- 🔍 Search -->
                 <input type="search"
                     name="search"
                     form="cashbookFilterForm"
                     class="form-control form-control-sm"
                     placeholder="Search entries…"
-                    style="max-width:220px;">
-
-                <!-- 🎛️ Open offcanvas -->
-                <button class="btn btn-sm btn-outline-secondary ms-auto"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#cashbookFiltersCanvas">
-                    <i class="bi bi-sliders"></i> Filters
-                </button>
-
-                <!-- 🧹 Clear -->
-                <button id="clearCashbookFiltersBtn"
-                        class="btn btn-sm btn-outline-warning"
-                        type="button"
-                        style="display:none;">
-                    Clear
-                </button>
+                    style="max-width:220px;" hidden> <!-- hidden so form.search is not null -->
             </div>
 
             <form id="cashbookFilterForm">
@@ -232,43 +219,55 @@
                 style="display:none;">
             </div>
 
+            <!-- Reports Section -->
+            <div class="row mt-4">
+                <!-- Report by Account -->
+                <div id="reportAccountContainer" class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0"><i class="bi bi-bank me-2"></i>By Account</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="reportAccount" class="report-content"></div>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Totals -->
-            <table class="table table-borderless text-center mt-3">
-                <tr>
-                    <td class="bg-light text-success border">
-                        <div class="small text-muted">Total Income</div>
-                        <div class="fw-bold total-income">0.00</div>
-                    </td>
-                    <td class="bg-light text-danger border">
-                        <div class="small text-muted">Total Expenses</div>
-                        <div class="fw-bold total-expense">0.00</div>
-                    </td>
-                    <td class="bg-white border">
-                        <div class="small text-muted">Net</div>
-                        <div class="fw-bold total-net">0.00</div>
-                    </td>
-                </tr>
-            </table>
+                <!-- Report by Category -->
+                <div id="reportCategoryContainer" class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-success text-white">
+                            <h6 class="mb-0"><i class="bi bi-tags me-2"></i>By Category</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="reportCategory" class="report-content"></div>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Entries & pagination -->
-            <div class="row" id="cashbookEntries"></div>
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <small class="text-muted">
-                    Show
-                    <select id="cashbookItemsPerPage" class="form-select form-select-sm d-inline-block w-auto mx-1">
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
-                    entries per page
-                </small>
-            </div>
-            <div class="d-flex justify-content-center mt-3">
-                <nav>
-                    <ul id="cashbookPagination" class="pagination pagination-sm mb-0"></ul>
-                </nav>
+                <!-- Report by Type -->
+                <div id="reportTypeContainer" class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-info text-white">
+                            <h6 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>By Type</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="reportType" class="report-content"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report by Month -->
+                <div id="reportMonthContainer" class="col-12 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-warning text-dark">
+                            <h6 class="mb-0"><i class="bi bi-calendar-month me-2"></i>By Month</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="reportMonth" class="report-content"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -285,21 +284,11 @@
     const CURRENT_USER = <?php echo json_encode($userId); ?>;
 </script>
 
-<!-- Client-side filtering & pagination -->
+<!-- Report generation script -->
 <script>
     (function () {
         const STORAGE_KEY = 'cashbookFilters_' + CURRENT_USER;
-        const ITEMS_PER_PAGE_KEY = 'cashbookItemsPerPage_' + CURRENT_USER;
-
         const form = document.getElementById('cashbookFilterForm');
-        const entriesContainer = document.getElementById('cashbookEntries');
-        const pagination = document.getElementById('cashbookPagination');
-        const perPageSelect = document.getElementById('cashbookItemsPerPage');
-        const clearCashbookFiltersBtn = document.getElementById('clearCashbookFiltersBtn');
-
-
-        if (!form || !entriesContainer || !pagination || !perPageSelect) return;
-
         const timeRangeSelect = document.getElementById('timeRangeSelect');
 
         buildTimeRangeOptions();
@@ -316,7 +305,6 @@
 
         function updateCustomDates() {
             const isCustom = form.time_range.value === 'custom';
-
             document.querySelectorAll('.custom-dates-wrapper')
                 .forEach(el => el.style.display = isCustom ? 'block' : 'none');
 
@@ -329,7 +317,6 @@
             const start = new Date(end);
             start.setDate(start.getDate() - 50);
 
-            // Clamp start to earliest entry
             if (start < bounds.min) {
                 start.setTime(bounds.min.getTime());
             }
@@ -355,10 +342,6 @@
 
         form.time_range.addEventListener('change', updateCustomDates);
 
-        let currentPage = 1;
-        let itemsPerPage = parseInt(localStorage.getItem(ITEMS_PER_PAGE_KEY) || perPageSelect.value);
-        perPageSelect.value = itemsPerPage;
-
         function buildTimeRangeOptions() {
             if (!timeRangeSelect || !CASHBOOK_ENTRIES.length) return;
 
@@ -370,7 +353,6 @@
                 'July','August','September','October','November','December'
             ];
 
-            // Build year → months map
             const yearMonthMap = {};
             CASHBOOK_ENTRIES.forEach(e => {
                 const d = new Date(e.date.replace(' ', 'T'));
@@ -396,23 +378,19 @@
                 (parent || timeRangeSelect).appendChild(opt);
             };
 
-            // Always
             addOption('', 'All Time');
 
-            // ⏱ Show month shortcuts ONLY if current year exists
             if (hasCurrentYear) {
                 addOption('this_month', 'This Month');
                 addOption('last_month', 'Last Month');
                 addOption('next_month', 'Next Month');
             }
 
-            // Year shortcuts only when meaningful
             if (years.length > 1) {
                 addOption('this_year', 'This Year');
                 addOption('last_year', 'Last Year');
             }
 
-            // Month groups for every year
             years.forEach(y => {
                 const group = document.createElement('optgroup');
                 group.label = y.toString();
@@ -432,23 +410,7 @@
             addOption('custom', 'Custom');
         }
 
-        function updateFilterButtonState(f) {
-            const btn = document.getElementById('cashbookApplyFilterBtn');
-            if (!btn) return;
-
-            const hasFilters = Object.values(f).some(v => v);
-
-            btn.classList.remove('btn-primary', 'btn-success', 'btn-warning');
-
-            if (hasFilters) {
-                btn.classList.add('btn-success'); // 👈 active state
-            } else {
-                btn.classList.add('btn-primary'); // 👈 default
-            }
-        }
-
-
-        function filterEntries() {
+        function getFilteredEntries() {
             const f = {
                 time_range: form.time_range.value,
                 start_date: form.start_date.value,
@@ -469,7 +431,6 @@
                 date.setHours(23, 59, 59, 999);
                 return date;
             }
-
 
             const today = new Date();
             let start = null, end = null;
@@ -513,7 +474,6 @@
                     break;
             }
 
-            
             if (start) start = normalizeStart(start);
             if (end) end = normalizeEnd(end);
 
@@ -527,7 +487,6 @@
                 if (f.bank_account_id && Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
                 if (f.type && e.type !== f.type) return false;
 
-                // 🔍 SEARCH MATCH
                 if (f.search) {
                     const catName = e.category_id ? (CATEGORIES[e.category_id] || '') : '';
                     const accName = e.bank_account_id ? (ACCOUNTS[e.bank_account_id]?.name || '') : '';
@@ -546,171 +505,28 @@
                 return true;
             });
 
-            renderEntries(filtered);
-            renderTotals(filtered);
-            renderPagination(filtered);
-            renderFilterSummary(f);
+            return { filtered, filters: f };
+        }
 
-            if (Object.values(f).some(v => v)) {
+        function renderReports() {
+            const { filtered, filters } = getFilteredEntries();
+
+            renderFilterSummary(filters);
+            renderAccountReport(filtered, filters);
+            renderCategoryReport(filtered, filters);
+            renderTypeReport(filtered, filters);
+            renderMonthReport(filtered, filters);
+
+            if (Object.values(filters).some(v => v)) {
                 clearCashbookFiltersBtn.style.display = 'inline-block';
             } else {
                 clearCashbookFiltersBtn.style.display = 'none';
             }
         }
 
-        function renderEntries(entries){
-            entriesContainer.innerHTML = '';
-            const start = (currentPage-1)*itemsPerPage;
-            const end = start+itemsPerPage;
-            entries.slice(start,end).forEach(e=>{
-                const catName = e.category_id ? (CATEGORIES[e.category_id]||'') : '';
-                const accName = e.bank_account_id ? (ACCOUNTS[e.bank_account_id]?.name||'') : '';
-                const amountClass = ['income','transfer_in','lend_repayment'].includes(e.type) ? 'text-success':'text-danger';
-                const html = `
-                <div class="col-12 col-md-6 col-lg-4 mb-2">
-                    <div class="card mb-2 shadow-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <h5 class="card-title mb-1 text-break">${e.title}</h5>
-                                    <div class="small"><i class="bi bi-calendar-event me-1"></i>${e.date}</div>
-                                    <div class="mt-2">${catName?`<span class="badge bg-primary me-1">${catName}</span>`:''}${accName?`<span class="badge bg-info">${accName}</span>`:''}</div>
-                                </div>
-                                <div class="text-end">
-                                    <div class="fs-5 fw-bold ${amountClass}">${formatAmount(e)}</div>
-                                    <small class="text-muted">${e.type.replace('_',' ')}</small>
-                                    <div class="mt-2">
-                                        <a class="btn btn-sm btn-outline-warning me-1" href="edit.php?id=${e.id}" title="Edit"><i class="bi bi-pencil-fill"></i></a>
-                                        <a class="btn btn-sm btn-outline-danger" href="delete.php?id=${e.id}&operation=delete" onclick="return confirm('Delete this entry?');" title="Delete"><i class="bi bi-trash-fill"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-                entriesContainer.insertAdjacentHTML('beforeend', html);
-            });
-        }
-
-        function formatAmount(e){
-            switch(e.type){
-                case 'income': return '+'+parseFloat(e.amount).toFixed(2);
-                case 'expense': return '-'+parseFloat(e.amount).toFixed(2);
-                case 'repayment': return '⟵ '+parseFloat(e.amount).toFixed(2);
-                case 'lend': return '→ '+parseFloat(e.amount).toFixed(2);
-                case 'lend_repayment': return '⟶ '+parseFloat(e.amount).toFixed(2);
-                case 'transfer_in': return '⇒ '+parseFloat(e.amount).toFixed(2);
-                case 'transfer_out': return '⇐ '+parseFloat(e.amount).toFixed(2);
-                case 'investment': return '⤴ '+parseFloat(e.amount).toFixed(2);
-                default: return parseFloat(e.amount).toFixed(2);
-            }
-        }
-
-        function renderTotals(entries){
-            const income = entries.filter(e=>['income'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
-            const expense = entries.filter(e=>['expense'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
-            document.querySelector('.total-income').innerText='+'+income.toFixed(2);
-            document.querySelector('.total-expense').innerText='-'+expense.toFixed(2);
-            const netEl = document.querySelector('.total-net');
-            netEl.innerText=(income-expense).toFixed(2);
-            netEl.className='fw-bold total-net '+(income-expense>=0?'text-success':'text-danger');
-        }
-
-        function renderPagination(filtered) {
-            totalItems = filtered.length;
-            pagination.innerHTML = '';
-
-            const totalPages = Math.ceil(totalItems / itemsPerPage);
-            if (totalPages <= 1) {
-                pagination.style.display = 'none';
-                return;
-            }
-            pagination.style.display = '';
-
-            const maxVisible = 5; // current ±2
-            const pages = [];
-
-            const push = p => pages.push(p);
-
-            // Always include first page
-            push(1);
-
-            let start = Math.max(2, currentPage - 2);
-            let end = Math.min(totalPages - 1, currentPage + 2);
-
-            // Insert ellipsis if needed
-            if (start > 2) push('...');
-            for (let i = start; i <= end; i++) push(i);
-            if (end < totalPages - 1) push('...');
-
-            // Always include last page
-            if (totalPages > 1) push(totalPages);
-
-            const makeBtn = (label, page, disabled, active) => {
-                const li = document.createElement('li');
-                li.className =
-                    'page-item' +
-                    (disabled ? ' disabled' : '') +
-                    (active ? ' active' : '');
-
-                const a = document.createElement('a');
-                a.href = '#';
-                a.className = 'page-link';
-                a.textContent = label;
-
-                if (typeof page === 'number') {
-                    a.onclick = e => {
-                        e.preventDefault();
-                        if (!disabled && !active) {
-                            currentPage = page;
-                            filterEntries();
-                        }
-                    };
-                }
-
-                li.appendChild(a);
-                return li;
-            };
-
-            // ⏮ First
-            pagination.appendChild(
-                makeBtn('«', 1, currentPage === 1)
-            );
-
-            // ◀ Prev
-            pagination.appendChild(
-                makeBtn('‹', currentPage - 1, currentPage === 1)
-            );
-
-            // Pages
-            pages.forEach(p => {
-                if (p === '...') {
-                    const li = document.createElement('li');
-                    li.className = 'page-item disabled';
-                    li.innerHTML = `<span class="page-link">…</span>`;
-                    pagination.appendChild(li);
-                } else {
-                    pagination.appendChild(
-                        makeBtn(p, p, false, p === currentPage)
-                    );
-                }
-            });
-
-            // ▶ Next
-            pagination.appendChild(
-                makeBtn('›', currentPage + 1, currentPage === totalPages)
-            );
-
-            // ⏭ Last
-            pagination.appendChild(
-                makeBtn('»', totalPages, currentPage === totalPages)
-            );
-        }
-
         function renderFilterSummary(f) {
             const parts = [];
 
-            // Time range
             if (f.time_range) {
                 const map = {
                     this_month: 'This month',
@@ -737,24 +553,20 @@
                 }
             }
 
-            // Category
             if (f.category_id) {
                 parts.push(`Category: ${CATEGORIES[f.category_id]}`);
             }
 
-            // Account
             if (f.bank_account_id) {
                 parts.push(`Account: ${ACCOUNTS[f.bank_account_id]?.name}`);
             }
 
-            // Type
             if (f.type) {
                 parts.push(`Type: ${f.type.replace('_', ' ')}`);
             }
 
-            // Search
             if (f.search) {
-                parts.push(`Search: “${f.search}”`);
+                parts.push(`Search: "${f.search}"`);
             }
 
             const summaryEl = document.getElementById('cashbookFilterSummary');
@@ -765,47 +577,286 @@
                     <strong>Applied filters:</strong> ${parts.join(' · ')}`;
                 summaryEl.style.display = '';
             } else {
+                summaryEl.style.display = 'none';
                 summaryEl.innerHTML = '';
-                // Check if 'this_month' option exists in time range select
-                const thisMonthOption = Array.from(timeRangeSelect.options).some(opt => opt.value === 'this_month');
-                if (thisMonthOption) {
-                    summaryEl.innerHTML = `
-                        <a href="#" class="text-decoration-none" id="filterThisMonthLink">
-                            <i class="bi bi-funnel me-1"></i>Current month
-                        </a>
-                    `;
-                    summaryEl.style.display = '';
-                    
-                    // Add click handler
-                    document.getElementById('filterThisMonthLink').addEventListener('click', e => {
-                        e.preventDefault();
-                        form.time_range.value = 'this_month';
-                        form.start_date.value = '';
-                        form.end_date.value = '';
-                        updateCustomDates();
-                        currentPage = 1;
-                        filterEntries();
-                    });
-                } else {
-                    summaryEl.style.display = 'none';
-                }
-
             }
         }
 
+        function renderAccountReport(entries, filters) {
+            const container = document.getElementById('reportAccountContainer');
+            const report = document.getElementById('reportAccount');
+
+            // Hide if account filter is applied
+            if (filters.bank_account_id) {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = '';
+
+            const accountData = {};
+            entries.forEach(e => {
+                const accId = e.bank_account_id || 'uncategorized';
+                const accName = e.bank_account_id ? (ACCOUNTS[e.bank_account_id]?.name || 'Unknown') : 'No Account';
+                if (!accountData[accId]) {
+                    accountData[accId] = { name: accName, total: 0, income: 0, expense: 0, count: 0 };
+                }
+                const amount = parseFloat(e.amount);
+                accountData[accId].total += amount;
+                if (['income', 'transfer_in', 'lend_repayment'].includes(e.type)) {
+                    accountData[accId].income += amount;
+                } else if (['expense', 'transfer_out', 'lend'].includes(e.type)) {
+                    accountData[accId].expense += amount;
+                }
+                accountData[accId].count++;
+            });
+
+            let html = '';
+            Object.values(accountData).forEach(data => {
+                const balanceClass = data.total >= 0 ? 'text-success' : 'text-danger';
+                html += `
+                    <div class="mb-3 pb-3 border-bottom">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h6 class="mb-1">${data.name}</h6>
+                                <small class="text-muted">${data.count} transaction(s)</small>
+                            </div>
+                            <div class="text-end">
+                                <div class="fw-bold ${balanceClass}">${data.total.toFixed(2)}</div>
+                                <small class="text-success">+${data.income.toFixed(2)}</small>
+                                <small class="text-danger ms-2">-${data.expense.toFixed(2)}</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (!html) html = '<p class="text-muted">No data</p>';
+            report.innerHTML = html;
+        }
+
+        function renderCategoryReport(entries, filters) {
+            const container = document.getElementById('reportCategoryContainer');
+            const report = document.getElementById('reportCategory');
+
+            // Hide if category filter is applied
+            if (filters.category_id) {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = '';
+
+            const categoryData = {};
+            entries.forEach(e => {
+                const catId = e.category_id || 'uncategorized';
+                const catName = e.category_id ? (CATEGORIES[e.category_id] || 'Unknown') : 'Uncategorized';
+                if (!categoryData[catId]) {
+                    categoryData[catId] = { name: catName, total: 0, count: 0 };
+                }
+                const amount = parseFloat(e.amount);
+                categoryData[catId].total += amount;
+                categoryData[catId].count++;
+            });
+
+            // Sort by total amount
+            const sorted = Object.values(categoryData).sort((a, b) => Math.abs(b.total) - Math.abs(a.total));
+
+            let html = '';
+            sorted.forEach(data => {
+                const amountClass = data.total >= 0 ? 'text-success' : 'text-danger';
+                html += `
+                    <div class="mb-2 pb-2 border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small>${data.name}</small>
+                                <div class="text-muted small">${data.count} item(s)</div>
+                            </div>
+                            <div class="text-end fw-bold ${amountClass}">
+                                ${data.total.toFixed(2)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (!html) html = '<p class="text-muted">No data</p>';
+            report.innerHTML = html;
+        }
+
+        function renderTypeReport(entries, filters) {
+            const container = document.getElementById('reportTypeContainer');
+            const report = document.getElementById('reportType');
+
+            // Hide if type filter is applied
+            if (filters.type) {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = '';
+
+            const typeData = {};
+            entries.forEach(e => {
+                if (!typeData[e.type]) {
+                    typeData[e.type] = { total: 0, count: 0 };
+                }
+                const amount = parseFloat(e.amount);
+                typeData[e.type].total += amount;
+                typeData[e.type].count++;
+            });
+
+            const typeLabels = {
+                'income': 'Income',
+                'expense': 'Expense',
+                'transfer_in': 'Transfer In',
+                'transfer_out': 'Transfer Out',
+                'lend': 'Lend',
+                'repayment': 'Repayment',
+                'lend_repayment': 'Lend Repayment',
+                'investment': 'Investment'
+            };
+
+            let html = '';
+            Object.keys(typeData).sort().forEach(type => {
+                const data = typeData[type];
+                const label = typeLabels[type] || type;
+                const amountClass = data.total >= 0 ? 'text-success' : 'text-danger';
+                html += `
+                    <div class="mb-2 pb-2 border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small>${label}</small>
+                                <div class="text-muted small">${data.count} item(s)</div>
+                            </div>
+                            <div class="text-end fw-bold ${amountClass}">
+                                ${data.total.toFixed(2)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (!html) html = '<p class="text-muted">No data</p>';
+            report.innerHTML = html;
+        }
+
+        function renderMonthReport(entries, filters) {
+            const container = document.getElementById('reportMonthContainer');
+            const report = document.getElementById('reportMonth');
+
+            // Hide if time filter is already applied (since we're showing month-wise breakdown)
+            if (filters.time_range && filters.time_range !== '' && filters.time_range !== 'custom') {
+                container.style.display = 'none';
+                return;
+            }
+            container.style.display = '';
+
+            const monthData = {};
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+            entries.forEach(e => {
+                const d = new Date(e.date.replace(' ', 'T'));
+                const year = d.getFullYear();
+                const month = d.getMonth();
+                const monthKey = `${year}-${month}`;
+                const monthLabel = `${monthNames[month]} ${year}`;
+
+                if (!monthData[monthKey]) {
+                    monthData[monthKey] = { label: monthLabel, total: 0, income: 0, expense: 0, count: 0 };
+                }
+
+                const amount = parseFloat(e.amount);
+                monthData[monthKey].total += amount;
+                if (['income', 'transfer_in', 'lend_repayment'].includes(e.type)) {
+                    monthData[monthKey].income += amount;
+                } else if (['expense', 'transfer_out', 'lend'].includes(e.type)) {
+                    monthData[monthKey].expense += amount;
+                }
+                monthData[monthKey].count++;
+            });
+
+            // Sort by date descending
+            const sorted = Object.keys(monthData).sort((a, b) => {
+                const [ya, ma] = a.split('-').map(Number);
+                const [yb, mb] = b.split('-').map(Number);
+                if (ya !== yb) return yb - ya;
+                return mb - ma;
+            }).map(k => monthData[k]);
+
+            let html = '<div class="table-responsive"><table class="table table-sm mb-0">';
+            html += `
+                <thead class="table-light">
+                    <tr>
+                        <th>Month</th>
+                        <th class="text-end">Income</th>
+                        <th class="text-end">Expense</th>
+                        <th class="text-end">Net</th>
+                        <th class="text-end">Transactions</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+
+            sorted.forEach(data => {
+                const netClass = data.total >= 0 ? 'text-success' : 'text-danger';
+                html += `
+                    <tr>
+                        <td><strong>${data.label}</strong></td>
+                        <td class="text-end text-success">+${data.income.toFixed(2)}</td>
+                        <td class="text-end text-danger">-${data.expense.toFixed(2)}</td>
+                        <td class="text-end fw-bold ${netClass}">${data.total.toFixed(2)}</td>
+                        <td class="text-end">${data.count}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                </tbody>
+                </table></div>
+            `;
+
+            if (sorted.length === 0) html = '<p class="text-muted">No data</p>';
+            report.innerHTML = html;
+        }
+
+        // Event listeners for filter changes
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            renderReports();
+        });
+
         form.search.addEventListener('input', () => {
-            currentPage = 1;
-            filterEntries();
+            renderReports();
         });
 
-        form.addEventListener('submit', e=>{e.preventDefault(); currentPage=1; filterEntries();});
-        clearCashbookFiltersBtn.addEventListener('click', e=>{
-            e.preventDefault(); localStorage.removeItem(STORAGE_KEY); form.reset(); updateCustomDates(); currentPage=1; filterEntries();
-            clearCashbookFiltersBtn.style.display = 'none';
+        form.time_range.addEventListener('change', () => {
+            renderReports();
         });
-        perPageSelect.addEventListener('change', function(){itemsPerPage=parseInt(this.value); localStorage.setItem(ITEMS_PER_PAGE_KEY,itemsPerPage); currentPage=1; filterEntries();});
 
-        filterEntries();
+        form.category_id.addEventListener('change', () => {
+            renderReports();
+        });
+
+        form.bank_account_id.addEventListener('change', () => {
+            renderReports();
+        });
+
+        form.type.addEventListener('change', () => {
+            renderReports();
+        });
+
+        // Clear filters
+        const clearCashbookFiltersBtn = document.getElementById('clearCashbookFiltersBtn');
+        if (clearCashbookFiltersBtn) {
+            clearCashbookFiltersBtn.addEventListener('click', e => {
+                e.preventDefault();
+                localStorage.removeItem(STORAGE_KEY);
+                form.reset();
+                updateCustomDates();
+                renderReports();
+            });
+        }
+
+        // Initial render
+        renderReports();
     })();
 </script>
 
