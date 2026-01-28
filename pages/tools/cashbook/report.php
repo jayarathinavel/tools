@@ -760,15 +760,20 @@
                 const monthLabel = `${monthNames[month]} ${year}`;
 
                 if (!monthData[monthKey]) {
-                    monthData[monthKey] = { label: monthLabel, total: 0, income: 0, expense: 0, count: 0 };
+                    monthData[monthKey] = { label: monthLabel, total: 0, income: 0, expense: 0, count: 0, investment: 0 };
                 }
 
                 const amount = parseFloat(e.amount);
-                monthData[monthKey].total += amount;
-                if (['income', 'transfer_in', 'lend_repayment'].includes(e.type)) {
+                const investmentAmount = parseFloat(e.amount);
+                if (['income', 'transfer_in', 'lend_repayment', 'investment'].includes(e.type)) {
                     monthData[monthKey].income += amount;
+                    monthData[monthKey].total += amount;
+                }
+                if(['investment'].includes(e.type)) {
+                    monthData[monthKey].investment += investmentAmount;
                 } else if (['expense', 'transfer_out', 'lend'].includes(e.type)) {
                     monthData[monthKey].expense += amount;
+                    monthData[monthKey].total -= amount;
                 }
                 monthData[monthKey].count++;
             });
@@ -786,8 +791,9 @@
                 <thead class="table-light">
                     <tr>
                         <th>Month</th>
-                        <th class="text-end">Income</th>
-                        <th class="text-end">Expense</th>
+                        <th class="text-end">In</th>
+                        <th class="text-end">Out</th>
+                        <th class="text-end">Investments</th>
                         <th class="text-end">Net</th>
                         <th class="text-end">Transactions</th>
                     </tr>
@@ -802,6 +808,7 @@
                         <td><strong>${data.label}</strong></td>
                         <td class="text-end text-success">+${data.income.toFixed(2)}</td>
                         <td class="text-end text-danger">-${data.expense.toFixed(2)}</td>
+                        <td class="text-end text-success">+${data.investment.toFixed(2)}</td>
                         <td class="text-end fw-bold ${netClass}">${data.total.toFixed(2)}</td>
                         <td class="text-end">${data.count}</td>
                     </tr>
