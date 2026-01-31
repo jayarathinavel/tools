@@ -227,7 +227,13 @@
                             <h6 class="mb-0"><i class="bi bi-tags me-2"></i>By Category</h6>
                         </div>
                         <div class="card-body">
-                            <div id="reportCategory" class="report-content"></div>
+                            <div id="reportCategory" class="report-content">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -239,7 +245,13 @@
                             <h6 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>By Type</h6>
                         </div>
                         <div class="card-body">
-                            <div id="reportType" class="report-content"></div>
+                            <div id="reportType" class="report-content">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,7 +263,13 @@
                             <h6 class="mb-0"><i class="bi bi-bank me-2"></i>By Account</h6>
                         </div>
                         <div class="card-body">
-                            <div id="reportAccount" class="report-content"></div>
+                            <div id="reportAccount" class="report-content">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -263,7 +281,13 @@
                             <h6 class="mb-0"><i class="bi bi-calendar-month me-2"></i>By Month</h6>
                         </div>
                         <div class="card-body">
-                            <div id="reportMonth" class="report-content"></div>
+                            <div id="reportMonth" class="report-content">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -773,7 +797,7 @@
             const report = document.getElementById('reportMonth');
 
             // Hide if time filter is already applied (since we're showing month-wise breakdown)
-            if (filters.time_range && filters.time_range !== '' && filters.time_range !== 'custom') {
+            if (filters.time_range && filters.time_range !== '' && filters.time_range !== 'custom' && filters.time_range !== 'this_month' && !filters.time_range.startsWith('month_')) {
                 container.style.display = 'none';
                 return;
             }
@@ -790,19 +814,34 @@
                 const monthLabel = `${monthNames[month]} ${year}`;
 
                 if (!monthData[monthKey]) {
-                    monthData[monthKey] = { label: monthLabel, total: 0, income: 0, expense: 0, count: 0, investment: 0 };
+                    monthData[monthKey] = { label: monthLabel, total: 0, income: 0, expense: 0, in: 0, out: 0, lend: 0, lend_repayment: 0, count: 0, investment: 0, expensesAndInvestments: 0 };
                 }
 
                 const amount = parseFloat(e.amount);
                 const investmentAmount = parseFloat(e.amount);
                 if (['income', 'lend_repayment'].includes(e.type)) {
-                    monthData[monthKey].income += amount;
+                    monthData[monthKey].in += amount;
                     monthData[monthKey].total += amount;
                 }
                 if(['investment'].includes(e.type)) {
                     monthData[monthKey].investment += investmentAmount;
-                } else if (['expense', 'lend'].includes(e.type)) {
+                    monthData[monthKey].expensesAndInvestments += investmentAmount;
+                }
+                if(['income'].includes(e.type)) {
+                    monthData[monthKey].income += amount;
+                }
+                if(['expense'].includes(e.type)) {
                     monthData[monthKey].expense += amount;
+                    monthData[monthKey].expensesAndInvestments += amount;
+                }
+                if (['lend'].includes(e.type)) {
+                    monthData[monthKey].lend += amount;
+                }
+                if (['lend_repayment'].includes(e.type)) {
+                    monthData[monthKey].lend_repayment += amount;
+                }
+                if (['expense', 'lend', 'investment'].includes(e.type)) {
+                    monthData[monthKey].out += amount;
                     monthData[monthKey].total -= amount;
                 }
                 monthData[monthKey].count++;
@@ -816,39 +855,64 @@
                 return mb - ma;
             }).map(k => monthData[k]);
 
-            let html = '<div class="table-responsive"><table class="table table-sm mb-0">';
-            html += `
-                <thead class="table-light">
-                    <tr>
-                        <th>Month</th>
-                        <th class="text-end">In</th>
-                        <th class="text-end">Out</th>
-                        <th class="text-end">Investments</th>
-                        <th class="text-end">Net</th>
-                        <th class="text-end">Transactions</th>
-                    </tr>
-                </thead>
-                <tbody>
-            `;
+            let html = '<div class="list-group">';
 
             sorted.forEach(data => {
                 const netClass = data.total >= 0 ? 'text-success' : 'text-danger';
+
                 html += `
-                    <tr>
-                        <td><strong>${data.label}</strong></td>
-                        <td class="text-end text-success">+${data.income.toFixed(2)}</td>
-                        <td class="text-end text-danger">-${data.expense.toFixed(2)}</td>
-                        <td class="text-end text-success">+${data.investment.toFixed(2)}</td>
-                        <td class="text-end fw-bold ${netClass}">${data.total.toFixed(2)}</td>
-                        <td class="text-end">${data.count}</td>
-                    </tr>
+                    <div class="list-group-item">
+                        <div class="d-flex justify-content-between mb-1">
+                            <strong>${data.label}</strong>
+                            <span class="fw-bold ${netClass}">
+                                ${data.total.toFixed(2)}
+                            </span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>Income</span>
+                            <span class="text-success">${data.income.toFixed(2)}</span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>Lend Repayment</span>
+                            <span class="text-success">${data.lend_repayment.toFixed(2)}</span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>Expenses</span>
+                            <span class="text-danger">${data.expense.toFixed(2)}</span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>Lend</span>
+                            <span class="text-danger">${data.lend.toFixed(2)}</span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>Investments</span>
+                            <span style="color: blue;">${data.investment.toFixed(2)}</span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>Expenses + Investments</span>
+                            <span style="color: green">${data.expensesAndInvestments.toFixed(2)}</span>
+                        </div>
+
+                        <div class="small d-flex justify-content-between">
+                            <span>In / Out</span>
+                            <span>
+                                <span class="text-success">+${data.in.toFixed(2)}</span>
+                                /
+                                <span class="text-danger">-${data.out.toFixed(2)}</span>
+                            </span>
+                        </div>
+                    </div>
                 `;
             });
 
-            html += `
-                </tbody>
-                </table></div>
-            `;
+            html += '</div>';
+
 
             if (sorted.length === 0) html = '<p class="text-muted">No data</p>';
             report.innerHTML = html;
