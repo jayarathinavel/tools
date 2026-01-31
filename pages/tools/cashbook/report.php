@@ -190,7 +190,6 @@
                                 <option value="transfer_in">Transfer In</option>
                                 <option value="transfer_out">Transfer Out</option>
                                 <option value="lend">Lend</option>
-                                <option value="repayment">Repayment</option>
                                 <option value="lend_repayment">Lend Repayment</option>
                                 <option value="investment">Investment</option>
                             </select>
@@ -221,18 +220,6 @@
 
             <!-- Reports Section -->
             <div class="row mt-4">
-                <!-- Report by Account -->
-                <div id="reportAccountContainer" class="col-12 col-md-6 col-lg-4 mb-3">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-header bg-primary text-white">
-                            <h6 class="mb-0"><i class="bi bi-bank me-2"></i>By Account</h6>
-                        </div>
-                        <div class="card-body">
-                            <div id="reportAccount" class="report-content"></div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Report by Category -->
                 <div id="reportCategoryContainer" class="col-12 col-md-6 col-lg-4 mb-3">
                     <div class="card shadow-sm h-100">
@@ -253,6 +240,18 @@
                         </div>
                         <div class="card-body">
                             <div id="reportType" class="report-content"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report by Account -->
+                <div id="reportAccountContainer" class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0"><i class="bi bi-bank me-2"></i>By Account</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="reportAccount" class="report-content"></div>
                         </div>
                     </div>
                 </div>
@@ -512,9 +511,9 @@
             const { filtered, filters } = getFilteredEntries();
 
             renderFilterSummary(filters);
-            renderAccountReport(filtered, filters);
             renderCategoryReport(filtered, filters);
             renderTypeReport(filtered, filters);
+            renderAccountReport(filtered, filters);
             renderMonthReport(filtered, filters);
 
             if (Object.values(filters).some(v => v)) {
@@ -601,11 +600,16 @@
                     accountData[accId] = { name: accName, total: 0, income: 0, expense: 0, count: 0 };
                 }
                 const amount = parseFloat(e.amount);
-                accountData[accId].total += amount;
-                if (['income', 'transfer_in', 'lend_repayment'].includes(e.type)) {
+                const investmentAmount = parseFloat(e.amount);
+                if (['income', 'lend_repayment'].includes(e.type)) {
                     accountData[accId].income += amount;
-                } else if (['expense', 'transfer_out', 'lend'].includes(e.type)) {
+                    accountData[accId].total += amount;
+                }
+                if(['investment'].includes(e.type)) {
+                    accountData[accId].investment += investmentAmount;
+                } else if (['expense', 'lend'].includes(e.type)) {
                     accountData[accId].expense += amount;
+                    accountData[accId].total -= amount;
                 }
                 accountData[accId].count++;
             });
@@ -662,7 +666,6 @@
 
             let html = '';
             sorted.forEach(data => {
-                const amountClass = data.total >= 0 ? 'text-success' : 'text-danger';
                 html += `
                     <div class="mb-2 pb-2 border-bottom">
                         <div class="d-flex justify-content-between align-items-center">
@@ -670,7 +673,7 @@
                                 <small>${data.name}</small>
                                 <div class="text-muted small">${data.count} item(s)</div>
                             </div>
-                            <div class="text-end fw-bold ${amountClass}">
+                            <div class="text-end fw-bold text-primary">
                                 ${data.total.toFixed(2)}
                             </div>
                         </div>
@@ -709,16 +712,25 @@
                 'transfer_in': 'Transfer In',
                 'transfer_out': 'Transfer Out',
                 'lend': 'Lend',
-                'repayment': 'Repayment',
                 'lend_repayment': 'Lend Repayment',
                 'investment': 'Investment'
+            };
+
+            const typeClass = {
+                'income': 'text-success',
+                'expense': 'text-danger',
+                'transfer_in': 'text-success',
+                'transfer_out': 'text-danger',
+                'lend': 'text-danger',
+                'lend_repayment': 'text-success',
+                'investment': 'text-success'
             };
 
             let html = '';
             Object.keys(typeData).sort().forEach(type => {
                 const data = typeData[type];
                 const label = typeLabels[type] || type;
-                const amountClass = data.total >= 0 ? 'text-success' : 'text-danger';
+                const amountClass = typeClass[type] || '';
                 html += `
                     <div class="mb-2 pb-2 border-bottom">
                         <div class="d-flex justify-content-between align-items-center">
@@ -734,6 +746,24 @@
                 `;
             });
 
+            if(typeData['investment'] && typeData['expense']){
+                html += `<div class="mb-2 pb-2 border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small>Expenses and Investments</small>
+                            </div>
+                            <div class="text-end fw-bold text-primary">
+                                ${
+                                    (
+                                        Number(typeData['investment'].total) +
+                                        Number(typeData['expense'].total)
+                                    ).toFixed(2)
+                                }
+                            </div>
+                        </div>
+                    </div>`;
+            }
+            
             if (!html) html = '<p class="text-muted">No data</p>';
             report.innerHTML = html;
         }
@@ -765,13 +795,13 @@
 
                 const amount = parseFloat(e.amount);
                 const investmentAmount = parseFloat(e.amount);
-                if (['income', 'transfer_in', 'lend_repayment', 'investment'].includes(e.type)) {
+                if (['income', 'lend_repayment'].includes(e.type)) {
                     monthData[monthKey].income += amount;
                     monthData[monthKey].total += amount;
                 }
                 if(['investment'].includes(e.type)) {
                     monthData[monthKey].investment += investmentAmount;
-                } else if (['expense', 'transfer_out', 'lend'].includes(e.type)) {
+                } else if (['expense', 'lend'].includes(e.type)) {
                     monthData[monthKey].expense += amount;
                     monthData[monthKey].total -= amount;
                 }
