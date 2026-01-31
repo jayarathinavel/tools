@@ -70,7 +70,6 @@
                         $types = [
                             'expense' => 'Expense',
                             'income' => 'Income',
-                            'repayment' => 'Credit Card Repayment',
                             'lend' => 'Lend',
                             'lend_repayment' => 'Lend Repayment',
                             'transfer' => 'Transfer',

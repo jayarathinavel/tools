@@ -203,7 +203,6 @@
                                 <option value="transfer_in">Transfer In</option>
                                 <option value="transfer_out">Transfer Out</option>
                                 <option value="lend">Lend</option>
-                                <option value="repayment">Repayment</option>
                                 <option value="lend_repayment">Lend Repayment</option>
                                 <option value="investment">Investment</option>
                             </select>
@@ -596,7 +595,6 @@
             switch(e.type){
                 case 'income': return '+'+parseFloat(e.amount).toFixed(2);
                 case 'expense': return '-'+parseFloat(e.amount).toFixed(2);
-                case 'repayment': return '⟵ '+parseFloat(e.amount).toFixed(2);
                 case 'lend': return '→ '+parseFloat(e.amount).toFixed(2);
                 case 'lend_repayment': return '⟶ '+parseFloat(e.amount).toFixed(2);
                 case 'transfer_in': return '⇒ '+parseFloat(e.amount).toFixed(2);

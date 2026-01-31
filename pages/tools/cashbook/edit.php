@@ -36,7 +36,6 @@
             <select name="type" class="form-control">
                 <option value="expense" <?php echo ($entry['type'] === 'expense') ? 'selected' : ''; ?>>Expense</option>
                 <option value="income" <?php echo ($entry['type'] === 'income') ? 'selected' : ''; ?>>Income</option>
-                <option value="repayment" <?php echo ($entry['type'] === 'repayment') ? 'selected' : ''; ?>>Credit Card Repayment</option>
                 <option value="lend" <?php echo ($entry['type'] === 'lend') ? 'selected' : ''; ?>>Lend</option>
                 <option value="lend_repayment" <?php echo ($entry['type'] === 'lend_repayment') ? 'selected' : ''; ?>>Lend Repayment</option>
                 <option value="transfer_in" <?php echo ($entry['type'] === 'transfer_in') ? 'selected' : ''; ?>>Transfer In</option>

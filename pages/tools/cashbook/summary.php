@@ -11,7 +11,6 @@
     $initials = [];
     $lends = [];
     $lendRepayments = [];
-    $repayments = [];
     $transfersIn = [];
     $transfersOut = [];
     $investments = [];
@@ -24,20 +23,18 @@
             $expense = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='expense'")->fetch_assoc()['sum'];
             
             // Get adjustment amounts (non-income/expense transactions)
-            $repayment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='repayment'")->fetch_assoc()['sum'];
             $lend = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='lend'")->fetch_assoc()['sum'];
             $lendRepayment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='lend_repayment'")->fetch_assoc()['sum'];
             $transferIn = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='transfer_in'")->fetch_assoc()['sum'];
             $transferOut = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='transfer_out'")->fetch_assoc()['sum'];
             $investment = executeQuery("SELECT IFNULL(SUM(amount),0) sum FROM cashbook_entry WHERE bank_account_id=$id AND type='investment'")->fetch_assoc()['sum'];
             
-            // Balance: initial + income - expense - repayment - lend + lend_repayment
-            $balances[$id] = $initial + floatval($income) - floatval($expense) - floatval($repayment) - floatval($lend) + floatval($lendRepayment) + floatval($transferIn) - floatval($transferOut) - floatval($investment);
+            // Balance: initial + income - expense - lend + lend_repayment
+            $balances[$id] = $initial + floatval($income) - floatval($expense) - floatval($lend) + floatval($lendRepayment) + floatval($transferIn) - floatval($transferOut) - floatval($investment);
             $expenses[$id] = floatval($expense);
             $incomes[$id] = floatval($income);
             $lends[$id] = floatval($lend);
             $lendRepayments[$id] = floatval($lendRepayment);
-            $repayments[$id] = floatval($repayment);
             $transfersIn[$id] = floatval($transferIn);
             $transfersOut[$id] = floatval($transferOut);
             $investments[$id] = floatval($investment);
@@ -208,13 +205,6 @@
                                         <div class="mb-2">
                                             <small class="text-muted">Lend Repayments</small>
                                             <div class="text-success">+ ₹ <?php echo number_format($lendRepayments[$id], 2); ?></div>
-                                        </div>
-                                        <?php endif; ?>
-
-                                        <?php if ($repayments[$id] != 0): ?>
-                                        <div class="mb-2">
-                                            <small class="text-muted">Repayments</small>
-                                            <div class="text-success">+ ₹ <?php echo number_format($repayments[$id], 2); ?></div>
                                         </div>
                                         <?php endif; ?>
 
