@@ -236,16 +236,12 @@
             <table class="table table-borderless text-center mt-3">
                 <tr>
                     <td class="bg-light text-success border">
-                        <div class="small text-muted">Total Income</div>
+                        <div class="small text-muted">Income</div>
                         <div class="fw-bold total-income">0.00</div>
                     </td>
                     <td class="bg-light text-danger border">
-                        <div class="small text-muted">Total Expenses</div>
+                        <div class="small text-muted">Expenses</div>
                         <div class="fw-bold total-expense">0.00</div>
-                    </td>
-                    <td class="bg-white border">
-                        <div class="small text-muted">Net</div>
-                        <div class="fw-bold total-net">0.00</div>
                     </td>
                 </tr>
             </table>
@@ -609,9 +605,6 @@
             const expense = entries.filter(e=>['expense'].includes(e.type)).reduce((a,b)=>a+parseFloat(b.amount),0);
             document.querySelector('.total-income').innerText='+'+income.toFixed(2);
             document.querySelector('.total-expense').innerText='-'+expense.toFixed(2);
-            const netEl = document.querySelector('.total-net');
-            netEl.innerText=(income-expense).toFixed(2);
-            netEl.className='fw-bold total-net '+(income-expense>=0?'text-success':'text-danger');
         }
 
         function renderPagination(filtered) {

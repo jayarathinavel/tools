@@ -675,6 +675,7 @@
 
             const categoryData = {};
             entries.forEach(e => {
+                if (e.type.startsWith('transfer')) return;
                 const catId = e.category_id || 'uncategorized';
                 const catName = e.category_id ? (CATEGORIES[e.category_id] || 'Unknown') : 'Uncategorized';
                 if (!categoryData[catId]) {
