@@ -51,6 +51,58 @@
                         .title-btn { font-size: 1.5rem; font-weight: 700; color: inherit; text-decoration: none; }
                         .btn-group.show .title-text { visibility: hidden; }
                         .title-btn:focus, .title-split-toggle:focus { box-shadow: none; }
+
+                        /* Filter pill buttons styling */
+                        .category-pill, .account-pill, .type-pill {
+                            font-size: 0.85rem;
+                            font-weight: 500;
+                            border-radius: 20px;
+                            padding: 0.4rem 0.8rem;
+                            transition: all 0.2s ease;
+                            white-space: nowrap;
+                        }
+
+                        .category-pill.active, .account-pill.active, .type-pill.active {
+                            font-weight: 600;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        }
+
+                        .category-pill:hover, .account-pill:hover, .type-pill:hover {
+                            transform: translateY(-1px);
+                            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+                        }
+
+                        .category-filter-wrapper, .account-filter-wrapper, .type-filter-wrapper {
+                            max-height: 200px;
+                            overflow-y: auto;
+                            padding: 0.25rem;
+                        }
+
+                        .offcanvas-body {
+                            padding: 1.5rem;
+                        }
+
+                        .btn-outline-purple {
+                            color: #6f42c1;
+                            border-color: #6f42c1;
+                        }
+
+                        .btn-outline-purple:hover {
+                            color: #fff;
+                            background-color: #6f42c1;
+                            border-color: #6f42c1;
+                        }
+
+                        .btn-purple {
+                            color: #fff;
+                            background-color: #6f42c1;
+                            border-color: #6f42c1;
+                        }
+
+                        .btn-purple:hover {
+                            background-color: #5a32a3;
+                            border-color: #5a32a3;
+                        }
                     </style>
 
                     <div class="btn-group" role="group">
@@ -150,62 +202,105 @@
 
                     <div class="offcanvas-body">
 
-                        <div class="mb-3">
-                            <label class="form-label small">Time range</label>
-                            <select name="time_range"
-                                    class="form-select form-select-sm"
-                                    id="timeRangeSelect"></select>
+                        <!-- Time Range -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold mb-2">
+                                <i class="bi bi-calendar3 me-1"></i>Time Range
+                            </label>
+                            <div class="time-range-wrapper d-flex flex-wrap gap-2" id="timeRangeWrapper">
+                                <button type="button" class="btn btn-sm btn-outline-secondary time-range-pill active" data-time-range="">
+                                    All Time
+                                </button>
+                            </div>
+                            <input type="hidden" name="time_range" value="">
                         </div>
 
-                        <div class="mb-3 custom-dates-wrapper" style="display:none;">
-                            <label class="form-label small">Start date</label>
-                            <input type="date"
-                                name="start_date"
-                                class="form-control form-control-sm">
+                        <!-- Custom Date Range -->
+                        <div class="mb-4 custom-dates-wrapper" style="display:none;">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <label class="form-label small">Start date</label>
+                                    <input type="date"
+                                        name="start_date"
+                                        class="form-control form-control-sm">
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label small">End date</label>
+                                    <input type="date"
+                                        name="end_date"
+                                        class="form-control form-control-sm">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="mb-3 custom-dates-wrapper" style="display:none;">
-                            <label class="form-label small">End date</label>
-                            <input type="date"
-                                name="end_date"
-                                class="form-control form-control-sm">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label small">Category</label>
-                            <select name="category_id"
-                                    class="form-select form-select-sm">
-                                <option value="">All Categories</option>
+                        <!-- Category Filter -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold mb-2">
+                                <i class="bi bi-tag me-1"></i>Category
+                            </label>
+                            <div class="category-filter-wrapper d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary category-pill active" data-category-id="">
+                                    All
+                                </button>
                                 <?php foreach($categories as $id=>$n): ?>
-                                    <option value="<?= $id ?>"><?= htmlspecialchars($n) ?></option>
+                                    <button type="button" class="btn btn-sm btn-outline-primary category-pill" data-category-id="<?= $id ?>" title="<?= htmlspecialchars($n) ?>">
+                                        <?= htmlspecialchars($n) ?>
+                                    </button>
                                 <?php endforeach; ?>
-                            </select>
+                            </div>
+                            <input type="hidden" name="category_id" value="">
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label small">Account</label>
-                            <select name="bank_account_id"
-                                    class="form-select form-select-sm">
-                                <option value="">All Accounts</option>
+                        <!-- Account Filter -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold mb-2">
+                                <i class="bi bi-bank me-1"></i>Account
+                            </label>
+                            <div class="account-filter-wrapper d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary account-pill active" data-account-id="">
+                                    All
+                                </button>
                                 <?php foreach($bankAccounts as $a): ?>
-                                    <option value="<?= $a['id'] ?>"><?= htmlspecialchars($a['name']) ?></option>
+                                    <button type="button" class="btn btn-sm btn-outline-info account-pill" data-account-id="<?= $a['id'] ?>" title="<?= htmlspecialchars($a['name']) ?>">
+                                        <?= htmlspecialchars($a['name']) ?>
+                                    </button>
                                 <?php endforeach; ?>
-                            </select>
+                            </div>
+                            <input type="hidden" name="bank_account_id" value="">
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label small">Type</label>
-                            <select name="type"
-                                    class="form-select form-select-sm">
-                                <option value="">All Types</option>
-                                <option value="income">Income</option>
-                                <option value="expense">Expense</option>
-                                <option value="transfer_in">Transfer In</option>
-                                <option value="transfer_out">Transfer Out</option>
-                                <option value="lend">Lend</option>
-                                <option value="lend_repayment">Lend Repayment</option>
-                                <option value="investment">Investment</option>
-                            </select>
+                        <!-- Type Filter -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold mb-2">
+                                <i class="bi bi-arrows-move me-1"></i>Transaction Type
+                            </label>
+                            <div class="type-filter-wrapper d-flex flex-wrap gap-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary type-pill active" data-type="">
+                                    All
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-success type-pill" data-type="income" title="Income">
+                                    <i class="bi bi-arrow-down-circle me-1"></i>Income
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger type-pill" data-type="expense" title="Expense">
+                                    <i class="bi bi-arrow-up-circle me-1"></i>Expense
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-info type-pill" data-type="transfer_in" title="Transfer In">
+                                    <i class="bi bi-arrow-left-circle me-1"></i>Transfer In
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-warning type-pill" data-type="transfer_out" title="Transfer Out">
+                                    <i class="bi bi-arrow-right-circle me-1"></i>Transfer Out
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-purple type-pill" data-type="lend" title="Lend">
+                                    <i class="bi bi-hand-index me-1"></i>Lend
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-purple type-pill" data-type="lend_repayment" title="Lend Repayment">
+                                    <i class="bi bi-hand-thumbs-up me-1"></i>Repayment
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary type-pill" data-type="investment" title="Investment">
+                                    <i class="bi bi-graph-up-arrow me-1"></i>Investment
+                                </button>
+                            </div>
+                            <input type="hidden" name="type" value="">
                         </div>
 
                     </div>
@@ -296,6 +391,7 @@
         if (!form || !entriesContainer || !pagination || !perPageSelect) return;
 
         const timeRangeSelect = document.getElementById('timeRangeSelect');
+        const timeRangeWrapper = document.getElementById('timeRangeWrapper');
 
         buildTimeRangeOptions();
 
@@ -355,7 +451,7 @@
         perPageSelect.value = itemsPerPage;
 
         function buildTimeRangeOptions() {
-            if (!timeRangeSelect || !CASHBOOK_ENTRIES.length) return;
+            if (!CASHBOOK_ENTRIES.length) return;
 
             const today = new Date();
             const currentYear = today.getFullYear();
@@ -382,49 +478,62 @@
 
             const hasCurrentYear = years.includes(currentYear);
 
-            timeRangeSelect.innerHTML = '';
+            // Clear wrapper and rebuild with pill buttons
+            if (timeRangeWrapper) {
+                timeRangeWrapper.innerHTML = '';
 
-            const addOption = (value, label, parent) => {
-                const opt = document.createElement('option');
-                opt.value = value;
-                opt.textContent = label;
-                (parent || timeRangeSelect).appendChild(opt);
-            };
+                // Always show "All Time"
+                const addButton = (value, label) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'btn btn-sm btn-outline-secondary time-range-pill';
+                    if (value === '') btn.classList.add('active', 'btn-secondary');
+                    btn.setAttribute('data-time-range', value);
+                    btn.textContent = label;
+                    timeRangeWrapper.appendChild(btn);
+                };
 
-            // Always
-            addOption('', 'All Time');
+                addButton('', 'All Time');
 
-            // ⏱ Show month shortcuts ONLY if current year exists
-            if (hasCurrentYear) {
-                addOption('this_month', 'This Month');
-                addOption('last_month', 'Last Month');
-                addOption('next_month', 'Next Month');
-            }
+                // ⏱ Show month shortcuts ONLY if current year exists
+                if (hasCurrentYear) {
+                    addButton('this_month', 'This Month');
+                    addButton('last_month', 'Last Month');
+                    addButton('next_month', 'Next Month');
+                }
 
-            // Year shortcuts only when meaningful
-            if (years.length > 1) {
-                addOption('this_year', 'This Year');
-                addOption('last_year', 'Last Year');
-            }
+                // Year shortcuts only when meaningful
+                if (years.length > 1) {
+                    addButton('this_year', 'This Year');
+                    addButton('last_year', 'Last Year');
+                }
 
-            // Month groups for every year
-            years.forEach(y => {
-                const group = document.createElement('optgroup');
-                group.label = y.toString();
-                timeRangeSelect.appendChild(group);
+                // Month groups for every year
+                years.forEach(y => {
+                    [...yearMonthMap[y]]
+                        .sort((a, b) => a - b)
+                        .forEach(m => {
+                            addButton(`month_${y}_${m}`, `${monthNames[m]} ${y}`);
+                        });
+                });
 
-                [...yearMonthMap[y]]
-                    .sort((a, b) => a - b)
-                    .forEach(m => {
-                        addOption(
-                            `month_${y}_${m}`,
-                            monthNames[m],
-                            group
-                        );
+                addButton('custom', 'Custom');
+
+                // Attach event listeners to all time range pills
+                document.querySelectorAll('.time-range-pill').forEach(btn => {
+                    btn.addEventListener('click', e => {
+                        e.preventDefault();
+                        document.querySelectorAll('.time-range-pill').forEach(b => b.classList.remove('active', 'btn-secondary'));
+                        document.querySelectorAll('.time-range-pill').forEach(b => b.classList.add('btn-outline-secondary'));
+                        btn.classList.remove('btn-outline-secondary');
+                        btn.classList.add('active', 'btn-secondary');
+                        form.time_range.value = btn.getAttribute('data-time-range');
+                        updateCustomDates();
+                        currentPage = 1;
+                        filterEntries();
                     });
-            });
-
-            addOption('custom', 'Custom');
+                });
+            }
         }
 
         function updateFilterButtonState(f) {
@@ -757,9 +866,9 @@
                 summaryEl.style.display = '';
             } else {
                 summaryEl.innerHTML = '';
-                // Check if 'this_month' option exists in time range select
-                const thisMonthOption = Array.from(timeRangeSelect.options).some(opt => opt.value === 'this_month');
-                if (thisMonthOption) {
+                // Check if 'this_month' button exists in time range pills
+                const thisMonthBtn = document.querySelector('.time-range-pill[data-time-range="this_month"]');
+                if (thisMonthBtn) {
                     summaryEl.innerHTML = `
                         <a href="#" class="text-decoration-none" id="filterThisMonthLink">
                             <i class="bi bi-funnel me-1"></i>Current month
@@ -770,12 +879,7 @@
                     // Add click handler
                     document.getElementById('filterThisMonthLink').addEventListener('click', e => {
                         e.preventDefault();
-                        form.time_range.value = 'this_month';
-                        form.start_date.value = '';
-                        form.end_date.value = '';
-                        updateCustomDates();
-                        currentPage = 1;
-                        filterEntries();
+                        thisMonthBtn.click();
                     });
                 } else {
                     summaryEl.style.display = 'none';
@@ -784,6 +888,67 @@
             }
         }
 
+        // Category pill buttons
+        document.querySelectorAll('.category-pill').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active', 'btn-primary'));
+                document.querySelectorAll('.category-pill').forEach(b => b.classList.add('btn-outline-primary'));
+                btn.classList.remove('btn-outline-primary');
+                btn.classList.add('active', 'btn-primary');
+                form.category_id.value = btn.getAttribute('data-category-id');
+                currentPage = 1;
+                filterEntries();
+            });
+        });
+
+        // Account pill buttons
+        document.querySelectorAll('.account-pill').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelectorAll('.account-pill').forEach(b => b.classList.remove('active', 'btn-info'));
+                document.querySelectorAll('.account-pill').forEach(b => b.classList.add('btn-outline-info'));
+                btn.classList.remove('btn-outline-info');
+                btn.classList.add('active', 'btn-info');
+                form.bank_account_id.value = btn.getAttribute('data-account-id');
+                currentPage = 1;
+                filterEntries();
+            });
+        });
+
+        // Type pill buttons
+        document.querySelectorAll('.type-pill').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelectorAll('.type-pill').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.type-pill').forEach(b => {
+                    const type = b.getAttribute('data-type');
+                    if (type === 'income') b.classList.add('btn-outline-success');
+                    else if (type === 'expense') b.classList.add('btn-outline-danger');
+                    else if (type === 'transfer_in') b.classList.add('btn-outline-info');
+                    else if (type === 'transfer_out') b.classList.add('btn-outline-warning');
+                    else if (['lend', 'lend_repayment'].includes(type)) b.classList.add('btn-outline-purple');
+                    else if (type === 'investment') b.classList.add('btn-outline-secondary');
+                    else b.classList.add('btn-outline-secondary');
+                });
+                
+                const btnClass = btn.getAttribute('data-type') === 'income' ? 'btn-success' :
+                               btn.getAttribute('data-type') === 'expense' ? 'btn-danger' :
+                               btn.getAttribute('data-type') === 'transfer_in' ? 'btn-info' :
+                               btn.getAttribute('data-type') === 'transfer_out' ? 'btn-warning' :
+                               ['lend', 'lend_repayment'].includes(btn.getAttribute('data-type')) ? 'btn-purple' :
+                               btn.getAttribute('data-type') === 'investment' ? 'btn-secondary' :
+                               'btn-secondary';
+                
+                btn.classList.add('active', btnClass);
+                const outline = btnClass.replace('btn-', 'btn-outline-');
+                btn.classList.remove(outline);
+                form.type.value = btn.getAttribute('data-type');
+                currentPage = 1;
+                filterEntries();
+            });
+        });
+
         form.search.addEventListener('input', () => {
             currentPage = 1;
             filterEntries();
@@ -791,10 +956,51 @@
 
         form.addEventListener('submit', e=>{e.preventDefault(); currentPage=1; filterEntries();});
         clearCashbookFiltersBtn.addEventListener('click', e=>{
-            e.preventDefault(); localStorage.removeItem(STORAGE_KEY); form.reset(); updateCustomDates(); currentPage=1; filterEntries();
+            e.preventDefault(); 
+            
+            // Select all time range (first button - All Time)
+            const allTimeBtn = document.querySelector('.time-range-pill[data-time-range=""]');
+            if (allTimeBtn) allTimeBtn.click();
+            
+            // Select all categories (All button)
+            const allCategoryBtn = document.querySelector('.category-pill[data-category-id=""]');
+            if (allCategoryBtn) allCategoryBtn.click();
+            
+            // Select all accounts (All button)
+            const allAccountBtn = document.querySelector('.account-pill[data-account-id=""]');
+            if (allAccountBtn) allAccountBtn.click();
+            
+            // Select all types (All button)
+            const allTypeBtn = document.querySelector('.type-pill[data-type=""]');
+            if (allTypeBtn) allTypeBtn.click();
+            
+            // Clear search
+            form.search.value = '';
+            
+            localStorage.removeItem(STORAGE_KEY);
+            currentPage = 1;
+            filterEntries();
             clearCashbookFiltersBtn.style.display = 'none';
         });
         perPageSelect.addEventListener('change', function(){itemsPerPage=parseInt(this.value); localStorage.setItem(ITEMS_PER_PAGE_KEY,itemsPerPage); currentPage=1; filterEntries();});
+
+        // Initialize pill buttons based on stored filter state
+        if (filterState.time_range) {
+            const timeRangeBtn = document.querySelector(`.time-range-pill[data-time-range="${filterState.time_range}"]`);
+            if (timeRangeBtn) timeRangeBtn.click();
+        }
+        if (filterState.category_id) {
+            const categoryBtn = document.querySelector(`.category-pill[data-category-id="${filterState.category_id}"]`);
+            if (categoryBtn) categoryBtn.click();
+        }
+        if (filterState.bank_account_id) {
+            const accountBtn = document.querySelector(`.account-pill[data-account-id="${filterState.bank_account_id}"]`);
+            if (accountBtn) accountBtn.click();
+        }
+        if (filterState.type) {
+            const typeBtn = document.querySelector(`.type-pill[data-type="${filterState.type}"]`);
+            if (typeBtn) typeBtn.click();
+        }
 
         filterEntries();
     })();
