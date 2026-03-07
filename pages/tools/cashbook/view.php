@@ -251,6 +251,9 @@
                                         <?= htmlspecialchars($n) ?>
                                     </button>
                                 <?php endforeach; ?>
+                                <button type="button" class="btn btn-sm btn-outline-primary category-pill" data-category-id="uncategorized" title="Uncategorized">
+                                    Uncategorized
+                                </button>
                             </div>
                             <input type="hidden" name="category_id" value="">
                         </div>
@@ -269,6 +272,9 @@
                                         <?= htmlspecialchars($a['name']) ?>
                                     </button>
                                 <?php endforeach; ?>
+                                <button type="button" class="btn btn-sm btn-outline-info account-pill" data-account-id="no_account" title="No Account">
+                                    No Account
+                                </button>
                             </div>
                             <input type="hidden" name="bank_account_id" value="">
                         </div>
@@ -631,8 +637,20 @@
                 if (start && entryDate < start) return false;
                 if (end && entryDate > end) return false;
 
-                if (f.category_id && Number(f.category_id) !== Number(e.category_id)) return false;
-                if (f.bank_account_id && Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
+                // Handle category filter
+                if (f.category_id === 'uncategorized') {
+                    if (e.category_id) return false; // exclude entries that have a category
+                } else if (f.category_id) {
+                    if (Number(f.category_id) !== Number(e.category_id)) return false;
+                }
+
+                // Handle account filter
+                if (f.bank_account_id === 'no_account') {
+                    if (e.bank_account_id) return false; // exclude entries that have an account
+                } else if (f.bank_account_id) {
+                    if (Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
+                }
+
                 if (f.type && e.type !== f.type) return false;
 
                 // 🔍 SEARCH MATCH
@@ -866,12 +884,12 @@
 
             // Category
             if (f.category_id) {
-                parts.push(`Category: ${CATEGORIES[f.category_id]}`);
+                parts.push(`Category: ${CATEGORIES[f.category_id] == undefined ? 'Uncategorized' : CATEGORIES[f.category_id]}`);
             }
 
             // Account
             if (f.bank_account_id) {
-                parts.push(`Account: ${ACCOUNTS[f.bank_account_id]?.name}`);
+                parts.push(`Account: ${ACCOUNTS[f.bank_account_id]?.name == undefined ? 'No Account' : ACCOUNTS[f.bank_account_id]?.name}`);
             }
 
             // Type

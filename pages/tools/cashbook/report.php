@@ -166,6 +166,7 @@
                                 <?php foreach($categories as $id=>$n): ?>
                                     <option value="<?= $id ?>"><?= htmlspecialchars($n) ?></option>
                                 <?php endforeach; ?>
+                                <option value="uncategorized">Uncategorized</option>
                             </select>
                         </div>
 
@@ -177,6 +178,7 @@
                                 <?php foreach($bankAccounts as $a): ?>
                                     <option value="<?= $a['id'] ?>"><?= htmlspecialchars($a['name']) ?></option>
                                 <?php endforeach; ?>
+                                <option value="no_account">No Account</option>
                             </select>
                         </div>
 
@@ -506,8 +508,20 @@
                 if (start && entryDate < start) return false;
                 if (end && entryDate > end) return false;
 
-                if (f.category_id && Number(f.category_id) !== Number(e.category_id)) return false;
-                if (f.bank_account_id && Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
+                // Handle category filter
+                if (f.category_id === 'uncategorized') {
+                    if (e.category_id) return false; // exclude entries that have a category
+                } else if (f.category_id) {
+                    if (Number(f.category_id) !== Number(e.category_id)) return false;
+                }
+
+                // Handle account filter
+                if (f.bank_account_id === 'no_account') {
+                    if (e.bank_account_id) return false; // exclude entries that have an account
+                } else if (f.bank_account_id) {
+                    if (Number(f.bank_account_id) !== Number(e.bank_account_id)) return false;
+                }
+
                 if (f.type && e.type !== f.type) return false;
 
                 if (f.search) {
@@ -577,11 +591,11 @@
             }
 
             if (f.category_id) {
-                parts.push(`Category: ${CATEGORIES[f.category_id]}`);
+                parts.push(`Category: ${CATEGORIES[f.category_id] == undefined ? 'Uncategorized' : CATEGORIES[f.category_id]} `);
             }
 
             if (f.bank_account_id) {
-                parts.push(`Account: ${ACCOUNTS[f.bank_account_id]?.name}`);
+                parts.push(`Account: ${ACCOUNTS[f.bank_account_id]?.name == undefined ? 'No Account' : ACCOUNTS[f.bank_account_id]?.name}`);
             }
 
             if (f.type) {
