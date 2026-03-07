@@ -947,7 +947,11 @@
         document.querySelectorAll('.type-pill').forEach(btn => {
             btn.addEventListener('click', e => {
                 e.preventDefault();
-                document.querySelectorAll('.type-pill').forEach(b => b.classList.remove('active'));
+                // Remove all active and filled button classes from all pills
+                document.querySelectorAll('.type-pill').forEach(b => {
+                    b.classList.remove('active', 'btn-success', 'btn-danger', 'btn-info', 'btn-warning', 'btn-purple', 'btn-secondary');
+                });
+                // Reset all pills to outline style
                 document.querySelectorAll('.type-pill').forEach(b => {
                     const type = b.getAttribute('data-type');
                     if (type === 'income') b.classList.add('btn-outline-success');
@@ -959,6 +963,7 @@
                     else b.classList.add('btn-outline-secondary');
                 });
                 
+                // Apply active state to clicked button
                 const btnClass = btn.getAttribute('data-type') === 'income' ? 'btn-success' :
                                btn.getAttribute('data-type') === 'expense' ? 'btn-danger' :
                                btn.getAttribute('data-type') === 'transfer_in' ? 'btn-info' :
