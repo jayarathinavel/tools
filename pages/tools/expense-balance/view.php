@@ -154,7 +154,8 @@
             paging: false,
             "order": [[3, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [5] }
+                { "orderable": false, "targets": [5] },
+                { width: "220px", targets: [0, 1] }
             ],
             "bInfo": false,
         });

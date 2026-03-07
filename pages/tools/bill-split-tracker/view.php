@@ -137,7 +137,8 @@
             paging: false,
             "order": [[5, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [6] }
+                { "orderable": false, "targets": [6] },
+                { width: "220px", targets: [0, 1] }
             ],
             "bInfo": false,
         });
