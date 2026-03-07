@@ -123,7 +123,11 @@
             </select>
         </div>
         <div class="form-group mb-2">
-            <input type="datetime-local" name="date" class="form-control" value="<?= htmlspecialchars($prefill['date'] ?? date('Y-m-d\TH:i')) ?>">
+            <input type="datetime-local" id="dateInput" name="date" class="form-control"
+                value="<?= htmlspecialchars($prefill['date'] ?? date('Y-m-d\TH:i')) ?>">
+            <small>
+                <a href="#" id="setNowLink" class="d-none">Now</a>
+            </small>
         </div>
         <input type="hidden" name="cashbook_book_id" value="<?php echo $book; ?>">
         <button type="submit" name="action" value="save" class="btn btn-primary mt-2">
@@ -241,6 +245,41 @@
         });
 
         buttons.forEach(btn => container.appendChild(btn));
+    }
+
+    const dateInput = document.getElementById('dateInput');
+    const nowLink = document.getElementById('setNowLink');
+
+    function getNowValue() {
+        const now = new Date();
+        const pad = n => String(n).padStart(2,'0');
+        return now.getFullYear() + '-' +
+            pad(now.getMonth()+1) + '-' +
+            pad(now.getDate()) + 'T' +
+            pad(now.getHours()) + ':' +
+            pad(now.getMinutes());
+    }
+
+    function toggleNowLink() {
+        if (!dateInput || !nowLink) return;
+
+        if (dateInput.value !== getNowValue()) {
+            nowLink.classList.remove('d-none');
+        } else {
+            nowLink.classList.add('d-none');
+        }
+    }
+
+    if (dateInput && nowLink) {
+        toggleNowLink();
+
+        dateInput.addEventListener('input', toggleNowLink);
+
+        nowLink.addEventListener('click', e => {
+            e.preventDefault();
+            dateInput.value = getNowValue();
+            toggleNowLink();
+        });
     }
 
 </script>
