@@ -26,6 +26,11 @@
         </div>
         
         <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control" rows="3"><?php echo htmlspecialchars($bill['description'] ?? ''); ?></textarea>
+        </div>
+        
+        <div class="form-group">
             <label for="total_amount">Total Amount (₹):</label>
             <input type="number" step="0.01" id="total_amount" name="total_amount" class="form-control" value="<?php echo $bill['total_amount']; ?>" required>
         </div>

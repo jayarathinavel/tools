@@ -93,6 +93,7 @@
             <thead>
                 <tr>
                     <th>Bill Name</th>
+                    <th>Description</th>
                     <th>Total Amount</th>
                     <th>Paid By</th>
                     <th>Split Type</th>
@@ -107,6 +108,7 @@
                 ?>
                 <tr>
                     <td><?php echo htmlspecialchars($bill['bill_name']); ?></td>
+                    <td><?php echo htmlspecialchars($bill['description']); ?></td>
                     <td>₹<?php echo number_format($bill['total_amount'], 2); ?></td>
                     <td><?php echo htmlspecialchars($bill['paid_by']); ?></td>
                     <td>
@@ -133,9 +135,9 @@
     $(document).ready(function() {
         $('#bills-table').DataTable({
             paging: false,
-            "order": [[4, "desc"]],
+            "order": [[5, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [5] }
+                { "orderable": false, "targets": [6] }
             ],
             "bInfo": false,
         });

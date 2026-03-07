@@ -37,6 +37,10 @@
             <input type="text" id="expense_name" name="expense_name" class="form-control" required>
         </div>
         <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control" rows="3" placeholder="Optional description"></textarea>
+        </div>
+        <div class="form-group">
             <label for="amount">Amount:</label>
             <input type="number" id="amount" name="amount" class="form-control" required>
         </div>

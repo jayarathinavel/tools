@@ -285,3 +285,8 @@ CREATE TABLE IF NOT EXISTS `user_default_books` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_user_tool` (`app_user_id`, `tool`)
 );
+
+-- Add description fields to existing tables
+ALTER TABLE `cashbook_entry` ADD COLUMN `description` TEXT NULL AFTER `title`;
+ALTER TABLE `expense_balance` ADD COLUMN `description` TEXT NULL AFTER `expense_name`;
+ALTER TABLE `bill_split` ADD COLUMN `description` TEXT NULL AFTER `bill_name`;

@@ -21,12 +21,13 @@
             $id = intval($_POST['id']);
             $conn = Database::getInstance()->getConnection();
             $title = mysqli_real_escape_string($conn, $_POST['title']);
+            $description = mysqli_real_escape_string($conn, $_POST['description'] ?? '');
             $amount = floatval($_POST['amount']);
             $type = mysqli_real_escape_string($conn, $_POST['type']);
             $category_id = !empty($_POST['category_id']) ? intval($_POST['category_id']) : "NULL";
             $bank_account_id = !empty($_POST['bank_account_id']) ? intval($_POST['bank_account_id']) : "NULL";
             $date = mysqli_real_escape_string($conn, $_POST['date']);
-            executeQuery("UPDATE cashbook_entry SET title='$title', amount=$amount, type='$type', category_id=$category_id, bank_account_id=$bank_account_id, date='$date' WHERE id=$id");
+            executeQuery("UPDATE cashbook_entry SET title='$title', description='$description', amount=$amount, type='$type', category_id=$category_id, bank_account_id=$bank_account_id, date='$date' WHERE id=$id");
             setSuccessOrFailureMessage('success', 'Entry Updated');
         } catch (Exception $e) {
             setSuccessOrFailureMessage('failure', 'Failed to update: '.$e->getMessage());
@@ -46,6 +47,7 @@
             ];
             $conn = Database::getInstance()->getConnection();
             $title = mysqli_real_escape_string($conn, $_POST['title']);
+            $description = mysqli_real_escape_string($conn, $_POST['description'] ?? '');
             $amount = floatval($_POST['amount']);
             $type = mysqli_real_escape_string($conn, $_POST['type']);
             $category_id = !empty($_POST['category_id']) ? intval($_POST['category_id']) : "NULL";
@@ -59,9 +61,9 @@
                     throw new Exception("From and To bank accounts cannot be the same for a transfer.");
                 }
                 // Outgoing entry
-                executeQuery("INSERT INTO cashbook_entry (title, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title',$amount,'transfer_out',$category_id,$bank_account_id,'$date',$bookId)");
+                executeQuery("INSERT INTO cashbook_entry (title, description, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title','$description',$amount,'transfer_out',$category_id,$bank_account_id,'$date',$bookId)");
                 // Incoming entry
-                executeQuery("INSERT INTO cashbook_entry (title, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title',$amount,'transfer_in',$category_id,$to_account_id,'$date',$bookId)");
+                executeQuery("INSERT INTO cashbook_entry (title, description, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title','$description',$amount,'transfer_in',$category_id,$to_account_id,'$date',$bookId)");
                 setSuccessOrFailureMessage('success', 'Transfer Entry Added');
                 if ($action === 'save_new') {
                     header("Location: add.php");
@@ -70,7 +72,7 @@
                 }
                 exit;
             }
-            executeQuery("INSERT INTO cashbook_entry (title, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title',$amount,'$type',$category_id,$bank_account_id,'$date',$bookId)");
+            executeQuery("INSERT INTO cashbook_entry (title, description, amount, type, category_id, bank_account_id, date, cashbook_book_id) VALUES('$title','$description',$amount,'$type',$category_id,$bank_account_id,'$date',$bookId)");
             setSuccessOrFailureMessage('success', 'Entry Added');
         } catch (Exception $e) {
             setSuccessOrFailureMessage('failure', 'Failed to add: '.$e->getMessage());

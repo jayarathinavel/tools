@@ -38,6 +38,11 @@
         </div>
         
         <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control" placeholder="Optional description" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
             <label for="total_amount">Total Amount (₹):</label>
             <input type="number" step="0.01" id="total_amount" name="total_amount" class="form-control" placeholder="0.00" required>
         </div>

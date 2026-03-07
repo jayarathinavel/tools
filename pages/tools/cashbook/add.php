@@ -53,6 +53,9 @@
             <input required name="title" class="form-control" placeholder="Expense Name">
         </div>
         <div class="form-group mb-2">
+            <textarea name="description" class="form-control" placeholder="Description (optional)" rows="3"></textarea>
+        </div>
+        <div class="form-group mb-2">
             <select name="category_id" class="form-control">
                 <option value="" hidden>Select a category</option>
                 <?php foreach($categories as $id => $name): ?>

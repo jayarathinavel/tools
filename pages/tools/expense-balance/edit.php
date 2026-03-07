@@ -22,6 +22,10 @@
             <input type="text" id="expense_name" name="expense_name" class="form-control" value="<?php echo $expense['expense_name']; ?>">
         </div>
         <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control" rows="3"><?php echo htmlspecialchars($expense['description'] ?? ''); ?></textarea>
+        </div>
+        <div class="form-group">
             <label for="amount">Amount:</label>
             <input type="number" id="amount" name="amount" class="form-control" value="<?php echo $expense['amount']; ?>">
         </div>

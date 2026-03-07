@@ -28,6 +28,10 @@
             <input required name="title" class="form-control" value="<?php echo htmlspecialchars($entry['title']); ?>">
         </div>
         <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control" rows="3"><?php echo htmlspecialchars($entry['description'] ?? ''); ?></textarea>
+        </div>
+        <div class="form-group">
             <label>Amount</label>
             <input required name="amount" type="number" step="0.01" class="form-control" value="<?php echo $entry['amount']; ?>">
         </div>

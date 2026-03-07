@@ -121,6 +121,7 @@
             <thead>
                 <tr>
                     <th>Expense Name</th>
+                    <th>Description</th>
                     <th>Amount</th>
                     <th>Person</th>
                     <th>Date</th>
@@ -133,6 +134,7 @@
                 ?>
                 <tr>
                     <td><?php echo $expense['expense_name']; ?></td>
+                    <td><?php echo htmlspecialchars($expense['description'] ?? ''); ?></td>
                     <td><?php echo $expense['amount']; ?></td>
                     <td><?php echo $persons[$expense['person']]; ?></td>
                     <td><?php echo $expense['date']; ?></td>
@@ -152,7 +154,7 @@
             paging: false,
             "order": [[3, "desc"]],
             "columnDefs": [
-                { "orderable": false, "targets": [4] }
+                { "orderable": false, "targets": [5] }
             ],
             "bInfo": false,
         });

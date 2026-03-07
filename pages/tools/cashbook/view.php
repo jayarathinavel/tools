@@ -103,6 +103,10 @@
                             background-color: #5a32a3;
                             border-color: #5a32a3;
                         }
+
+                        .description-modal-body {
+                            white-space: pre-line;
+                        }
                     </style>
 
                     <div class="btn-group" role="group">
@@ -662,6 +666,17 @@
             }
         }
 
+        function truncateText(text, limit){
+            if(text.length <= limit) return text;
+            return text.substring(0, limit) + '...';
+        }
+
+        function escapeHtml(text){
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         function renderEntries(entries){
             entriesContainer.innerHTML = '';
             const start = (currentPage-1)*itemsPerPage;
@@ -670,6 +685,7 @@
                 const catName = e.category_id ? (CATEGORIES[e.category_id]||'') : '';
                 const accName = e.bank_account_id ? (ACCOUNTS[e.bank_account_id]?.name||'') : '';
                 const amountClass = ['income','transfer_in','lend_repayment'].includes(e.type) ? 'text-success':'text-danger';
+                const truncatedDescriptionLength = 35;
                 const html = `
                 <div class="col-12 col-md-6 col-lg-4 mb-2">
                     <div class="card mb-2 shadow-sm h-100">
@@ -677,6 +693,17 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h5 class="card-title mb-1 text-break">${e.title}</h5>
+                                    ${e.description ? `
+                                        <p class="card-text small text-muted mb-1 description-preview">
+                                            ${truncateText(e.description, truncatedDescriptionLength)}
+                                            ${e.description.length > truncatedDescriptionLength ? `
+                                                <button class="btn btn-link btn-sm p-0 ms-1 show-description"
+                                                    data-title="${escapeHtml(e.title)}"
+                                                    data-description="${escapeHtml(e.description)}">
+                                                    more
+                                                </button>` : ''}
+                                        </p>
+                                    ` : ''}
                                     <div class="small"><i class="bi bi-calendar-event me-1"></i>${e.date}</div>
                                     <div class="mt-2">${catName?`<span class="badge bg-primary me-1">${catName}</span>`:''}${accName?`<span class="badge bg-info">${accName}</span>`:''}</div>
                                 </div>
@@ -1003,7 +1030,36 @@
         }
 
         filterEntries();
+
+        entriesContainer.querySelectorAll('.show-description').forEach(btn=>{
+            btn.addEventListener('click', function(){
+                const modal = document.getElementById('descriptionModal');
+
+                modal.querySelector('.modal-title').textContent = this.dataset.title;
+                modal.querySelector('.modal-body').textContent = this.dataset.description;
+
+                const bsModal = new bootstrap.Modal(modal);
+                bsModal.show();
+            });
+        });
     })();
 </script>
+
+<div class="modal fade" id="descriptionModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body small text-muted description-modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php initializePageFooter($rootPath, $moduleType); ?>
