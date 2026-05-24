@@ -58,6 +58,29 @@ $userId = $_SESSION['appUserId'] ?? null;
     <?php endif; ?>
 
     <div class="container">
+        <!-- Quick Entries -->
+        <div class="card mb-2 rounded-2">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0 fw-semibold">Quick Entries</h5>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <a href="/pages/tools/vehicle-tracker/quick-entry.php"
+                        class="btn btn-primary w-100 py-3 rounded-3">
+                            🚚 Vehicle Entry
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <a href="/pages/tools/cashbook/add.php"
+                        class="btn btn-dark w-100 py-3 rounded-3">
+                            💰 Cashbook Entry
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row justify-content-center" id="toolCards">
             <!-- Each card has a data-app attribute for identification -->
             <div class="col-md-6 col-lg-4 mb-4" data-app="expense-balance">

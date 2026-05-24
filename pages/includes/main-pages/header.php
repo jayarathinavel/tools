@@ -50,21 +50,35 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Menu
+        <li class="nav-item">
+            <a class="nav-link" href="/pages/tools/cashbook/view.php">
+                <i class="bi bi-cash-stack me-2"></i>Cashbook
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/pages/tools/expense-balance/view.php">Expense Balance</a>
-                <a class="dropdown-item" href="/pages/tools/vehicle-tracker/view.php">Vehicle Tracker</a>
-                <a class="dropdown-item" href="/pages/tools/bill-split-tracker/view.php">Bill Split Tracker</a>
-                <a class="dropdown-item" href="/pages/tools/notebook/view.php">Notebook</a>
-                <a class="dropdown-item" href="/pages/tools/events-anniversary/view.php">Events Tracker</a>
-                <a class="dropdown-item" href="/pages/tools/cashbook/view.php">Cashbook</a>
-            </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link" href="/pages/tools/vehicle-tracker/view.php">
+                <i class="bi bi-truck me-2"></i>Vehicle Tracker
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pages/tools/expense-balance/view.php">
+                <i class="bi bi-wallet2 me-2"></i>Expense Balance
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pages/tools/bill-split-tracker/view.php">
+                <i class="bi bi-receipt-cutoff me-2"></i>Bill Split Tracker
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pages/tools/notebook/view.php">
+                <i class="bi bi-journal-text me-2"></i>Notebook
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/pages/tools/events-anniversary/view.php">
+                <i class="bi bi-calendar-event me-2"></i>Events Tracker
+            </a>
         </li>
         <?php
             if(isAppUserLoggedIn()){

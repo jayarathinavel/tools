@@ -108,3 +108,8 @@
             exit;
         }
     }
+
+    function findCashbookDetails($id) {
+        $q = executeQuery("SELECT * FROM cashbook_book WHERE id=$id");
+        return $q->fetch_assoc();
+    }

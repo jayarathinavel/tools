@@ -152,7 +152,7 @@
     $(document).ready(function() {
         $('#expenses-table').DataTable({
             paging: false,
-            "order": [[3, "desc"]],
+            "order": [[4, "desc"]],
             "columnDefs": [
                 { "orderable": false, "targets": [5] },
                 { width: "220px", targets: [0, 1] }

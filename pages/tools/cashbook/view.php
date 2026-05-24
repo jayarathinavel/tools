@@ -722,7 +722,7 @@
                                                 </button>` : ''}
                                         </p>
                                     ` : ''}
-                                    <div class="small"><i class="bi bi-calendar-event me-1"></i>${e.date}</div>
+                                    <div class="small"><i class="bi bi-calendar-event me-1"></i>${formatDateTime(e.date)}</div>
                                     <div class="mt-2">${catName?`<span class="badge bg-primary me-1">${catName}</span>`:''}${accName?`<span class="badge bg-info">${accName}</span>`:''}</div>
                                 </div>
                                 <div class="text-end">
@@ -739,6 +739,17 @@
                 </div>`;
                 entriesContainer.insertAdjacentHTML('beforeend', html);
             });
+        }
+
+        function formatDateTime(date) {
+            return new Date(date).toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            }).replace(',', '');
         }
 
         function formatAmount(e){

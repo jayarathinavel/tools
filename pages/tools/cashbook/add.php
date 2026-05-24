@@ -10,6 +10,7 @@
     $accounts = $book ? fetchBankAccountsFromCashbook($book) : [];
     $categories = $book ? fetchCategoriesFromCashbook($book) : [];
     $prefill = $_SESSION['cashbook_prefill'] ?? [];
+    $cashbookDetails = findCashbookDetails($book);
 ?>
 <style>
     .scroll-x {
@@ -48,12 +49,20 @@
 <div class="container">
     <?php getSuccessOrFailureMessage(); ?>
     <?php if(!$book) echo '<div class="alert alert-danger">No book. Create one first.</div>'; ?>
+    <p><b>Add New Entry to <?php echo $cashbookDetails['name'] ?> </b></p>
     <form method="post" action="">
         <div class="form-group mb-2">
-            <input required name="title" class="form-control" placeholder="Expense Name">
+            <div class="row g-2 align-items-start">
+                <div class="col" id="titleWrapper">
+                    <input required name="title" id="titleInputField" class="form-control" placeholder="Expense Name">
+                </div>
+                <div class="col-auto" id="showDescriptionWrapper">
+                    <button type="button" id="showDescriptionBtn" class="btn btn-outline-secondary btn-sm">Add note</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <textarea name="description" class="form-control" placeholder="Description (optional)" rows="3"></textarea>
+        <div class="form-group mb-2 d-none" id="descriptionWrapper">
+            <textarea name="description" id="descriptionInput" class="form-control" placeholder="Description (optional)" rows="3"></textarea>
         </div>
         <div class="form-group mb-2">
             <select name="category_id" class="form-control">
@@ -155,6 +164,18 @@
             'cashbook_account_usage',
             'id'
         );
+
+        const showDescriptionBtn = document.getElementById('showDescriptionBtn');
+        const descriptionWrapper = document.getElementById('descriptionWrapper');
+        const showDescriptionWrapper = document.getElementById('showDescriptionWrapper');
+
+        if (showDescriptionBtn && descriptionWrapper && showDescriptionWrapper) {
+            showDescriptionBtn.addEventListener('click', () => {
+                descriptionWrapper.classList.remove('d-none');
+                showDescriptionWrapper.classList.add('d-none');
+                document.getElementById('descriptionInput').focus();
+            });
+        }
     });
     document.querySelectorAll('#accountSelector button').forEach(btn => {
         btn.addEventListener('click', () => {
